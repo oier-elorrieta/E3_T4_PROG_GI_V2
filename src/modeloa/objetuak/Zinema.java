@@ -1,17 +1,17 @@
 package modeloa.objetuak;
 
 public class Zinema {
-	private int identificador;
+	private int idZinema;
 	private String izena;
 	private String helbidea;
 	private String NIF;
 
 	public int getIdentificador() {
-		return identificador;
+		return idZinema;
 	}
 
 	public void setIdentificador(int identificador) {
-		this.identificador = identificador;
+		this.idZinema = identificador;
 	}
 
 	public String getIzena() {
