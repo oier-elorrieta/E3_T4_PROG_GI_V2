@@ -15,14 +15,6 @@ public class Zinema {
 	public int getIdentificador() {
 		return idZinema;
 	}
-
-<<<<<<< HEAD
-	public void setIdentificador(int idZinema) {
-		this.idZinema = idZinema;
-=======
-	public void setIdentificador(int identificador) {
-		this.idZinema = identificador;
->>>>>>> 8b0586e8378cc45e4b5660024a932b0075fd9207
 	}
 
 	public String getIzena() {
