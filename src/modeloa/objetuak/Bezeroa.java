@@ -1,14 +1,7 @@
 package modeloa.objetuak;
 
 public class Bezeroa {
-<<<<<<< HEAD
-	
-	
-	public Bezeroa() {
-		
-	}
-=======
-	private int	idBezero;
+	private int idBezero;
 	private String NAN;
 	private String izena;
 	private String abizena;
@@ -90,7 +83,4 @@ public class Bezeroa {
 	public void setSexua(String sexua) {
 		this.sexua = sexua;
 	}
-	
-	
->>>>>>> 8b0586e8378cc45e4b5660024a932b0075fd9207
 }
