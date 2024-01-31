@@ -1,9 +1,12 @@
 package modeloa.objetuak;
 
+import java.util.ArrayList;
+
 public class Zinema {
 	private int idZinema;
 	private String izena;
 	private String helbidea;
+	private ArrayList<Integer> aretoKop;
 	private String NIF;
 
 	public Zinema(String izena, String helbidea, String NIF) {
@@ -11,10 +14,13 @@ public class Zinema {
 		this.helbidea = helbidea;
 		this.NIF = NIF;
 	}
-	
-	public int getIdentificador() {
+
+	public int getIdZinema() {
 		return idZinema;
 	}
+
+	public void setIdZinema(int idZinema) {
+		this.idZinema = idZinema;
 	}
 
 	public String getIzena() {
@@ -33,15 +39,13 @@ public class Zinema {
 		NIF = nIF;
 	}
 
-	public int getAretoKop() {
+	public ArrayList<Integer> getAretoKop() {
 		return aretoKop;
 	}
 
-	public void setAretoKop(int aretoKop) {
+	public void setAretoKop(ArrayList<Integer> aretoKop) {
 		this.aretoKop = aretoKop;
 	}
-
-	private int aretoKop;
 
 	public String getHelbidea() {
 		return helbidea;
@@ -50,7 +54,5 @@ public class Zinema {
 	public void setHelbidea(String helbidea) {
 		this.helbidea = helbidea;
 	}
-	
+
 }
-
-

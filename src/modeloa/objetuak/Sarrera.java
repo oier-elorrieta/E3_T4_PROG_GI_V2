@@ -5,12 +5,12 @@ public class Sarrera {
 	private int idAretoa;
 	private int idZinema;
 	private int idFilma;
-//	private String data;
-	private float prezioa;
+	private String data;
+	private double prezioa;
 	private String mota;
 	
-	public Sarrera(String data, float prezioa, String mota) {
-//		this.data = data;
+	public Sarrera(String data, double prezioa, String mota) {
+		this.data = data;
 		this.prezioa = prezioa;
 		this.mota = mota;
 	}
@@ -47,18 +47,18 @@ public class Sarrera {
 		this.idFilma = idFilma;
 	}
 	
-//	public String getData() {
-//		return data;
-//	}
-//	public void setData(String data) {
-//		this.data = data;
-//	}
+	public String getData() {
+		return data;
+	}
+	public void setData(String data) {
+		this.data = data;
+	}
 	
-	public float getPrezioa() {
+	public double getPrezioa() {
 		return prezioa;
 	}
 	
-	public void setPrezioa(float prezioa) {
+	public void setPrezioa(double prezioa) {
 		this.prezioa = prezioa;
 	}
 	
