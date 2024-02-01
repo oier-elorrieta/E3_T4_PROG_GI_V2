@@ -10,6 +10,13 @@ public class Bezeroa {
 	private int txartela;
 	private String sexua;
 	
+	@Override
+	public String toString() {
+		return "Bezeroa [idBezero=" + idBezero + ", NAN=" + NAN + ", izena=" + izena + ", abizena=" + abizena
+				+ ", erabiltzailea=" + erabiltzailea + ", pasahitza=" + pasahitza + ", txartela=" + txartela
+				+ ", sexua=" + sexua + "]";
+	}
+
 	public Bezeroa(String NAN, String izena, String abizena, String erabiltzailea, String pasahitza, int txartela, String sexua) {
 		this.NAN = NAN;
 		this.izena = izena;

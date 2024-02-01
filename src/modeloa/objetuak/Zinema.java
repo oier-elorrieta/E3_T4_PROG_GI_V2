@@ -9,6 +9,12 @@ public class Zinema {
 	private ArrayList<Integer> aretoKop;
 	private String NIF;
 
+	@Override
+	public String toString() {
+		return "Zinema [idZinema=" + idZinema + ", izena=" + izena + ", helbidea=" + helbidea + ", aretoKop=" + aretoKop
+				+ ", NIF=" + NIF + "]";
+	}
+
 	public Zinema(String izena, String helbidea, String NIF) {
 		this.izena = izena;
 		this.helbidea = helbidea;

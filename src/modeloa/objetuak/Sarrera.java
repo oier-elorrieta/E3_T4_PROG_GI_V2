@@ -9,6 +9,12 @@ public class Sarrera {
 	private double prezioa;
 	private String mota;
 	
+	@Override
+	public String toString() {
+		return "Sarrera [idSarrera=" + idSarrera + ", idAretoa=" + idAretoa + ", idZinema=" + idZinema + ", idFilma="
+				+ idFilma + ", data=" + data + ", prezioa=" + prezioa + ", mota=" + mota + "]";
+	}
+
 	public Sarrera(String data, double prezioa, String mota) {
 		this.data = data;
 		this.prezioa = prezioa;

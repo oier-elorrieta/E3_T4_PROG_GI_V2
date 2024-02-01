@@ -5,6 +5,12 @@ public class Pelikula {
 	private int iraupena;
 	private String izenaFilma;
 	private String generoa;
+	
+	@Override
+	public String toString() {
+		return "Pelikula [idPelikula=" + idPelikula + ", iraupena=" + iraupena + ", izenaFilma=" + izenaFilma
+				+ ", generoa=" + generoa + "]";
+	}
 
 	public Pelikula(int iraupena, String generoa, String izenaFilma) {
 		this.izenaFilma = izenaFilma;

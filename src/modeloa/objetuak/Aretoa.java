@@ -4,6 +4,11 @@ public class Aretoa {
 	private int idAreto;
 	private String izena;
 	
+	@Override
+	public String toString() {
+		return "Aretoa [idAreto=" + idAreto + ", izena=" + izena + "]";
+	}
+
 	public Aretoa(String izena) {
 		this.izena = izena;
 	}
