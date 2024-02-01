@@ -1,10 +1,30 @@
 package modeloa.objetuak;
 
+import java.util.Objects;
+
 public class Saioa {
 	private int idSaioa;
 	private int idPelikula;
 	private int idAreto;
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(eguna, idAreto, idPelikula, idSaioa, ordua);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Saioa other = (Saioa) obj;
+		return eguna == other.eguna && idAreto == other.idAreto && idPelikula == other.idPelikula
+				&& idSaioa == other.idSaioa && Double.doubleToLongBits(ordua) == Double.doubleToLongBits(other.ordua);
+	}
+
 	@Override
 	public String toString() {
 		return "Saioa [idSaioa=" + idSaioa + ", idPelikula=" + idPelikula + ", idAreto=" + idAreto + ", ordua=" + ordua

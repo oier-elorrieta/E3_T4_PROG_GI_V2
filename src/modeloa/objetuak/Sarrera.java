@@ -1,5 +1,7 @@
 package modeloa.objetuak;
 
+import java.util.Objects;
+
 public class Sarrera {
 	private int idSarrera;
 	private int idAretoa;
@@ -9,6 +11,25 @@ public class Sarrera {
 	private double prezioa;
 	private String mota;
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(data, idAretoa, idFilma, idSarrera, idZinema, mota, prezioa);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sarrera other = (Sarrera) obj;
+		return Objects.equals(data, other.data) && idAretoa == other.idAretoa && idFilma == other.idFilma
+				&& idSarrera == other.idSarrera && idZinema == other.idZinema && Objects.equals(mota, other.mota)
+				&& Double.doubleToLongBits(prezioa) == Double.doubleToLongBits(other.prezioa);
+	}
+
 	@Override
 	public String toString() {
 		return "Sarrera [idSarrera=" + idSarrera + ", idAretoa=" + idAretoa + ", idZinema=" + idZinema + ", idFilma="

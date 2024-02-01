@@ -1,5 +1,7 @@
 package modeloa.objetuak;
 
+import java.util.Objects;
+
 public class Bezeroa {
 	private int idBezero;
 	private String NAN;
@@ -10,6 +12,26 @@ public class Bezeroa {
 	private int txartela;
 	private String sexua;
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(NAN, abizena, erabiltzailea, idBezero, izena, pasahitza, sexua, txartela);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bezeroa other = (Bezeroa) obj;
+		return Objects.equals(NAN, other.NAN) && Objects.equals(abizena, other.abizena)
+				&& Objects.equals(erabiltzailea, other.erabiltzailea) && idBezero == other.idBezero
+				&& Objects.equals(izena, other.izena) && Objects.equals(pasahitza, other.pasahitza)
+				&& Objects.equals(sexua, other.sexua) && txartela == other.txartela;
+	}
+
 	@Override
 	public String toString() {
 		return "Bezeroa [idBezero=" + idBezero + ", NAN=" + NAN + ", izena=" + izena + ", abizena=" + abizena

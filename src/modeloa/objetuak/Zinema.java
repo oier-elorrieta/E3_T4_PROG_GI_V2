@@ -1,6 +1,7 @@
 package modeloa.objetuak;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Zinema {
 	private int idZinema;
@@ -8,6 +9,25 @@ public class Zinema {
 	private String helbidea;
 	private ArrayList<Integer> aretoKop;
 	private String NIF;
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(NIF, aretoKop, helbidea, idZinema, izena);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Zinema other = (Zinema) obj;
+		return Objects.equals(NIF, other.NIF) && Objects.equals(aretoKop, other.aretoKop)
+				&& Objects.equals(helbidea, other.helbidea) && idZinema == other.idZinema
+				&& Objects.equals(izena, other.izena);
+	}
 
 	@Override
 	public String toString() {

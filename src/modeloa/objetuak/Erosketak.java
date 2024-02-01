@@ -1,5 +1,7 @@
 package modeloa.objetuak;
 
+import java.util.Objects;
+
 public class Erosketak {
 	private int idErosketa;
 	private int kant;
@@ -7,6 +9,26 @@ public class Erosketak {
 	private double deskontua;
 	private double dirutotala;
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(data, deskontua, dirutotala, idErosketa, kant);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Erosketak other = (Erosketak) obj;
+		return Objects.equals(data, other.data)
+				&& Double.doubleToLongBits(deskontua) == Double.doubleToLongBits(other.deskontua)
+				&& Double.doubleToLongBits(dirutotala) == Double.doubleToLongBits(other.dirutotala)
+				&& idErosketa == other.idErosketa && kant == other.kant;
+	}
+
 	@Override
 	public String toString() {
 		return "Erosketak [idErosketa=" + idErosketa + ", kant=" + kant + ", data=" + data + ", deskontua=" + deskontua
