@@ -1,4 +1,4 @@
-package modeloa;
+package kontrolatzaile;
 
 public class Funtzioak {
 
