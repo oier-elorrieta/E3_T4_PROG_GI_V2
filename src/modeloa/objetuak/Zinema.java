@@ -8,7 +8,7 @@ public class Zinema {
 	private int idZinema;
 	private String izena;
 	private String helbidea;
-	private ArrayList<Integer> aretoKop;
+	private ArrayList<Integer> aretoList;
 	private String NIF;
 
 	//--------------------Konstruktorea--------------------//
@@ -33,8 +33,8 @@ public class Zinema {
 		NIF = nIF;
 	}
 	
-	public void setAretoKop(ArrayList<Integer> aretoKop) {
-		this.aretoKop = aretoKop;
+	public void setAretoList(ArrayList<Integer> aretoKop) {
+		this.aretoList = aretoKop;
 	}
 	
 	public void setHelbidea(String helbidea) {
@@ -56,8 +56,8 @@ public class Zinema {
 		return NIF;
 	}
 
-	public ArrayList<Integer> getAretoKop() {
-		return aretoKop;
+	public ArrayList<Integer> getAretoList() {
+		return aretoList;
 	}
 
 	public String getHelbidea() {
@@ -69,7 +69,7 @@ public class Zinema {
 	//--------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Zinema [idZinema=" + idZinema + ", izena=" + izena + ", helbidea=" + helbidea + ", aretoKop=" + aretoKop
+		return "Zinema [idZinema=" + idZinema + ", izena=" + izena + ", helbidea=" + helbidea + ", aretoKop=" + aretoList
 				+ ", NIF=" + NIF + "]";
 	}
 	//--------------------toString--------------------//
@@ -78,7 +78,7 @@ public class Zinema {
 	//--------------------Equals--------------------//
 	@Override
 	public int hashCode() {
-		return Objects.hash(NIF, aretoKop, helbidea, idZinema, izena);
+		return Objects.hash(NIF, aretoList, helbidea, idZinema, izena);
 	}
 
 	@Override
@@ -90,7 +90,7 @@ public class Zinema {
 		if (getClass() != obj.getClass())
 			return false;
 		Zinema other = (Zinema) obj;
-		return Objects.equals(NIF, other.NIF) && Objects.equals(aretoKop, other.aretoKop)
+		return Objects.equals(NIF, other.NIF) && Objects.equals(aretoList, other.aretoList)
 				&& Objects.equals(helbidea, other.helbidea) && idZinema == other.idZinema
 				&& Objects.equals(izena, other.izena);
 	}

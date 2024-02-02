@@ -1,17 +1,17 @@
 package modeloa.objetuak;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
 
 public class Saioa {
 	
 	private int idSaioa;
-	private int idPelikula;
-	private int idAreto;
-	private double ordua;
-	private int eguna;
+	private LocalTime ordua;
+	private LocalDate eguna;
 	
 	//--------------------Konstruktorea--------------------//
-	public Saioa(double ordua, int eguna) {
+	public Saioa(LocalTime ordua, LocalDate eguna) {
 		this.ordua = ordua;
 		this.eguna = eguna;
 	}
@@ -23,19 +23,11 @@ public class Saioa {
 		this.idSaioa = idSaioa;
 	}
 	
-	public void setIdPelikula(int idPelikula) {
-		this.idPelikula = idPelikula;
-	}
-	
-	public void setIdAreto(int idAreto) {
-		this.idAreto = idAreto;
-	}
-	
-	public void setOrdua(double ordua) {
+	public void setOrdua(LocalTime ordua) {
 		this.ordua = ordua;
 	}
 	
-	public void setEguna(int eguna) {
+	public void setEguna(LocalDate eguna) {
 		this.eguna = eguna;
 	}
 	//--------------------Set--------------------//
@@ -45,20 +37,12 @@ public class Saioa {
 	public int getIdSaioa() {
 		return idSaioa;
 	}
-	
-	public int getIdPelikula() {
-		return idPelikula;
-	}
-	
-	public int getIdAreto() {
-		return idAreto;
-	}
-	
-	public double getOrdua() {
+
+	public LocalTime getOrdua() {
 		return ordua;
 	}
 	
-	public int getEguna() {
+	public LocalDate getEguna() {
 		return eguna;
 	}
 	//--------------------Get--------------------//
@@ -67,17 +51,17 @@ public class Saioa {
 	//--------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Saioa [idSaioa=" + idSaioa + ", idPelikula=" + idPelikula + ", idAreto=" + idAreto + ", ordua=" + ordua
-				+ ", eguna=" + eguna + "]";
+		return "Saioa [idSaioa=" + idSaioa + ", ordua=" + ordua + ", eguna=" + eguna + "]";
 	}
 	//--------------------toString--------------------//
-	
-	
+
+
 	//--------------------Equals--------------------//
 	@Override
 	public int hashCode() {
-		return Objects.hash(eguna, idAreto, idPelikula, idSaioa, ordua);
+		return Objects.hash(eguna, idSaioa, ordua);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -88,8 +72,7 @@ public class Saioa {
 		if (getClass() != obj.getClass())
 			return false;
 		Saioa other = (Saioa) obj;
-		return eguna == other.eguna && idAreto == other.idAreto && idPelikula == other.idPelikula
-				&& idSaioa == other.idSaioa && Double.doubleToLongBits(ordua) == Double.doubleToLongBits(other.ordua);
+		return Objects.equals(eguna, other.eguna) && idSaioa == other.idSaioa && Objects.equals(ordua, other.ordua);
 	}
 	//--------------------Equals--------------------//
 	

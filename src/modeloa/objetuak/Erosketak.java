@@ -1,17 +1,18 @@
 package modeloa.objetuak;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Erosketak {
 	
 	private int idErosketa;
 	private int kant;
-	private String data;
+	private LocalDate data;
 	private double deskontua;
 	private double dirutotala;
 	
 	//--------------------Konstruktorea--------------------//
-	public Erosketak(int kant, String data) {
+	public Erosketak(int kant, LocalDate data) {
 		this.kant = kant;
 		this.data = data;
 	}
@@ -27,7 +28,7 @@ public class Erosketak {
 		this.kant = kant;
 	}
 	
-	public void setData(String data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 	
@@ -50,7 +51,7 @@ public class Erosketak {
 		return kant;
 	}
 	
-	public String getData() {
+	public LocalDate getData() {
 		return data;
 	}
 	

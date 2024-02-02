@@ -1,19 +1,17 @@
 package modeloa.objetuak;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Sarrera {
 	
 	private int idSarrera;
-	private int idAretoa;
-	private int idZinema;
-	private int idFilma;
-	private String data;
+	private LocalDate data;
 	private double prezioa;
 	private String mota;
 	
 	//--------------------Konstruktorea--------------------//
-	public Sarrera(String data, double prezioa, String mota) {
+	public Sarrera(LocalDate data, double prezioa, String mota) {
 		this.data = data;
 		this.prezioa = prezioa;
 		this.mota = mota;
@@ -25,20 +23,8 @@ public class Sarrera {
 	public void setIdSarrera(int idSarrera) {
 		this.idSarrera = idSarrera;
 	}
-	
-	public void setIdAretoa(int idAretoa) {
-		this.idAretoa = idAretoa;
-	}
-	
-	public void setIdZinema(int idZinema) {
-		this.idZinema = idZinema;
-	}
-	
-	public void setIdFilma(int idFilma) {
-		this.idFilma = idFilma;
-	}
-	
-	public void setData(String data) {
+
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 	
@@ -56,20 +42,8 @@ public class Sarrera {
 	public int getIdSarrera() {
 		return idSarrera;
 	}
-	
-	public int getIdAretoa() {
-		return idAretoa;
-	}
-	
-	public int getIdZinema() {
-		return idZinema;
-	}
-	
-	public int getIdFilma() {
-		return idFilma;
-	}
-	
-	public String getData() {
+
+	public LocalDate getData() {
 		return data;
 	}
 	
@@ -86,17 +60,17 @@ public class Sarrera {
 	//--------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Sarrera [idSarrera=" + idSarrera + ", idAretoa=" + idAretoa + ", idZinema=" + idZinema + ", idFilma="
-				+ idFilma + ", data=" + data + ", prezioa=" + prezioa + ", mota=" + mota + "]";
+		return "Sarrera [idSarrera=" + idSarrera + ", data=" + data + ", prezioa=" + prezioa + ", mota=" + mota + "]";
 	}
 	//--------------------toString--------------------//
-	
+
 	
 	//--------------------Equals--------------------//
 	@Override
 	public int hashCode() {
-		return Objects.hash(data, idAretoa, idFilma, idSarrera, idZinema, mota, prezioa);
+		return Objects.hash(data, idSarrera, mota, prezioa);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -107,8 +81,7 @@ public class Sarrera {
 		if (getClass() != obj.getClass())
 			return false;
 		Sarrera other = (Sarrera) obj;
-		return Objects.equals(data, other.data) && idAretoa == other.idAretoa && idFilma == other.idFilma
-				&& idSarrera == other.idSarrera && idZinema == other.idZinema && Objects.equals(mota, other.mota)
+		return Objects.equals(data, other.data) && idSarrera == other.idSarrera && Objects.equals(mota, other.mota)
 				&& Double.doubleToLongBits(prezioa) == Double.doubleToLongBits(other.prezioa);
 	}
 	//--------------------Equals--------------------//
