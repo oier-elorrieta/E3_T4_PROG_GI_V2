@@ -5,63 +5,55 @@ import java.util.Objects;
 
 public class Zinema {
 	
-	private int idZinema;
 	private String izena;
 	private String helbidea;
-	private ArrayList<Integer> aretoList;
-	private String NIF;
+	private ArrayList<Aretoa> aretoList;
+	private ArrayList<Saioa> saioList;
 
 	//--------------------Konstruktorea--------------------//
-	public Zinema(String izena, String helbidea, String NIF) {
+	public Zinema(String izena, String helbidea, ArrayList<Aretoa> aretoList, ArrayList<Saioa> saioList) {
 		this.izena = izena;
 		this.helbidea = helbidea;
-		this.NIF = NIF;
+		this.aretoList = aretoList;
+		this.saioList = saioList;
 	}
 	//--------------------Konstruktorea--------------------//
 	
 	
 	//--------------------Set--------------------//
-	public void setIdZinema(int idZinema) {
-		this.idZinema = idZinema;
-	}
-	
 	public void setIzena(String izena) {
 		this.izena = izena;
-	}
-	
-	public void setNIF(String nIF) {
-		NIF = nIF;
-	}
-	
-	public void setAretoList(ArrayList<Integer> aretoKop) {
-		this.aretoList = aretoKop;
 	}
 	
 	public void setHelbidea(String helbidea) {
 		this.helbidea = helbidea;
 	}
+	
+	public void setAretoList(ArrayList<Aretoa> aretoList) {
+		this.aretoList = aretoList;
+	}
+	
+	public void setSaioList(ArrayList<Saioa> saioList) {
+		this.saioList = saioList;
+	}
 	//--------------------Set--------------------//
 	
 	
 	//--------------------Get--------------------//
-	public int getIdZinema() {
-		return idZinema;
-	}
-
 	public String getIzena() {
 		return izena;
 	}
 
-	public String getNIF() {
-		return NIF;
+	public String getHelbidea() {
+		return helbidea;
 	}
-
-	public ArrayList<Integer> getAretoList() {
+	
+	public ArrayList<Aretoa> getAretoList() {
 		return aretoList;
 	}
 
-	public String getHelbidea() {
-		return helbidea;
+	public ArrayList<Saioa> getSaioList() {
+		return saioList;
 	}
 	//--------------------Get--------------------//
 	
@@ -69,8 +61,8 @@ public class Zinema {
 	//--------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Zinema [idZinema=" + idZinema + ", izena=" + izena + ", helbidea=" + helbidea + ", aretoKop=" + aretoList
-				+ ", NIF=" + NIF + "]";
+		return "Zinema [izena=" + izena + ", helbidea=" + helbidea + ", aretoList=" + aretoList + ", saioList="
+				+ saioList + "]";
 	}
 	//--------------------toString--------------------//
 	
@@ -78,8 +70,9 @@ public class Zinema {
 	//--------------------Equals--------------------//
 	@Override
 	public int hashCode() {
-		return Objects.hash(NIF, aretoList, helbidea, idZinema, izena);
+		return Objects.hash(aretoList, helbidea, izena, saioList);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -90,9 +83,8 @@ public class Zinema {
 		if (getClass() != obj.getClass())
 			return false;
 		Zinema other = (Zinema) obj;
-		return Objects.equals(NIF, other.NIF) && Objects.equals(aretoList, other.aretoList)
-				&& Objects.equals(helbidea, other.helbidea) && idZinema == other.idZinema
-				&& Objects.equals(izena, other.izena);
+		return Objects.equals(aretoList, other.aretoList) && Objects.equals(helbidea, other.helbidea)
+				&& Objects.equals(izena, other.izena) && Objects.equals(saioList, other.saioList);
 	}
 	//--------------------Equals--------------------//
 

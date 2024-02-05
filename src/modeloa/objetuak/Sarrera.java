@@ -1,17 +1,18 @@
 package modeloa.objetuak;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Sarrera {
 	
-	private int idSarrera;
+	private Saioa[] saioa;
 	private LocalDate data;
 	private double prezioa;
 	private String mota;
 	
 	//--------------------Konstruktorea--------------------//
-	public Sarrera(LocalDate data, double prezioa, String mota) {
+	public Sarrera(Saioa[] saioa, LocalDate data, double prezioa, String mota) {
 		this.data = data;
 		this.prezioa = prezioa;
 		this.mota = mota;
@@ -20,8 +21,8 @@ public class Sarrera {
 	
 	
 	//--------------------Set--------------------//
-	public void setIdSarrera(int idSarrera) {
-		this.idSarrera = idSarrera;
+	public void setSaioa(Saioa[] saioa) {
+		this.saioa = saioa;
 	}
 
 	public void setData(LocalDate data) {
@@ -39,8 +40,8 @@ public class Sarrera {
 	
 	
 	//--------------------Get--------------------//
-	public int getIdSarrera() {
-		return idSarrera;
+	public Saioa[] getIdSarrera() {
+		return saioa;
 	}
 
 	public LocalDate getData() {
@@ -60,7 +61,8 @@ public class Sarrera {
 	//--------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Sarrera [idSarrera=" + idSarrera + ", data=" + data + ", prezioa=" + prezioa + ", mota=" + mota + "]";
+		return "Sarrera [saioa=" + Arrays.toString(saioa) + ", data=" + data + ", prezioa=" + prezioa + ", mota=" + mota
+				+ "]";
 	}
 	//--------------------toString--------------------//
 
@@ -68,7 +70,11 @@ public class Sarrera {
 	//--------------------Equals--------------------//
 	@Override
 	public int hashCode() {
-		return Objects.hash(data, idSarrera, mota, prezioa);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(saioa);
+		result = prime * result + Objects.hash(data, mota, prezioa);
+		return result;
 	}
 
 
@@ -81,8 +87,9 @@ public class Sarrera {
 		if (getClass() != obj.getClass())
 			return false;
 		Sarrera other = (Sarrera) obj;
-		return Objects.equals(data, other.data) && idSarrera == other.idSarrera && Objects.equals(mota, other.mota)
-				&& Double.doubleToLongBits(prezioa) == Double.doubleToLongBits(other.prezioa);
+		return Objects.equals(data, other.data) && Objects.equals(mota, other.mota)
+				&& Double.doubleToLongBits(prezioa) == Double.doubleToLongBits(other.prezioa)
+				&& Arrays.equals(saioa, other.saioa);
 	}
 	//--------------------Equals--------------------//
 
