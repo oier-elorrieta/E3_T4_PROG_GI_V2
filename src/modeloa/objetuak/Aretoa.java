@@ -1,54 +1,57 @@
 package modeloa.objetuak;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Aretoa {
 	
-	private int idAreto;
 	private String izena;
+	private ArrayList<Saioa> saioList;
 	
 	//--------------------Konstruktorea--------------------//
-	public Aretoa(String izena) {
+	public Aretoa(String izena, ArrayList<Saioa> saioList) {
 		this.izena = izena;
+		this.saioList = saioList;
 	}
 	//--------------------Konstruktorea--------------------//
 	
 	
 	//--------------------Set--------------------//	
-	public void setIdAreto(int idAreto) {
-		this.idAreto = idAreto;
-	}
-	
 	public void setIzena(String izena) {
 		this.izena = izena;
+	}
+	
+	public void setSaioList(ArrayList<Saioa> saioList) {
+		this.saioList = saioList;
 	}
 	//--------------------Set--------------------//
 	
 	
 	//--------------------Get--------------------//
-	public int getIdAreto() {
-		return idAreto;
-	}
-	
 	public String getIzena() {
 		return izena;
 	}
-	//--------------------Get--------------------//
 	
+	public ArrayList<Saioa> getSaioList() {
+		return saioList;
+	}
+	//--------------------Get--------------------//
+
 	
 	//--------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Aretoa [idAreto=" + idAreto + ", izena=" + izena + "]";
+		return "Aretoa [izena=" + izena + ", saioList=" + saioList + "]";
 	}
 	//--------------------toString--------------------//
-	
-	
+
+
 	//--------------------Equals--------------------//
 	@Override
 	public int hashCode() {
-		return Objects.hash(idAreto, izena);
+		return Objects.hash(izena, saioList);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -59,7 +62,7 @@ public class Aretoa {
 		if (getClass() != obj.getClass())
 			return false;
 		Aretoa other = (Aretoa) obj;
-		return idAreto == other.idAreto && Objects.equals(izena, other.izena);
+		return Objects.equals(izena, other.izena) && Objects.equals(saioList, other.saioList);
 	}
 	//--------------------Equals--------------------//
 	

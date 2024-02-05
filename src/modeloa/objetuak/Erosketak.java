@@ -1,31 +1,27 @@
 package modeloa.objetuak;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Erosketak {
 	
-	private int idErosketa;
-	private int kant;
+	private Bezeroa[] bezeroa;
 	private LocalDate data;
 	private double deskontua;
 	private double dirutotala;
 	
 	//--------------------Konstruktorea--------------------//
-	public Erosketak(int kant, LocalDate data) {
-		this.kant = kant;
+	public Erosketak(Bezeroa[] bezeroa, LocalDate data) {
+		this.bezeroa = bezeroa;
 		this.data = data;
 	}
 	//--------------------Konstruktorea--------------------//
 	
 	
 	//--------------------Set--------------------//
-	public void setIdErosketa(int idErosketa) {
-		this.idErosketa = idErosketa;
-	}
-	
-	public void setKant(int kant) {
-		this.kant = kant;
+	public void setBezeroa(Bezeroa[] bezeroa) {
+		this.bezeroa = bezeroa;
 	}
 	
 	public void setData(LocalDate data) {
@@ -43,12 +39,8 @@ public class Erosketak {
 	
 	
 	//--------------------Get--------------------//
-	public int getIdErosketa() {
-		return idErosketa;
-	}
-	
-	public int getKant() {
-		return kant;
+	public Bezeroa[] getBezeroa() {
+		return bezeroa;
 	}
 	
 	public LocalDate getData() {
@@ -68,17 +60,22 @@ public class Erosketak {
 	//--------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Erosketak [idErosketa=" + idErosketa + ", kant=" + kant + ", data=" + data + ", deskontua=" + deskontua
+		return "Erosketak [bezeroa=" + Arrays.toString(bezeroa) + ", data=" + data + ", deskontua=" + deskontua
 				+ ", dirutotala=" + dirutotala + "]";
 	}
 	//--------------------toString--------------------//
-	
-	
+
+
 	//--------------------Equals--------------------//
 	@Override
 	public int hashCode() {
-		return Objects.hash(data, deskontua, dirutotala, idErosketa, kant);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(bezeroa);
+		result = prime * result + Objects.hash(data, deskontua, dirutotala);
+		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -89,10 +86,9 @@ public class Erosketak {
 		if (getClass() != obj.getClass())
 			return false;
 		Erosketak other = (Erosketak) obj;
-		return Objects.equals(data, other.data)
+		return Arrays.equals(bezeroa, other.bezeroa) && Objects.equals(data, other.data)
 				&& Double.doubleToLongBits(deskontua) == Double.doubleToLongBits(other.deskontua)
-				&& Double.doubleToLongBits(dirutotala) == Double.doubleToLongBits(other.dirutotala)
-				&& idErosketa == other.idErosketa && kant == other.kant;
+				&& Double.doubleToLongBits(dirutotala) == Double.doubleToLongBits(other.dirutotala);
 	}
 	//--------------------Equals--------------------//	
 	

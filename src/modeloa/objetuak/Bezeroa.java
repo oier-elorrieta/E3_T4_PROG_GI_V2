@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Bezeroa {
 	
-	private int idBezero;
 	private String NAN;
 	private String izena;
 	private String abizena;
@@ -27,10 +26,6 @@ public class Bezeroa {
 	
 	
 	//--------------------Set--------------------//
-	public void setIdBezero(int idBezero) {
-		this.idBezero = idBezero;
-	}
-	
 	public void setNAN(String NAN) {
 		this.NAN = NAN;
 	}
@@ -62,10 +57,6 @@ public class Bezeroa {
 	
 	
 	//--------------------Get--------------------//
-	public int getIdBezero() {
-		return idBezero;
-	}
-	
 	public String getNAN() {
 		return NAN;
 	}
@@ -99,18 +90,18 @@ public class Bezeroa {
 	//--------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Bezeroa [idBezero=" + idBezero + ", NAN=" + NAN + ", izena=" + izena + ", abizena=" + abizena
-				+ ", erabiltzailea=" + erabiltzailea + ", pasahitza=" + pasahitza + ", txartela=" + txartela
-				+ ", sexua=" + sexua + "]";
+		return "Bezeroa [NAN=" + NAN + ", izena=" + izena + ", abizena=" + abizena + ", erabiltzailea=" + erabiltzailea
+				+ ", pasahitza=" + pasahitza + ", txartela=" + txartela + ", sexua=" + sexua + "]";
 	}
 	//--------------------toString--------------------//
-	
+
 	
 	//--------------------Equals--------------------//
 	@Override
 	public int hashCode() {
-		return Objects.hash(NAN, abizena, erabiltzailea, idBezero, izena, pasahitza, sexua, txartela);
+		return Objects.hash(NAN, abizena, erabiltzailea, izena, pasahitza, sexua, txartela);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -122,9 +113,9 @@ public class Bezeroa {
 			return false;
 		Bezeroa other = (Bezeroa) obj;
 		return Objects.equals(NAN, other.NAN) && Objects.equals(abizena, other.abizena)
-				&& Objects.equals(erabiltzailea, other.erabiltzailea) && idBezero == other.idBezero
-				&& Objects.equals(izena, other.izena) && Objects.equals(pasahitza, other.pasahitza)
-				&& Objects.equals(sexua, other.sexua) && txartela == other.txartela;
+				&& Objects.equals(erabiltzailea, other.erabiltzailea) && Objects.equals(izena, other.izena)
+				&& Objects.equals(pasahitza, other.pasahitza) && Objects.equals(sexua, other.sexua)
+				&& txartela == other.txartela;
 	}
 	//--------------------Equals--------------------//
 	

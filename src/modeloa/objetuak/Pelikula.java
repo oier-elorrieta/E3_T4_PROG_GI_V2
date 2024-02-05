@@ -4,14 +4,13 @@ import java.util.Objects;
 
 public class Pelikula {
 	
-	private int idPelikula;
-	private int iraupena;
-	private String izenaFilma;
+	private String izena;
 	private String generoa;
+	private int iraupena;
 	
 	//--------------------Konstruktorea--------------------//
-	public Pelikula(int iraupena, String generoa, String izenaFilma) {
-		this.izenaFilma = izenaFilma;
+	public Pelikula(String izena, String generoa, int iraupena) {
+		this.izena = izena;
 		this.iraupena = iraupena;
 		this.generoa = generoa;
 	}
@@ -19,12 +18,8 @@ public class Pelikula {
 	
 	
 	//--------------------Set--------------------//
-	public void setIdPelikula(int idPelikula) {
-		this.idPelikula = idPelikula;
-	}
-	
-	public void setIzenaFilma(String izenaFilma) {
-		this.izenaFilma = izenaFilma;
+	public void setIzena(String izena) {
+		this.izena = izena;
 	}
 	
 	public void setIraupena(int iraupena) {
@@ -38,12 +33,8 @@ public class Pelikula {
 	
 	
 	//--------------------Get--------------------//
-	public int getIdPelikula() {
-		return idPelikula;
-	}
-
-	public String getIzenaFilma() {
-		return izenaFilma;
+	public String getIzena() {
+		return izena;
 	}
 
 	public int getIraupena() {
@@ -59,17 +50,17 @@ public class Pelikula {
 	//--------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Pelikula [idPelikula=" + idPelikula + ", iraupena=" + iraupena + ", izenaFilma=" + izenaFilma
-				+ ", generoa=" + generoa + "]";
+		return "Pelikula [izena=" + izena + ", generoa=" + generoa + ", iraupena=" + iraupena + "]";
 	}
 	//--------------------toString--------------------//
-	
+
 	
 	//--------------------Equals--------------------//
 	@Override
 	public int hashCode() {
-		return Objects.hash(generoa, idPelikula, iraupena, izenaFilma);
+		return Objects.hash(generoa, iraupena, izena);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -80,8 +71,8 @@ public class Pelikula {
 		if (getClass() != obj.getClass())
 			return false;
 		Pelikula other = (Pelikula) obj;
-		return Objects.equals(generoa, other.generoa) && idPelikula == other.idPelikula && iraupena == other.iraupena
-				&& Objects.equals(izenaFilma, other.izenaFilma);
+		return Objects.equals(generoa, other.generoa) && iraupena == other.iraupena
+				&& Objects.equals(izena, other.izena);
 	}
 	//--------------------Equals--------------------//
 	
