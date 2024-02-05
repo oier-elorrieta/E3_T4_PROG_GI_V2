@@ -2,11 +2,14 @@ package modeloa.objetuak;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Saioa {
 	
-	private int idSaioa;
+	private ArrayList<Pelikula> filma;
+	private Aretoa[] aretoa;
 	private LocalTime ordua;
 	private LocalDate eguna;
 	
@@ -19,8 +22,12 @@ public class Saioa {
 	
 	
 	//--------------------Set--------------------//
-	public void setIdSaioa(int idSaioa) {
-		this.idSaioa = idSaioa;
+	public void setFilma(ArrayList<Pelikula> filma) {
+		this.filma = filma;
+	}
+	
+	public void setFilma(Aretoa[] aretoa) {
+		this.aretoa = aretoa;
 	}
 	
 	public void setOrdua(LocalTime ordua) {
@@ -34,8 +41,12 @@ public class Saioa {
 	
 	
 	//--------------------Get--------------------//
-	public int getIdSaioa() {
-		return idSaioa;
+	public ArrayList<Pelikula> getFilma() {
+		return filma;
+	}
+	
+	public Aretoa[] getAretoa() {
+		return aretoa;
 	}
 
 	public LocalTime getOrdua() {
@@ -51,7 +62,8 @@ public class Saioa {
 	//--------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Saioa [idSaioa=" + idSaioa + ", ordua=" + ordua + ", eguna=" + eguna + "]";
+		return "Saioa [filma=" + filma + ", aretoa=" + Arrays.toString(aretoa) + ", ordua=" + ordua + ", eguna=" + eguna
+				+ "]";
 	}
 	//--------------------toString--------------------//
 
@@ -59,7 +71,11 @@ public class Saioa {
 	//--------------------Equals--------------------//
 	@Override
 	public int hashCode() {
-		return Objects.hash(eguna, idSaioa, ordua);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(aretoa);
+		result = prime * result + Objects.hash(eguna, filma, ordua);
+		return result;
 	}
 
 
@@ -72,7 +88,8 @@ public class Saioa {
 		if (getClass() != obj.getClass())
 			return false;
 		Saioa other = (Saioa) obj;
-		return Objects.equals(eguna, other.eguna) && idSaioa == other.idSaioa && Objects.equals(ordua, other.ordua);
+		return Arrays.equals(aretoa, other.aretoa) && Objects.equals(eguna, other.eguna)
+				&& Objects.equals(filma, other.filma) && Objects.equals(ordua, other.ordua);
 	}
 	//--------------------Equals--------------------//
 	
