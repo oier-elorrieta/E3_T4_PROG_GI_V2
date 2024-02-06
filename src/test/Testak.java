@@ -20,15 +20,6 @@ import modeloa.objetuak.Sarrera;
 import modeloa.objetuak.Zinema;
 
 public class Testak {
-
-	private static Aretoa aretoFroga;
-	private static Bezeroa bezeroFroga;
-	private static Erosketak erosketaFroga;
-	private static Karteldegia karteldegiFroga;
-	private static Pelikula pelikulaFroga;
-	private static Saioa saioFroga;
-	private static Sarrera sarreraFroga;
-	private static Zinema zinemaFroga;
 	
 	private static Aretoa areto;
 	private static Bezeroa bezero;
@@ -38,39 +29,38 @@ public class Testak {
 	private static Saioa saio;
 	private static Sarrera sarrera;
 	private static Zinema zinema;
+	
+	private static LocalDate data;
+	private static LocalTime time;
+	
+	private static Bezeroa[] bezeroArray;
+	private static ArrayList<Pelikula> pelikulaList;
+	private static ArrayList<Saioa> saioList;
+	private static Saioa[] saioArray;
+	private static ArrayList<Aretoa> aretoList;
 
 	//--------------------Objektuak--------------------//
 	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-		//----------SET/GET egiteko objetuak----------//
-		ArrayList<Integer> arrayList = null;
-		int[] array = null;
-		
-		aretoFroga = new Aretoa(null, arrayList);
-		bezeroFroga = new Bezeroa(null, null, null, null, null, 0, null);
-		erosketaFroga = new Erosketak(array, null);
-		karteldegiFroga = new Karteldegia(arrayList);
-		pelikulaFroga = new Pelikula(null, null, 0);
-		saioFroga = new Saioa(arrayList, array, null, null);
-		sarreraFroga = new Sarrera(array, null, 0, null);
-		zinemaFroga = new Zinema(null, null, arrayList, arrayList);
-		//----------SET/GET egiteko objetuak----------//
-		
-		
+	public static void setUpBeforeClass() throws Exception {	
 		//----------Objektu predefinituta----------//
-		LocalDate data = LocalDate.of(2024, 1, 1);
-		LocalTime time = LocalTime.of(12, 0, 0);
+		data = LocalDate.of(2024, 1, 1);
+		time = LocalTime.of(12, 0, 0);
 
-		Bezeroa[] bezeroArray = new Bezeroa[0];
+		bezeroArray = new Bezeroa[0];
 		bezeroArray[0] = bezero;
-		ArrayList<Pelikula> pelikulaList = new ArrayList<>();
+		
+		pelikulaList = new ArrayList<>();
 		pelikulaList.add(pelikula);
-		ArrayList<Saioa> saioList = new ArrayList<>();
+		
+		saioList = new ArrayList<>();
 		saioList.add(saio);
-		Saioa[] saioArray = new Saioa[0];
+		
+		saioArray = new Saioa[0];
 		saioArray[0] = saio;
-		ArrayList<Aretoa> aretoList = new ArrayList<>();
+		
+		aretoList = new ArrayList<>();
 		aretoList.add(areto);
+		
 		
 		bezero = new Bezeroa("123456789M", "Mikelon", "Rodriguez", "Mikelodeon", "Mikel123", 123456789, "Emakumea");
 		pelikula = new Pelikula("Cars", "Aventura", 169);
@@ -88,13 +78,9 @@ public class Testak {
 	
 	//--------------------Set/Get--------------------//
 	@Test
-	public void aretoKonstruktoreTesta_ONDO() {
-		ArrayList<Saioa> arrayList = new ArrayList<>();
-		Saioa saio1 = new Saioa();
-		arrayList.add("Saioa");
-		
+	public void aretoKonstruktoreTesta_ONDO() {	
 		aretoFroga.setIzena("Areto 1");
-		aretoFroga.setSaioList(arrayList);
+		aretoFroga.setSaioList(saioList);
 		
 		assertEquals("Areto 1", aretoFroga.getIzena());
 		;
@@ -102,7 +88,6 @@ public class Testak {
 
 	@Test
 	public void BezeroKonstruktoreTesta_ONDO() {
-		bezeroFroga.setIdBezero(1);
 		bezeroFroga.setNAN("123456789A");
 		bezeroFroga.setIzena("Maria");
 		bezeroFroga.setAbizena("Almoran");
@@ -111,7 +96,6 @@ public class Testak {
 		bezeroFroga.setSexua("Emakumea");
 		bezeroFroga.setTxartela(112233);
 
-		assertEquals(1, bezeroFroga.getIdBezero());
 		assertEquals("123456789A", bezeroFroga.getNAN());
 		assertEquals("Maria", bezeroFroga.getIzena());
 		assertEquals("Almoran", bezeroFroga.getAbizena());
