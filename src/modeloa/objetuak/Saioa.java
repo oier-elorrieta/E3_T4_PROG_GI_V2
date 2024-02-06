@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Saioa {
 	
 	private ArrayList<Karteldegia> filma;
-	private Aretoa[] aretoa;
+	private Aretoa aretoa;
 	private LocalTime ordua;
 	private LocalDate eguna;
 	
@@ -26,7 +26,7 @@ public class Saioa {
 		this.filma = filma;
 	}
 	
-	public void setAretoa(Aretoa[] aretoa) {
+	public void setAretoa(Aretoa aretoa) {
 		this.aretoa = aretoa;
 	}
 	
@@ -45,7 +45,7 @@ public class Saioa {
 		return filma;
 	}
 	
-	public Aretoa[] getAretoa() {
+	public Aretoa getAretoa() {
 		return aretoa;
 	}
 
@@ -62,7 +62,7 @@ public class Saioa {
 	//--------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Saioa [filma=" + filma + ", aretoa=" + Arrays.toString(aretoa) + ", ordua=" + ordua + ", eguna=" + eguna
+		return "Saioa [filma=" + filma + ", aretoa=" + aretoa + ", ordua=" + ordua + ", eguna=" + eguna
 				+ "]";
 	}
 	//--------------------toString--------------------//
@@ -73,8 +73,7 @@ public class Saioa {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Arrays.hashCode(aretoa);
-		result = prime * result + Objects.hash(eguna, filma, ordua);
+		result = prime * result + Objects.hash(eguna, filma, ordua, aretoa);
 		return result;
 	}
 
@@ -88,7 +87,7 @@ public class Saioa {
 		if (getClass() != obj.getClass())
 			return false;
 		Saioa other = (Saioa) obj;
-		return Arrays.equals(aretoa, other.aretoa) && Objects.equals(eguna, other.eguna)
+		return Objects.equals(aretoa, other.aretoa) && Objects.equals(eguna, other.eguna)
 				&& Objects.equals(filma, other.filma) && Objects.equals(ordua, other.ordua);
 	}
 	//--------------------Equals--------------------//

@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Sarrera {
 	
-	private Saioa[] saioa;
+	private Saioa saioa;
 	private LocalDate data;
 	private double prezioa;
 	private String mota;
@@ -21,7 +21,7 @@ public class Sarrera {
 	
 	
 	//--------------------Set--------------------//
-	public void setSaioa(Saioa[] saioa) {
+	public void setSaioa(Saioa saioa) {
 		this.saioa = saioa;
 	}
 
@@ -40,7 +40,7 @@ public class Sarrera {
 	
 	
 	//--------------------Get--------------------//
-	public Saioa[] getIdSarrera() {
+	public Saioa getIdSarrera() {
 		return saioa;
 	}
 
@@ -61,7 +61,7 @@ public class Sarrera {
 	//--------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Sarrera [saioa=" + Arrays.toString(saioa) + ", data=" + data + ", prezioa=" + prezioa + ", mota=" + mota
+		return "Sarrera [saioa=" + saioa + ", data=" + data + ", prezioa=" + prezioa + ", mota=" + mota
 				+ "]";
 	}
 	//--------------------toString--------------------//
@@ -72,8 +72,7 @@ public class Sarrera {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Arrays.hashCode(saioa);
-		result = prime * result + Objects.hash(data, mota, prezioa);
+		result = prime * result + Objects.hash(data, mota, prezioa, saioa);
 		return result;
 	}
 
@@ -89,7 +88,7 @@ public class Sarrera {
 		Sarrera other = (Sarrera) obj;
 		return Objects.equals(data, other.data) && Objects.equals(mota, other.mota)
 				&& Double.doubleToLongBits(prezioa) == Double.doubleToLongBits(other.prezioa)
-				&& Arrays.equals(saioa, other.saioa);
+				&& Objects.equals(saioa, other.saioa);
 	}
 	//--------------------Equals--------------------//
 
