@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class Saioa {
 	
-	private ArrayList<Pelikula> filma;
+	private ArrayList<Karteldegia> filma;
 	private Aretoa[] aretoa;
 	private LocalTime ordua;
 	private LocalDate eguna;
@@ -22,7 +22,7 @@ public class Saioa {
 	
 	
 	//--------------------Set--------------------//
-	public void setFilma(ArrayList<Pelikula> filma) {
+	public void setFilma(ArrayList<Karteldegia> filma) {
 		this.filma = filma;
 	}
 	
@@ -41,7 +41,7 @@ public class Saioa {
 	
 	
 	//--------------------Get--------------------//
-	public ArrayList<Pelikula> getFilma() {
+	public ArrayList<Karteldegia> getFilma() {
 		return filma;
 	}
 	
