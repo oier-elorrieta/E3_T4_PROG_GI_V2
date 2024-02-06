@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.net.FileNameMap;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -55,17 +56,11 @@ public class Testak {
 		saioList = new ArrayList<>();
 		saioList.add(saio);
 		
-		saioArray = new Saioa[0];
-		saioArray[0] = saio;
-		
 		aretoList = new ArrayList<>();
 		aretoList.add(areto);
 		
 		karteldegiList = new ArrayList<>();
 		karteldegiList.add(karteldegi);
-		
-		aretoArray = new Aretoa[0];
-		aretoArray[0] = areto;
 		
 		
 		bezero = new Bezeroa("123456789M", "Mikelon", "Rodriguez", "Mikelodeon", "Mikel123", 123456789, "Emakumea");
@@ -113,7 +108,7 @@ public class Testak {
 		erosketa.setDeskontua(1);
 		erosketa.setDirutotala(1);
 
-		assertEquals(bezeroArray, erosketa.getBezeroa());
+		assertEquals(bezero, erosketa.getBezeroa());
 		assertEquals(data, erosketa.getData());
 		assertEquals(1.0, erosketa.getDeskontua(), 0.001);
 		assertEquals(1.0, erosketa.getDirutotala(), 0.001);
@@ -133,12 +128,12 @@ public class Testak {
 	@Test
 	public void testSaioaKonstruktoreTesta() {
 		saio.setFilma(karteldegiList);
-		saio.setAretoa(aretoArray);
+		saio.setAretoa(areto);
 		saio.setOrdua(time);
 		saio.setEguna(data);
 		
 		assertEquals(karteldegiList, saio.getFilma());
-		assertEquals(aretoArray, saio.getAretoa());
+		assertEquals(saio, saio.getAretoa());
 		assertEquals(time, saio.getOrdua());
 		assertEquals(data, saio.getEguna());
 	}
@@ -147,10 +142,10 @@ public class Testak {
 	public void testSarreraKonstruktoreTesta() {
 		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 		
-		sarrera.setIdSarrera(1);
+		sarrera.setSaioa(saio);
 		sarrera.setData(dataFroga);
-		sarrera.setMota("Gaztea");
 		sarrera.setPrezioa(6.95);
+		sarrera.setMota("Gaztea");	
 
 		assertEquals(1, sarrera.getIdSarrera());
 		assertEquals(dataFroga, sarrera.getData());
@@ -160,32 +155,31 @@ public class Testak {
 
 	@Test
 	public void testZinemaKonstruktoreTesta() {
-		ArrayList<Integer> kopuru = new ArrayList<>(Arrays.asList(1, 2, 3));
+		ArrayList<Aretoa> kopAreto = new ArrayList<>();
+		ArrayList<Saioa> kopSaio = new ArrayList<>();
 		
-		zinema.setIdZinema(1);
-	    zinema.setAretoList(kopuru);
 	    zinema.setIzena("Elorrieta Zinema");
 	    zinema.setHelbidea("Bilbao, Calle San Jose");
-	    zinema.setNIF("122456");
+	    zinema.setAretoList(kopAreto);
+	    zinema.setSaioList(kopSaio);
 	    
-	    assertEquals(1, zinema.getIdZinema());
-	    assertEquals(kopuru, zinema.getAretoList());
 	    assertEquals("Elorrieta Zinema", zinema.getIzena());
 	    assertEquals("Bilbao, Calle San Jose", zinema.getHelbidea());
-	    assertEquals("122456", zinema.getNIF());
+	    assertEquals(kopAreto, zinema.getAretoList());
+	    assertEquals(kopSaio, zinema.getSaioList());
 	}
 	
 	@Test
 	public void testAretoaToString() {
-		areto.setIzena("Talde4");
-		areto.setIdAreto(1);
+        areto.setIzena("Talde4");
+        saioList.add(saio);
+        areto.setSaioList(saioList);
 		
-		assertEquals("Aretoa [idAreto=1, izena=Talde4]", areto.toString());
+        assertEquals("Aretoa [izena=Talde4, saioList=[" + saio.toString() + "]]", areto.toString());
 	}
 	
 	@Test
 	public void testBezeroaToString() {
-		bezero.setIdBezero(1);
 		bezero.setNAN("NAN");
 		bezero.setIzena("Izena");
 		bezero.setAbizena("Abizena");
@@ -193,47 +187,52 @@ public class Testak {
 		bezero.setPasahitza("Pasahitza");
 		bezero.setTxartela(1);
 		bezero.setSexua("Sexua");
-		assertEquals("Bezeroa [idBezero=1, NAN=NAN, izena=Izena, abizena=Abizena, erabiltzailea=Erabiltzailea, pasahitza=Pasahitza, txartela=1, sexua=Sexua]", bezero.toString());
+		
+		assertEquals("Bezeroa [NAN=NAN, izena=Izena, abizena=Abizena, erabiltzailea=Erabiltzailea, pasahitza=Pasahitza, txartela=1, sexua=Sexua]", bezero.toString());
 	}
 	
 	@Test
 	public void testErosketakToString() {
 		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 		
-		erosketa.setIdErosketa(1);
-		erosketa.setKant(1);
+		erosketa.setBezeroa(bezeroArray);
 		erosketa.setData(dataFroga);
 		erosketa.setDeskontua(1);
 		erosketa.setDirutotala(1);
-		assertEquals("Erosketak [idErosketa=1, kant=1, data=" + dataFroga +", deskontua=1.0, dirutotala=1.0]", erosketa.toString());
+		assertEquals("Erosketak [bezeroa=" + bezero.toString() + "data=" + dataFroga +", deskontua=1.0, dirutotala=1.0]", erosketa.toString());
 	}
 	
 	@Test
 	public void testPelikulaToString() {
-		pelikula.setIdPelikula(1);
+		
+		pelikula.setIzena("Cars");
 		pelikula.setIraupena(1);
-		pelikula.setIzenaFilma("Izena");
-		pelikula.setGeneroa("Generoa");
-		assertEquals("Pelikula [idPelikula=1, iraupena=1, izenaFilma=Izena, generoa=Generoa]", pelikula.toString());		
+		pelikula.setGeneroa("Aventura");
+		
+		assertEquals("Pelikula [izena=Cars, iraupena=1, generoa=Aventura]", pelikula.toString());		
 	}
 	
 	@Test
 	public void testSaioaToString() {
+		
 		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 		LocalTime orduFroga = LocalTime.of(15, 0, 0);
 		
-		saio.setIdSaioa(1);
+		ArrayList<Karteldegia> kopkarteldegia = new ArrayList<>();
+
+		saio.setAretoa(areto);
+		saio.setFilma(kopkarteldegia);
 		saio.setOrdua(orduFroga);
 		saio.setEguna(dataFroga);
 		
-		assertEquals("Saioa [idSaioa=1, ordua=" + orduFroga + ", eguna=" + dataFroga + "]", saio.toString());		
+		assertEquals("Saioa [filma=" + kopkarteldegia + "aretoa=" + areto.toString() + "ordua=" + orduFroga + "eguna=" + dataFroga, saio.toString());		
 	}
 	
 	@Test
 	public void testSarreraToString() {
 		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 		
-		sarrera.setIdSarrera(1);
+		sarrera.set(1);
 		sarrera.setData(dataFroga);
 		sarrera.setPrezioa(1);
 		sarrera.setMota("Mota");
