@@ -13,6 +13,7 @@ import org.junit.Test;
 import modeloa.objetuak.Aretoa;
 import modeloa.objetuak.Bezeroa;
 import modeloa.objetuak.Erosketak;
+import modeloa.objetuak.Karteldegia;
 import modeloa.objetuak.Pelikula;
 import modeloa.objetuak.Saioa;
 import modeloa.objetuak.Sarrera;
@@ -23,32 +24,78 @@ public class Testak {
 	private static Aretoa aretoFroga;
 	private static Bezeroa bezeroFroga;
 	private static Erosketak erosketaFroga;
+	private static Karteldegia karteldegiFroga;
 	private static Pelikula pelikulaFroga;
 	private static Saioa saioFroga;
 	private static Sarrera sarreraFroga;
 	private static Zinema zinemaFroga;
+	
+	private static Aretoa areto;
+	private static Bezeroa bezero;
+	private static Erosketak erosketa;
+	private static Karteldegia karteldegi;
+	private static Pelikula pelikula;
+	private static Saioa saio;
+	private static Sarrera sarrera;
+	private static Zinema zinema;
 
-	//--------------------Objectuak--------------------//
+	//--------------------Objektuak--------------------//
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		aretoFroga = new Aretoa(null);
+		//----------SET/GET egiteko objetuak----------//
+		ArrayList<Integer> arrayList = null;
+		int[] array = null;
+		
+		aretoFroga = new Aretoa(null, arrayList);
 		bezeroFroga = new Bezeroa(null, null, null, null, null, 0, null);
-		erosketaFroga = new Erosketak(0, null);
-		pelikulaFroga = new Pelikula(0, null, null);
-		saioFroga = new Saioa(null,null);
-		sarreraFroga = new Sarrera(null, 0, null);
-		zinemaFroga = new Zinema(null, null, null);
+		erosketaFroga = new Erosketak(array, null);
+		karteldegiFroga = new Karteldegia(arrayList);
+		pelikulaFroga = new Pelikula(null, null, 0);
+		saioFroga = new Saioa(arrayList, array, null, null);
+		sarreraFroga = new Sarrera(array, null, 0, null);
+		zinemaFroga = new Zinema(null, null, arrayList, arrayList);
+		//----------SET/GET egiteko objetuak----------//
+		
+		
+		//----------Objektu predefinituta----------//
+		LocalDate data = LocalDate.of(2024, 1, 1);
+		LocalTime time = LocalTime.of(12, 0, 0);
+
+		Bezeroa[] bezeroArray = new Bezeroa[0];
+		bezeroArray[0] = bezero;
+		ArrayList<Pelikula> pelikulaList = new ArrayList<>();
+		pelikulaList.add(pelikula);
+		ArrayList<Saioa> saioList = new ArrayList<>();
+		saioList.add(saio);
+		Saioa[] saioArray = new Saioa[0];
+		saioArray[0] = saio;
+		ArrayList<Aretoa> aretoList = new ArrayList<>();
+		aretoList.add(areto);
+		
+		bezero = new Bezeroa("123456789M", "Mikelon", "Rodriguez", "Mikelodeon", "Mikel123", 123456789, "Emakumea");
+		pelikula = new Pelikula("Cars", "Aventura", 169);
+		erosketa = new Erosketak(bezeroArray, data);
+		karteldegi = new Karteldegia(pelikulaList);
+		saio = new Saioa(time, data);
+		areto = new Aretoa("Areto 1", saioList);
+		sarrera = new Sarrera(saioArray, data, 20, "Aventura");
+		zinema = new Zinema("Elorrieta", "Agirre Lehendakari", aretoList, saioList);
+		
+		//----------Objektu predefinituta----------//
 	}
-	//--------------------Objectuak--------------------//
+	//--------------------Objektuak--------------------//
 	
 	
 	//--------------------Set/Get--------------------//
 	@Test
 	public void aretoKonstruktoreTesta_ONDO() {
-		aretoFroga.setIdAreto(1);
+		ArrayList<Saioa> arrayList = new ArrayList<>();
+		Saioa saio1 = new Saioa();
+		arrayList.add("Saioa");
+		
 		aretoFroga.setIzena("Areto 1");
-
-		assertEquals(1, aretoFroga.getIdAreto());
+		aretoFroga.setSaioList(arrayList);
+		
 		assertEquals("Areto 1", aretoFroga.getIzena());
 		;
 	}
