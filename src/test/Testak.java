@@ -38,11 +38,11 @@ public class Testak {
 	private static ArrayList<Saioa> saioList;
 	private static Saioa[] saioArray;
 	private static ArrayList<Aretoa> aretoList;
+	private static ArrayList<Karteldegia> karteldegiList;
+	private static Aretoa[] aretoArray;
 
-	//--------------------Objektuak--------------------//
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {	
-		//----------Objektu predefinituta----------//
 		data = LocalDate.of(2024, 1, 1);
 		time = LocalTime.of(12, 0, 0);
 
@@ -61,6 +61,12 @@ public class Testak {
 		aretoList = new ArrayList<>();
 		aretoList.add(areto);
 		
+		karteldegiList = new ArrayList<>();
+		karteldegiList.add(karteldegi);
+		
+		aretoArray = new Aretoa[0];
+		aretoArray[0] = areto;
+		
 		
 		bezero = new Bezeroa("123456789M", "Mikelon", "Rodriguez", "Mikelodeon", "Mikel123", 123456789, "Emakumea");
 		pelikula = new Pelikula("Cars", "Aventura", 169);
@@ -70,205 +76,186 @@ public class Testak {
 		areto = new Aretoa("Areto 1", saioList);
 		sarrera = new Sarrera(saioArray, data, 20, "Aventura");
 		zinema = new Zinema("Elorrieta", "Agirre Lehendakari", aretoList, saioList);
-		
-		//----------Objektu predefinituta----------//
-	}
-	//--------------------Objektuak--------------------//
-	
-	
-	//--------------------Set/Get--------------------//
-	@Test
-	public void aretoKonstruktoreTesta_ONDO() {	
-		aretoFroga.setIzena("Areto 1");
-		aretoFroga.setSaioList(saioList);
-		
-		assertEquals("Areto 1", aretoFroga.getIzena());
-		;
 	}
 
 	@Test
-	public void BezeroKonstruktoreTesta_ONDO() {
-		bezeroFroga.setNAN("123456789A");
-		bezeroFroga.setIzena("Maria");
-		bezeroFroga.setAbizena("Almoran");
-		bezeroFroga.setErabiltzailea("MariaAlmo");
-		bezeroFroga.setPasahitza("12345");
-		bezeroFroga.setSexua("Emakumea");
-		bezeroFroga.setTxartela(112233);
+	public void testAretoaKonstruktoreTesta() {	
+		areto.setIzena("Areto 1");
+		areto.setSaioList(saioList);
+		
+		assertEquals("Areto 1", areto.getIzena());
+		assertEquals(saioList, areto.getSaioList());
+	}
 
-		assertEquals("123456789A", bezeroFroga.getNAN());
-		assertEquals("Maria", bezeroFroga.getIzena());
-		assertEquals("Almoran", bezeroFroga.getAbizena());
-		assertEquals("MariaAlmo", bezeroFroga.getErabiltzailea());
-		assertEquals("12345", bezeroFroga.getPasahitza());
-		assertEquals("Emakumea", bezeroFroga.getSexua());
-		assertEquals(112233, bezeroFroga.getTxartela());
+	@Test
+	public void testBezeroaKonstruktoreTesta() {
+		bezero.setNAN("123456789A");
+		bezero.setIzena("Maria");
+		bezero.setAbizena("Almoran");
+		bezero.setErabiltzailea("MariaAlmo");
+		bezero.setPasahitza("12345");
+		bezero.setSexua("Emakumea");
+		bezero.setTxartela(112233);
+
+		assertEquals("123456789A", bezero.getNAN());
+		assertEquals("Maria", bezero.getIzena());
+		assertEquals("Almoran", bezero.getAbizena());
+		assertEquals("MariaAlmo", bezero.getErabiltzailea());
+		assertEquals("12345", bezero.getPasahitza());
+		assertEquals("Emakumea", bezero.getSexua());
+		assertEquals(112233, bezero.getTxartela());
 	}
 	
 	@Test
-	public void ErosketakKonstruktoreTesta_ONDO() {
+	public void testErosketakKonstruktoreTesta() {
+		erosketa.setBezeroa(bezeroArray);
+		erosketa.setData(data);
+		erosketa.setDeskontua(1);
+		erosketa.setDirutotala(1);
+
+		assertEquals(bezeroArray, erosketa.getBezeroa());
+		assertEquals(data, erosketa.getData());
+		assertEquals(1.0, erosketa.getDeskontua(), 0.001);
+		assertEquals(1.0, erosketa.getDirutotala(), 0.001);
+	}
+
+	@Test
+	public void testPelikulaKonstruktoreTesta() {
+		pelikula.setIzena("CARS");
+		pelikula.setIraupena(60);
+		pelikula.setGeneroa("Komedia");
+
+		assertEquals("CARS", pelikula.getIzena());
+		assertEquals(60, pelikula.getIraupena());
+		assertEquals("Komedia", pelikula.getGeneroa());
+	}
+	
+	@Test
+	public void testSaioaKonstruktoreTesta() {
+		saio.setFilma(karteldegiList);
+		saio.setAretoa(aretoArray);
+		saio.setOrdua(time);
+		saio.setEguna(data);
+		
+		assertEquals(karteldegiList, saio.getFilma());
+		assertEquals(aretoArray, saio.getAretoa());
+		assertEquals(time, saio.getOrdua());
+		assertEquals(data, saio.getEguna());
+	}
+
+	@Test
+	public void testSarreraKonstruktoreTesta() {
 		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 		
-		erosketaFroga.setIdErosketa(1);
-		erosketaFroga.setKant(1);
-		erosketaFroga.setData(dataFroga);
-		erosketaFroga.setDeskontua(1);
-		erosketaFroga.setDirutotala(1);
+		sarrera.setIdSarrera(1);
+		sarrera.setData(dataFroga);
+		sarrera.setMota("Gaztea");
+		sarrera.setPrezioa(6.95);
 
-		assertEquals(erosketaFroga.getIdErosketa(),1);
-		assertEquals(erosketaFroga.getKant(),1);
-		assertEquals(erosketaFroga.getData(),dataFroga);
-		assertEquals(erosketaFroga.getDeskontua(),1.0,1);
-		assertEquals(erosketaFroga.getDirutotala(),1.0,1);
+		assertEquals(1, sarrera.getIdSarrera());
+		assertEquals(dataFroga, sarrera.getData());
+		assertEquals("Gaztea", sarrera.getMota());
+		assertEquals(6.95, sarrera.getPrezioa(), 0.001);
 	}
 
 	@Test
-	public void pelikulaKonstruktoreTesta_ONDO() {
-		pelikulaFroga.setIdPelikula(1);
-		pelikulaFroga.setIzenaFilma("CARS");
-		pelikulaFroga.setIraupena(60);
-		pelikulaFroga.setGeneroa("Komedia");
-
-		assertEquals(1, pelikulaFroga.getIdPelikula());
-		assertEquals("CARS", pelikulaFroga.getIzenaFilma());
-		assertEquals(60, pelikulaFroga.getIraupena());
-		assertEquals("Komedia", pelikulaFroga.getGeneroa());
-	}
-	
-	@Test
-	public void saioaKonstruktoreTesta_ONDO() {
-		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
-		LocalTime orduFroga = LocalTime.of(15, 0, 0);
-		
-		saioFroga.setIdSaioa(1);
-		saioFroga.setOrdua(orduFroga);
-		saioFroga.setEguna(dataFroga);
-		
-		assertEquals(saioFroga.getIdSaioa(),1);
-		assertEquals(saioFroga.getOrdua(),orduFroga);
-		assertEquals(saioFroga.getEguna(),dataFroga);
-	}
-
-	@Test
-	public void sarreraKonstruktoreTesta_ONDO() {
-		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
-		
-		sarreraFroga.setIdSarrera(1);
-		sarreraFroga.setData(dataFroga);
-		sarreraFroga.setMota("Gaztea");
-		sarreraFroga.setPrezioa(6.95);
-
-		assertEquals(1, sarreraFroga.getIdSarrera());
-		assertEquals(dataFroga, sarreraFroga.getData());
-		assertEquals("Gaztea", sarreraFroga.getMota());
-		assertEquals(6.95, sarreraFroga.getPrezioa(), 0.001);
-	}
-
-	@Test
-	public void zinemaKonstruktoreTesta_ONDO() {
+	public void testZinemaKonstruktoreTesta() {
 		ArrayList<Integer> kopuru = new ArrayList<>(Arrays.asList(1, 2, 3));
 		
-		zinemaFroga.setIdZinema(1);
-	    zinemaFroga.setAretoList(kopuru);
-	    zinemaFroga.setIzena("Elorrieta Zinema");
-	    zinemaFroga.setHelbidea("Bilbao, Calle San Jose");
-	    zinemaFroga.setNIF("122456");
+		zinema.setIdZinema(1);
+	    zinema.setAretoList(kopuru);
+	    zinema.setIzena("Elorrieta Zinema");
+	    zinema.setHelbidea("Bilbao, Calle San Jose");
+	    zinema.setNIF("122456");
 	    
-	    assertEquals(1, zinemaFroga.getIdZinema());
-	    assertEquals(kopuru, zinemaFroga.getAretoList());
-	    assertEquals("Elorrieta Zinema", zinemaFroga.getIzena());
-	    assertEquals("Bilbao, Calle San Jose", zinemaFroga.getHelbidea());
-	    assertEquals("122456", zinemaFroga.getNIF());
-	    
+	    assertEquals(1, zinema.getIdZinema());
+	    assertEquals(kopuru, zinema.getAretoList());
+	    assertEquals("Elorrieta Zinema", zinema.getIzena());
+	    assertEquals("Bilbao, Calle San Jose", zinema.getHelbidea());
+	    assertEquals("122456", zinema.getNIF());
 	}
-	//--------------------Set/Get--------------------//
 	
-	
-	//--------------------toString--------------------//
 	@Test
-	public void aretoaToStringTest() {
-		aretoFroga.setIzena("Talde4");
-		aretoFroga.setIdAreto(1);
+	public void testAretoaToString() {
+		areto.setIzena("Talde4");
+		areto.setIdAreto(1);
 		
-		assertEquals(aretoFroga.toString(), "Aretoa [idAreto=1, izena=Talde4]");
+		assertEquals("Aretoa [idAreto=1, izena=Talde4]", areto.toString());
 	}
 	
 	@Test
-	public void bezeroaToStringTest() {
-		bezeroFroga.setIdBezero(1);
-		bezeroFroga.setNAN("NAN");
-		bezeroFroga.setIzena("Izena");
-		bezeroFroga.setAbizena("Abizena");
-		bezeroFroga.setErabiltzailea("Erabiltzailea");
-		bezeroFroga.setPasahitza("Pasahitza");
-		bezeroFroga.setTxartela(1);
-		bezeroFroga.setSexua("Sexua");
-		assertEquals(bezeroFroga.toString(), "Bezeroa [idBezero=1, NAN=NAN, izena=Izena, abizena=Abizena, erabiltzailea=Erabiltzailea, pasahitza=Pasahitza, txartela=1, sexua=Sexua]");
+	public void testBezeroaToString() {
+		bezero.setIdBezero(1);
+		bezero.setNAN("NAN");
+		bezero.setIzena("Izena");
+		bezero.setAbizena("Abizena");
+		bezero.setErabiltzailea("Erabiltzailea");
+		bezero.setPasahitza("Pasahitza");
+		bezero.setTxartela(1);
+		bezero.setSexua("Sexua");
+		assertEquals("Bezeroa [idBezero=1, NAN=NAN, izena=Izena, abizena=Abizena, erabiltzailea=Erabiltzailea, pasahitza=Pasahitza, txartela=1, sexua=Sexua]", bezero.toString());
 	}
 	
 	@Test
-	public void erosketakToStringTest() {
+	public void testErosketakToString() {
 		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 		
-		erosketaFroga.setIdErosketa(1);
-		erosketaFroga.setKant(1);
-		erosketaFroga.setData(dataFroga);
-		erosketaFroga.setDeskontua(1);
-		erosketaFroga.setDirutotala(1);
-		assertEquals(erosketaFroga.toString(), "Erosketak [idErosketa=1, kant=1, data=" + dataFroga +", deskontua=1.0, dirutotala=1.0]");
+		erosketa.setIdErosketa(1);
+		erosketa.setKant(1);
+		erosketa.setData(dataFroga);
+		erosketa.setDeskontua(1);
+		erosketa.setDirutotala(1);
+		assertEquals("Erosketak [idErosketa=1, kant=1, data=" + dataFroga +", deskontua=1.0, dirutotala=1.0]", erosketa.toString());
 	}
 	
 	@Test
-	public void pelikulaToStringTest() {
-		pelikulaFroga.setIdPelikula(1);
-		pelikulaFroga.setIraupena(1);
-		pelikulaFroga.setIzenaFilma("Izena");
-		pelikulaFroga.setGeneroa("Generoa");
-		assertEquals(pelikulaFroga.toString(), "Pelikula [idPelikula=1, iraupena=1, izenaFilma=Izena, generoa=Generoa]");		
+	public void testPelikulaToString() {
+		pelikula.setIdPelikula(1);
+		pelikula.setIraupena(1);
+		pelikula.setIzenaFilma("Izena");
+		pelikula.setGeneroa("Generoa");
+		assertEquals("Pelikula [idPelikula=1, iraupena=1, izenaFilma=Izena, generoa=Generoa]", pelikula.toString());		
 	}
 	
 	@Test
-	public void saioaToStringTest() {
+	public void testSaioaToString() {
 		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 		LocalTime orduFroga = LocalTime.of(15, 0, 0);
 		
-		saioFroga.setIdSaioa(1);
-		saioFroga.setOrdua(orduFroga);
-		saioFroga.setEguna(dataFroga);
+		saio.setIdSaioa(1);
+		saio.setOrdua(orduFroga);
+		saio.setEguna(dataFroga);
 		
-		assertEquals(saioFroga.toString(), "Saioa [idSaioa=1, ordua=" + orduFroga + ", eguna=" + dataFroga + "]");		
+		assertEquals("Saioa [idSaioa=1, ordua=" + orduFroga + ", eguna=" + dataFroga + "]", saio.toString());		
 	}
 	
 	@Test
-	public void sarreraToStringTest() {
+	public void testSarreraToString() {
 		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 		
-		sarreraFroga.setIdSarrera(1);
-		sarreraFroga.setData(dataFroga);
-		sarreraFroga.setPrezioa(1);
-		sarreraFroga.setMota("Mota");
+		sarrera.setIdSarrera(1);
+		sarrera.setData(dataFroga);
+		sarrera.setPrezioa(1);
+		sarrera.setMota("Mota");
 		
-		assertEquals(sarreraFroga.toString(), "Sarrera [idSarrera=1, data=" + dataFroga + ", prezioa=1.0, mota=Mota]");		
+		assertEquals("Sarrera [idSarrera=1, data=" + dataFroga + ", prezioa=1.0, mota=Mota]", sarrera.toString());		
 	}
 	
 	@Test
-	public void zinemaToStringTest() {
+	public void testZinemaToString() {
 		ArrayList<Integer> kopuru = new ArrayList<>(Arrays.asList(1));
 		
-		zinemaFroga.setIdZinema(1);
-		zinemaFroga.setIzena("Izena");
-		zinemaFroga.setHelbidea("Helbidea");
-		zinemaFroga.setAretoList(kopuru);
-		zinemaFroga.setNIF("nif");
+		zinema.setIdZinema(1);
+		zinema.setIzena("Izena");
+		zinema.setHelbidea("Helbidea");
+		zinema.setAretoList(kopuru);
+		zinema.setNIF("nif");
 		
-		assertEquals(zinemaFroga.toString(), "Zinema [idZinema=1, izena=Izena, helbidea=Helbidea, aretoKop=[1], NIF=nif]");		
+		assertEquals("Zinema [idZinema=1, izena=Izena, helbidea=Helbidea, aretoList=[1], NIF=nif]", zinema.toString());		
 	}
-	//--------------------toString--------------------//
-	
-	
-	//--------------------Equals--------------------//
+
 	@Test
-    public void testHashCodeAreto() {
+    public void testHashCodeAretoa() {
         Aretoa aretoa1 = new Aretoa("Sala A");
         Aretoa aretoa2 = new Aretoa("Sala A");
 
@@ -276,7 +263,7 @@ public class Testak {
     }
 
     @Test
-    public void testEqualsAreto() {
+    public void testEqualsAretoa() {
         Aretoa aretoa1 = new Aretoa("Sala A");
         Aretoa aretoa2 = new Aretoa("Sala A");
         Aretoa aretoa3 = new Aretoa("Sala B");
@@ -373,29 +360,27 @@ public class Testak {
     public void testEqualsSarrera() {
         Sarrera sarrera1 = new Sarrera(LocalDate.of(2024, 2, 20), 15.0, "Normal");
         Sarrera sarrera2 = new Sarrera(LocalDate.of(2024, 2, 20), 15.0, "Normal");
-        Sarrera sarrera3 = new Sarrera(LocalDate.of(2024, 2, 21), 20.0, "VIP");
+        Sarrera sarrera3 = new Sarrera(LocalDate.of(2024, 2, 21), 20.0, "Gaztea");
 
         assertTrue(sarrera1.equals(sarrera2));
         assertFalse(sarrera1.equals(sarrera3));
     }
     
     @Test
-    public void testHashCode() {
-        Zinema zinema1 = new Zinema("Zinema A", "Calle A, 123", "12345678A");
-        Zinema zinema2 = new Zinema("Zinema A", "Calle A, 123", "12345678A");
+    public void testHashCodeZinema() {
+        Zinema zinema1 = new Zinema("Cinesa", "Bilbao, Gran Via", new ArrayList<Integer>());
+        Zinema zinema2 = new Zinema("Cinesa", "Bilbao, Gran Via", new ArrayList<Integer>());
 
         assertEquals(zinema1.hashCode(), zinema2.hashCode());
     }
 
     @Test
-    public void testEquals() {
-        Zinema zinema1 = new Zinema("Zinema A", "Calle A, 123", "12345678A");
-        Zinema zinema2 = new Zinema("Zinema A", "Calle A, 123", "12345678A");
-        Zinema zinema3 = new Zinema("Zinema B", "Calle B, 456", "87654321B");
+    public void testEqualsZinema() {
+        Zinema zinema1 = new Zinema("Cinesa", "Bilbao, Gran Via", new ArrayList<Integer>());
+        Zinema zinema2 = new Zinema("Cinesa", "Bilbao, Gran Via", new ArrayList<Integer>());
+        Zinema zinema3 = new Zinema("Yelmo", "Madrid, Gran Via", new ArrayList<Integer>());
 
         assertTrue(zinema1.equals(zinema2));
         assertFalse(zinema1.equals(zinema3));
     }
-    //--------------------Equals--------------------//
-	
 }

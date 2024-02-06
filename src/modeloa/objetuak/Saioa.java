@@ -26,7 +26,7 @@ public class Saioa {
 		this.filma = filma;
 	}
 	
-	public void setFilma(Aretoa[] aretoa) {
+	public void setAretoa(Aretoa[] aretoa) {
 		this.aretoa = aretoa;
 	}
 	
