@@ -1,7 +1,6 @@
 package modeloa.objetuak;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Sarrera {
@@ -12,7 +11,8 @@ public class Sarrera {
 	private String mota;
 	
 	//--------------------Konstruktorea--------------------//
-	public Sarrera(Saioa[] saioa, LocalDate data, double prezioa, String mota) {
+	public Sarrera(Saioa saioa, LocalDate data, double prezioa, String mota) {
+		this.saioa = saioa;
 		this.data = data;
 		this.prezioa = prezioa;
 		this.mota = mota;
@@ -40,7 +40,7 @@ public class Sarrera {
 	
 	
 	//--------------------Get--------------------//
-	public Saioa getIdSarrera() {
+	public Saioa getSaioa() {
 		return saioa;
 	}
 
@@ -86,9 +86,8 @@ public class Sarrera {
 		if (getClass() != obj.getClass())
 			return false;
 		Sarrera other = (Sarrera) obj;
-		return Objects.equals(data, other.data) && Objects.equals(mota, other.mota)
-				&& Double.doubleToLongBits(prezioa) == Double.doubleToLongBits(other.prezioa)
-				&& Objects.equals(saioa, other.saioa);
+		return Objects.equals(saioa, other.saioa) && Objects.equals(data, other.data) && Double.doubleToLongBits(prezioa) == Double.doubleToLongBits(other.prezioa) &&  Objects.equals(mota, other.mota)
+				;
 	}
 	//--------------------Equals--------------------//
 

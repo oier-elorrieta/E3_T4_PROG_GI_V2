@@ -83,8 +83,8 @@ public class Zinema {
 		if (getClass() != obj.getClass())
 			return false;
 		Zinema other = (Zinema) obj;
-		return Objects.equals(aretoList, other.aretoList) && Objects.equals(helbidea, other.helbidea)
-				&& Objects.equals(izena, other.izena) && Objects.equals(saioList, other.saioList);
+		return Objects.equals(izena, other.izena) && Objects.equals(helbidea, other.helbidea) && Objects.equals(aretoList, other.aretoList) 
+				&& Objects.equals(saioList, other.saioList);
 	}
 	//--------------------Equals--------------------//
 

@@ -3,7 +3,6 @@ package modeloa.objetuak;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Saioa {
@@ -87,8 +86,8 @@ public class Saioa {
 		if (getClass() != obj.getClass())
 			return false;
 		Saioa other = (Saioa) obj;
-		return Objects.equals(aretoa, other.aretoa) && Objects.equals(eguna, other.eguna)
-				&& Objects.equals(filma, other.filma) && Objects.equals(ordua, other.ordua);
+		return  Objects.equals(filma, other.filma) && Objects.equals(aretoa, other.aretoa) 
+				&& Objects.equals(ordua, other.ordua) && Objects.equals(eguna, other.eguna);
 	}
 	//--------------------Equals--------------------//
 	
