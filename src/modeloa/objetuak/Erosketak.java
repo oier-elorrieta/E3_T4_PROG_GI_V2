@@ -1,80 +1,84 @@
 package modeloa.objetuak;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Erosketak {
-	
-	private ArrayList<Bezeroa> bezeroa;
+
+	private Bezeroa bezeroa;
 	private LocalDate data;
 	private double deskontua;
 	private double dirutotala;
-	
-	//--------------------Konstruktorea--------------------//
-	public Erosketak(ArrayList<Bezeroa> bezeroa, LocalDate data) {
+	private int sarreraKant;
+
+	// --------------------Konstruktorea--------------------//
+	public Erosketak(Bezeroa bezeroa, LocalDate data) {
 		this.bezeroa = bezeroa;
 		this.data = data;
 	}
-	//--------------------Konstruktorea--------------------//
-	
-	
-	//--------------------Set--------------------//
-	public void setBezeroa(ArrayList<Bezeroa> bezeroa) {
+	// --------------------Konstruktorea--------------------//
+
+	// --------------------Set--------------------//
+	public void setBezeroa(Bezeroa bezeroa) {
 		this.bezeroa = bezeroa;
 	}
-	
+
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
-	
+
 	public void setDeskontua(double deskontua) {
 		this.deskontua = deskontua;
 	}
-	
+
 	public void setDirutotala(double dirutotala) {
 		this.dirutotala = dirutotala;
 	}
-	//--------------------Set--------------------//
-	
-	
-	//--------------------Get--------------------//
-	public ArrayList<Bezeroa> getBezeroa() {
+
+	public void setSarreraKant(int sarreraKant) {
+		this.sarreraKant = sarreraKant;
+	}
+
+	// --------------------Set--------------------//
+
+	// --------------------Get--------------------//
+	public Bezeroa getBezeroa() {
 		return bezeroa;
 	}
-	
+
 	public LocalDate getData() {
 		return data;
 	}
-	
+
 	public double getDeskontua() {
 		return deskontua;
 	}
-	
+
 	public double getDirutotala() {
 		return dirutotala;
 	}
-	//--------------------Get--------------------//
-	
-	
-	//--------------------toString--------------------//
+
+	public int getSarreraKant() {
+		return sarreraKant;
+	}
+	// --------------------Get--------------------//
+
+	// --------------------toString--------------------//
+
 	@Override
 	public String toString() {
-		return "Erosketak [bezeroa=" + bezeroa + ", data=" + data + ", deskontua=" + deskontua
-				+ ", dirutotala=" + dirutotala + "]";
+		return "Erosketak [bezeroa=" + bezeroa + ", data=" + data + ", deskontua=" + deskontua + ", dirutotala="
+				+ dirutotala + ", sarreraKant=" + sarreraKant + "]";
 	}
-	//--------------------toString--------------------//
 
+	// --------------------toString--------------------//
 
-	//--------------------Equals--------------------//
+	// --------------------Equals--------------------//
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + Objects.hash(data, deskontua, dirutotala, bezeroa);
-		return result;
+		return Objects.hash(bezeroa, data, deskontua, dirutotala, sarreraKant);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -87,8 +91,10 @@ public class Erosketak {
 		Erosketak other = (Erosketak) obj;
 		return Objects.equals(bezeroa, other.bezeroa) && Objects.equals(data, other.data)
 				&& Double.doubleToLongBits(deskontua) == Double.doubleToLongBits(other.deskontua)
-				&& Double.doubleToLongBits(dirutotala) == Double.doubleToLongBits(other.dirutotala);
+				&& Double.doubleToLongBits(dirutotala) == Double.doubleToLongBits(other.dirutotala)
+				&& sarreraKant == other.sarreraKant;
 	}
-	//--------------------Equals--------------------//	
-	
+
+	// --------------------Equals--------------------//
+
 }
