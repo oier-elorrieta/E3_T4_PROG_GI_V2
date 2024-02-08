@@ -9,7 +9,6 @@ public class Zinema {
 	private String helbidea;
 	private ArrayList<Aretoa> aretoList;
 	private ArrayList<Saioa> saioList;
-	private ArrayList<Karteldegia> pelikulalist;
 
 	// --------------------Konstruktorea--------------------//
 	public Zinema(String izena, String helbidea, ArrayList<Aretoa> aretoList, ArrayList<Saioa> saioList) {
@@ -37,9 +36,7 @@ public class Zinema {
 		this.saioList = saioList;
 	}
 
-	public void setFilma(ArrayList<Karteldegia> filma) {
-		this.pelikulalist = filma;
-	}
+
 	// --------------------Set--------------------//
 
 	// --------------------Get--------------------//
@@ -59,41 +56,38 @@ public class Zinema {
 		return saioList;
 	}
 
-	public ArrayList<Karteldegia> getFilma() {
-		return pelikulalist;
-	}
 	// --------------------Get--------------------//
 
 	// --------------------toString--------------------//
 
-	@Override
+@Override
 	public String toString() {
 		return "Zinema [izena=" + izena + ", helbidea=" + helbidea + ", aretoList=" + aretoList + ", saioList="
-				+ saioList + ", pelikulalist=" + pelikulalist + "]";
+				+ saioList + "]";
 	}
 
 	// --------------------toString--------------------//
 
 	// --------------------Equals--------------------//
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(aretoList, helbidea, izena, pelikulalist, saioList);
-	}
+@Override
+public int hashCode() {
+	return Objects.hash(aretoList, helbidea, izena, saioList);
+}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Zinema other = (Zinema) obj;
-		return Objects.equals(aretoList, other.aretoList) && Objects.equals(helbidea, other.helbidea)
-				&& Objects.equals(izena, other.izena) && Objects.equals(pelikulalist, other.pelikulalist)
-				&& Objects.equals(saioList, other.saioList);
-	}
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Zinema other = (Zinema) obj;
+	return Objects.equals(aretoList, other.aretoList) && Objects.equals(helbidea, other.helbidea)
+			&& Objects.equals(izena, other.izena) && Objects.equals(saioList, other.saioList);
+}
+
 
 	// --------------------Equals--------------------//
 
