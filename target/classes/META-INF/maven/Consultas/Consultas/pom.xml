@@ -6,13 +6,11 @@
 	<artifactId>Consultas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<dependencies>
-
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.33</version>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -25,5 +23,14 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src</directory>
+				<includes>
+					<include>img/logoa/*.png</include>
+					<include>img/karteldegia/*.jpg</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
 </project>
