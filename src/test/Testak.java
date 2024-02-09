@@ -57,10 +57,10 @@ public class Testak {
 		 
 		bezero = new Bezeroa("123456789M", "Mikelon", "Rodriguez", "Mikelodeon", "Mikel123", 123456789, "Emakumea");
 		pelikula = new Pelikula("Cars", "Aventura", 169);
-		erosketa = new Erosketak(bezeroaList, data);
+		erosketa = new Erosketak(bezero, data);
 		karteldegi = new Karteldegia(pelikulaList);
 		saio = new Saioa(time, data);
-		areto = new Aretoa("Areto 1", saioList);
+		areto = new Aretoa("Areto 1");
 		sarrera = new Sarrera(saio, data, 20, "Normala");
 		zinema = new Zinema("Elorrieta", "Agirre Lehendakari", aretoList, saioList);
 	}
@@ -68,10 +68,8 @@ public class Testak {
 	@Test
 	public void testAretoaKonstruktoreTesta() {	
 		areto.setIzena("Areto 1");
-		areto.setSaioList(saioList);
 		
 		assertEquals("Areto 1", areto.getIzena());
-		assertEquals(saioList, areto.getSaioList());
 	}
 
 	@Test
@@ -95,12 +93,12 @@ public class Testak {
 	
 	@Test
 	public void testErosketakKonstruktoreTesta() {
-        erosketa.setBezeroa(bezeroaList);
+        erosketa.setBezeroa(bezero);
 		erosketa.setData(data);
 		erosketa.setDeskontua(1);
 		erosketa.setDirutotala(1);
 
-		assertEquals(bezeroaList, erosketa.getBezeroa());
+		assertEquals(bezero, erosketa.getBezeroa());
 		assertEquals(data, erosketa.getData());
 		assertEquals(1.0, erosketa.getDeskontua(), 0.001);
 		assertEquals(1.0, erosketa.getDirutotala(), 0.001);
@@ -119,12 +117,12 @@ public class Testak {
 	
 	@Test
 	public void testSaioaKonstruktoreTesta() {
-		saio.setFilma(karteldegiList);
+		saio.setPelikula(pelikula);
 		saio.setAretoa(areto);
 		saio.setOrdua(time);
 		saio.setEguna(data);
 		
-		assertEquals(karteldegiList, saio.getFilma());
+		assertEquals(pelikula, saio.getPelikula());
 		assertEquals(areto, saio.getAretoa());
 		assertEquals(time, saio.getOrdua());
 		assertEquals(data, saio.getEguna());
@@ -132,15 +130,14 @@ public class Testak {
 
 	@Test
 	public void testSarreraKonstruktoreTesta() {
-		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 		
 		sarrera.setSaioa(saio);
-		sarrera.setData(dataFroga);
+		sarrera.setSarreraKant(1);
 		sarrera.setPrezioa(6.95);
 		sarrera.setMota("Gaztea");	
 
 		assertEquals(saio, sarrera.getSaioa());
-		assertEquals(dataFroga, sarrera.getData());
+		assertEquals(1, sarrera.getSarreraKant());
 		assertEquals(6.95, sarrera.getPrezioa(), 0.001);
 		assertEquals("Gaztea", sarrera.getMota());
 	}
@@ -169,9 +166,9 @@ public class Testak {
 	// "Aretoa [izena=" + izena + ", saioList=" + saioList + "]"
 	public void testAretoaToString() {
         areto.setIzena("Talde4");
-        areto.setSaioList(saioList);
+
 		
-        assertEquals("Aretoa [izena=Talde4, saioList=" + saioList.toString() + "]", areto.toString());
+        assertEquals("Aretoa [izena=Talde4]", areto.toString());
 	}
 	
 	@Test
@@ -192,11 +189,12 @@ public class Testak {
 	public void testErosketakToString() {
 		LocalDate dataFroga = LocalDate.of(2024, 1, 1); 
 		
-		erosketa.setBezeroa(bezeroaList);
+		erosketa.setBezeroa(bezero);
 		erosketa.setData(dataFroga);
 		erosketa.setDeskontua(1);
 		erosketa.setDirutotala(1);
-		assertEquals("Erosketak [bezeroa=" + bezeroaList.toString() + ", data=" + dataFroga +", deskontua=1.0, dirutotala=1.0]", erosketa.toString());
+		
+		assertEquals("Erosketak [bezeroa=" + bezero.toString() + ", data=" + dataFroga +", deskontua=1.0, dirutotala=1.0]", erosketa.toString());
 	}
 	
 	@Test
@@ -217,23 +215,22 @@ public class Testak {
 		LocalTime orduFroga = LocalTime.of(15, 0, 0);
 		
 		saio.setAretoa(areto);
-		saio.setFilma(karteldegiList);
+		saio.setPelikula(pelikula);
 		saio.setOrdua(orduFroga);
 		saio.setEguna(dataFroga);
 		
-		assertEquals("Saioa [filma=" + karteldegiList.toString() + ", aretoa=" + areto.toString() + ", ordua=" + orduFroga + ", eguna=" + dataFroga + "]", saio.toString());		
+		assertEquals("Saioa [filma=" + pelikula.toString() + ", aretoa=" + areto.toString() + ", ordua=" + orduFroga + ", eguna=" + dataFroga + "]", saio.toString());		
 	}
 	
 	@Test
 	public void testSarreraToString() {
-		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 		
 		sarrera.setSaioa(saio);
-		sarrera.setData(dataFroga);
+		sarrera.setSarreraKant(1);
 		sarrera.setPrezioa(1);
 		sarrera.setMota("Normala");
 		
-		assertEquals("Sarrera [saioa=" + saio.toString() + ", data=" + dataFroga + ", prezioa=1.0, mota=Normala]", sarrera.toString());		
+		assertEquals("Sarrera [saioa=" + saio.toString() + ", sarreraKant=1, prezioa=1.0, mota=Normala]", sarrera.toString());		
 	}
 	
 	@Test
@@ -262,8 +259,8 @@ public class Testak {
 
 	@Test
     public void testHashCodeAretoa() {
-        Aretoa aretoa1 = new Aretoa("Sala A", saioList);
-        Aretoa aretoa2 = new Aretoa("Sala A", saioList);
+        Aretoa aretoa1 = new Aretoa("Sala A");
+        Aretoa aretoa2 = new Aretoa("Sala A");
 
         assertEquals(aretoa1.hashCode(), aretoa2.hashCode());
     }
@@ -274,38 +271,38 @@ public class Testak {
 
     @Test
     public void test_AretoEquals() {
-    	ArrayList<Saioa> saioList1 = new ArrayList<>();
+    	//ArrayList<Saioa> saioList1 = new ArrayList<>();
     	
-        Aretoa aretoa = new Aretoa("izena", saioList1);
+        Aretoa aretoa = new Aretoa("izena");
         assertTrue(aretoa.equals(aretoa));
     }
 
     @Test
     public void test_AretoBatzuk() {
-        Aretoa aretoa1 = new Aretoa("izena", saioList);
-        Aretoa aretoa2 = new Aretoa("izena", saioList);
+        Aretoa aretoa1 = new Aretoa("izena");
+        Aretoa aretoa2 = new Aretoa("izena");
 
         assertTrue(aretoa1.equals(aretoa2) && aretoa2.equals(aretoa1));
     } 
 
     @Test
     public void test_AretoNuloa() {
-        Aretoa aretoa = new Aretoa("izena", saioList);
+        Aretoa aretoa = new Aretoa("izena");
         assertFalse(aretoa.equals(null));
     }
 
     @Test
     public void test_AretoObjetua() {
-        Aretoa aretoa = new Aretoa("izena", saioList);
+        Aretoa aretoa = new Aretoa("izena");
         assertFalse(aretoa.equals("Not an Aretoa object"));
     }
 
     @Test
     public void test_AretoEzberdina() {
-    	ArrayList<Saioa> saioList2 = new ArrayList<>();
+    	//ArrayList<Saioa> saioList2 = new ArrayList<>();
     	
-        Aretoa aretoa1 = new Aretoa("izena1", saioList);
-        Aretoa aretoa2 = new Aretoa("izena2", saioList2);
+        Aretoa aretoa1 = new Aretoa("izena1");
+        Aretoa aretoa2 = new Aretoa("izena2");
         assertFalse(aretoa1.equals(aretoa2));
     }
     
@@ -367,8 +364,8 @@ public class Testak {
     public void testHashCodeErosketa() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
     	
-        Erosketak erosketak1 = new Erosketak(bezeroaList, dataFroga);
-        Erosketak erosketak2 = new Erosketak(bezeroaList, dataFroga);
+        Erosketak erosketak1 = new Erosketak(bezero, dataFroga);
+        Erosketak erosketak2 = new Erosketak(bezero, dataFroga);
 
         assertEquals(erosketak1.hashCode(), erosketak2.hashCode());
     }
@@ -381,7 +378,7 @@ public class Testak {
     public void test_ErosketaEquals() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     
-        Erosketak erosketak = new Erosketak(bezeroaList, dataFroga);
+        Erosketak erosketak = new Erosketak(bezero, dataFroga);
         assertTrue(erosketak.equals(erosketak));
     }
 
@@ -389,9 +386,9 @@ public class Testak {
     public void test_ErosketakBatzuk() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     	
-        Erosketak erosketak1 = new Erosketak(bezeroaList, dataFroga);
-        Erosketak erosketak2 = new Erosketak(bezeroaList, dataFroga);
-        Erosketak erosketak3 = new Erosketak(bezeroaList, dataFroga);
+        Erosketak erosketak1 = new Erosketak(bezero, dataFroga);
+        Erosketak erosketak2 = new Erosketak(bezero, dataFroga);
+        Erosketak erosketak3 = new Erosketak(bezero, dataFroga);
 
         assertTrue(erosketak1.equals(erosketak2) && erosketak2.equals(erosketak3) && erosketak1.equals(erosketak3));
     }
@@ -400,7 +397,7 @@ public class Testak {
     public void test_ErosketaNuloa() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     	
-        Erosketak erosketak = new Erosketak(bezeroaList, dataFroga);
+        Erosketak erosketak = new Erosketak(bezero, dataFroga);
         assertFalse(erosketak.equals(null));
     }
 
@@ -408,7 +405,7 @@ public class Testak {
     public void test_ErosketaObjetua() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     	
-        Erosketak erosketak = new Erosketak(bezeroaList, dataFroga);
+        Erosketak erosketak = new Erosketak(bezero, dataFroga);
         assertFalse(erosketak.equals("Not an Erosketak object"));
     }
 
@@ -417,8 +414,8 @@ public class Testak {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     	LocalDate dataFrogaBI = LocalDate.of(2023, 5, 23);	
     	
-        Erosketak erosketak1 = new Erosketak(bezeroaList, dataFroga);
-        Erosketak erosketak2 = new Erosketak(bezeroaList, dataFrogaBI);
+        Erosketak erosketak1 = new Erosketak(bezero, dataFroga);
+        Erosketak erosketak2 = new Erosketak(bezero, dataFrogaBI);
         assertFalse(erosketak1.equals(erosketak2));
     }
  
