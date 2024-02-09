@@ -1,64 +1,100 @@
 package bista;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.Font;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import java.awt.Toolkit;
-import java.awt.Dialog.ModalExclusionType;
+
+import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JProgressBar;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
+import java.awt.BorderLayout;
+import javax.swing.SwingConstants;
 
 public class OngiEtorri extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+    private static final long serialVersionUID = 1L;
+    private JPanel Logo;
+    private JPanel pProgreso;
+    private JProgressBar progressBar1;
+    private JLabel lblBehekoMargena;
+    private JLabel lblEzkerrekoMargena;
+    private JLabel lblEskuinekoMargena;
+    private int barraBat = 0;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				//try {
-					OngiEtorri frame = new OngiEtorri();
-					frame.setVisible(true);
-				//} catch (Exception e) {
-					//e.printStackTrace();
-				//}
-			}
-		});
-	}
+    public OngiEtorri() {
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(OngiEtorri.class.getResource("/img/logoa/logoa_karratu.png")));
+    	setTitle("Elorrieta Film");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 600, 380);
+		
+        Logo = new JPanel();
+        Logo.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(Logo);
+        Logo.setLayout(new BorderLayout(0, 0));
 
-	/**
-	 * Create the frame.
-	 */
-	public OngiEtorri() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(OngiEtorri.class.getResource("/img/logoa/logoa_karratu.png")));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1280, 720);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setResizable(false);
-		
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
-		
-		JPanel Titulua = new JPanel();
-		contentPane.add(Titulua, BorderLayout.NORTH);
-		Titulua.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblTitulua = new JLabel("Ongi Etorri");
-		lblTitulua.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitulua.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		Titulua.add(lblTitulua, BorderLayout.NORTH);
-		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(null);
-	}
+	        JPanel Irudia = new JPanel();
+	        Logo.add(Irudia, BorderLayout.CENTER);
+	        Irudia.setLayout(new BorderLayout(0, 0));
+	
+		        JLabel lblNewLabel = new JLabel("");
+		        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		        lblNewLabel.setIcon(new ImageIcon(OngiEtorri.class.getResource("/img/logoa/logoa_karratu.png")));
+		        Irudia.add(lblNewLabel, BorderLayout.CENTER);
+
+	        pProgreso = new JPanel();
+	        Logo.add(pProgreso, BorderLayout.SOUTH);
+	        pProgreso.setLayout(new BorderLayout(0, 0));
+	
+	        progressBar1 = new JProgressBar();
+	        pProgreso.add(progressBar1, BorderLayout.CENTER);
+	        pProgreso.setVisible(true);
+	
+	        progressBar1.setMaximum(30);
+	        progressBar1.setStringPainted(true);
+        
+	        lblBehekoMargena = new JLabel("          ");
+	        pProgreso.add(lblBehekoMargena, BorderLayout.SOUTH);
+	        
+	        lblEzkerrekoMargena = new JLabel("                            ");
+	        pProgreso.add(lblEzkerrekoMargena, BorderLayout.WEST);
+	        
+	        lblEskuinekoMargena = new JLabel("                            ");
+	        pProgreso.add(lblEskuinekoMargena, BorderLayout.EAST);
+
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new Thread(new Runnable() {
+                    public void run() {
+                        pProgreso.setVisible(true);
+                        while (barraBat == 0) {
+                        	barraBat++;
+	                        for (int i = 0; i <= 30; i++) {
+	                            final int value = i;
+	                            EventQueue.invokeLater(new Runnable() {
+	                                public void run() {
+	                                    progressBar1.setValue(value);
+	                                    System.out.println(value + " " + progressBar1.getValue());
+	                                }
+	                            });
+	                            try {
+	                                Thread.sleep(100);
+	                            } catch (Exception p) {
+	                                System.out.println("Algo va mal");
+	                            }
+	                        }
+	                        Login frame = new Login();
+	                        frame.setVisible(true);
+	                        dispose();  
+                        }
+                    }
+                }).start();
+            }
+        });
+    }
 }
