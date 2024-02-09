@@ -14,6 +14,8 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.JProgressBar;
+import javax.swing.JSeparator;
 
 public class ErosketaKonfirmazioa extends JFrame {
 
@@ -57,5 +59,18 @@ public class ErosketaKonfirmazioa extends JFrame {
 		lblTitulua.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulua.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		Titulua.add(lblTitulua, BorderLayout.NORTH);
+		
+		JPanel Content = new JPanel();
+		contentPane.add(Content, BorderLayout.CENTER);
+		Content.setLayout(new BorderLayout(0, 0));
+		
+		JProgressBar progressBar = new JProgressBar();
+		Content.add(progressBar, BorderLayout.CENTER);
+		
+		JLabel lblNewLabel = new JLabel("                                                                                                ");
+		Content.add(lblNewLabel, BorderLayout.WEST);
+		
+		JLabel lblNewLabel_1 = new JLabel("                                                                                                ");
+		Content.add(lblNewLabel_1, BorderLayout.EAST);
 	}
 }

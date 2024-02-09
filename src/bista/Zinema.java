@@ -49,13 +49,13 @@ public class Zinema extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.NORTH);
-		panel.setLayout(new BorderLayout(0, 0));
+		JPanel Titulua = new JPanel();
+		contentPane.add(Titulua, BorderLayout.NORTH);
+		Titulua.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblTitulua = new JLabel("New label");
+		JLabel lblTitulua = new JLabel("Zinema");
 		lblTitulua.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulua.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		panel.add(lblTitulua, BorderLayout.NORTH);
+		Titulua.add(lblTitulua, BorderLayout.NORTH);
 	}
 }

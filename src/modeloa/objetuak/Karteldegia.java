@@ -16,7 +16,7 @@ public class Karteldegia {
 		
 	//--------------------SET--------------------//
 	public void setFilmList(ArrayList<Pelikula> filmList) {
-		this.filmList = filmList;
+		this.filmList = filmList; 
 	}
 	//--------------------SET--------------------//
 		

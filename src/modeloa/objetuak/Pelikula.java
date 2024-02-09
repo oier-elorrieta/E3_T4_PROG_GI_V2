@@ -71,8 +71,7 @@ public class Pelikula {
 		if (getClass() != obj.getClass())
 			return false;
 		Pelikula other = (Pelikula) obj;
-		return Objects.equals(generoa, other.generoa) && iraupena == other.iraupena
-				&& Objects.equals(izena, other.izena);
+		return Objects.equals(izena, other.izena) && Objects.equals(generoa, other.generoa) && iraupena == other.iraupena;
 	}
 	//--------------------Equals--------------------//
 	

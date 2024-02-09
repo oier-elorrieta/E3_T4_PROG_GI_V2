@@ -5,11 +5,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import net.miginfocom.swing.MigLayout;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -49,13 +44,13 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.NORTH);
-		panel.setLayout(new BorderLayout(0, 0));
+		JPanel Titulua = new JPanel();
+		contentPane.add(Titulua, BorderLayout.NORTH);
+		Titulua.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblTitulua = new JLabel("New label");
+		JLabel lblTitulua = new JLabel("Login");
 		lblTitulua.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulua.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		panel.add(lblTitulua, BorderLayout.NORTH);
+		Titulua.add(lblTitulua, BorderLayout.NORTH);
 	}
 }
