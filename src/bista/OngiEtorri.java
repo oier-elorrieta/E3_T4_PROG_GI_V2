@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import java.awt.Toolkit;
+import java.awt.Dialog.ModalExclusionType;
+import javax.swing.ImageIcon;
 
 public class OngiEtorri extends JFrame {
 
@@ -36,8 +38,7 @@ public class OngiEtorri extends JFrame {
 	 * Create the frame.
 	 */
 	public OngiEtorri() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\in1dm3-d\\eclipse-workspace\\E3_T4_PROG_GI\\src\\img\\logoa\\logoa_karratu.png"));
-		setIconImage(Toolkit.getDefaultToolkit().getImage(OngiEtorri.class.getResource("/src/img/logoa.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(OngiEtorri.class.getResource("/img/logoa/logoa_karratu.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();
@@ -55,6 +56,9 @@ public class OngiEtorri extends JFrame {
 		lblTitulua.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulua.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		Titulua.add(lblTitulua, BorderLayout.NORTH);
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
 	}
-
 }
