@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class Login extends JFrame {
+public class Saioa extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -27,7 +27,7 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login frame = new Login();
+					Saioa frame = new Saioa();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class Login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Login() {
+	public Saioa() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();

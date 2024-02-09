@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class Login extends JFrame {
+public class OngiEtorri extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -27,7 +27,7 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login frame = new Login();
+					OngiEtorri frame = new OngiEtorri();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class Login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Login() {
+	public OngiEtorri() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();
@@ -53,7 +53,7 @@ public class Login extends JFrame {
 		contentPane.add(panel, BorderLayout.NORTH);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblTitulua = new JLabel("New label");
+		JLabel lblTitulua = new JLabel("Ongi Etorri!");
 		lblTitulua.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulua.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		panel.add(lblTitulua, BorderLayout.NORTH);

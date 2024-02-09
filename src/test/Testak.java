@@ -145,24 +145,18 @@ public class Testak {
 
 	@Test
 	public void testSarreraKonstruktoreTesta() {
-		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
-		
-		sarrera.setIdSarrera(1);
-		sarrera.setData(dataFroga);
+		sarrera.setData(data);
 		sarrera.setMota("Gaztea");
 		sarrera.setPrezioa(6.95);
 
 		assertEquals(1, sarrera.getIdSarrera());
-		assertEquals(dataFroga, sarrera.getData());
+		assertEquals(data, sarrera.getData());
 		assertEquals("Gaztea", sarrera.getMota());
 		assertEquals(6.95, sarrera.getPrezioa(), 0.001);
 	}
 
 	@Test
-	public void testZinemaKonstruktoreTesta() {
-		ArrayList<Integer> kopuru = new ArrayList<>(Arrays.asList(1, 2, 3));
-		
-		zinema.setIdZinema(1);
+	public void testZinemaKonstruktoreTesta() {	
 	    zinema.setAretoList(kopuru);
 	    zinema.setIzena("Elorrieta Zinema");
 	    zinema.setHelbidea("Bilbao, Calle San Jose");
