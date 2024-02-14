@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import kontrolatzaile.Funtzioak;
 import modeloa.Aldagaiak;
 
 import java.awt.BorderLayout;
@@ -77,6 +78,8 @@ public class Login extends JFrame {
 		JButton btnLog = new JButton("Log");
 		btnLog.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Funtzioak.login();
+				dispose();
 			}
 		});
 		btnLog.setBounds(558, 352, 89, 23);
@@ -89,6 +92,7 @@ public class Login extends JFrame {
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
 			}
 		});
 		btnExit.setBounds(657, 352, 89, 23);
