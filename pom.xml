@@ -27,8 +27,9 @@
 			<resource>
 				<directory>src</directory>
 				<includes>
-					<include>img/logoa/*.png</include>
-					<include>img/karteldegia/*.jpg</include>
+					<include>modeloa/img/logoa/*.png</include>
+					<include>modeloa/img/karteldegia/*.jpg</include>
+					<include>modeloa/img/karteldegia/*.png</include>
 				</includes>
 			</resource>
 		</resources>
