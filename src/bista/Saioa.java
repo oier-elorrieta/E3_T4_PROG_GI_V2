@@ -5,14 +5,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import net.miginfocom.swing.MigLayout;
+
+import modeloa.Aldagaiak;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.SwingConstants;
 
 public class Saioa extends JFrame {
@@ -40,6 +40,7 @@ public class Saioa extends JFrame {
 	 * Create the frame.
 	 */
 	public Saioa() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Saioa.class.getResource(Aldagaiak.ikonoLogo)));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();
