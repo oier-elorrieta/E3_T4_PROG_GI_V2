@@ -2,17 +2,13 @@ package modeloa.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Konexioa {
 
     static String respuesta;
 
     public static Connection konektatua;
-    static Statement sta;
-    static ResultSet res;
     
     public static void konexioa() {
         try {
@@ -31,8 +27,6 @@ public class Konexioa {
     
     public static void konexioaExit() {
     	try {
-			//res.close();
-			//sta.close();
 	        konektatua.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

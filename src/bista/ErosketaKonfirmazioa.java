@@ -74,10 +74,10 @@ public class ErosketaKonfirmazioa extends JFrame {
 		contentPane.add(Content, BorderLayout.CENTER);
 		Content.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(428, 58, 379, 37);
-		Content.add(lblNewLabel);
+		JLabel ErosketaLaburpena = new JLabel("Laburpena");
+		ErosketaLaburpena.setHorizontalAlignment(SwingConstants.CENTER);
+		ErosketaLaburpena.setBounds(428, 58, 379, 37);
+		Content.add(ErosketaLaburpena);
 		
 		JButton ErosketaBai = new JButton("Bai");
 		ErosketaBai.setBounds(380, 418, 242, 59);
