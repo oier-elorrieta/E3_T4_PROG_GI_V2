@@ -68,142 +68,16 @@ public class Pelikula extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
-		JPanel panelPelikula = new JPanel();
-		scrollPane.setViewportView(panelPelikula);
-		panelPelikula.setLayout(new GridLayout(20, 1, 0, 0));
+		JPanel panel = new JPanel();
+		scrollPane.setViewportView(panel);
 		
-		JButton btnExpediente = new JButton("Expediente");
-		btnExpediente.addActionListener(new ActionListener() {
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/Alien8.jpg")));
+		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		panelPelikula.add(btnExpediente);
-
-		JButton btnGet = new JButton("Get");
-		btnGet.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		panelPelikula.add(btnGet);
-
-		JButton btnHereditary = new JButton("Hereditary");
-		btnHereditary.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		panelPelikula.add(btnHereditary);
-
-		JButton btnEl = new JButton("El");
-		panelPelikula.add(btnEl);
-
-		JButton btnAnabelle = new JButton("Anabelle");
-		panelPelikula.add(btnAnabelle);
-
-		JButton btnDía = new JButton("Día");
-		panelPelikula.add(btnDía);
-
-		JButton btnGuardianes = new JButton("Guardianes");
-		panelPelikula.add(btnGuardianes);
-
-		JButton btnMatrix = new JButton("Matrix");
-		panelPelikula.add(btnMatrix);
-
-		JButton btnAvatar = new JButton("Avatar");
-		panelPelikula.add(btnAvatar);
-
-		JButton btnE = new JButton("E");
-		panelPelikula.add(btnE);
-
-		JButton btnElIrlandés = new JButton("ElIrlandés");
-		panelPelikula.add(btnElIrlandés);
-
-		JButton btnParásitos = new JButton("Parásitos");
-		panelPelikula.add(btnParásitos);
-
-		JButton btnForrest = new JButton("Forrest");
-		panelPelikula.add(btnForrest);
-
-		JButton btnTitanic = new JButton("Titanic");
-		panelPelikula.add(btnTitanic);
-
-		JButton btnCazafantasmas = new JButton("Cazafantasmas");
-		panelPelikula.add(btnCazafantasmas);
-
-		JButton btnDos = new JButton("Dos");
-		panelPelikula.add(btnDos);
-
-		JButton btnBorat = new JButton("Borat");
-		panelPelikula.add(btnBorat);
-
-		JButton btnResacon = new JButton("Resacon");
-		panelPelikula.add(btnResacon);
-
-		JButton btnShrek = new JButton("Shrek");
-		panelPelikula.add(btnShrek);
-
-		JButton btnCars = new JButton("Cars");
-		panelPelikula.add(btnCars);
-
-		JButton btnHandia = new JButton("");
-		btnHandia.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/handia.jpg")));
-		panelPelikula.add(btnHandia);
-
-		JButton btnLa = new JButton("");
-		btnLa.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/la_forma_agua.jpg")));
-		panelPelikula.add(btnLa);
-
-		JButton btnCadena = new JButton("Cadena");
-		panelPelikula.add(btnCadena);
-
-		JButton btnMillion = new JButton("");
-		btnMillion.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/million_dollar.jpg")));
-		panelPelikula.add(btnMillion);
-
-		JButton btnOdisea = new JButton("Odisea");
-		panelPelikula.add(btnOdisea);
-
-		JButton btnLaNovia = new JButton("LaNovia");
-		panelPelikula.add(btnLaNovia);
-
-		JButton btnElPlaneta = new JButton("");
-		btnElPlaneta.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/simios.jpg")));
-		panelPelikula.add(btnElPlaneta);
-
-		JButton btnAlien = new JButton("");
-		btnAlien.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/Alien8.jpg")));
-		panelPelikula.add(btnAlien);
-
-		JButton btnScary = new JButton("");
-		btnScary.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/scary_movie.jpg")));
-		panelPelikula.add(btnScary);
-
-		JButton btnElGran = new JButton("");
-		btnElGran.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/el_gran_lebowski.jpg")));
-		panelPelikula.add(btnElGran);
-
-		JButton btnLaVida = new JButton("");
-		btnLaVida.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/vida_brian.jpg")));
-		panelPelikula.add(btnLaVida);
-
-		JButton btnAterriza = new JButton("");
-		btnAterriza.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/aterrizapuedas.png")));
-		panelPelikula.add(btnAterriza);
-
-		JButton btnPsicosis = new JButton("");
-		btnPsicosis.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/psycosis.jpg")));
-		panelPelikula.add(btnPsicosis);
-
-		JButton btnElResplandor = new JButton("");
-		btnElResplandor.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/resplandor.jpg")));
-		panelPelikula.add(btnElResplandor);
-
-		JButton btnDrácula = new JButton("");
-		btnDrácula.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/dracula.jpg")));
-		panelPelikula.add(btnDrácula);
-
-		JButton btnCisne = new JButton("");
-		btnCisne.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/cisnenegro.jpg")));
-		panelPelikula.add(btnCisne);
+		panel.add(btnNewButton);
 
 	}
 }
