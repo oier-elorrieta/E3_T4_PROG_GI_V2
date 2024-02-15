@@ -47,4 +47,9 @@ public class BezeroaDao {
 
         return bezeroak;
     }
+
+	public static Bezeroa lortuBezeroa(int idBezero) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
