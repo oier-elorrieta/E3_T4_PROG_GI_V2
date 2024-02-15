@@ -8,13 +8,15 @@ public class Erosketak {
 	private Bezeroa bezeroa;
 	private LocalDate data;
 	private int sarreraKant;
-	private double deskontua;
+	private double deskontua;	
 	private double dirutotala;
+	private String mota;
 
 	// --------------------Konstruktorea--------------------//
 	public Erosketak(Bezeroa bezeroa, LocalDate data) {
 		this.bezeroa = bezeroa;
 		this.data = data;
+		mota = "Fisikoa";
 	}
 	// --------------------Konstruktorea--------------------//
 
@@ -61,6 +63,10 @@ public class Erosketak {
 	public double getDirutotala() {
 		return dirutotala;
 	}
+	public String getMota() {
+		return mota;
+	}
+
 
 	// --------------------Get--------------------//
 
@@ -69,7 +75,7 @@ public class Erosketak {
 	@Override
 	public String toString() {
 		return "Erosketak [bezeroa=" + bezeroa + ", data=" + data + ", sarreraKant=" + sarreraKant +  ", deskontua=" + deskontua + ", dirutotala="
-				+ dirutotala + "]";
+				+ dirutotala + ", mota=" +  mota + "]";
 	}
 
 	// --------------------toString--------------------//
