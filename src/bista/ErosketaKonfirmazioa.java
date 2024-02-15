@@ -15,6 +15,12 @@ import java.awt.Toolkit;
 
 import javax.swing.SwingConstants;
 import javax.swing.JProgressBar;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.FlowLayout;
+import java.awt.Color;
+import java.awt.Label;
 
 public class ErosketaKonfirmazioa extends JFrame {
 
@@ -45,6 +51,7 @@ public class ErosketaKonfirmazioa extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setResizable(false);
 		
@@ -52,25 +59,32 @@ public class ErosketaKonfirmazioa extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel Titulua = new JPanel();
+		Titulua.setBackground(new Color(240, 240, 240));
 		contentPane.add(Titulua, BorderLayout.NORTH);
 		Titulua.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblTitulua = new JLabel("Erosketa Konfirmatu");
+		lblTitulua.setBackground(new Color(240, 240, 240));
 		lblTitulua.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulua.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		Titulua.add(lblTitulua, BorderLayout.NORTH);
 		
 		JPanel Content = new JPanel();
+		Content.setBackground(new Color(240, 240, 240));
 		contentPane.add(Content, BorderLayout.CENTER);
-		Content.setLayout(new BorderLayout(0, 0));
+		Content.setLayout(null);
 		
-		JProgressBar progressBar = new JProgressBar();
-		Content.add(progressBar, BorderLayout.CENTER);
+		JButton ErosketaBai = new JButton("Bai");
+		ErosketaBai.setBounds(380, 418, 242, 59);
+		Content.add(ErosketaBai);
 		
-		JLabel lblNewLabel = new JLabel("                                                                                                ");
-		Content.add(lblNewLabel, BorderLayout.WEST);
+		JButton ErosketaEz = new JButton("Ez");
+		ErosketaEz.setBounds(619, 418, 242, 59);
+		Content.add(ErosketaEz);
 		
-		JLabel lblNewLabel_1 = new JLabel("                                                                                                ");
-		Content.add(lblNewLabel_1, BorderLayout.EAST);
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(428, 58, 379, 37);
+		Content.add(lblNewLabel);
 	}
 }
