@@ -6,9 +6,9 @@ import java.util.Objects;
 public class Sarrera {
 
 	private Saioa saioa;
+	private int sarreraKant;
 	private double prezioa;
 	private String mota;
-	private int sarreraKant;
 
 	// --------------------Konstruktorea--------------------//
 	public Sarrera(Saioa saioa, LocalDate data, double prezioa, String mota) {
@@ -22,6 +22,10 @@ public class Sarrera {
 	public void setSaioa(Saioa saioa) {
 		this.saioa = saioa;
 	}
+	
+	public void setSarreraKant(int sarreraKant) {
+		this.sarreraKant = sarreraKant;
+	}
 
 	public void setPrezioa(double prezioa) {
 		this.prezioa = prezioa;
@@ -31,15 +35,15 @@ public class Sarrera {
 		this.mota = mota;
 	}
 
-	public void setSarreraKant(int sarreraKant) {
-		this.sarreraKant = sarreraKant;
-	}
-
 	// --------------------Set--------------------//
 
 	// --------------------Get--------------------//
 	public Saioa getSaioa() {
 		return saioa;
+	}
+	
+	public int getSarreraKant() {
+		return sarreraKant;
 	}
 
 	public double getPrezioa() {
@@ -50,17 +54,14 @@ public class Sarrera {
 		return mota;
 	}
 
-	public int getSarreraKant() {
-		return sarreraKant;
-	}
 	// --------------------Get--------------------//
 
 	// --------------------toString--------------------//
 
 	@Override
 	public String toString() {
-		return "Sarrera [saioa=" + saioa + ", prezioa=" + prezioa + ", mota=" + mota
-				+ ", sarreraKant=" + sarreraKant + "]";
+		return "Sarrera [saioa=" + saioa +  ", sarreraKant=" + sarreraKant + ", prezioa=" + prezioa + ", mota=" + mota
+				+ "]";
 	}
 
 	// --------------------toString--------------------//

@@ -7,9 +7,9 @@ public class Erosketak {
 
 	private Bezeroa bezeroa;
 	private LocalDate data;
+	private int sarreraKant;
 	private double deskontua;
 	private double dirutotala;
-	private int sarreraKant;
 
 	// --------------------Konstruktorea--------------------//
 	public Erosketak(Bezeroa bezeroa, LocalDate data) {
@@ -26,6 +26,10 @@ public class Erosketak {
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
+	
+	public void setSarreraKant(int sarreraKant) {
+		this.sarreraKant = sarreraKant;
+	}
 
 	public void setDeskontua(double deskontua) {
 		this.deskontua = deskontua;
@@ -33,10 +37,6 @@ public class Erosketak {
 
 	public void setDirutotala(double dirutotala) {
 		this.dirutotala = dirutotala;
-	}
-
-	public void setSarreraKant(int sarreraKant) {
-		this.sarreraKant = sarreraKant;
 	}
 
 	// --------------------Set--------------------//
@@ -49,6 +49,10 @@ public class Erosketak {
 	public LocalDate getData() {
 		return data;
 	}
+	
+	public int getSarreraKant() {
+		return sarreraKant;
+	}
 
 	public double getDeskontua() {
 		return deskontua;
@@ -58,17 +62,14 @@ public class Erosketak {
 		return dirutotala;
 	}
 
-	public int getSarreraKant() {
-		return sarreraKant;
-	}
 	// --------------------Get--------------------//
 
 	// --------------------toString--------------------//
 
 	@Override
 	public String toString() {
-		return "Erosketak [bezeroa=" + bezeroa + ", data=" + data + ", deskontua=" + deskontua + ", dirutotala="
-				+ dirutotala + ", sarreraKant=" + sarreraKant + "]";
+		return "Erosketak [bezeroa=" + bezeroa + ", data=" + data + ", sarreraKant=" + sarreraKant +  ", deskontua=" + deskontua + ", dirutotala="
+				+ dirutotala + "]";
 	}
 
 	// --------------------toString--------------------//

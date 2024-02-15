@@ -191,10 +191,11 @@ public class Testak {
 		
 		erosketa.setBezeroa(bezero);
 		erosketa.setData(dataFroga);
+		erosketa.setSarreraKant(1);
 		erosketa.setDeskontua(1);
 		erosketa.setDirutotala(1);
 		
-		assertEquals("Erosketak [bezeroa=" + bezero.toString() + ", data=" + dataFroga +", deskontua=1.0, dirutotala=1.0]", erosketa.toString());
+		assertEquals("Erosketak [bezeroa=" + bezero.toString() + ", data=" + dataFroga +", sarreraKant=1, deskontua=1.0, dirutotala=1.0]", erosketa.toString());
 	}
 	
 	@Test
@@ -219,7 +220,7 @@ public class Testak {
 		saio.setOrdua(orduFroga);
 		saio.setEguna(dataFroga);
 		
-		assertEquals("Saioa [filma=" + pelikula.toString() + ", aretoa=" + areto.toString() + ", ordua=" + orduFroga + ", eguna=" + dataFroga + "]", saio.toString());		
+		assertEquals("Saioa [pelikula=" + pelikula.toString() + ", aretoa=" + areto.toString() + ", ordua=" + orduFroga + ", eguna=" + dataFroga + "]", saio.toString());		
 	}
 	
 	@Test

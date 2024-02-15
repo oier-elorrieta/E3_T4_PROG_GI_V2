@@ -71,7 +71,7 @@ public class Saioa {
 	
 	@Override
 	public String toString() {
-		return "Saioa [aretoa=" + aretoa + ", ordua=" + ordua + ", eguna=" + eguna + ", pelikula=" + pelikula + "]";
+		return "Saioa [pelikula=" + pelikula + ", aretoa=" + aretoa + ", ordua=" + ordua + ", eguna=" + eguna + "]";
 	}
 
 
