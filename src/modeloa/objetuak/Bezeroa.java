@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Bezeroa {
 	
+	private String idBezeroa;
 	private String NAN;
 	private String izena;
 	private String abizena;
@@ -13,7 +14,8 @@ public class Bezeroa {
 	private String sexua;
 	
 	//--------------------Konstruktorea--------------------//
-	public Bezeroa(String NAN, String izena, String abizena, String erabiltzailea, String pasahitza, int txartela, String sexua) {
+	public Bezeroa(String idBezeroa ,String NAN, String izena, String abizena, String erabiltzailea, String pasahitza, int txartela, String sexua) {
+		this.idBezeroa = idBezeroa;
 		this.NAN = NAN;
 		this.izena = izena;
 		this.abizena = abizena;
@@ -26,10 +28,14 @@ public class Bezeroa {
 	
 	
 	//--------------------Set--------------------//
+	public void setIdBezeroa(String idBezeroa) {
+		this.idBezeroa = idBezeroa;
+	}
+	
 	public void setNAN(String NAN) {
 		this.NAN = NAN;
 	}
-	
+
 	public void setIzena(String izena) {
 		this.izena = izena;
 	}
@@ -57,6 +63,10 @@ public class Bezeroa {
 	
 	
 	//--------------------Get--------------------//
+	public String getIdBezeroa() {
+		return idBezeroa;
+	}
+	
 	public String getNAN() {
 		return NAN;
 	}
@@ -90,16 +100,16 @@ public class Bezeroa {
 	//--------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Bezeroa [NAN=" + NAN + ", izena=" + izena + ", abizena=" + abizena + ", erabiltzailea=" + erabiltzailea
+		return "Bezeroa [idBezeroa=" + idBezeroa + "NAN=" + NAN + ", izena=" + izena + ", abizena=" + abizena + ", erabiltzailea=" + erabiltzailea
 				+ ", pasahitza=" + pasahitza + ", txartela=" + txartela + ", sexua=" + sexua + "]";
 	}
 	//--------------------toString--------------------//
-
+	
 	
 	//--------------------Equals--------------------//
 	@Override
 	public int hashCode() {
-		return Objects.hash(NAN, abizena, erabiltzailea, izena, pasahitza, sexua, txartela);
+		return Objects.hash(NAN, abizena, erabiltzailea, idBezeroa, izena, pasahitza, sexua, txartela);
 	}
 
 
@@ -113,10 +123,9 @@ public class Bezeroa {
 			return false;
 		Bezeroa other = (Bezeroa) obj;
 		return Objects.equals(NAN, other.NAN) && Objects.equals(abizena, other.abizena)
-				&& Objects.equals(erabiltzailea, other.erabiltzailea) && Objects.equals(izena, other.izena)
-				&& Objects.equals(pasahitza, other.pasahitza) && Objects.equals(sexua, other.sexua)
-				&& txartela == other.txartela;
+				&& Objects.equals(erabiltzailea, other.erabiltzailea) && idBezeroa == other.idBezeroa
+				&& Objects.equals(izena, other.izena) && Objects.equals(pasahitza, other.pasahitza)
+				&& Objects.equals(sexua, other.sexua) && txartela == other.txartela;
 	}
 	//--------------------Equals--------------------//
-	
 }
