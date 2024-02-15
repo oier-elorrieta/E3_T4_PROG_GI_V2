@@ -1,6 +1,7 @@
 package modeloa.dao;
 
 import modeloa.db.Konexioa;
+import modeloa.db.Kontzultak;
 import modeloa.objetuak.Bezeroa;
 
 import java.sql.PreparedStatement;
@@ -20,12 +21,11 @@ public class BezeroaDao {
 
         Konexioa.konexioa(); // Asegúrate de tener esta llamada para establecer la conexión
 
-        String query = "SELECT idBezero, NAN, izena, abizena, erabiltzailea, pasahitza, txartela, tlf_zbk, sexua FROM BEZEROA";
-
-        try (PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(query);
+        try (PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.bezeroa);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
+            	String id = resultSet.getString("id");
                 String NAN = resultSet.getString("NAN");
                 String izena = resultSet.getString("izena");
                 String abizena = resultSet.getString("abizena");
@@ -34,7 +34,7 @@ public class BezeroaDao {
                 int txartela = resultSet.getInt("txartela");
                 String sexua = resultSet.getString("sexua");
 
-                Bezeroa bezeroa = new Bezeroa(NAN, izena, abizena, erabiltzailea, pasahitza, txartela, sexua);
+                Bezeroa bezeroa = new Bezeroa(id, NAN, izena, abizena, erabiltzailea, pasahitza, txartela, sexua);
                 bezeroak.add(bezeroa);
             }
 
