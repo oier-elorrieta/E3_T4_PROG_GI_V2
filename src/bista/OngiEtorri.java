@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import modeloa.Aldagaiak;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JProgressBar;
@@ -27,7 +29,7 @@ public class OngiEtorri extends JFrame {
     private int barraBat = 0;
 
     public OngiEtorri() {
-    	setIconImage(Toolkit.getDefaultToolkit().getImage(OngiEtorri.class.getResource("/img/logoa/logoa_karratu.png")));
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(OngiEtorri.class.getResource(Aldagaiak.ikonoLogo)));
     	setTitle("Elorrieta Film");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 600, 380);
@@ -43,7 +45,7 @@ public class OngiEtorri extends JFrame {
 	
 		        JLabel lblNewLabel = new JLabel("");
 		        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		        lblNewLabel.setIcon(new ImageIcon(OngiEtorri.class.getResource("/img/logoa/logoa_karratu.png")));
+		        lblNewLabel.setIcon(new ImageIcon(OngiEtorri.class.getResource("/modeloa/img/logoa/logoa_karratu.png")));
 		        Irudia.add(lblNewLabel, BorderLayout.CENTER);
 
 	        pProgreso = new JPanel();

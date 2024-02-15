@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import kontrolatzaile.Funtzioak;
+import modeloa.Aldagaiak;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -14,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class Login extends JFrame {
 
@@ -42,6 +47,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource(Aldagaiak.ikonoLogo)));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();
@@ -72,6 +78,8 @@ public class Login extends JFrame {
 		JButton btnLog = new JButton("Log");
 		btnLog.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Funtzioak.login();
+				dispose();
 			}
 		});
 		btnLog.setBounds(558, 352, 89, 23);
@@ -84,6 +92,7 @@ public class Login extends JFrame {
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
 			}
 		});
 		btnExit.setBounds(657, 352, 89, 23);
