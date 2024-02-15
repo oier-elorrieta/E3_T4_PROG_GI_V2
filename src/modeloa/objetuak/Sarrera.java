@@ -12,6 +12,11 @@ public class Sarrera {
 	private String mota;
 
 	// --------------------Konstruktorea--------------------//
+	public Sarrera(int idSarrera, LocalDate data, double prezioa, String mota) {
+		this.idSarrera = idSarrera;
+		this.prezioa = prezioa;
+		this.mota = mota;
+	}
 	public Sarrera(int idSarrera, Saioa saioa, LocalDate data, double prezioa, String mota) {
 		this.idSarrera = idSarrera;
 		this.saioa = saioa;

@@ -15,7 +15,6 @@ import java.awt.Toolkit;
 
 import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
-import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;

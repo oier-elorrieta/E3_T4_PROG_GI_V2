@@ -27,14 +27,12 @@ public class SaioaDao {
 
             while (resultSet.next()) {
                 int idSaioa = resultSet.getInt("idSaioa");
-                Aretoa aretoa = AretoaDao.lortuAretoa(resultSet.getString("aretoa_id"));
+                String idAretoa = resultSet.getString("aretoa_id");
                 LocalTime ordua = resultSet.getTime("ordua").toLocalTime();
                 LocalDate eguna = resultSet.getDate("eguna").toLocalDate();
-                Pelikula pelikula = PelikulaDao.lortuPelikula(resultSet.getInt("pelikula_id"));
+                int idPelikula = resultSet.getInt("pelikula_id");
 
                 Saioa saioa = new Saioa(idSaioa, ordua, eguna);
-                saioa.setAretoa(aretoa);
-                saioa.setPelikula(pelikula);
                 saioak.add(saioa);
             }
 
@@ -46,4 +44,5 @@ public class SaioaDao {
 
         return saioak;
     }
+
 }

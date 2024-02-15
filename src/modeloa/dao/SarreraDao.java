@@ -25,12 +25,12 @@ public class SarreraDao {
 
             while (resultSet.next()) {
                 int idSarrera = resultSet.getInt("idSarrera");
-                Saioa saioa = SaioaDao.lortuSaioa(resultSet.getInt("saioa_id"));
+                int idSaioa = resultSet.getInt("saioa_id");
                 int sarreraKant = resultSet.getInt("sarrera_kant");
                 double prezioa = resultSet.getDouble("prezioa");
                 String mota = resultSet.getString("mota");
 
-                Sarrera sarrera = new Sarrera(idSarrera, saioa, LocalDate.now(), prezioa, mota);
+                Sarrera sarrera = new Sarrera(idSarrera, LocalDate.now(), prezioa, mota);
                 sarrera.setSarreraKant(sarreraKant);
                 sarrerak.add(sarrera);
             }

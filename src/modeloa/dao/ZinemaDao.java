@@ -28,11 +28,7 @@ public class ZinemaDao {
                 String izena = resultSet.getString("izena");
                 String helbidea = resultSet.getString("helbidea");
 
-                // Obtener listas relacionadas
-                ArrayList<Aretoa> aretoList = AretoaDao.lortuAretoakZinemarak(idZinema);
-                ArrayList<Saioa> saioList = SaioaDao.lortuSaioakZinemarak(idZinema);
-
-                Zinema zinema = new Zinema(idZinema, izena, helbidea, aretoList, saioList);
+                Zinema zinema = new Zinema(idZinema, izena, helbidea);
                 zinemak.add(zinema);
             }
 

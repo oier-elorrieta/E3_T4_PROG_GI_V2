@@ -12,6 +12,11 @@ public class Zinema {
 	private ArrayList<Saioa> saioList;
 
 	// --------------------Konstruktorea--------------------//
+	public Zinema(String idZinema, String izena, String helbidea) {
+		this.idZinema = idZinema;
+		this.izena = izena;
+		this.helbidea = helbidea;
+	}
 	public Zinema(String idZinema, String izena, String helbidea, ArrayList<Aretoa> aretoList, ArrayList<Saioa> saioList) {
 		this.idZinema = idZinema;
 		this.izena = izena;

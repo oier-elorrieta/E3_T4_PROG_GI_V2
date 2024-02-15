@@ -32,9 +32,7 @@ public class ErosketakDao {
                 double dirutotala = resultSet.getDouble("dirutotala");
                 String mota = resultSet.getString("mota");
 
-                Bezeroa bezeroa = BezeroaDao.lortuBezeroa(idBezero); // Necesitarás implementar un método similar en la clase BezeroaDao
-
-                Erosketak erosketa = new Erosketak(idErosketak, bezeroa, data);
+                Erosketak erosketa = new Erosketak(idErosketak, data);
                 erosketa.setSarreraKant(sarreraKant);
                 erosketa.setDeskontua(deskontua);
                 erosketa.setDirutotala(dirutotala);
