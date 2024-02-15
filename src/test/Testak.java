@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import kontrolatzaile.main;
 import modeloa.objetuak.Aretoa;
 import modeloa.objetuak.Bezeroa;
 import modeloa.objetuak.Erosketak;
@@ -55,14 +56,14 @@ public class Testak {
 		karteldegiList = new ArrayList<>();
 		karteldegiList.add(karteldegi);
 		 
-		bezero = new Bezeroa("123456789M", "Mikelon", "Rodriguez", "Mikelodeon", "Mikel123", 123456789, "Emakumea");
-		pelikula = new Pelikula("Cars", "Aventura", 169);
-		erosketa = new Erosketak(bezero, data);
+		bezero = new Bezeroa("B01", "123456789M", "Mikelon", "Rodriguez", "Mikelodeon", "Mikel123", 123456789, "Emakumea");
+		pelikula = new Pelikula(1, "Cars", "Aventura", 169);
+		erosketa = new Erosketak(1, bezero, data);
 		karteldegi = new Karteldegia(pelikulaList);
-		saio = new Saioa(time, data);
-		areto = new Aretoa("Areto 1");
-		sarrera = new Sarrera(saio, data, 20, "Normala");
-		zinema = new Zinema("Elorrieta", "Agirre Lehendakari", aretoList, saioList);
+		saio = new Saioa(1, time, data);
+		areto = new Aretoa("A01", "Areto 1");
+		sarrera = new Sarrera(1, saio, data, 20, "Normala");
+		zinema = new Zinema("Z01", "Elorrieta", "Agirre Lehendakari", aretoList, saioList);
 	}
 
 	@Test
@@ -260,8 +261,8 @@ public class Testak {
 
 	@Test
     public void testHashCodeAretoa() {
-        Aretoa aretoa1 = new Aretoa("Sala A");
-        Aretoa aretoa2 = new Aretoa("Sala A");
+        Aretoa aretoa1 = new Aretoa("A01", "Sala A");
+        Aretoa aretoa2 = new Aretoa("A01", "Sala A");
 
         assertEquals(aretoa1.hashCode(), aretoa2.hashCode());
     }
@@ -274,27 +275,27 @@ public class Testak {
     public void test_AretoEquals() {
     	//ArrayList<Saioa> saioList1 = new ArrayList<>();
     	
-        Aretoa aretoa = new Aretoa("izena");
+        Aretoa aretoa = new Aretoa("A01", "izena");
         assertTrue(aretoa.equals(aretoa));
     }
 
     @Test
     public void test_AretoBatzuk() {
-        Aretoa aretoa1 = new Aretoa("izena");
-        Aretoa aretoa2 = new Aretoa("izena");
+        Aretoa aretoa1 = new Aretoa("A01", "izena");
+        Aretoa aretoa2 = new Aretoa("A01", "izena");
 
         assertTrue(aretoa1.equals(aretoa2) && aretoa2.equals(aretoa1));
     } 
 
     @Test
     public void test_AretoNuloa() {
-        Aretoa aretoa = new Aretoa("izena");
+        Aretoa aretoa = new Aretoa("A01", "izena");
         assertFalse(aretoa.equals(null));
     }
 
     @Test
     public void test_AretoObjetua() {
-        Aretoa aretoa = new Aretoa("izena");
+        Aretoa aretoa = new Aretoa("A01", "izena");
         assertFalse(aretoa.equals("Not an Aretoa object"));
     }
 
@@ -302,8 +303,8 @@ public class Testak {
     public void test_AretoEzberdina() {
     	//ArrayList<Saioa> saioList2 = new ArrayList<>();
     	
-        Aretoa aretoa1 = new Aretoa("izena1");
-        Aretoa aretoa2 = new Aretoa("izena2");
+        Aretoa aretoa1 = new Aretoa("A01", "izena1");
+        Aretoa aretoa2 = new Aretoa("A02", "izena2");
         assertFalse(aretoa1.equals(aretoa2));
     }
     
@@ -313,8 +314,8 @@ public class Testak {
 
     @Test
     public void testHashCodeBezeroa() {
-        Bezeroa bezeroa1 = new Bezeroa("12345678A", "Nombre", "Apellido", "usuario1", "password1", 1234567890, "Masculino");
-        Bezeroa bezeroa2 = new Bezeroa("12345678A", "Nombre", "Apellido", "usuario1", "password1", 1234567890, "Masculino");
+        Bezeroa bezeroa1 = new Bezeroa("B01", "12345678A", "Nombre", "Apellido", "usuario1", "password1", 1234567890, "Masculino");
+        Bezeroa bezeroa2 = new Bezeroa("B01", "12345678A", "Nombre", "Apellido", "usuario1", "password1", 1234567890, "Masculino");
 
         assertEquals(bezeroa1.hashCode(), bezeroa2.hashCode()); 
     }
@@ -325,35 +326,35 @@ public class Testak {
     
     @Test
     public void test_BezeroEquals() {
-        Bezeroa bezeroa = new Bezeroa("12345678A", "izena", "abizena", "erabiltzailea", "pasahitza", 0, "sexua");
+        Bezeroa bezeroa = new Bezeroa("B01", "12345678A", "izena", "abizena", "erabiltzailea", "pasahitza", 0, "sexua");
         assertTrue(bezeroa.equals(bezeroa));
     }
 
     @Test
     public void test_BezeroBatzuk() {
-        Bezeroa bezeroa1 = new Bezeroa("12345678A", "izena", "abizena", "erabiltzailea", "pasahitza", 0, "sexua");
-        Bezeroa bezeroa2 = new Bezeroa("12345678A", "izena", "abizena", "erabiltzailea", "pasahitza", 0, "sexua");
-        Bezeroa bezeroa3 = new Bezeroa("12345678A", "izena", "abizena", "erabiltzailea", "pasahitza", 0, "sexua");
+        Bezeroa bezeroa1 = new Bezeroa("B01", "12345678A", "izena", "abizena", "erabiltzailea", "pasahitza", 0, "sexua");
+        Bezeroa bezeroa2 = new Bezeroa("B01", "12345678A", "izena", "abizena", "erabiltzailea", "pasahitza", 0, "sexua");
+        Bezeroa bezeroa3 = new Bezeroa("B01", "12345678A", "izena", "abizena", "erabiltzailea", "pasahitza", 0, "sexua");
 
         assertTrue(bezeroa1.equals(bezeroa2) && bezeroa2.equals(bezeroa3) && bezeroa1.equals(bezeroa3));
     }
 
     @Test
     public void test_BezeroNuloa() {
-        Bezeroa bezeroa = new Bezeroa("12345678A", "izena", "abizena", "erabiltzailea", "pasahitza", 0, "sexua");
+        Bezeroa bezeroa = new Bezeroa("B01", "12345678A", "izena", "abizena", "erabiltzailea", "pasahitza", 0, "sexua");
         assertFalse(bezeroa.equals(null));
     }
 
     @Test
     public void test_BezeroaObjetua() {
-        Bezeroa bezeroa = new Bezeroa("12345678A", "izena", "abizena", "erabiltzailea", "pasahitza", 0, "sexua");
+        Bezeroa bezeroa = new Bezeroa("B01", "12345678A", "izena", "abizena", "erabiltzailea", "pasahitza", 0, "sexua");
         assertFalse(bezeroa.equals("Not a Bezeroa object"));
     }
 
     @Test
     public void test_BezeroaEzberdina() {
-        Bezeroa bezeroa1 = new Bezeroa("12345678A", "izena", "abizena", "erabiltzailea", "pasahitza", 0, "sexua");
-        Bezeroa bezeroa2 = new Bezeroa("12345678A", "paco", "perez", "pacper", "1234", 0, "sexua");
+        Bezeroa bezeroa1 = new Bezeroa("B01", "12345678A", "izena", "abizena", "erabiltzailea", "pasahitza", 0, "sexua");
+        Bezeroa bezeroa2 = new Bezeroa("B02", "12345678A", "paco", "perez", "pacper", "1234", 0, "sexua");
         assertFalse(bezeroa1.equals(bezeroa2));
     }
 
@@ -365,8 +366,8 @@ public class Testak {
     public void testHashCodeErosketa() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
     	
-        Erosketak erosketak1 = new Erosketak(bezero, dataFroga);
-        Erosketak erosketak2 = new Erosketak(bezero, dataFroga);
+        Erosketak erosketak1 = new Erosketak(1, bezero, dataFroga);
+        Erosketak erosketak2 = new Erosketak(1, bezero, dataFroga);
 
         assertEquals(erosketak1.hashCode(), erosketak2.hashCode());
     }
@@ -379,7 +380,7 @@ public class Testak {
     public void test_ErosketaEquals() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     
-        Erosketak erosketak = new Erosketak(bezero, dataFroga);
+        Erosketak erosketak = new Erosketak(1, bezero, dataFroga);
         assertTrue(erosketak.equals(erosketak));
     }
 
@@ -387,9 +388,9 @@ public class Testak {
     public void test_ErosketakBatzuk() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     	
-        Erosketak erosketak1 = new Erosketak(bezero, dataFroga);
-        Erosketak erosketak2 = new Erosketak(bezero, dataFroga);
-        Erosketak erosketak3 = new Erosketak(bezero, dataFroga);
+        Erosketak erosketak1 = new Erosketak(1, bezero, dataFroga);
+        Erosketak erosketak2 = new Erosketak(1, bezero, dataFroga);
+        Erosketak erosketak3 = new Erosketak(1, bezero, dataFroga);
 
         assertTrue(erosketak1.equals(erosketak2) && erosketak2.equals(erosketak3) && erosketak1.equals(erosketak3));
     }
@@ -398,7 +399,7 @@ public class Testak {
     public void test_ErosketaNuloa() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     	
-        Erosketak erosketak = new Erosketak(bezero, dataFroga);
+        Erosketak erosketak = new Erosketak(1, bezero, dataFroga);
         assertFalse(erosketak.equals(null));
     }
 
@@ -406,7 +407,7 @@ public class Testak {
     public void test_ErosketaObjetua() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     	
-        Erosketak erosketak = new Erosketak(bezero, dataFroga);
+        Erosketak erosketak = new Erosketak(1, bezero, dataFroga);
         assertFalse(erosketak.equals("Not an Erosketak object"));
     }
 
@@ -415,8 +416,8 @@ public class Testak {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     	LocalDate dataFrogaBI = LocalDate.of(2023, 5, 23);	
     	
-        Erosketak erosketak1 = new Erosketak(bezero, dataFroga);
-        Erosketak erosketak2 = new Erosketak(bezero, dataFrogaBI);
+        Erosketak erosketak1 = new Erosketak(1, bezero, dataFroga);
+        Erosketak erosketak2 = new Erosketak(2, bezero, dataFrogaBI);
         assertFalse(erosketak1.equals(erosketak2));
     }
  
@@ -426,8 +427,8 @@ public class Testak {
     
     @Test
     public void testHashCodePelikula() {
-        Pelikula pelikula1 = new Pelikula("Titanic", "Accion", 120);
-        Pelikula pelikula2 = new Pelikula("Titanic", "Accion", 120);
+        Pelikula pelikula1 = new Pelikula(1, "Titanic", "Accion", 120);
+        Pelikula pelikula2 = new Pelikula(1, "Titanic", "Accion", 120);
 
         assertEquals(pelikula1.hashCode(), pelikula2.hashCode());
     }
@@ -438,35 +439,35 @@ public class Testak {
 
     @Test
     public void test_PelikulaEquals() {
-        Pelikula pelikula = new Pelikula("izena", "generoa", 120);
+        Pelikula pelikula = new Pelikula(1, "izena", "generoa", 120);
         assertTrue(pelikula.equals(pelikula));
     }
 
     @Test
     public void test_PelikulaBatzuk() {
-        Pelikula pelikula1 = new Pelikula("izena", "generoa", 120);
-        Pelikula pelikula2 = new Pelikula("izena", "generoa", 120);
-        Pelikula pelikula3 = new Pelikula("izena", "generoa", 120);
+        Pelikula pelikula1 = new Pelikula(1, "izena", "generoa", 120);
+        Pelikula pelikula2 = new Pelikula(1, "izena", "generoa", 120);
+        Pelikula pelikula3 = new Pelikula(1, "izena", "generoa", 120);
 
         assertTrue(pelikula1.equals(pelikula2) && pelikula2.equals(pelikula3) && pelikula1.equals(pelikula3));
     }
 
     @Test
     public void test_PelikulaNuloa() {
-        Pelikula pelikula = new Pelikula("izena", "generoa", 120); 
+        Pelikula pelikula = new Pelikula(1, "izena", "generoa", 120); 
         assertFalse(pelikula.equals(null));
     }
 
     @Test
     public void test_PelikulaObjetua() {
-        Pelikula pelikula = new Pelikula("izena", "generoa", 120);
+        Pelikula pelikula = new Pelikula(1, "izena", "generoa", 120);
         assertFalse(pelikula.equals("Not a Pelikula object"));
     }
 
     @Test
     public void test_PelikulaEzberdina() {
-        Pelikula pelikula1 = new Pelikula("izena1", "generoa", 120);
-        Pelikula pelikula2 = new Pelikula("izena2", "generoa", 120);
+        Pelikula pelikula1 = new Pelikula(1, "izena1", "generoa", 120);
+        Pelikula pelikula2 = new Pelikula(2, "izena2", "generoa", 120);
         assertFalse(pelikula1.equals(pelikula2));
     }
     
@@ -476,8 +477,8 @@ public class Testak {
     
     @Test
     public void testHashCodeSaioa() {
-        Saioa saioa1 = new Saioa(LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
-        Saioa saioa2 = new Saioa(LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
+        Saioa saioa1 = new Saioa(1, LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
+        Saioa saioa2 = new Saioa(1, LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
 
         assertEquals(saioa1.hashCode(), saioa2.hashCode());
     }
@@ -488,35 +489,35 @@ public class Testak {
 
     @Test
     public void test_SaioaEquals() {
-        Saioa saioa = new Saioa(LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
+        Saioa saioa = new Saioa(1, LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
         assertTrue(saioa.equals(saioa));
     }
 
     @Test
     public void test_SaioaBatzuk() {
-        Saioa saioa1 = new Saioa(LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
-        Saioa saioa2 = new Saioa(LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
-        Saioa saioa3 = new Saioa(LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
+        Saioa saioa1 = new Saioa(1, LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
+        Saioa saioa2 = new Saioa(1, LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
+        Saioa saioa3 = new Saioa(1, LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
 
         assertTrue(saioa1.equals(saioa2) && saioa2.equals(saioa3) && saioa1.equals(saioa3));
     }
 
     @Test
     public void test_SaioaNuloa() {
-        Saioa saioa = new Saioa(LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
+        Saioa saioa = new Saioa(1, LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
         assertFalse(saioa.equals(null));
     }
 
     @Test
     public void test_SaioaObjetua() {
-        Saioa saioa = new Saioa(LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
+        Saioa saioa = new Saioa(1, LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
         assertFalse(saioa.equals("Not a Saioa object"));
     }
 
     @Test
     public void test_SaioaEzberdina() {
-        Saioa saioa1 = new Saioa(LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
-        Saioa saioa2 = new Saioa(LocalTime.of(20, 40), LocalDate.of(2024, 7, 25));
+        Saioa saioa1 = new Saioa(1, LocalTime.of(10, 30), LocalDate.of(2024, 2, 20));
+        Saioa saioa2 = new Saioa(2, LocalTime.of(20, 40), LocalDate.of(2024, 7, 25));
         assertFalse(saioa1.equals(saioa2));
     }
     
@@ -529,8 +530,8 @@ public class Testak {
     public void testHashCodeSarrera() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
     	
-        Sarrera sarrera1 = new Sarrera(saio, dataFroga, 15.0, "Normal");
-        Sarrera sarrera2 = new Sarrera(saio, dataFroga, 15.0, "Normal");
+        Sarrera sarrera1 = new Sarrera(1, saio, dataFroga, 15.0, "Normal");
+        Sarrera sarrera2 = new Sarrera(1, saio, dataFroga, 15.0, "Normal");
 
         assertEquals(sarrera1.hashCode(), sarrera2.hashCode());
     }
@@ -543,7 +544,7 @@ public class Testak {
     public void test_SarreraEquals() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
     	
-        Sarrera sarrera = new Sarrera(saio, dataFroga, 10.0, "mota");
+        Sarrera sarrera = new Sarrera(1, saio, dataFroga, 10.0, "mota");
         assertTrue(sarrera.equals(sarrera));
     }
 
@@ -551,9 +552,9 @@ public class Testak {
     public void test_SarreraBatzuk() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 
-        Sarrera sarrera1 = new Sarrera(saio, dataFroga, 10.0, "mota");
-        Sarrera sarrera2 = new Sarrera(saio, dataFroga, 10.0, "mota");
-        Sarrera sarrera3 = new Sarrera(saio, dataFroga, 10.0, "mota");
+        Sarrera sarrera1 = new Sarrera(1, saio, dataFroga, 10.0, "mota");
+        Sarrera sarrera2 = new Sarrera(1, saio, dataFroga, 10.0, "mota");
+        Sarrera sarrera3 = new Sarrera(1, saio, dataFroga, 10.0, "mota");
 
         assertTrue(sarrera1.equals(sarrera2) && sarrera2.equals(sarrera3) && sarrera1.equals(sarrera3));
     }
@@ -562,7 +563,7 @@ public class Testak {
     public void test_SarreraNuloa() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 
-        Sarrera sarrera = new Sarrera(saio, dataFroga, 10.0, "mota");
+        Sarrera sarrera = new Sarrera(1, saio, dataFroga, 10.0, "mota");
         assertFalse(sarrera.equals(null));
     }
 
@@ -570,7 +571,7 @@ public class Testak {
     public void test_SarreraObjetua() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 
-        Sarrera sarrera = new Sarrera(saio, dataFroga, 10.0, "mota");
+        Sarrera sarrera = new Sarrera(1, saio, dataFroga, 10.0, "mota");
         assertFalse(sarrera.equals("Not a Sarrera object"));
     }
 
@@ -578,8 +579,8 @@ public class Testak {
     public void test_SarreraEzberdina() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 
-        Sarrera sarrera1 = new Sarrera(saio, dataFroga, 10.0, "mota");
-        Sarrera sarrera2 = new Sarrera(saio, dataFroga, 11.0, "mota");
+        Sarrera sarrera1 = new Sarrera(1, saio, dataFroga, 10.0, "mota");
+        Sarrera sarrera2 = new Sarrera(2, saio, dataFroga, 11.0, "mota");
         assertFalse(sarrera1.equals(sarrera2));
     }
     
@@ -589,8 +590,8 @@ public class Testak {
     
     @Test
     public void testHashCodeZinema() {
-        Zinema zinema1 = new Zinema("Cinesa", "Bilbao, Gran Via", aretoList, saioList);
-        Zinema zinema2 = new Zinema("Cinesa", "Bilbao, Gran Via", aretoList, saioList);
+        Zinema zinema1 = new Zinema("Z01", "Cinesa", "Bilbao, Gran Via", aretoList, saioList);
+        Zinema zinema2 = new Zinema("Z01", "Cinesa", "Bilbao, Gran Via", aretoList, saioList);
 
         assertEquals(zinema1.hashCode(), zinema2.hashCode());
     }
@@ -601,34 +602,34 @@ public class Testak {
 
     @Test
     public void test_ZinemaEquals() {
-        Zinema zinema = new Zinema("Cinesa", "Gran Via", aretoList, saioList);
+        Zinema zinema = new Zinema("Z01", "Cinesa", "Gran Via", aretoList, saioList);
         assertTrue(zinema.equals(zinema));
     }
 
     @Test
     public void test_ZinemaBatzuk() {
-        Zinema zinema1 = new Zinema("Cinesa", "Gran Via", aretoList, saioList);
-        Zinema zinema2 = new Zinema("Cinesa", "Gran Via", aretoList, saioList);
+        Zinema zinema1 = new Zinema("Z01", "Cinesa", "Gran Via", aretoList, saioList);
+        Zinema zinema2 = new Zinema("Z01", "Cinesa", "Gran Via", aretoList, saioList);
 
         assertTrue(zinema1.equals(zinema2) && zinema2.equals(zinema1));
     } 
 
     @Test
     public void test_ZinemaNuloa() {
-        Zinema zinema = new Zinema("Cinesa", "Gran Via", aretoList, saioList);
+        Zinema zinema = new Zinema("Z01", "Cinesa", "Gran Via", aretoList, saioList);
         assertFalse(zinema.equals(null));
     }
 
     @Test
     public void test_ZinemaObjetua() {
-        Zinema zinema = new Zinema("Cinesa", "Gran Via", aretoList, saioList);
+        Zinema zinema = new Zinema("Z01", "Cinesa", "Gran Via", aretoList, saioList);
         assertFalse(zinema.equals("Not a Zinema object"));
     }
 
     @Test
     public void test_ZinemaEzberdina() {
-        Zinema zinema1 = new Zinema("Cinesa", "Gran via", aretoList, saioList);
-        Zinema zinema2 = new Zinema("Yelmos", "Casco Viejo", aretoList, saioList);
+        Zinema zinema1 = new Zinema("Z01", "Cinesa", "Gran via", aretoList, saioList);
+        Zinema zinema2 = new Zinema("Z02", "Yelmos", "Casco Viejo", aretoList, saioList);
         assertFalse(zinema1.equals(zinema2));
     }
     
@@ -677,7 +678,7 @@ public void test_KarteldegiObjetua() {
 @Test
 public void test_KarteldegiEzberdina() {
 	ArrayList<Pelikula> filmList2 = new ArrayList<>();
-    filmList2.add(new Pelikula("CARS", "AVENTURA", 120));
+    filmList2.add(pelikula);
 
     Karteldegia karteldegia1 = new Karteldegia(pelikulaList);
     Karteldegia karteldegia2 = new Karteldegia(filmList2);
