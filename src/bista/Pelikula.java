@@ -18,6 +18,8 @@ import javax.swing.JScrollPane;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Pelikula extends JFrame {
 
@@ -71,12 +73,24 @@ public class Pelikula extends JFrame {
 		panelPelikula.setLayout(new GridLayout(20, 1, 0, 0));
 		
 		JButton btnExpediente = new JButton("Expediente");
+		btnExpediente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		panelPelikula.add(btnExpediente);
 
 		JButton btnGet = new JButton("Get");
+		btnGet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		panelPelikula.add(btnGet);
 
 		JButton btnHereditary = new JButton("Hereditary");
+		btnHereditary.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		panelPelikula.add(btnHereditary);
 
 		JButton btnEl = new JButton("El");
@@ -151,7 +165,8 @@ public class Pelikula extends JFrame {
 		JButton btnLaNovia = new JButton("LaNovia");
 		panelPelikula.add(btnLaNovia);
 
-		JButton btnElPlaneta = new JButton("ElPlaneta");
+		JButton btnElPlaneta = new JButton("");
+		btnElPlaneta.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/simios.jpg")));
 		panelPelikula.add(btnElPlaneta);
 
 		JButton btnAlien = new JButton("");
