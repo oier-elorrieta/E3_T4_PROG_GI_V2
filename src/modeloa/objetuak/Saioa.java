@@ -6,13 +6,15 @@ import java.util.Objects;
 
 public class Saioa {
 	
+	private int idSaioa;
 	private Aretoa aretoa;
 	private LocalTime ordua;
 	private LocalDate eguna;
 	private Pelikula pelikula;
 	
 	//--------------------Konstruktorea--------------------//
-	public Saioa(LocalTime ordua, LocalDate eguna) {
+	public Saioa(int idSaioa , LocalTime ordua, LocalDate eguna) {
+		this.idSaioa = idSaioa;
 		this.ordua = ordua;
 		this.eguna = eguna;
 	}
@@ -20,14 +22,13 @@ public class Saioa {
 	
 	
 	//--------------------Set--------------------//
-
+	public void setIdSaioa(int idSaioa) {
+		this.idSaioa = idSaioa;
+	}
 	
 	public void setAretoa(Aretoa aretoa) {
 		this.aretoa = aretoa;
 	}
-	
-	
-
 
 	public void setOrdua(LocalTime ordua) {
 		this.ordua = ordua;
@@ -40,12 +41,13 @@ public class Saioa {
 	public void setPelikula(Pelikula pelikula) {
 		this.pelikula = pelikula;
 	}
-
 	//--------------------Set--------------------//
 	
 	
 	//--------------------Get--------------------//
-
+	public int getIdSaioa() {
+		return idSaioa;
+	}
 	
 	public Aretoa getAretoa() {
 		return aretoa;
@@ -62,31 +64,24 @@ public class Saioa {
 		return pelikula;
 	}
 	//--------------------Get--------------------//
-
-
 	
 	
 	//--------------------toString--------------------//
 
 	
+	
 	@Override
 	public String toString() {
-		return "Saioa [pelikula=" + pelikula + ", aretoa=" + aretoa + ", ordua=" + ordua + ", eguna=" + eguna + "]";
-	}
-
-
-	
-	
+		return "Saioa [idSaioa=" + idSaioa + ", aretoa=" + aretoa + ", ordua=" + ordua + ", eguna=" + eguna
+				+ ", pelikula=" + pelikula + "]";
+	}	
 	//--------------------toString--------------------//
 
 
 	//--------------------Equals--------------------//
-
-	
-	
 	@Override
 	public int hashCode() {
-		return Objects.hash(aretoa, eguna, ordua, pelikula);
+		return Objects.hash(aretoa, eguna, idSaioa, ordua, pelikula);
 	}
 
 
@@ -99,13 +94,8 @@ public class Saioa {
 		if (getClass() != obj.getClass())
 			return false;
 		Saioa other = (Saioa) obj;
-		return Objects.equals(aretoa, other.aretoa) && Objects.equals(eguna, other.eguna)
+		return Objects.equals(aretoa, other.aretoa) && Objects.equals(eguna, other.eguna) && idSaioa == other.idSaioa
 				&& Objects.equals(ordua, other.ordua) && Objects.equals(pelikula, other.pelikula);
 	}
-	
-	
-	
-	
 	//--------------------Equals--------------------//
-	
 }
