@@ -2,7 +2,6 @@ package modeloa.dao;
 
 import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
-import modeloa.objetuak.Bezeroa;
 import modeloa.objetuak.Erosketak;
 
 import java.sql.PreparedStatement;

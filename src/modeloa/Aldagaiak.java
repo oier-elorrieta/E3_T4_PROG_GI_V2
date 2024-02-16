@@ -13,13 +13,13 @@ import modeloa.objetuak.Zinema;
 public class Aldagaiak {
 	
 	//ArrayListak
-	public static List<Aretoa> areatoak;
-	public static List<Bezeroa> bezeroak;
-	public static List<Erosketak> erosketak;
-	public static List<Pelikula> pelikulak;
-	public static List<Saioa> saioak;
-	public static List<Sarrera> sarrerak;
-	public static List<Zinema> zinemak;
+	public static List<Aretoa> areatoakListDao;
+	public static List<Bezeroa> bezeroakListDao;
+	public static List<Erosketak> erosketakListDao;
+	public static List<Pelikula> pelikulakListDao;
+	public static List<Saioa> saioakListDao;
+	public static List<Sarrera> sarrerakListDao;
+	public static List<Zinema> zinemakListDaos;
 	//ArrayListak
 	
 	public static String ikonoLogo = "/modeloa/img/logoa/logoa_karratu.png";

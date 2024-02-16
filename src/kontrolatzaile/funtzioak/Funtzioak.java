@@ -1,6 +1,9 @@
 package kontrolatzaile.funtzioak;
 
+import java.util.ArrayList;
+
 import bista.Zinema;
+import modeloa.Aldagaiak;
 import modeloa.dao.AretoaDao;
 import modeloa.dao.BezeroaDao;
 import modeloa.dao.ErosketakDao;
@@ -24,7 +27,21 @@ public class Funtzioak {
 		SarreraDao Sarrera = new SarreraDao();
 		ZinemaDao Zinema = new ZinemaDao();
 		
-		Aretoa.lortuAreatoak();
+		Aldagaiak.areatoakListDao = new ArrayList<>();
+		Aldagaiak.bezeroakListDao = new ArrayList<>();
+		Aldagaiak.erosketakListDao = new ArrayList<>();
+		Aldagaiak.pelikulakListDao = new ArrayList<>();
+		Aldagaiak.saioakListDao = new ArrayList<>();
+		Aldagaiak.sarrerakListDao = new ArrayList<>();
+		Aldagaiak.zinemakListDaos = new ArrayList<>();
+		
+		Aldagaiak.areatoakListDao = Aretoa.lortuAreatoak();
+		Aldagaiak.bezeroakListDao = Bezeroa.lortuBezeroak();
+		Aldagaiak.erosketakListDao = Erosketak.lortuErosketak();
+		Aldagaiak.pelikulakListDao = Pelikula.lortuPelikulak();
+		Aldagaiak.saioakListDao = Saioa.lortuSaioak();
+		Aldagaiak.sarrerakListDao = Sarrera.lortuSarrerak();
+		Aldagaiak.zinemakListDaos = Zinema.lortuZinemak();
 	}
 	
 	public static void login() {
