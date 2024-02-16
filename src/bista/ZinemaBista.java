@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 
-public class Zinema extends JFrame {
+public class ZinemaBista extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -25,8 +25,8 @@ public class Zinema extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Zinema() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Zinema.class.getResource(Aldagaiak.ikonoLogo)));
+	public ZinemaBista() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ZinemaBista.class.getResource(Aldagaiak.ikonoLogo)));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();

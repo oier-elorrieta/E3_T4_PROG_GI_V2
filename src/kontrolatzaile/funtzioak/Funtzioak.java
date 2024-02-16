@@ -4,7 +4,7 @@ import java.lang.invoke.StringConcatFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-import bista.Zinema;
+import bista.ZinemaBista;
 import modeloa.Aldagaiak;
 import modeloa.dao.AretoaDao;
 import modeloa.dao.BezeroaDao;
@@ -20,6 +20,7 @@ import modeloa.objetuak.Erosketak;
 import modeloa.objetuak.Pelikula;
 import modeloa.objetuak.Saioa;
 import modeloa.objetuak.Sarrera;
+import modeloa.objetuak.Zinema;
 
 
 public class Funtzioak {
@@ -133,28 +134,22 @@ public class Funtzioak {
 
 	}
 	
-	public static void login(String erabiltzailea, String pasahitza) {
+	public static boolean login(String erabiltzailea, String pasahitza) {
 		if (loginOK(erabiltzailea, pasahitza)) {
 			try {
-				Zinema frame = new Zinema();
+				ZinemaBista frame = new ZinemaBista();
 				frame.setVisible(true);
 			} catch (Exception a) {
 				a.printStackTrace();
 			}
+			return true;
 		}
+		return false;
 	}
 	
 	public static boolean loginOK(String erabiltzailea, String pasahitza) {
 		boolean login = false;
-//		
-//		for (Bezeroa bezeroa : bezeroakListDao) {
-//            if (bezeroa.getErabiltzailea().equals(erabiltzailea) && bezeroa.getPasahitza().equals(pasahitza)) {
-//                // Bezeroa encontrado
-//                login = true;
-//                break; // Puedes salir del bucle una vez que encuentras el bezeroa
-//            }
-//        }
-//		
+
 		for (int i = 0; i < bezeroakList.size() ; i++) {
 
             if (bezeroakList.get(i).getErabiltzailea().equals(erabiltzailea) && bezeroakList.get(i).getPasahitza().equals(pasahitza)) {

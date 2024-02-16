@@ -20,15 +20,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 
-public class Login extends JFrame {
+public class LoginBista extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textFieldErabiltzailea;
 	private JPasswordField passwordFieldPasahitza;
 
-	public Login() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource(Aldagaiak.ikonoLogo)));
+	public LoginBista() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(LoginBista.class.getResource(Aldagaiak.ikonoLogo)));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();
@@ -61,10 +61,7 @@ public class Login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String erabiltzailea = textFieldErabiltzailea.getText();
 				String pasahitza = new String(passwordFieldPasahitza.getPassword());
-				System.out.println(erabiltzailea + pasahitza);
-				Funtzioak.login(erabiltzailea, pasahitza);
-				boolean honartu = false;
-				if (honartu) {
+				if (Funtzioak.login(erabiltzailea, pasahitza)) {
 					dispose();
 				}
 			}

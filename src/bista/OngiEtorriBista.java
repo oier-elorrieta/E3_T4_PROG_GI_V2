@@ -17,7 +17,7 @@ import java.awt.Toolkit;
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 
-public class OngiEtorri extends JFrame {
+public class OngiEtorriBista extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel Logo;
@@ -28,8 +28,8 @@ public class OngiEtorri extends JFrame {
     private JLabel lblEskuinekoMargena;
     private int barraBat = 0;
 
-    public OngiEtorri() {
-    	setIconImage(Toolkit.getDefaultToolkit().getImage(OngiEtorri.class.getResource(Aldagaiak.ikonoLogo)));
+    public OngiEtorriBista() {
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(OngiEtorriBista.class.getResource(Aldagaiak.ikonoLogo)));
     	setTitle("Elorrieta Film");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 600, 380);
@@ -45,7 +45,7 @@ public class OngiEtorri extends JFrame {
 	
 		        JLabel lblNewLabel = new JLabel("");
 		        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		        lblNewLabel.setIcon(new ImageIcon(OngiEtorri.class.getResource(Aldagaiak.ikonoLogo)));
+		        lblNewLabel.setIcon(new ImageIcon(OngiEtorriBista.class.getResource(Aldagaiak.ikonoLogo)));
 		        Irudia.add(lblNewLabel, BorderLayout.CENTER);
 
 	        pProgreso = new JPanel();
@@ -90,7 +90,7 @@ public class OngiEtorri extends JFrame {
 	                                System.out.println("Algo va mal");
 	                            }
 	                        }
-	                        Login frame = new Login();
+	                        LoginBista frame = new LoginBista();
 	                        frame.setVisible(true);
 	                        dispose();  
                         }

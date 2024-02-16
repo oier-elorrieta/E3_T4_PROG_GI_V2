@@ -21,7 +21,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 
-public class Pelikula extends JFrame {
+public class PelikulaBista extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -33,7 +33,7 @@ public class Pelikula extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Pelikula frame = new Pelikula();
+                    PelikulaBista frame = new PelikulaBista();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -46,9 +46,9 @@ public class Pelikula extends JFrame {
     /**
      * Create the frame.
      */
-    public Pelikula() {
+    public PelikulaBista() {
     
-        setIconImage(Toolkit.getDefaultToolkit().getImage(Pelikula.class.getResource(Aldagaiak.ikonoLogo)));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(PelikulaBista.class.getResource(Aldagaiak.ikonoLogo)));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1280, 720);
         contentPane = new JPanel();
@@ -89,7 +89,7 @@ public class Pelikula extends JFrame {
         
         JButton btnNewButton = new JButton("");
         btnNewButton.setBounds(60, 0, 400, 630);
-        btnNewButton.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/2001, Odisea en el espacio.jpg")));
+        btnNewButton.setIcon(new ImageIcon(PelikulaBista.class.getResource("/modeloa/img/karteldegia/2001, Odisea en el espacio.jpg")));
     //    JButton btnNewButton = new JButton("New button");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

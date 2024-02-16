@@ -26,7 +26,7 @@ import javax.swing.JComboBox;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class Saioa extends JFrame {
+public class SaioaBista extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -39,7 +39,7 @@ public class Saioa extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Saioa frame = new Saioa();
+					SaioaBista frame = new SaioaBista();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,8 +51,8 @@ public class Saioa extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Saioa() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Saioa.class.getResource(Aldagaiak.ikonoLogo)));
+	public SaioaBista() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(SaioaBista.class.getResource(Aldagaiak.ikonoLogo)));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();
@@ -78,7 +78,7 @@ public class Saioa extends JFrame {
 		
 		JLabel lblFilmArgazki = new JLabel("");
 		lblFilmArgazki.setHorizontalAlignment(SwingConstants.CENTER);
-		lblFilmArgazki.setIcon(new ImageIcon(Saioa.class.getResource("/modeloa/img/karteldegia/Cazafantasmas.jpg")));
+		lblFilmArgazki.setIcon(new ImageIcon(SaioaBista.class.getResource("/modeloa/img/karteldegia/Cazafantasmas.jpg")));
 		lblFilmArgazki.setBounds(60, 0, 400, 630);
 		Titulua.add(lblFilmArgazki);
 			

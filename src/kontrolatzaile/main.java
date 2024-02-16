@@ -2,7 +2,7 @@ package kontrolatzaile;
 
 import java.awt.EventQueue;
 
-import bista.OngiEtorri;
+import bista.OngiEtorriBista;
 import kontrolatzaile.funtzioak.Funtzioak;
 
 
@@ -13,7 +13,7 @@ public class main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					OngiEtorri frame = new OngiEtorri();
+					OngiEtorriBista frame = new OngiEtorriBista();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

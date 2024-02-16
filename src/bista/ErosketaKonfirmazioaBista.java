@@ -24,7 +24,7 @@ import java.awt.Color;
 import java.awt.Label;
 import javax.swing.JTextField;
 
-public class ErosketaKonfirmazioa extends JFrame {
+public class ErosketaKonfirmazioaBista extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -36,7 +36,7 @@ public class ErosketaKonfirmazioa extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    ErosketaKonfirmazioa frame = new ErosketaKonfirmazioa();
+                    ErosketaKonfirmazioaBista frame = new ErosketaKonfirmazioaBista();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -48,7 +48,7 @@ public class ErosketaKonfirmazioa extends JFrame {
     /**
      * Create the frame.
      */
-    public ErosketaKonfirmazioa() {
+    public ErosketaKonfirmazioaBista() {
     	
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1280, 720);
