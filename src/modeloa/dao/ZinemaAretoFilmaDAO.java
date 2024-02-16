@@ -13,7 +13,7 @@ import modeloa.objetuak.Pelikula;
 public class ZinemaAretoFilmaDAO {
 
 
-    public List<Pelikula> lortuZinemaKartelera() {
+    public List<Pelikula> lortuElorrietaFilmak() {
         List<Pelikula> elorrietaPelikulak = new ArrayList<>();
 
         try {
