@@ -24,7 +24,6 @@ public class ErosketaKonfirmazioa extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
-    private JTextField textField;
 
     /**
      * Launch the application.
@@ -85,11 +84,6 @@ public class ErosketaKonfirmazioa extends JFrame {
         JButton ErosketaEz = new JButton("Ez");
         ErosketaEz.setBounds(619, 418, 242, 59);
         Content.add(ErosketaEz);
-        
-        textField = new JTextField();
-        textField.setBounds(365, 174, 86, 20);
-        Content.add(textField);
-        textField.setColumns(10);
 
     }
 }
