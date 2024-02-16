@@ -17,30 +17,30 @@ public interface Kontzultak {
 	
 	//Egunean argitaratu egingo diren filmak, zinema bakoitzean, eguneratuta.
 	
-	public static String elorrietaFilmSaioak = "SELECT f.izena, z.izena, s.ordua, s.eguna, s.idaretoa "
-			+ "FROM SAIOA s LEFT JOIN ZINEMA z USING (idZinema) LEFT JOIN FILMA f USING (idFilma) "
-			+ "WHERE z.idzinema = \"Z01\" AND s.Eguna >= CURDATE() AND s.Ordua >= CURTIME() "
-			+ "GROUP BY f.izena ORDER by s.Eguna, s.Ordua;";
+	public static String elorrietaFilmSaioak = "SELECT ordua, eguna, idaretoa, idFilma "
+			+ "FROM saioa s LEFT JOIN ZINEMA z USING (idZinema) LEFT JOIN FILMA f USING (idFilma)"
+			+ " WHERE z.idzinema = 'Z01' AND Eguna >= CURDATE() AND Ordua >= CURTIME() "
+			+ "ORDER by s.Eguna, s.Ordua;";
 
-	public static String erandioFilmSaioak = "SELECT f.izena, z.izena, s.ordua, s.eguna, s.idaretoa "
-			+ "FROM SAIOA s LEFT JOIN ZINEMA z USING (idZinema) LEFT JOIN FILMA f USING (idFilma) "
-			+ "WHERE z.idzinema = \"Z02\" AND s.Eguna >= CURDATE() AND s.Ordua >= CURTIME() "
-			+ "GROUP BY f.izena ORDER by s.Eguna, s.Ordua;";
+	public static String erandioFilmSaioak = "SELECT ordua, eguna, idaretoa, idFilma "
+			+ "FROM saioa s LEFT JOIN ZINEMA z USING (idZinema) LEFT JOIN FILMA f USING (idFilma)"
+			+ " WHERE z.idzinema = 'Z02' AND Eguna >= CURDATE() AND Ordua >= CURTIME() "
+			+ "ORDER by s.Eguna, s.Ordua;";
 
-	public static String barakaldoFilmSaioak = "SELECT f.izena, z.izena, s.ordua, s.eguna, s.idaretoa "
-			+ "FROM SAIOA s LEFT JOIN ZINEMA z USING (idZinema) LEFT JOIN FILMA f USING (idFilma) "
-			+ "WHERE z.idzinema = \"Z03\" AND s.Eguna >= CURDATE() AND s.Ordua >= CURTIME() "
-			+ "GROUP BY f.izena ORDER by s.Eguna, s.Ordua;";
+	public static String barakaldoFilmSaioak = "SELECT ordua, eguna, idaretoa, idFilma "
+			+ "FROM saioa s LEFT JOIN ZINEMA z USING (idZinema) LEFT JOIN FILMA f USING (idFilma)"
+			+ " WHERE z.idzinema = 'Z03' AND Eguna >= CURDATE() AND Ordua >= CURTIME() "
+			+ "ORDER by s.Eguna, s.Ordua;";
 	
-	public static String santutxuFilmSaioak = "SELECT f.izena, z.izena, s.ordua, s.eguna, s.idaretoa "
-			+ "FROM SAIOA s LEFT JOIN ZINEMA z USING (idZinema) LEFT JOIN FILMA f USING (idFilma) "
-			+ "WHERE z.idzinema = \"Z04\" AND s.Eguna >= CURDATE() AND s.Ordua >= CURTIME() "
-			+ "GROUP BY f.izena ORDER by s.Eguna, s.Ordua;";
+	public static String santutxuFilmSaioak = "SELECT ordua, eguna, idaretoa, idFilma "
+			+ "FROM saioa s LEFT JOIN ZINEMA z USING (idZinema) LEFT JOIN FILMA f USING (idFilma)"
+			+ " WHERE z.idzinema = 'Z04' AND Eguna >= CURDATE() AND Ordua >= CURTIME() "
+			+ "ORDER by s.Eguna, s.Ordua;";
 	
-	public static String basauriFilmSaioak = "SELECT f.izena, z.izena, s.ordua, s.eguna, s.idaretoa "
-			+ "FROM SAIOA s LEFT JOIN ZINEMA z USING (idZinema) LEFT JOIN FILMA f USING (idFilma) "
-			+ "WHERE z.idzinema = \"Z05\" AND s.Eguna >= CURDATE() AND s.Ordua >= CURTIME() "
-			+ "GROUP BY f.izena ORDER by s.Eguna, s.Ordua;";
+	public static String basauriFilmSaioak = "SELECT ordua, eguna, idaretoa, idFilma "
+			+ "FROM saioa s LEFT JOIN ZINEMA z USING (idZinema) LEFT JOIN FILMA f USING (idFilma)"
+			+ " WHERE z.idzinema = 'Z05' AND Eguna >= CURDATE() AND Ordua >= CURTIME() "
+			+ "ORDER by s.Eguna, s.Ordua;";
 	
 	//Egunean argitaratu egingo diren filmak, zinema bakoitzean, eguneratuta.
 
