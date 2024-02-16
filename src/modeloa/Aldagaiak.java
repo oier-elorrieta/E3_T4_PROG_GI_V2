@@ -12,7 +12,7 @@ import modeloa.objetuak.Zinema;
 
 public class Aldagaiak {
 	
-	//ArrayListak
+	//ArrayListakDao
 	public static List<Aretoa> areatoakListDao;
 	public static List<Bezeroa> bezeroakListDao;
 	public static List<Erosketak> erosketakListDao;
@@ -20,7 +20,7 @@ public class Aldagaiak {
 	public static List<Saioa> saioakListDao;
 	public static List<Sarrera> sarrerakListDao;
 	public static List<Zinema> zinemakListDaos;
-	//ArrayListak
+	//ArrayListakDao
 	
 	public static String ikonoLogo = "/modeloa/img/logoa/logoa_karratu.png";
 	
