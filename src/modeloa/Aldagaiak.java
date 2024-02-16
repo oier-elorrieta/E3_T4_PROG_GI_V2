@@ -13,13 +13,13 @@ import modeloa.objetuak.Zinema;
 public class Aldagaiak {
 	
 	//ArrayListakDao
-	public static List<Aretoa> areatoakListDao;
-	public static List<Bezeroa> bezeroakListDao;
-	public static List<Erosketak> erosketakListDao;
-	public static List<Pelikula> pelikulakListDao;
-	public static List<Saioa> saioakListDao;
-	public static List<Sarrera> sarrerakListDao;
-	public static List<Zinema> zinemakListDao;
+	public static List<Aretoa> areatoakList;
+	public static List<Bezeroa> bezeroakList;
+	public static List<Erosketak> erosketakList;
+	public static List<Pelikula> pelikulakList;
+	public static List<Saioa> saioakList;
+	public static List<Sarrera> sarrerakList;
+	public static List<Zinema> zinemakList;
 	public static List<Pelikula> elorrietaPelikulak;
 	public static List<Pelikula> erandioPelikulak;
 	public static List<Pelikula> barakaldoPelikulak;
