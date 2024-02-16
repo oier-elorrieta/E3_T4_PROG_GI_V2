@@ -33,5 +33,10 @@ public class Aldagaiak {
 	public static int iraupenaFilm ;	
 	public static String urlFilm = "/modeloa/img/karteldegia/";	
 	public static String urlFilmAux ;	
+	
+	
+	// Saioa betetzeko da.
+	
+	
 
 }
