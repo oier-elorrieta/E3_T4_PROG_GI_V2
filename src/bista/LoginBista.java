@@ -17,6 +17,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 
@@ -70,8 +72,30 @@ public class LoginBista extends JFrame {
 		panel.add(btnLog);
 		
 		passwordFieldPasahitza = new JPasswordField();
+		
+		passwordFieldPasahitza.addKeyListener(new KeyAdapter() {
+		@Override
+
+		public void keyPressed(KeyEvent e) {
+
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+
+				// Simular el clic en el botón cuando se presiona Enter
+
+				btnLog.doClick();
+				// Deitu login botoia click funtzioa
+			}
+
+		}
+
+	});
+	
+	//
+	
+		
 		passwordFieldPasahitza.setBounds(657, 230, 163, 20);
 		panel.add(passwordFieldPasahitza);
+		
 		
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
