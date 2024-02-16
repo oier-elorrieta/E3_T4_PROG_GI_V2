@@ -14,7 +14,7 @@ public class Bezeroa {
 	private String sexua;
 	
 	//--------------------Konstruktorea--------------------//
-	public Bezeroa(String idBezero, String NAN, String izena, String abizena, String erabiltzailea, String pasahitza, int txartela, String sexua) {
+	public Bezeroa(String idBezeroa, String NAN, String izena, String abizena, String erabiltzailea, String pasahitza, int txartela, String sexua) {
 		this.idBezeroa = idBezeroa;
 		this.NAN = NAN;
 		this.izena = izena;

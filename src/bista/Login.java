@@ -27,25 +27,6 @@ public class Login extends JFrame {
 	private JTextField textFieldErabiltzailea;
 	private JPasswordField passwordFieldPasahitza;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Login() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource(Aldagaiak.ikonoLogo)));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,11 +56,17 @@ public class Login extends JFrame {
 		panel.add(textFieldErabiltzailea);
 		textFieldErabiltzailea.setColumns(10);
 		
-		JButton btnLog = new JButton("Log");
+		JButton btnLog = new JButton("Login");
 		btnLog.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Funtzioak.login();
-				dispose();
+				String erabiltzailea = textFieldErabiltzailea.getText();
+				String pasahitza = new String(passwordFieldPasahitza.getPassword());
+				System.out.println(erabiltzailea + pasahitza);
+				Funtzioak.login(erabiltzailea, pasahitza);
+				boolean honartu = false;
+				if (honartu) {
+					dispose();
+				}
 			}
 		});
 		btnLog.setBounds(558, 352, 89, 23);

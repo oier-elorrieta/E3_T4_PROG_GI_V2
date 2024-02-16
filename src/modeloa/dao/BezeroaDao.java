@@ -25,7 +25,7 @@ public class BezeroaDao {
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
-            	String id = resultSet.getString("id");
+            	String id = resultSet.getString("idBezero");
                 String NAN = resultSet.getString("NAN");
                 String izena = resultSet.getString("izena");
                 String abizena = resultSet.getString("abizena");
