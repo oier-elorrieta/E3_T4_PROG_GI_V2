@@ -76,10 +76,8 @@ public class ErosketaKonfirmazioa extends JFrame {
         contentPane.add(Content, BorderLayout.CENTER);
         Content.setLayout(null);
         
-        Bezeroa bezeroa = new Bezeroa("B01", "12345678A", "Jon", "Doe", "jondoe", "password", 123456789, "male");
+        Bezeroa bezeroa = new Bezeroa("B01", "12345678A", "Jon", "Doe", "jondoe", "password", 123456789, "Gizona");
         
-        Erosketak erosketak = new Erosketak(1, bezeroa, null );
-        int idErosketak = erosketak.getIdErosketak();
         String idBezero = bezeroa.getIdBezeroa();
         String NAN = bezeroa.getNAN();
         String izena = bezeroa.getIzena();
@@ -88,6 +86,14 @@ public class ErosketaKonfirmazioa extends JFrame {
         String pasahitza = bezeroa.getPasahitza();
         int txartela = bezeroa.getTxartela();
         String sexua = bezeroa.getSexua();
+        
+        Erosketak erosketak = new Erosketak(1, bezeroa, null );
+        
+        int idErosketak = erosketak.getIdErosketak();
+        
+        Pelikula pelikula = new Pelikula(1, "Cars", "Aventura", 169);
+        
+        int idPelikula = pelikula.getIdPelikula();
         
         JLabel erosketaid = new JLabel("idErosketa: " + idErosketak);
         erosketaid.setHorizontalAlignment(SwingConstants.CENTER);
@@ -134,9 +140,7 @@ public class ErosketaKonfirmazioa extends JFrame {
         bezeroSexua.setBounds(428, 438, 379, 26);
         Content.add(bezeroSexua);
         
-        Pelikula pelikula = new Pelikula();
-        
-        JLabel lblNewLabel = new JLabel("New label" + pelikula);
+        JLabel lblNewLabel = new JLabel("New label" + idPelikula);
         lblNewLabel.setBounds(115, 159, 46, 14);
         Content.add(lblNewLabel);
 
