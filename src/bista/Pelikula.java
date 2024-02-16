@@ -77,9 +77,15 @@ public class Pelikula extends JFrame {
 		JPanel panel = new JPanel();
 		scrollPane.setViewportView(panel);
 		
+<<<<<<< HEAD
+		JButton btnNewButton1 = new JButton();
+		btnNewButton1.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/cars.jpg")));
+		JButton btnNewButton = new JButton("New button");
+=======
 		JButton btnNewButton = new JButton();
 		btnNewButton.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/cars.jpg")));
 	//	JButton btnNewButton = new JButton("New button");
+>>>>>>> e7f936cf5cf7c40b4f6679e9d52aa7705d3509dc
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

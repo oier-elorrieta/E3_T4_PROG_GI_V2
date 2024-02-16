@@ -14,6 +14,10 @@ import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.SwingConstants;
+import javax.swing.BoxLayout;
+import javax.swing.JComboBox;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 public class Saioa extends JFrame {
 
@@ -48,15 +52,50 @@ public class Saioa extends JFrame {
 		setResizable(false);
 		
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 		
 		JPanel Titulua = new JPanel();
-		contentPane.add(Titulua, BorderLayout.NORTH);
-		Titulua.setLayout(new BorderLayout(0, 0));
+		contentPane.add(Titulua);
+		Titulua.setLayout(null);
 		
 		JLabel lblTitulua = new JLabel("Saioa");
+		lblTitulua.setBounds(0, 0, 1254, 37);
 		lblTitulua.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulua.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		Titulua.add(lblTitulua, BorderLayout.NORTH);
+		Titulua.add(lblTitulua);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(464, 417, 459, 61);
+		Titulua.add(comboBox);
+		
+		JLabel lblFilmArgazki = new JLabel("");
+		lblFilmArgazki.setIcon(new ImageIcon(Saioa.class.getResource("/modeloa/img/karteldegia/Cazafantasmas.jpg")));
+		lblFilmArgazki.setBounds(57, 0, 397, 629);
+		Titulua.add(lblFilmArgazki);
+			
+		JLabel lblFilmSaioa = new JLabel("SAIOA:");
+		lblFilmSaioa.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblFilmSaioa.setBounds(464, 360, 419, 46);
+		Titulua.add(lblFilmSaioa);
+		
+		JLabel lblFilmEguna = new JLabel("EGUNA:");
+		lblFilmEguna.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblFilmEguna.setBounds(464, 105, 419, 46);
+		Titulua.add(lblFilmEguna);
+
+		
+		JLabel lblFilmIzena = new JLabel("PELIKULA");
+		lblFilmIzena.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFilmIzena.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblFilmIzena.setBounds(618, 48, 554, 46);
+		Titulua.add(lblFilmIzena);
+		
+		JButton btnEzSaioa = new JButton("EZ");
+		btnEzSaioa.setBounds(986, 550, 258, 79);
+		Titulua.add(btnEzSaioa);
+		
+		JButton btnBaiSaioa = new JButton("BAI");
+		btnBaiSaioa.setBounds(718, 550, 258, 79);
+		Titulua.add(btnBaiSaioa);
 	}
 }
