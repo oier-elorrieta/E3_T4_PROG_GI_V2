@@ -14,7 +14,11 @@ public class Erosketak {
 	private String mota;
 
 	// --------------------Konstruktorea--------------------//
-	
+	public Erosketak(int idErosketak, LocalDate data) {
+		this.idErosketak = idErosketak;
+		this.data = data;
+		mota = "Fisikoa";
+	}
 	public Erosketak(int idErosketak, Bezeroa bezeroa, LocalDate data) {
 		this.idErosketak = idErosketak;
 		this.bezeroa = bezeroa;
