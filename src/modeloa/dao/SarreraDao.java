@@ -3,7 +3,6 @@ package modeloa.dao;
 import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
 import modeloa.objetuak.Sarrera;
-import modeloa.objetuak.Saioa;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +24,6 @@ public class SarreraDao {
 
             while (resultSet.next()) {
                 int idSarrera = resultSet.getInt("idSarrera");
-                int idSaioa = resultSet.getInt("saioa_id");
                 int sarreraKant = resultSet.getInt("sarrera_kant");
                 double prezioa = resultSet.getDouble("prezioa");
                 String mota = resultSet.getString("mota");

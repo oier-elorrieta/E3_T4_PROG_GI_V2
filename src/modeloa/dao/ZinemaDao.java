@@ -2,8 +2,6 @@ package modeloa.dao;
 
 import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
-import modeloa.objetuak.Aretoa;
-import modeloa.objetuak.Saioa;
 import modeloa.objetuak.Zinema;
 
 import java.sql.PreparedStatement;

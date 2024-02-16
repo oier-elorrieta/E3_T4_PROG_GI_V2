@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.List;
 
+import kontrolatzaile.funtzioak.Funtzioak;
 import modeloa.dao.BezeroaDao;
 import modeloa.objetuak.Bezeroa;
 
@@ -11,6 +12,7 @@ import modeloa.objetuak.Bezeroa;
 public class main {
 
 	public static void main(String[] args) {
+		Funtzioak.inicio();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

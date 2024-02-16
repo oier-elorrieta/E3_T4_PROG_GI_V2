@@ -3,8 +3,6 @@ package modeloa.dao;
 import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
 import modeloa.objetuak.Saioa;
-import modeloa.objetuak.Aretoa;
-import modeloa.objetuak.Pelikula;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,10 +25,8 @@ public class SaioaDao {
 
             while (resultSet.next()) {
                 int idSaioa = resultSet.getInt("idSaioa");
-                String idAretoa = resultSet.getString("aretoa_id");
                 LocalTime ordua = resultSet.getTime("ordua").toLocalTime();
                 LocalDate eguna = resultSet.getDate("eguna").toLocalDate();
-                int idPelikula = resultSet.getInt("pelikula_id");
 
                 Saioa saioa = new Saioa(idSaioa, ordua, eguna);
                 saioak.add(saioa);
