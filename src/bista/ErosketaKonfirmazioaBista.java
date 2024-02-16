@@ -41,16 +41,8 @@ public class ErosketaKonfirmazioaBista extends JFrame {
             }
         });
     } 
-
-    /**
-     * Create the frame.
-     */
-<<<<<<< HEAD:src/bista/ErosketaKonfirmazioaBista.java
-    public ErosketaKonfirmazioaBista() {
     	
-=======
-    public ErosketaKonfirmazioa() {
->>>>>>> 7127c7e8c7b26302f041e94211105eaafefb9ac9:src/bista/ErosketaKonfirmazioa.java
+    public ErosketaKonfirmazioaBista() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1280, 720);
         contentPane = new JPanel();
