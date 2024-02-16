@@ -33,7 +33,7 @@ public class Funtzioak {
 		Aldagaiak.pelikulakListDao = new ArrayList<>();
 		Aldagaiak.saioakListDao = new ArrayList<>();
 		Aldagaiak.sarrerakListDao = new ArrayList<>();
-		Aldagaiak.zinemakListDaos = new ArrayList<>();
+		Aldagaiak.zinemakListDao = new ArrayList<>();
 		
 		Aldagaiak.areatoakListDao = Aretoa.lortuAreatoak();
 		Aldagaiak.bezeroakListDao = Bezeroa.lortuBezeroak();
@@ -41,7 +41,36 @@ public class Funtzioak {
 		Aldagaiak.pelikulakListDao = Pelikula.lortuPelikulak();
 		Aldagaiak.saioakListDao = Saioa.lortuSaioak();
 		Aldagaiak.sarrerakListDao = Sarrera.lortuSarrerak();
-		Aldagaiak.zinemakListDaos = Zinema.lortuZinemak();
+		Aldagaiak.zinemakListDao = Zinema.lortuZinemak();
+		
+		System.out.println("\n\nAretoak:");
+		for(int i = 0 ; i < Aldagaiak.areatoakListDao.size() ; i++) {
+			System.out.println(Aldagaiak.areatoakListDao.get(i));
+		}
+		System.out.println("\n\nBezeroak:");
+		for(int i = 0 ; i < Aldagaiak.bezeroakListDao.size() ; i++) {
+			System.out.println(Aldagaiak.bezeroakListDao.get(i));
+		}
+		System.out.println("\n\nErosketa:");
+		for(int i = 0 ; i < Aldagaiak.erosketakListDao.size() ; i++) {
+			System.out.println(Aldagaiak.erosketakListDao.get(i));
+		}
+		System.out.println("\n\nPelikula:");
+		for(int i = 0 ; i < Aldagaiak.pelikulakListDao.size() ; i++) {
+			System.out.println(Aldagaiak.pelikulakListDao.get(i));
+		}
+		System.out.println("\n\nSaioa:");
+		for(int i = 0 ; i < Aldagaiak.saioakListDao.size() ; i++) {
+			System.out.println(Aldagaiak.saioakListDao.get(i));
+		}
+		System.out.println("\n\nSarrera:");
+		for(int i = 0 ; i < Aldagaiak.sarrerakListDao.size() ; i++) {
+			System.out.println(Aldagaiak.sarrerakListDao.get(i));
+		}
+		System.out.println("\n\nZinema:");
+		for(int i = 0 ; i < Aldagaiak.zinemakListDao.size() ; i++) {
+			System.out.println(Aldagaiak.zinemakListDao.get(i));
+		}
 	}
 	
 	public static void login() {

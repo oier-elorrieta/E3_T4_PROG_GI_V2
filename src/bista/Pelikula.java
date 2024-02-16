@@ -71,7 +71,6 @@ public class Pelikula extends JFrame {
 		scrollPane.setViewportView(panel);
 		
 		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/Alien8.jpg")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

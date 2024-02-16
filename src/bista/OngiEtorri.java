@@ -45,7 +45,7 @@ public class OngiEtorri extends JFrame {
 	
 		        JLabel lblNewLabel = new JLabel("");
 		        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		        lblNewLabel.setIcon(new ImageIcon(OngiEtorri.class.getResource("/modeloa/img/logoa/logoa_karratu.png")));
+		        lblNewLabel.setIcon(new ImageIcon(OngiEtorri.class.getResource(Aldagaiak.ikonoLogo)));
 		        Irudia.add(lblNewLabel, BorderLayout.CENTER);
 
 	        pProgreso = new JPanel();
