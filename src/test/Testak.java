@@ -166,14 +166,17 @@ public class Testak {
 	@Test
 	// "Aretoa [izena=" + izena + ", saioList=" + saioList + "]"
 	public void testAretoaToString() {
+		areto.setIdAretoa("A01");
         areto.setIzena("Talde4");
 
 		
-        assertEquals("Aretoa [izena=Talde4]", areto.toString());
+        assertEquals("Aretoa [idAretoa=A01, izena=Talde4]", areto.toString());
 	}
 	
 	@Test
 	public void testBezeroaToString() {
+		
+		bezero.setIdBezeroa("B01");
 		bezero.setNAN("NAN");
 		bezero.setIzena("Izena");
 		bezero.setAbizena("Abizena");
@@ -182,7 +185,7 @@ public class Testak {
 		bezero.setTxartela(1);
 		bezero.setSexua("Sexua");
 		
-		assertEquals("Bezeroa [NAN=NAN, izena=Izena, abizena=Abizena, erabiltzailea=Erabiltzailea, pasahitza=Pasahitza, txartela=1, sexua=Sexua]", bezero.toString());
+		assertEquals("Bezeroa [idBezeroa=B01, NAN=NAN, izena=Izena, abizena=Abizena, erabiltzailea=Erabiltzailea, pasahitza=Pasahitza, txartela=1, sexua=Sexua]", bezero.toString());
 	}
 	
 	@Test
@@ -190,24 +193,27 @@ public class Testak {
 	public void testErosketakToString() {
 		LocalDate dataFroga = LocalDate.of(2024, 1, 1); 
 		
+		erosketa.setIdErosketak(1);
 		erosketa.setBezeroa(bezero);
 		erosketa.setData(dataFroga);
 		erosketa.setSarreraKant(1);
 		erosketa.setDeskontua(1);
 		erosketa.setDirutotala(1);
+		erosketa.setMota("Fisikoa");
 		
-		assertEquals("Erosketak [bezeroa=" + bezero.toString() + ", data=" + dataFroga +", sarreraKant=1, deskontua=1.0, dirutotala=1.0]", erosketa.toString());
+		assertEquals("Erosketak [idErosketak=1, bezeroa=" + bezero.toString() + ", data=" + dataFroga +", sarreraKant=1, deskontua=1.0, dirutotala=1.0, mota=Fisikoa]", erosketa.toString());
 	}
 	
 	@Test
 	// Pelikula [izena=" + izena + ", generoa=" + generoa + ", iraupena=" + iraupena + "]
 	public void testPelikulaToString() {
 		
+		pelikula.setIdPelikula(1);
 		pelikula.setIzena("Cars");
 		pelikula.setIraupena(1);
 		pelikula.setGeneroa("Aventura");
 		
-		assertEquals("Pelikula [izena=Cars, generoa=Aventura, iraupena=1]", pelikula.toString());	
+		assertEquals("Pelikula [idPelikula=1, izena=Cars, generoa=Aventura, iraupena=1]", pelikula.toString());	
 	}
 	
 	@Test
@@ -216,35 +222,40 @@ public class Testak {
 		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 		LocalTime orduFroga = LocalTime.of(15, 0, 0);
 		
+		saio.setIdSaioa(1);
 		saio.setAretoa(areto);
 		saio.setPelikula(pelikula);
 		saio.setOrdua(orduFroga);
 		saio.setEguna(dataFroga);
 		
-		assertEquals("Saioa [pelikula=" + pelikula.toString() + ", aretoa=" + areto.toString() + ", ordua=" + orduFroga + ", eguna=" + dataFroga + "]", saio.toString());		
+		//return "Saioa [idSaioa=" + idSaioa + ", aretoa=" + aretoa + ", ordua=" + ordua + ", eguna=" + eguna + ", pelikula=" + pelikula + "]";
+		
+		assertEquals("Saioa [idSaioa=1, aretoa=" + areto.toString() + ", ordua=" + orduFroga + ", eguna=" + dataFroga + ", pelikula=" + pelikula.toString() +  "]", saio.toString());		
 	}
 	
 	@Test
 	public void testSarreraToString() {
 		
+		sarrera.setIdSarrera(1);
 		sarrera.setSaioa(saio);
 		sarrera.setSarreraKant(1);
 		sarrera.setPrezioa(1);
 		sarrera.setMota("Normala");
 		
-		assertEquals("Sarrera [saioa=" + saio.toString() + ", sarreraKant=1, prezioa=1.0, mota=Normala]", sarrera.toString());		
+		assertEquals("Sarrera [idSarrera=1, saioa=" + saio.toString() + ", sarreraKant=1, prezioa=1.0, mota=Normala]", sarrera.toString());		
 	}
 	
 	@Test
 	// "Zinema [izena=" + izena + ", helbidea=" + helbidea + ", aretoList=" + aretoList + ", saioList=" + saioList + "]"
 	public void testZinemaToString() {
 
+		zinema.setIdZinema("Z01");
 		zinema.setIzena("Izena");
 		zinema.setHelbidea("Helbidea");
 		zinema.setAretoList(aretoList);
 		zinema.setSaioList(saioList);
 		
-		assertEquals("Zinema [izena=Izena, helbidea=Helbidea, aretoList=" + aretoList.toString() + ", saioList=" + saioList.toString() + "]", zinema.toString());		
+		assertEquals("Zinema [idZinema=Z01, izena=Izena, helbidea=Helbidea, aretoList=" + aretoList.toString() + ", saioList=" + saioList.toString() + "]", zinema.toString());		
 	}
 	
 	@Test
