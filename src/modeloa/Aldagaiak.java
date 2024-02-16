@@ -19,7 +19,7 @@ public class Aldagaiak {
 	public static List<Pelikula> pelikulakListDao;
 	public static List<Saioa> saioakListDao;
 	public static List<Sarrera> sarrerakListDao;
-	public static List<Zinema> zinemakListDaos;
+	public static List<Zinema> zinemakListDao;
 	//ArrayListakDao
 	
 	public static String ikonoLogo = "/modeloa/img/logoa/logoa_karratu.png";
