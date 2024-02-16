@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ErosketakDao {
 
-    public static List<Erosketak> lortuErosketak() {
+    public List<Erosketak> lortuErosketak() {
         List<Erosketak> erosketak = new ArrayList<>();
 
         try {
@@ -25,7 +25,6 @@ public class ErosketakDao {
 
             while (resultSet.next()) {
                 int idErosketak = resultSet.getInt("idErosketak");
-                int idBezero = resultSet.getInt("idBezero"); // Asumiendo que "idBezero" es la clave foránea que hace referencia a la tabla "BEZEROA"
                 LocalDate data = resultSet.getDate("data").toLocalDate();
                 int sarreraKant = resultSet.getInt("sarreraKant");
                 double deskontua = resultSet.getDouble("deskontua");

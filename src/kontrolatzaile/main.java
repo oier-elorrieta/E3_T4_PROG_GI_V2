@@ -4,8 +4,6 @@ import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.List;
 
-import bista.OngiEtorri;
-import modeloa.*;
 import modeloa.dao.BezeroaDao;
 import modeloa.objetuak.Bezeroa;
 

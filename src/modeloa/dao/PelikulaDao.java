@@ -12,7 +12,7 @@ import java.util.List;
 
 public class PelikulaDao {
 
-    public static List<Pelikula> lortuPelikulak() {
+    public List<Pelikula> lortuPelikulak() {
         List<Pelikula> pelikulak = new ArrayList<>();
 
         try {

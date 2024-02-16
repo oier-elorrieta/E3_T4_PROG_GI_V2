@@ -14,7 +14,7 @@ import java.util.List;
 
 public class SarreraDao {
 
-    public static List<Sarrera> lortuSarrerak() {
+    public List<Sarrera> lortuSarrerak() {
         List<Sarrera> sarrerak = new ArrayList<>();
 
         try {

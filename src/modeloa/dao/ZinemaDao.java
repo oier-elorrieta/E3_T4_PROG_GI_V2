@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ZinemaDao {
 
-    public static List<Zinema> lortuZinemak() {
+    public List<Zinema> lortuZinemak() {
         List<Zinema> zinemak = new ArrayList<>();
 
         try {

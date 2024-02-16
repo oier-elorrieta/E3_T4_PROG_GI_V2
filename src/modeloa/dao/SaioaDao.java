@@ -16,7 +16,7 @@ import java.util.List;
 
 public class SaioaDao {
 
-    public static List<Saioa> lortuSaioak() {
+    public List<Saioa> lortuSaioak() {
         List<Saioa> saioak = new ArrayList<>();
 
         try {

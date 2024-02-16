@@ -12,7 +12,7 @@ import java.util.List;
 
 public class AretoaDao {
 
-    public static List<Aretoa> lortuAreatoak() {
+    public List<Aretoa> lortuAreatoak() {
         List<Aretoa> areatoak = new ArrayList<>();
 
         try {

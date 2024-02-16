@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import kontrolatzaile.Funtzioak;
+import kontrolatzaile.funtzioak.Funtzioak;
 import modeloa.Aldagaiak;
 
 import java.awt.BorderLayout;
