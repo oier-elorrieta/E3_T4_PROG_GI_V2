@@ -11,6 +11,7 @@ import modeloa.dao.PelikulaDao;
 import modeloa.dao.SaioaDao;
 import modeloa.dao.SarreraDao;
 import modeloa.dao.ZinemaDao;
+import modeloa.objetuak.Pelikula;
 
 public class Funtzioak {
 	
@@ -90,4 +91,12 @@ public class Funtzioak {
 		return login;
 	}
 	
+	public static void filmaDatuak() {
+		Pelikula pelikula1 = new Pelikula(1,"CARS","KOMEDIA",120);
+		Aldagaiak.izenaFilm = pelikula1.getIzena();
+		Aldagaiak.generoFilm = pelikula1.getGeneroa();
+		Aldagaiak.iraupenaFilm = pelikula1.getIraupena();
+		Aldagaiak.urlFilmAux = Aldagaiak.urlFilm + Aldagaiak.izenaFilm + ".jpg";
+		
+	}
 }
