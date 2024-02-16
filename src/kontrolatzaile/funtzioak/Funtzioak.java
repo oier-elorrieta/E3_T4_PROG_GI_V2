@@ -1,5 +1,6 @@
 package kontrolatzaile.funtzioak;
 
+import java.lang.invoke.StringConcatFactory;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,11 @@ import modeloa.dao.SaioaDao;
 import modeloa.dao.SarreraDao;
 import modeloa.dao.ZinemaAretoFilmaDAO;
 import modeloa.dao.ZinemaDao;
+<<<<<<< HEAD
 import modeloa.objetuak.Aretoa;
+=======
+import modeloa.objetuak.Bezeroa;
+>>>>>>> 7f3047fb31eb8c6711ebe04214cbc400a2b3e332
 import modeloa.objetuak.Pelikula;
 
 public class Funtzioak {
@@ -114,8 +119,8 @@ public class Funtzioak {
 
 	}
 	
-	public static void login() {
-		if (loginOK()) {
+	public static void login(String erabiltzailea, String pasahitza) {
+		if (loginOK(erabiltzailea, pasahitza)) {
 			try {
 				Zinema frame = new Zinema();
 				frame.setVisible(true);
@@ -125,9 +130,32 @@ public class Funtzioak {
 		}
 	}
 	
-	public static boolean loginOK() {
-		boolean login = true;
-		//codigo
+	public static boolean loginOK(String erabiltzailea, String pasahitza) {
+		boolean login = false;
+//		
+//		for (Bezeroa bezeroa : bezeroakListDao) {
+//            if (bezeroa.getErabiltzailea().equals(erabiltzailea) && bezeroa.getPasahitza().equals(pasahitza)) {
+//                // Bezeroa encontrado
+//                login = true;
+//                break; // Puedes salir del bucle una vez que encuentras el bezeroa
+//            }
+//        }
+//		
+		for (int i = 0; i < Aldagaiak.bezeroakListDao.size() ; i++) {
+
+            if (Aldagaiak.bezeroakListDao.get(i).getErabiltzailea().equals(erabiltzailea) && Aldagaiak.bezeroakListDao.get(i).getPasahitza().equals(pasahitza)) {
+                // Bezeroa encontrado
+                login = true;
+                break; // Puedes salir del bucle una vez que encuentras el bezeroa
+            }
+        }
+
+        // Verificar si se encontró el bezeroa
+        if (login) {
+            System.out.println("Bezeroa encontrado.");
+        } else {
+            System.out.println("Bezeroa no encontrado.");
+        }
 		return login;
 	}
 	

@@ -164,7 +164,6 @@ public class Testak {
 	}
 	
 	@Test
-	// "Aretoa [izena=" + izena + ", saioList=" + saioList + "]"
 	public void testAretoaToString() {
 		areto.setIdAretoa("A01");
         areto.setIzena("Talde4");
@@ -189,7 +188,6 @@ public class Testak {
 	}
 	
 	@Test
-	// Erosketak [bezeroa=" + bezeroa + ", data=" + data + ", deskontua=" + deskontua + ", dirutotala=" + dirutotala + "]
 	public void testErosketakToString() {
 		LocalDate dataFroga = LocalDate.of(2024, 1, 1); 
 		
@@ -205,7 +203,6 @@ public class Testak {
 	}
 	
 	@Test
-	// Pelikula [izena=" + izena + ", generoa=" + generoa + ", iraupena=" + iraupena + "]
 	public void testPelikulaToString() {
 		
 		pelikula.setIdPelikula(1);
@@ -217,7 +214,6 @@ public class Testak {
 	}
 	
 	@Test
-	//"Saioa [filma=" + filma + ", aretoa=" + aretoa + ", ordua=" + ordua + ", eguna=" + eguna + "]"
 	public void testSaioaToString() {
 		LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 		LocalTime orduFroga = LocalTime.of(15, 0, 0);
@@ -227,8 +223,6 @@ public class Testak {
 		saio.setPelikula(pelikula);
 		saio.setOrdua(orduFroga);
 		saio.setEguna(dataFroga);
-		
-		//return "Saioa [idSaioa=" + idSaioa + ", aretoa=" + aretoa + ", ordua=" + ordua + ", eguna=" + eguna + ", pelikula=" + pelikula + "]";
 		
 		assertEquals("Saioa [idSaioa=1, aretoa=" + areto.toString() + ", ordua=" + orduFroga + ", eguna=" + dataFroga + ", pelikula=" + pelikula.toString() +  "]", saio.toString());		
 	}
@@ -246,7 +240,6 @@ public class Testak {
 	}
 	
 	@Test
-	// "Zinema [izena=" + izena + ", helbidea=" + helbidea + ", aretoList=" + aretoList + ", saioList=" + saioList + "]"
 	public void testZinemaToString() {
 
 		zinema.setIdZinema("Z01");
@@ -259,7 +252,6 @@ public class Testak {
 	}
 	
 	@Test
-	// Karteldegia [filmList=" + filmList + "]"
 	public void testKarteldegiToString() {
 
 		karteldegi.setFilmList(pelikulaList);
@@ -283,9 +275,7 @@ public class Testak {
 /////////////////////////////////////////////////ARETOKO EQUALS TEXTAK////////////////////////////////////////
 
     @Test
-    public void test_AretoEquals() {
-    	//ArrayList<Saioa> saioList1 = new ArrayList<>();
-    	
+    public void test_AretoEquals() {	
         Aretoa aretoa = new Aretoa("A01", "izena");
         assertTrue(aretoa.equals(aretoa));
     }
