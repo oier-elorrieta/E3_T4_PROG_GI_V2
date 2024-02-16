@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import modeloa.dao.BezeroaDao;
+import modeloa.objetuak.*;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -14,6 +17,7 @@ import java.awt.Toolkit;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 import java.awt.Color;
@@ -71,19 +75,82 @@ public class ErosketaKonfirmazioa extends JFrame {
         Content.setBackground(new Color(240, 240, 240));
         contentPane.add(Content, BorderLayout.CENTER);
         Content.setLayout(null);
-
-        JLabel ErosketaLaburpena = new JLabel("Laburpena: ");
-        ErosketaLaburpena.setHorizontalAlignment(SwingConstants.CENTER);
-        ErosketaLaburpena.setBounds(428, 58, 379, 37);
-        Content.add(ErosketaLaburpena);
+        
+        Bezeroa bezeroa = new Bezeroa("B01", "12345678A", "Jon", "Doe", "jondoe", "password", 123456789, "male");
+        
+        Erosketak erosketak = new Erosketak(1, bezeroa, null );
+        int idErosketak = erosketak.getIdErosketak();
+        String idBezero = bezeroa.getIdBezeroa();
+        String NAN = bezeroa.getNAN();
+        String izena = bezeroa.getIzena();
+        String abizena = bezeroa.getAbizena();
+        String erabiltzailea = bezeroa.getErabiltzailea();
+        String pasahitza = bezeroa.getPasahitza();
+        int txartela = bezeroa.getTxartela();
+        String sexua = bezeroa.getSexua();
+        
+        JLabel erosketaid = new JLabel("idErosketa: " + idErosketak);
+        erosketaid.setHorizontalAlignment(SwingConstants.CENTER);
+        erosketaid.setBounds(428, 58, 379, 37);
+        Content.add(erosketaid);
+        
+        JLabel bezeroid = new JLabel("idBezeroa: " + idBezero);
+        bezeroid.setHorizontalAlignment(SwingConstants.CENTER);
+        bezeroid.setBounds(428, 99, 379, 37);
+        Content.add(bezeroid);
+        
+        JLabel bezeroNAN = new JLabel("NAN: " + NAN);
+        bezeroNAN.setHorizontalAlignment(SwingConstants.CENTER);
+        bezeroNAN.setBounds(428, 147, 379, 38);
+        Content.add(bezeroNAN);
+        
+        JLabel bezeroIzena = new JLabel("Izena: " + izena);
+        bezeroIzena.setHorizontalAlignment(SwingConstants.CENTER);
+        bezeroIzena.setBounds(428, 196, 379, 37);
+        Content.add(bezeroIzena);
+        
+        JLabel bezeroAbizena = new JLabel("Abizena: "+ abizena);
+        bezeroAbizena.setHorizontalAlignment(SwingConstants.CENTER);
+        bezeroAbizena.setBounds(428, 244, 379, 37);
+        Content.add(bezeroAbizena);
+        
+        JLabel bezeroErabiltzailea = new JLabel("Erabiltzailea: " + erabiltzailea);
+        bezeroErabiltzailea.setHorizontalAlignment(SwingConstants.CENTER);
+        bezeroErabiltzailea.setBounds(428, 292, 379, 39);
+        Content.add(bezeroErabiltzailea);
+        
+        JLabel bezeroPasahitza = new JLabel("Pasahitza: " + pasahitza);
+        bezeroPasahitza.setHorizontalAlignment(SwingConstants.CENTER);
+        bezeroPasahitza.setBounds(428, 342, 379, 37);
+        Content.add(bezeroPasahitza);
+        
+        JLabel bezerotxartela = new JLabel("Txartela: " + txartela);
+        bezerotxartela.setHorizontalAlignment(SwingConstants.CENTER);
+        bezerotxartela.setBounds(428, 390, 379, 37);
+        Content.add(bezerotxartela);
+        
+        JLabel bezeroSexua = new JLabel("Sexua: " + sexua);
+        bezeroSexua.setHorizontalAlignment(SwingConstants.CENTER);
+        bezeroSexua.setBounds(428, 438, 379, 26);
+        Content.add(bezeroSexua);
+        
+        Pelikula pelikula = new Pelikula();
+        
+        JLabel lblNewLabel = new JLabel("New label" + pelikula);
+        lblNewLabel.setBounds(115, 159, 46, 14);
+        Content.add(lblNewLabel);
 
         JButton ErosketaBai = new JButton("Bai");
-        ErosketaBai.setBounds(380, 418, 242, 59);
+        ErosketaBai.setBounds(380, 533, 242, 59);
         Content.add(ErosketaBai);
 
         JButton ErosketaEz = new JButton("Ez");
-        ErosketaEz.setBounds(619, 418, 242, 59);
+        ErosketaEz.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        ErosketaEz.setBounds(619, 533, 242, 59);
         Content.add(ErosketaEz);
-
+        
     }
 }
