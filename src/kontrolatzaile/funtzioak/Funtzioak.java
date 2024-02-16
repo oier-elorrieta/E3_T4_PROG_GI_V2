@@ -10,6 +10,7 @@ import modeloa.dao.ErosketakDao;
 import modeloa.dao.PelikulaDao;
 import modeloa.dao.SaioaDao;
 import modeloa.dao.SarreraDao;
+import modeloa.dao.ZinemaAretoFilmaDAO;
 import modeloa.dao.ZinemaDao;
 import modeloa.objetuak.Pelikula;
 
@@ -27,6 +28,7 @@ public class Funtzioak {
 		SaioaDao Saioa = new SaioaDao();
 		SarreraDao Sarrera = new SarreraDao();
 		ZinemaDao Zinema = new ZinemaDao();
+		ZinemaAretoFilmaDAO ZinemaAretoFilma = new ZinemaAretoFilmaDAO();
 		
 		Aldagaiak.areatoakListDao = new ArrayList<>();
 		Aldagaiak.bezeroakListDao = new ArrayList<>();
@@ -35,6 +37,7 @@ public class Funtzioak {
 		Aldagaiak.saioakListDao = new ArrayList<>();
 		Aldagaiak.sarrerakListDao = new ArrayList<>();
 		Aldagaiak.zinemakListDao = new ArrayList<>();
+		Aldagaiak.elorrietaPelikulak = new ArrayList<>();
 		
 		Aldagaiak.areatoakListDao = Aretoa.lortuAreatoak();
 		Aldagaiak.bezeroakListDao = Bezeroa.lortuBezeroak();
@@ -43,6 +46,10 @@ public class Funtzioak {
 		Aldagaiak.saioakListDao = Saioa.lortuSaioak();
 		Aldagaiak.sarrerakListDao = Sarrera.lortuSarrerak();
 		Aldagaiak.zinemakListDao = Zinema.lortuZinemak();
+		Aldagaiak.elorrietaPelikulak = ZinemaAretoFilma.lortuElorrietaFilmak();
+		
+		
+		
 		
 		System.out.println("\n\nAretoak:");
 		for(int i = 0 ; i < Aldagaiak.areatoakListDao.size() ; i++) {
@@ -71,6 +78,10 @@ public class Funtzioak {
 		System.out.println("\n\nZinema:");
 		for(int i = 0 ; i < Aldagaiak.zinemakListDao.size() ; i++) {
 			System.out.println(Aldagaiak.zinemakListDao.get(i));
+		}
+		System.out.println("\n\nElorrietaFilmak:");
+		for(int i = 0 ; i < Aldagaiak.elorrietaPelikulak.size() ; i++) {
+			System.out.println(Aldagaiak.elorrietaPelikulak.get(i));
 		}
 	}
 	
