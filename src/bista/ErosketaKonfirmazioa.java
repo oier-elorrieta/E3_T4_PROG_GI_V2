@@ -91,9 +91,9 @@ public class ErosketaKonfirmazioa extends JFrame {
         
         int idErosketak = erosketak.getIdErosketak();
         
-        Pelikula pelikula = new Pelikula(1, "Cars", "Aventura", 169);
+        //Pelikula pelikula = new Pelikula(1, "Cars", "Aventura", 169);
         
-        int idPelikula = pelikula.getIdPelikula();
+        //int idPelikula = pelikula.getIdPelikula();
         
         JLabel erosketaid = new JLabel("idErosketa: " + idErosketak);
         erosketaid.setHorizontalAlignment(SwingConstants.CENTER);
@@ -140,9 +140,9 @@ public class ErosketaKonfirmazioa extends JFrame {
         bezeroSexua.setBounds(428, 438, 379, 26);
         Content.add(bezeroSexua);
         
-        JLabel lblNewLabel = new JLabel("New label" + idPelikula);
-        lblNewLabel.setBounds(115, 159, 46, 14);
-        Content.add(lblNewLabel);
+//        JLabel lblNewLabel = new JLabel("New label" + idPelikula);
+//        lblNewLabel.setBounds(115, 159, 46, 14);
+//        Content.add(lblNewLabel);
 
         JButton ErosketaBai = new JButton("Bai");
         ErosketaBai.setBounds(380, 533, 242, 59);
