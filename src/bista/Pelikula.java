@@ -45,6 +45,7 @@ public class Pelikula extends JFrame {
 	 * Create the frame.
 	 */
 	public Pelikula() {
+	
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Pelikula.class.getResource(Aldagaiak.ikonoLogo)));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
@@ -66,17 +67,35 @@ public class Pelikula extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane, BorderLayout.CENTER);
+		//
+		//for{
+		//llamar()
+		//}
+		
+		
 		
 		JPanel panel = new JPanel();
 		scrollPane.setViewportView(panel);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/Alien8.jpg")));
+		JButton btnNewButton = new JButton();
+		btnNewButton.setIcon(new ImageIcon(Pelikula.class.getResource("/modeloa/img/karteldegia/cars.jpg")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		panel.add(btnNewButton);
+		
+		JPanel panel_1 = new JPanel();
+		panel.add(panel_1);
+		
+		JLabel lblTtituloa = new JLabel();
+		panel_1.add(lblTtituloa);
+		
+		JLabel lblIraupena = new JLabel();
+		panel_1.add(lblIraupena);
+		
+		JLabel lblGeneroa = new JLabel();
+		panel_1.add(lblGeneroa);
 
 	}
 }
