@@ -21,6 +21,11 @@ public class Aldagaiak {
 	public static List<Sarrera> sarrerakListDao;
 	public static List<Zinema> zinemakListDao;
 	public static List<Pelikula> elorrietaPelikulak;
+	public static List<Pelikula> erandioPelikulak;
+	public static List<Pelikula> barakaldoPelikulak;
+	public static List<Pelikula> santutxuPelikulak;
+	public static List<Pelikula> basauriPelikulak;
+
 	//ArrayListakDao
 	
 	public static String ikonoLogo = "/modeloa/img/logoa/logoa_karratu.png";
