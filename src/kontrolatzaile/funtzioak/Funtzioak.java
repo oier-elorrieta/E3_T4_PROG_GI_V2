@@ -7,7 +7,6 @@ import java.lang.invoke.StringConcatFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -15,11 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 import bista.PelikulaBista;
-=======
 import javax.swing.JTextField;
 
 import bista.SaioaBista;
->>>>>>> 1587f2ca3350bce75ff30bd2b844a719b7a900c0
 import bista.ZinemaBista;
 import modeloa.Aldagaiak;
 import modeloa.dao.AretoaDao;
@@ -41,13 +38,12 @@ import modeloa.objetuak.Sarrera;
 import modeloa.objetuak.Zinema;
 
 public class Funtzioak {
-	
 
 	public static void inicio() {
-		
+
 		objektuakHasieratu();
 	}
-	
+
 	static List<Aretoa> areatoakList;
 	static List<Bezeroa> bezeroakList;
 	static List<Erosketak> erosketakList;
@@ -56,7 +52,6 @@ public class Funtzioak {
 	static List<Sarrera> sarrerakList;
 	static List<Zinema> zinemakList;
 	static List<Pelikula> saioPelikulak;
-
 
 	public static void objektuakHasieratu() {
 		AretoaDao Aretoa = new AretoaDao();
@@ -115,39 +110,41 @@ public class Funtzioak {
 		System.out.println("\n\nZinema:");
 		for (int i = 0; i < zinemakList.size(); i++) {
 			System.out.println(zinemakList.get(i));
-<<<<<<< HEAD
 		}
 
-		//
+				
 		
-=======
-		}  
-		
-		System.out.println("\n\nElorrietaFilmak:");
-		for(int i = 0 ; i < elorrietaPelikulak.size() ; i++) {
-			System.out.println(elorrietaPelikulak.get(i));
-		}
-		
-		System.out.println("\n\nErandioFilmak:");
-		for(int i = 0 ; i < erandioPelikulak.size() ; i++) {
-			System.out.println(erandioPelikulak.get(i));
-		}
-		
-		System.out.println("\n\nBasauriFilmak:");
-		for(int i = 0 ; i < basauriPelikulak.size() ; i++) {
-			System.out.println(basauriPelikulak.get(i));
-		}
-		
-		System.out.println("\n\nSantutxuFilmak:");
-		for(int i = 0 ; i < santutxuPelikulak.size() ; i++) {
-			System.out.println(santutxuPelikulak.get(i));
-		}
-		
-		System.out.println("\n\nBarakaldoFilmak:");
-		for(int i = 0 ; i < barakaldoPelikulak.size() ; i++) {
-			System.out.println(barakaldoPelikulak.get(i));
-		}
->>>>>>> 1587f2ca3350bce75ff30bd2b844a719b7a900c0
+
+//	System.out.println("\n\nElorrietaFilmak:");for(
+//
+//	int i = 0;i<elorrietaPelikulak.size();i++)
+//	{
+//		System.out.println(elorrietaPelikulak.get(i));
+//	}
+//
+//	System.out.println("\n\nErandioFilmak:");for(
+//	int i = 0;i<erandioPelikulak.size();i++)
+//	{
+//		System.out.println(erandioPelikulak.get(i));
+//	}
+//
+//	System.out.println("\n\nBasauriFilmak:");for(
+//	int i = 0;i<basauriPelikulak.size();i++)
+//	{
+//		System.out.println(basauriPelikulak.get(i));
+//	}
+//
+//	System.out.println("\n\nSantutxuFilmak:");for(
+//	int i = 0;i<santutxuPelikulak.size();i++)
+//	{
+//		System.out.println(santutxuPelikulak.get(i));
+//	}
+//
+//	System.out.println("\n\nBarakaldoFilmak:");for(
+//	int i = 0;i<barakaldoPelikulak.size();i++)
+//	{
+//		System.out.println(barakaldoPelikulak.get(i));
+//	}
 
 	}
 
@@ -185,7 +182,7 @@ public class Funtzioak {
 		}
 		return login;
 	}
-	
+
 	public static void pelikulaBistaVisible() {
 		try {
 			PelikulaBista frame = new PelikulaBista();
@@ -212,11 +209,11 @@ public class Funtzioak {
 				+ "ORDER by s.Eguna, s.Ordua;";
 
 	}
-	
+
 	public static void filmPanelak() {
-		
+
 		Konexioa.konexioa();
-				
+
 		ZinemaAretoFilmaDAO ZinemaAretoFilma = new ZinemaAretoFilmaDAO();
 
 		saioPelikulak = new ArrayList<>();
@@ -232,20 +229,20 @@ public class Funtzioak {
 		System.out.println("------------------------------------------------------------------------");
 
 		Konexioa.konexioaExit();
-		
+
 	}
-	
+
 	public static void GehiSarreraBalioa() {
-	    int balorea = Integer.parseInt(SaioaBista.textSarreraKop.getText());
-	    balorea++;
-	    SaioaBista.textSarreraKop.setText(String.valueOf(balorea));
+		int balorea = Integer.parseInt(SaioaBista.textSarreraKop.getText());
+		balorea++;
+		SaioaBista.textSarreraKop.setText(String.valueOf(balorea));
 	}
 
 	public static void KenduSarreraBalioa() {
-	    int balorea = Integer.parseInt(SaioaBista.textSarreraKop.getText());
-	    if (balorea > 0) {
-	    	balorea--;
-	    	SaioaBista.textSarreraKop.setText(String.valueOf(balorea));
-	    }
+		int balorea = Integer.parseInt(SaioaBista.textSarreraKop.getText());
+		if (balorea > 0) {
+			balorea--;
+			SaioaBista.textSarreraKop.setText(String.valueOf(balorea));
+		}
 	}
 }

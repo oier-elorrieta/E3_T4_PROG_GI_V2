@@ -1,4 +1,4 @@
-package modeloa.dao;
+package test;
 
 import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AretoaDao {
+public class Wa {
 	
 	public static List<Aretoa> aretoak;
 	
@@ -28,7 +28,6 @@ public class AretoaDao {
 
                 Aretoa aretoa = new Aretoa(idAretoa, izena);
                 aretoak.add(aretoa);
-                
             }
 
         } catch (SQLException e) {
@@ -39,8 +38,6 @@ public class AretoaDao {
 
         return aretoak; 
     }
-    
-    
 
 }
 

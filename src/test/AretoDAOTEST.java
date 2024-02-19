@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import modeloa.dao.AretoaDao;
@@ -16,34 +18,27 @@ import modeloa.objetuak.Aretoa;
 
 public class AretoDAOTEST {
 	
-	private static ArrayList<Aretoa> aretoak = new ArrayList<>();
-
-	 public static void lortuAreatoak() {
-	        try {
-	            Konexioa.konexioa();
-
-	            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.aretoa);
-	            ResultSet resultSet = preparedStatement.executeQuery();
-
-	            while (resultSet.next()) {
-	                String idAretoa = resultSet.getString("idAretoa");
-	                String izena = resultSet.getString("izena");
-
-	                Aretoa aretoa = new Aretoa(idAretoa, izena);
-	                aretoak.add(aretoa);
-	            }
-
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        } finally {
-	            Konexioa.konexioaExit();
-	        }
-
-	    }
 	
-	 @Test
-		public void test() {
-			assertEquals(aretoak, AretoaDao.aretoak);
-	 	}
+	private static ArrayList<Aretoa> aretoakTest = new ArrayList<>();
+
+	public class AretoDAOTest {
+	    private AretoaDao aretoaDao;
+
+	    @Before
+	    public void setUp() {
+	        aretoaDao = new AretoaDao();
+	    }
+
+	    @Test
+	    public void testLortuAreatoak() {
+	        List<Aretoa> aretoak = aretoaDao.lortuAreatoak();
+	        
+	        assertNotNull(aretoak);
+	        assertFalse(aretoak.isEmpty());
+
+	        
+	        assertEquals(aretoak, AretoaDao.aretoak);
+	    }
+	}
 	
 }

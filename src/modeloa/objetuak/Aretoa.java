@@ -63,4 +63,6 @@ public class Aretoa {
 		return idAretoa == other.idAretoa && Objects.equals(izena, other.izena);
 	}
 	//--------------------Equals--------------------//
+	
+	
 }
