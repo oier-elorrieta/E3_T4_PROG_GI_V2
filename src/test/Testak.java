@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import kontrolatzaile.main;
 import modeloa.objetuak.Aretoa;
 import modeloa.objetuak.Bezeroa;
 import modeloa.objetuak.Erosketak;
@@ -58,7 +57,7 @@ public class Testak {
 		 
 		bezero = new Bezeroa("B01", "123456789M", "Mikelon", "Rodriguez", "Mikelodeon", "Mikel123", 123456789, "Emakumea");
 		pelikula = new Pelikula(1, "Cars", "Aventura", 169);
-		erosketa = new Erosketak(1, bezero, data);
+		erosketa = new Erosketak(1, data);
 		karteldegi = new Karteldegia(pelikulaList);
 		saio = new Saioa(1, time, data);
 		areto = new Aretoa("A01", "Areto 1");
@@ -367,8 +366,8 @@ public class Testak {
     public void testHashCodeErosketa() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
     	
-        Erosketak erosketak1 = new Erosketak(1, bezero, dataFroga);
-        Erosketak erosketak2 = new Erosketak(1, bezero, dataFroga);
+        Erosketak erosketak1 = new Erosketak(1, dataFroga);
+        Erosketak erosketak2 = new Erosketak(1, dataFroga);
 
         assertEquals(erosketak1.hashCode(), erosketak2.hashCode());
     }
@@ -381,7 +380,7 @@ public class Testak {
     public void test_ErosketaEquals() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     
-        Erosketak erosketak = new Erosketak(1, bezero, dataFroga);
+        Erosketak erosketak = new Erosketak(1, dataFroga);
         assertTrue(erosketak.equals(erosketak));
     }
 
@@ -389,9 +388,9 @@ public class Testak {
     public void test_ErosketakBatzuk() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     	
-        Erosketak erosketak1 = new Erosketak(1, bezero, dataFroga);
-        Erosketak erosketak2 = new Erosketak(1, bezero, dataFroga);
-        Erosketak erosketak3 = new Erosketak(1, bezero, dataFroga);
+        Erosketak erosketak1 = new Erosketak(1, dataFroga);
+        Erosketak erosketak2 = new Erosketak(1, dataFroga);
+        Erosketak erosketak3 = new Erosketak(1, dataFroga);
 
         assertTrue(erosketak1.equals(erosketak2) && erosketak2.equals(erosketak3) && erosketak1.equals(erosketak3));
     }
@@ -400,7 +399,7 @@ public class Testak {
     public void test_ErosketaNuloa() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     	
-        Erosketak erosketak = new Erosketak(1, bezero, dataFroga);
+        Erosketak erosketak = new Erosketak(1, dataFroga);
         assertFalse(erosketak.equals(null));
     }
 
@@ -408,7 +407,7 @@ public class Testak {
     public void test_ErosketaObjetua() {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     	
-        Erosketak erosketak = new Erosketak(1, bezero, dataFroga);
+        Erosketak erosketak = new Erosketak(1, dataFroga);
         assertFalse(erosketak.equals("Not an Erosketak object"));
     }
 
@@ -417,8 +416,8 @@ public class Testak {
     	LocalDate dataFroga = LocalDate.of(2024, 1, 1);	
     	LocalDate dataFrogaBI = LocalDate.of(2023, 5, 23);	
     	
-        Erosketak erosketak1 = new Erosketak(1, bezero, dataFroga);
-        Erosketak erosketak2 = new Erosketak(2, bezero, dataFrogaBI);
+        Erosketak erosketak1 = new Erosketak(1, dataFroga);
+        Erosketak erosketak2 = new Erosketak(2, dataFrogaBI);
         assertFalse(erosketak1.equals(erosketak2));
     }
  

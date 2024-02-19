@@ -4,6 +4,9 @@ import java.lang.invoke.StringConcatFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JTextField;
+
+import bista.SaioaBista;
 import bista.ZinemaBista;
 import modeloa.Aldagaiak;
 import modeloa.dao.AretoaDao;
@@ -175,5 +178,19 @@ public class Funtzioak {
 		Aldagaiak.iraupenaFilm = pelikula1.getIraupena();
 		Aldagaiak.urlFilmAux = Aldagaiak.urlFilm + Aldagaiak.izenaFilm + ".jpg";
 		
+	}
+	
+	public static void GehiSarreraBalioa() {
+	    int balorea = Integer.parseInt(SaioaBista.textSarreraKop.getText());
+	    balorea++;
+	    SaioaBista.textSarreraKop.setText(String.valueOf(balorea));
+	}
+
+	public static void KenduSarreraBalioa() {
+	    int balorea = Integer.parseInt(SaioaBista.textSarreraKop.getText());
+	    if (balorea > 0) {
+	    	balorea--;
+	    	SaioaBista.textSarreraKop.setText(String.valueOf(balorea));
+	    }
 	}
 }
