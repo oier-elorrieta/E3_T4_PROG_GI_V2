@@ -7,6 +7,7 @@ import java.lang.invoke.StringConcatFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,6 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 import bista.PelikulaBista;
+=======
+import javax.swing.JTextField;
+
+import bista.SaioaBista;
+>>>>>>> 1587f2ca3350bce75ff30bd2b844a719b7a900c0
 import bista.ZinemaBista;
 import modeloa.Aldagaiak;
 import modeloa.dao.AretoaDao;
@@ -85,29 +91,63 @@ public class Funtzioak {
 		for (int i = 0; i < bezeroakList.size(); i++) {
 			System.out.println(bezeroakList.get(i));
 		}
+		
 		System.out.println("\n\nErosketa:");
 		for (int i = 0; i < erosketakList.size(); i++) {
 			System.out.println(erosketakList.get(i));
 		}
+		
 		System.out.println("\n\nPelikula:");
 		for (int i = 0; i < pelikulakList.size(); i++) {
 			System.out.println(pelikulakList.get(i));
 		}
+		
 //		System.out.println("\n\nSaioa:");
 //		for(int i = 0 ; i < Aldagaiak.saioakListDao.size() ; i++) {
 //			System.out.println(Aldagaiak.saioakListDao.get(i));
 //		}
+		
 		System.out.println("\n\nSarrera:");
 		for (int i = 0; i < sarrerakList.size(); i++) {
 			System.out.println(sarrerakList.get(i));
 		}
+		
 		System.out.println("\n\nZinema:");
 		for (int i = 0; i < zinemakList.size(); i++) {
 			System.out.println(zinemakList.get(i));
+<<<<<<< HEAD
 		}
 
 		//
 		
+=======
+		}  
+		
+		System.out.println("\n\nElorrietaFilmak:");
+		for(int i = 0 ; i < elorrietaPelikulak.size() ; i++) {
+			System.out.println(elorrietaPelikulak.get(i));
+		}
+		
+		System.out.println("\n\nErandioFilmak:");
+		for(int i = 0 ; i < erandioPelikulak.size() ; i++) {
+			System.out.println(erandioPelikulak.get(i));
+		}
+		
+		System.out.println("\n\nBasauriFilmak:");
+		for(int i = 0 ; i < basauriPelikulak.size() ; i++) {
+			System.out.println(basauriPelikulak.get(i));
+		}
+		
+		System.out.println("\n\nSantutxuFilmak:");
+		for(int i = 0 ; i < santutxuPelikulak.size() ; i++) {
+			System.out.println(santutxuPelikulak.get(i));
+		}
+		
+		System.out.println("\n\nBarakaldoFilmak:");
+		for(int i = 0 ; i < barakaldoPelikulak.size() ; i++) {
+			System.out.println(barakaldoPelikulak.get(i));
+		}
+>>>>>>> 1587f2ca3350bce75ff30bd2b844a719b7a900c0
 
 	}
 
@@ -193,5 +233,19 @@ public class Funtzioak {
 
 		Konexioa.konexioaExit();
 		
+	}
+	
+	public static void GehiSarreraBalioa() {
+	    int balorea = Integer.parseInt(SaioaBista.textSarreraKop.getText());
+	    balorea++;
+	    SaioaBista.textSarreraKop.setText(String.valueOf(balorea));
+	}
+
+	public static void KenduSarreraBalioa() {
+	    int balorea = Integer.parseInt(SaioaBista.textSarreraKop.getText());
+	    if (balorea > 0) {
+	    	balorea--;
+	    	SaioaBista.textSarreraKop.setText(String.valueOf(balorea));
+	    }
 	}
 }

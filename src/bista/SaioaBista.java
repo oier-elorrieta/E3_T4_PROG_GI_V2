@@ -1,5 +1,6 @@
 package bista;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -11,11 +12,14 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
+import kontrolatzaile.funtzioak.Funtzioak;
 import modeloa.Aldagaiak;
 
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
@@ -25,11 +29,13 @@ import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 public class SaioaBista extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	public static JTextField textSarreraKop;
 	
 
 	/**
@@ -84,7 +90,7 @@ public class SaioaBista extends JFrame {
 			
 		JLabel lblFilmSaioa = new JLabel("SAIOA:");
 		lblFilmSaioa.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblFilmSaioa.setBounds(464, 287, 419, 46);
+		lblFilmSaioa.setBounds(464, 286, 419, 46);
 		Titulua.add(lblFilmSaioa);
 		
 		JLabel lblFilmEguna = new JLabel("EGUNA:");
@@ -132,5 +138,44 @@ public class SaioaBista extends JFrame {
 		JButton btnAtzeraSaioa = new JButton("ATZERA");
 		btnAtzeraSaioa.setBounds(1144, 15, 89, 23);
 		Titulua.add(btnAtzeraSaioa);
+		
+		JLabel lblSarreraKopurua = new JLabel("SARRERA KOPURUA");
+		lblSarreraKopurua.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSarreraKopurua.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblSarreraKopurua.setBounds(1025, 105, 208, 46);
+		Titulua.add(lblSarreraKopurua);
+		
+		textSarreraKop = new JTextField();
+		textSarreraKop.setHorizontalAlignment(SwingConstants.CENTER);
+		textSarreraKop.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textSarreraKop.setBounds(1025, 147, 208, 61);
+		textSarreraKop.setColumns(10);
+		textSarreraKop.setText("0");	
+		textSarreraKop.setEnabled(false); 
+		
+		Color textuKolorea = Color.BLACK; 
+		textSarreraKop.setDisabledTextColor(textuKolorea);
+		
+		Titulua.add(textSarreraKop);
+		
+		JButton btnSarreraGehi = new JButton("+");
+		btnSarreraGehi.setBounds(1144, 219, 89, 23);
+		Titulua.add(btnSarreraGehi);
+		
+		JButton btnSarreraKendu = new JButton("-");
+		btnSarreraKendu.setBounds(1025, 219, 89, 23);
+		Titulua.add(btnSarreraKendu);
+		
+		btnSarreraGehi.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	Funtzioak.GehiSarreraBalioa();
+		    }
+		});
+
+		btnSarreraKendu.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	Funtzioak.KenduSarreraBalioa();
+		    }
+		});
 	}
 }
