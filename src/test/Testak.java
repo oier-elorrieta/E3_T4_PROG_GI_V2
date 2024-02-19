@@ -65,7 +65,7 @@ public class Testak {
 		sarrera = new Sarrera(1, saio, data, 20, "Normala");
 		zinema = new Zinema("Z01", "Elorrieta", "Agirre Lehendakari", aretoList, saioList);
 	}
-
+ 
 	@Test
 	public void testAretoaKonstruktoreTesta() {	
 		areto.setIzena("Areto 1");
