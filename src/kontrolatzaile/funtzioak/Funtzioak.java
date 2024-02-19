@@ -1,12 +1,25 @@
 package kontrolatzaile.funtzioak;
 
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.lang.invoke.StringConcatFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+
+import bista.PelikulaBista;
+=======
 import javax.swing.JTextField;
 
 import bista.SaioaBista;
+>>>>>>> 1587f2ca3350bce75ff30bd2b844a719b7a900c0
 import bista.ZinemaBista;
 import modeloa.Aldagaiak;
 import modeloa.dao.AretoaDao;
@@ -17,6 +30,8 @@ import modeloa.dao.SaioaDao;
 import modeloa.dao.SarreraDao;
 import modeloa.dao.ZinemaAretoFilmaDAO;
 import modeloa.dao.ZinemaDao;
+import modeloa.db.Konexioa;
+import modeloa.db.Kontzultak;
 import modeloa.objetuak.Aretoa;
 import modeloa.objetuak.Bezeroa;
 import modeloa.objetuak.Erosketak;
@@ -25,10 +40,11 @@ import modeloa.objetuak.Saioa;
 import modeloa.objetuak.Sarrera;
 import modeloa.objetuak.Zinema;
 
-
 public class Funtzioak {
 	
+
 	public static void inicio() {
+		
 		objektuakHasieratu();
 	}
 	
@@ -36,15 +52,12 @@ public class Funtzioak {
 	static List<Bezeroa> bezeroakList;
 	static List<Erosketak> erosketakList;
 	static List<Pelikula> pelikulakList;
-	static List<Saioa> saioakList;
+	public static List<Saioa> saioakList;
 	static List<Sarrera> sarrerakList;
 	static List<Zinema> zinemakList;
-	static List<Pelikula> elorrietaPelikulak;
-	static List<Pelikula> erandioPelikulak;
-	static List<Pelikula> barakaldoPelikulak;
-	static List<Pelikula> santutxuPelikulak;
-	static List<Pelikula> basauriPelikulak;
-	
+	static List<Pelikula> saioPelikulak;
+
+
 	public static void objektuakHasieratu() {
 		AretoaDao Aretoa = new AretoaDao();
 		BezeroaDao Bezeroa = new BezeroaDao();
@@ -53,8 +66,7 @@ public class Funtzioak {
 		SaioaDao Saioa = new SaioaDao();
 		SarreraDao Sarrera = new SarreraDao();
 		ZinemaDao Zinema = new ZinemaDao();
-		ZinemaAretoFilmaDAO ZinemaAretoFilma = new ZinemaAretoFilmaDAO();
-		
+
 		areatoakList = new ArrayList<>();
 		bezeroakList = new ArrayList<>();
 		erosketakList = new ArrayList<>();
@@ -62,11 +74,6 @@ public class Funtzioak {
 		saioakList = new ArrayList<>();
 		sarrerakList = new ArrayList<>();
 		zinemakList = new ArrayList<>();
-		elorrietaPelikulak = new ArrayList<>();
-		erandioPelikulak = new ArrayList<>();
-		barakaldoPelikulak = new ArrayList<>();
-		santutxuPelikulak = new ArrayList<>();
-		basauriPelikulak = new ArrayList<>();
 
 		areatoakList = Aretoa.lortuAreatoak();
 		bezeroakList = Bezeroa.lortuBezeroak();
@@ -75,30 +82,23 @@ public class Funtzioak {
 		saioakList = Saioa.lortuSaioak();
 		sarrerakList = Sarrera.lortuSarrerak();
 		zinemakList = Zinema.lortuZinemak();
-		elorrietaPelikulak = ZinemaAretoFilma.lortuElorrietaFilmak();
-		erandioPelikulak =  ZinemaAretoFilma.lortuErandioFilmak();
-		barakaldoPelikulak =  ZinemaAretoFilma.lortuBarakaldoFilmak();
-		santutxuPelikulak =   ZinemaAretoFilma.lortuSantutxuFilmak();
-		basauriPelikulak =  ZinemaAretoFilma.lortuBasauriFilmak();
-		
-		
-		
+
 		System.out.println("\n\nAretoak:");
-		for(int i = 0 ; i < areatoakList.size() ; i++) {
+		for (int i = 0; i < areatoakList.size(); i++) {
 			System.out.println(areatoakList.get(i));
 		}
 		System.out.println("\n\nBezeroak:");
-		for(int i = 0 ; i < bezeroakList.size() ; i++) {
+		for (int i = 0; i < bezeroakList.size(); i++) {
 			System.out.println(bezeroakList.get(i));
 		}
 		
 		System.out.println("\n\nErosketa:");
-		for(int i = 0 ; i < erosketakList.size() ; i++) {
+		for (int i = 0; i < erosketakList.size(); i++) {
 			System.out.println(erosketakList.get(i));
 		}
 		
 		System.out.println("\n\nPelikula:");
-		for(int i = 0 ; i < pelikulakList.size() ; i++) {
+		for (int i = 0; i < pelikulakList.size(); i++) {
 			System.out.println(pelikulakList.get(i));
 		}
 		
@@ -108,13 +108,19 @@ public class Funtzioak {
 //		}
 		
 		System.out.println("\n\nSarrera:");
-		for(int i = 0 ; i < sarrerakList.size() ; i++) {
+		for (int i = 0; i < sarrerakList.size(); i++) {
 			System.out.println(sarrerakList.get(i));
 		}
 		
 		System.out.println("\n\nZinema:");
-		for(int i = 0 ; i < zinemakList.size() ; i++) {
+		for (int i = 0; i < zinemakList.size(); i++) {
 			System.out.println(zinemakList.get(i));
+<<<<<<< HEAD
+		}
+
+		//
+		
+=======
 		}  
 		
 		System.out.println("\n\nElorrietaFilmak:");
@@ -141,9 +147,10 @@ public class Funtzioak {
 		for(int i = 0 ; i < barakaldoPelikulak.size() ; i++) {
 			System.out.println(barakaldoPelikulak.get(i));
 		}
+>>>>>>> 1587f2ca3350bce75ff30bd2b844a719b7a900c0
 
 	}
-	
+
 	public static boolean login(String erabiltzailea, String pasahitza) {
 		if (loginOK(erabiltzailea, pasahitza)) {
 			try {
@@ -156,34 +163,75 @@ public class Funtzioak {
 		}
 		return false;
 	}
-	
+
 	public static boolean loginOK(String erabiltzailea, String pasahitza) {
 		boolean login = false;
 
-		for (int i = 0; i < bezeroakList.size() ; i++) {
+		for (int i = 0; i < bezeroakList.size(); i++) {
 
-            if (bezeroakList.get(i).getErabiltzailea().equals(erabiltzailea) && bezeroakList.get(i).getPasahitza().equals(pasahitza)) {
-                // Bezeroa encontrado
-                login = true;
-                break; // Puedes salir del bucle una vez que encuentras el bezeroa
-            }
-        }
+			if (bezeroakList.get(i).getErabiltzailea().equals(erabiltzailea)
+					&& bezeroakList.get(i).getPasahitza().equals(pasahitza)) {
+				// Bezeroa encontrado
+				login = true;
+				break; // Puedes salir del bucle una vez que encuentras el bezeroa
+			}
+		}
 
-        // Verificar si se encontró el bezeroa
-        if (login) {
-            System.out.println("Bezeroa encontrado.");
-        } else {
-            System.out.println("Bezeroa no encontrado.");
-        }
+		// Verificar si se encontró el bezeroa
+		if (login) {
+			System.out.println("Bezeroa encontrado.");
+		} else {
+			System.out.println("Bezeroa no encontrado.");
+		}
 		return login;
 	}
 	
+	public static void pelikulaBistaVisible() {
+		try {
+			PelikulaBista frame = new PelikulaBista();
+			frame.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static void filmaDatuak() {
-		Pelikula pelikula1 = new Pelikula(1,"CARS","KOMEDIA",120);
+		Pelikula pelikula1 = new Pelikula(1, "CARS", "KOMEDIA", 120);
 		Aldagaiak.izenaFilm = pelikula1.getIzena();
 		Aldagaiak.generoFilm = pelikula1.getGeneroa();
 		Aldagaiak.iraupenaFilm = pelikula1.getIraupena();
 		Aldagaiak.urlFilmAux = Aldagaiak.urlFilm + Aldagaiak.izenaFilm + ".jpg";
+
+	}
+
+	public static void saioaZinema(String idZinema) {
+
+		Kontzultak.saioakArgitaratu = "SELECT ordua, eguna, idaretoa, idFilma "
+				+ "FROM saioa s LEFT JOIN ZINEMA z USING (idZinema) LEFT JOIN FILMA f USING (idFilma)"
+				+ " WHERE z.idzinema = '" + idZinema + "' AND Eguna >= CURDATE() AND Ordua >= CURTIME() "
+				+ "ORDER by s.Eguna, s.Ordua;";
+
+	}
+	
+	public static void filmPanelak() {
+		
+		Konexioa.konexioa();
+				
+		ZinemaAretoFilmaDAO ZinemaAretoFilma = new ZinemaAretoFilmaDAO();
+
+		saioPelikulak = new ArrayList<>();
+
+		saioPelikulak = ZinemaAretoFilma.lortuFilmak();
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("------------------------------------------------------------------------");
+
+		System.out.println(saioPelikulak);
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("------------------------------------------------------------------------");
+
+		Konexioa.konexioaExit();
 		
 	}
 	
