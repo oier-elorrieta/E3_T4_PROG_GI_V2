@@ -4,7 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import kontrolatzaile.funtzioak.Funtzioak;
 import modeloa.Aldagaiak;
+import modeloa.db.Kontzultak;
 
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
@@ -16,6 +18,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ZinemaBista extends JFrame {
 
@@ -52,23 +56,77 @@ public class ZinemaBista extends JFrame {
 		scrollPaneZinemak.setViewportView(panelZinemak);
 		
 		JButton btnElorrieta = new JButton("Elorrieta Zinema");
-		btnElorrieta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnElorrieta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// Deitu pelikula vista noiz zinema basauri da
+				Funtzioak.saioaZinema("Z01");
+				System.out.println("ELORRIETA ZINEMA");
+				
+				Funtzioak.pelikulaBistaVisible();
+				dispose();
 			}
 		});
+		
 		panelZinemak.setLayout(new GridLayout(0, 1, 0, 0));
 		panelZinemak.add(btnElorrieta);
 		
 		JButton btnBasauri = new JButton("Basauri Zinema");
+		btnBasauri.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// Deitu pelikula vista noiz zinema basauri da
+				Funtzioak.saioaZinema("Z05");
+				System.out.println("BASAURI ZINEMA");
+				
+				Funtzioak.pelikulaBistaVisible();
+				dispose();
+			}
+		});
 		panelZinemak.add(btnBasauri);
 		
 		JButton btnErandio = new JButton("Erandio Zinema");
+		btnErandio.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				// Deitu pelikula vista noiz zinema basauri da
+				Funtzioak.saioaZinema("Z02");
+				System.out.println("ERANDIO ZINEMA");
+				
+				Funtzioak.pelikulaBistaVisible();
+				dispose();
+			}
+		});
 		panelZinemak.add(btnErandio);
 		
 		JButton btnSantutxu = new JButton("Santutxu Zinema");
+		btnSantutxu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// Deitu pelikula vista noiz zinema basauri da
+				Funtzioak.saioaZinema("Z04");
+				System.out.println("SANTUTXU ZINEMA");
+				
+				Funtzioak.pelikulaBistaVisible();
+				dispose();
+			}
+		});
 		panelZinemak.add(btnSantutxu);
 		
 		JButton btnBarakaldo = new JButton("Barakaldo Zinema");
+		btnBarakaldo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// Deitu pelikula vista noiz zinema basauri da
+				Funtzioak.saioaZinema("Z03");
+				System.out.println("BARAKALDO ZINEMA");
+
+				Funtzioak.pelikulaBistaVisible();
+				dispose();
+			}
+		});
 		panelZinemak.add(btnBarakaldo);
 	}
+	
 }
