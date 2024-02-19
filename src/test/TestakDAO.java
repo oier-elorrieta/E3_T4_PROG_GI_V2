@@ -23,7 +23,7 @@ public class TestakDAO {
 	public void test() {
 		fail("Not yet implemented");
 	}
-
+ 
 	    public ArrayList<Aretoa> lortuAreatoak() {
 	    	ArrayList<Aretoa> areatoak = new ArrayList<>();
 

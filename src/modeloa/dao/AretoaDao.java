@@ -11,13 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AretoaDao {
-
+	
+	public static List<Aretoa> aretoak;
+	
     public List<Aretoa> lortuAreatoak() {
-        List<Aretoa> areatoak = new ArrayList<>();
+        aretoak = new ArrayList<>();
 
         try {
-            Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
-
+            Konexioa.konexioa(); 
             PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.aretoa);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -26,16 +27,16 @@ public class AretoaDao {
                 String izena = resultSet.getString("izena");
 
                 Aretoa aretoa = new Aretoa(idAretoa, izena);
-                areatoak.add(aretoa);
+                aretoak.add(aretoa);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Konexioa.konexioaExit(); // Asegúrate de cerrar la conexión después de usarla
+            Konexioa.konexioaExit();
         }
 
-        return areatoak;
+        return aretoak; 
     }
 
 }

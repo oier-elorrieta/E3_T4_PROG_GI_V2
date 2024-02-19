@@ -9,20 +9,16 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import modeloa.dao.AretoaDao;
 import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
 import modeloa.objetuak.Aretoa;
 
 public class AretoDAOTEST {
+	
+	private static ArrayList<Aretoa> aretoak = new ArrayList<>();
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-
-	 public ArrayList<Aretoa> lortuAreatoak() {
-	    	ArrayList<Aretoa> areatoak = new ArrayList<>();
-
+	 public static void lortuAreatoak() {
 	        try {
 	            Konexioa.konexioa();
 
@@ -34,7 +30,7 @@ public class AretoDAOTEST {
 	                String izena = resultSet.getString("izena");
 
 	                Aretoa aretoa = new Aretoa(idAretoa, izena);
-	                areatoak.add(aretoa);
+	                aretoak.add(aretoa);
 	            }
 
 	        } catch (SQLException e) {
@@ -43,8 +39,11 @@ public class AretoDAOTEST {
 	            Konexioa.konexioaExit();
 	        }
 
-	        return areatoak;
 	    }
 	
+	 @Test
+		public void test() {
+			assertEquals(aretoak, AretoaDao.aretoak);
+	 	}
 	
 }
