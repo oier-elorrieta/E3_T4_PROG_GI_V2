@@ -13,7 +13,6 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
-import java.awt.Container;
 
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -69,7 +68,7 @@ public class ErosketaKonfirmazioaBista extends JFrame {
 
         // Crea una instancia de Bezeroa y Erosketak con datos concretos
         Bezeroa bezeroa = new Bezeroa("B01", "12345678A", "Jon", "Doe", "jondoe", "password", 123456789, "Gizona");
-        Erosketak erosketak = new Erosketak(1, bezeroa, LocalDate.now());
+        Erosketak erosketak = new Erosketak(1, LocalDate.now());
 
         // Crea etiquetas para mostrar los datos
         JLabel erosketaid = new JLabel("idErosketa: " + erosketak.getIdErosketak());
