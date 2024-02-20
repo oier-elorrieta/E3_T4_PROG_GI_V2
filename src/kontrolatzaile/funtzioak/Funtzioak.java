@@ -4,6 +4,9 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.invoke.StringConcatFactory;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,20 +50,28 @@ public class Funtzioak {
 	static List<Aretoa> areatoakList;
 	static List<Bezeroa> bezeroakList;
 	static List<Erosketak> erosketakList;
-	static List<Pelikula> pelikulakList;
+	public static List<Pelikula> pelikulakList;
 	public static List<Saioa> saioakList;
 	static List<Sarrera> sarrerakList;
 	static List<Zinema> zinemakList;
 	static List<Pelikula> saioPelikulak;
+	
+	static AretoaDao Aretoa;
+	static BezeroaDao Bezeroa;
+	static ErosketakDao Erosketak;
+	static PelikulaDao Pelikula;
+	static SaioaDao Saioa;
+	static SarreraDao Sarrera;
+	static ZinemaDao Zinema;
 
 	public static void objektuakHasieratu() {
-		AretoaDao Aretoa = new AretoaDao();
-		BezeroaDao Bezeroa = new BezeroaDao();
-		ErosketakDao Erosketak = new ErosketakDao();
-		PelikulaDao Pelikula = new PelikulaDao();
-		SaioaDao Saioa = new SaioaDao();
-		SarreraDao Sarrera = new SarreraDao();
-		ZinemaDao Zinema = new ZinemaDao();
+		Aretoa = new AretoaDao();
+		Bezeroa = new BezeroaDao();
+		Erosketak = new ErosketakDao();
+		Pelikula = new PelikulaDao();
+		Saioa = new SaioaDao();
+		Sarrera = new SarreraDao();
+		Zinema = new ZinemaDao();
 
 		areatoakList = new ArrayList<>();
 		bezeroakList = new ArrayList<>();
@@ -97,10 +108,10 @@ public class Funtzioak {
 			System.out.println(pelikulakList.get(i));
 		}
 		
-//		System.out.println("\n\nSaioa:");
-//		for(int i = 0 ; i < Aldagaiak.saioakListDao.size() ; i++) {
-//			System.out.println(Aldagaiak.saioakListDao.get(i));
-//		}
+		System.out.println("\n\nSaioa:");
+		for(int i = 0 ; i < saioakList.size() ; i++) {
+			System.out.println(saioakList.get(i));
+		}
 		
 		System.out.println("\n\nSarrera:");
 		for (int i = 0; i < sarrerakList.size(); i++) {
@@ -147,6 +158,13 @@ public class Funtzioak {
 //	}
 
 	}
+	
+//	public static void objektuakExarri() {
+//		saioa
+//		zinema
+//		sarrera
+//		erosketa
+//	}
 
 	public static boolean login(String erabiltzailea, String pasahitza) {
 		if (loginOK(erabiltzailea, pasahitza)) {

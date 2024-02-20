@@ -1,18 +1,27 @@
 package modeloa.objetuak;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import modeloa.dao.PelikulaDao;
 
 public class Karteldegia {
 	
-	private ArrayList<Pelikula> filmList;
+	PelikulaDao pelikulaDao = new PelikulaDao();
+	private List<Pelikula> filmList;
 	
 	//--------------------Konstruktorea--------------------//
+	public Karteldegia() {
+	}
 	public Karteldegia(ArrayList<Pelikula> filmList) {
 		this.filmList = filmList;
 	}
 	//--------------------Konstruktorea--------------------//
 
+	public void pelikulakBete() {
+		this.filmList = pelikulaDao.lortuPelikulak();
+	}
 		
 	//--------------------SET--------------------//
 	public void setFilmList(ArrayList<Pelikula> filmList) {
@@ -22,7 +31,7 @@ public class Karteldegia {
 		
 		
 	//--------------------GET--------------------//
-	public ArrayList<Pelikula> getFilmList() {
+	public List<Pelikula> getFilmList() {
 		return filmList;
 	}
 	//--------------------GET--------------------//

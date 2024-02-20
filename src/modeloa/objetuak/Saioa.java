@@ -13,10 +13,11 @@ public class Saioa {
 	private Pelikula pelikula;
 	
 	//--------------------Konstruktorea--------------------//
-	public Saioa(int idSaioa , LocalTime ordua, LocalDate eguna) {
+	public Saioa(int idSaioa, LocalTime ordua, LocalDate eguna, Pelikula pelikula) {
 		this.idSaioa = idSaioa;
 		this.ordua = ordua;
 		this.eguna = eguna;
+		this.pelikula = pelikula;
 	}
 	//--------------------Konstruktorea--------------------//
 	

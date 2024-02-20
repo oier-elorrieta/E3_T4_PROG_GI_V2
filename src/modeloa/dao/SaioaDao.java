@@ -2,6 +2,8 @@ package modeloa.dao;
 
 import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
+import modeloa.objetuak.Karteldegia;
+import modeloa.objetuak.Pelikula;
 import modeloa.objetuak.Saioa;
 
 import java.sql.PreparedStatement;
@@ -12,11 +14,14 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import kontrolatzaile.funtzioak.Funtzioak;
+
 public class SaioaDao {
 
-    public List<Saioa> lortuSaioak() {
+	public List<Saioa> lortuSaioak() {
         List<Saioa> saioak = new ArrayList<>();
-
+        PelikulaDao pelikulaDao = new PelikulaDao();
+        Pelikula peli = null;
         try {
             Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
 
@@ -27,8 +32,19 @@ public class SaioaDao {
                 int idSaioa = resultSet.getInt("idSaioa");
                 LocalTime ordua = resultSet.getTime("ordua").toLocalTime();
                 LocalDate eguna = resultSet.getDate("eguna").toLocalDate();
+                int idPelikula = resultSet.getInt("idFilma");
+                
+                for (Pelikula pelikula : Funtzioak.pelikulakList) {
+                    // Compara el atributo idFilma con el valor buscado
+                    if (pelikula.getIdPelikula() == idPelikula) {
+                        // Si coincide, guarda la película y sal del bucle
+                        peli = pelikula;
+                        break;
+                    }
+                }
+                
 
-                Saioa saioa = new Saioa(idSaioa, ordua, eguna);
+                Saioa saioa = new Saioa(idSaioa, ordua, eguna, peli);
                 saioak.add(saioa);
             }
 
@@ -40,5 +56,5 @@ public class SaioaDao {
 
         return saioak;
     }
-
+    
 }

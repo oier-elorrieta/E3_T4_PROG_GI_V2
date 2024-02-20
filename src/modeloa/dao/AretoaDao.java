@@ -36,7 +36,7 @@ public class AretoaDao {
         } finally {
             Konexioa.konexioaExit();
         }
-
+        
         return aretoak; 
     }
     
