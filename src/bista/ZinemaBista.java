@@ -56,7 +56,15 @@ public class ZinemaBista extends JFrame {
 		scrollPaneZinemak.setViewportView(panelZinemak);
 		
 		JButton btnElorrieta = new JButton("Elorrieta Zinema");
+		btnElorrieta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnElorrieta.addMouseListener(new MouseAdapter() {
+			
+			
+			
+			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// Deitu pelikula vista noiz zinema basauri da
@@ -66,6 +74,9 @@ public class ZinemaBista extends JFrame {
 				Funtzioak.pelikulaBistaVisible();
 				dispose();
 			}
+			
+			
+			
 		});
 		
 		panelZinemak.setLayout(new GridLayout(0, 1, 0, 0));

@@ -23,8 +23,7 @@ public class SaioaDao {
         List<Saioa> saioak = new ArrayList<>();
         Pelikula peli = null;
         Aretoa areto = null;
-        AretoaDao aretoaDao = new AretoaDao();
-        
+      //  AretoaDao aretoaDao = new AretoaDao();
         try {
             Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
 
@@ -40,7 +39,6 @@ public class SaioaDao {
                 int idPelikula = resultSet.getInt("idFilma");
                 String idZinema = resultSet.getString("idZinema");
                 String idAretoa = resultSet.getString("idAretoa");
-                
                 for (Pelikula pelikula : Funtzioak.pelikulakList) {
                     // Compara el atributo idFilma con el valor buscado
                     if (pelikula.getIdPelikula() == idPelikula) {
@@ -49,12 +47,13 @@ public class SaioaDao {
                         break;
                     }
                 }
-                
+                System.out.println("Tamaño de la lista: " + Funtzioak.areatoakList.size());
                 for (Aretoa aretoa : Funtzioak.areatoakList) {
                     // Compara el atributo idFilma con el valor buscado
                 	if (aretoa.getIdZinema().equals(idZinema) && aretoa.getIdAretoa().equals(idAretoa)) {
                         // Si coincide, guarda la película y sal del bucle
                 		areto = aretoa;
+                		System.out.println(areto);
                         break;
                     }
                 }
