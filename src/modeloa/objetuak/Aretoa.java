@@ -5,11 +5,13 @@ import java.util.Objects;
 public class Aretoa {
 	
 	private String idAretoa;
+	private String idZinema;
 	private String izena;
 
 	//--------------------Konstruktorea--------------------//
-	public Aretoa(String idAretoa, String izena) {
+	public Aretoa(String idAretoa, String idZinema,String izena) {
 		this.idAretoa = idAretoa;
+		this.idZinema = idZinema;
 		this.izena = izena;
 	}
 	//--------------------Konstruktorea--------------------//
@@ -18,6 +20,10 @@ public class Aretoa {
 	//--------------------Set--------------------//	
 	public void setIdAretoa(String idAretoa) {
 		this.idAretoa = idAretoa;
+	}
+	
+	public void setIdZinema(String idZinema) {
+		this.idZinema = idZinema;
 	}
 	
 	public void setIzena(String izena) {
@@ -30,6 +36,11 @@ public class Aretoa {
 	public String getIdAretoa() {
 		return idAretoa;
 	}
+	
+	public String getIdZinema() {
+		return idZinema;
+	}
+
 	
 	public String getIzena() {
 		return izena;

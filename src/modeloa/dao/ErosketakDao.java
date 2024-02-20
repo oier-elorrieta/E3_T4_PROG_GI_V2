@@ -36,12 +36,21 @@ public class ErosketakDao {
                 erosketa.setDeskontua(deskontua);
                 erosketa.setDirutotala(dirutotala);
                 erosketa.setMota(mota);
+<<<<<<< HEAD
                 
-                Bezeroa bezeroa = new 
-                
-                erosketa.setBezeroa();
+//                Bezeroa bezeroa = new 
+//                
+//                erosketa.setBezeroa();
 
                 erosketak.add(erosketa);
+=======
+//                
+//                Bezeroa bezeroa = new 
+//                
+//                erosketa.setBezeroa();
+//
+//                erosketak.add(erosketa);
+>>>>>>> 7bc05dadbccabb907850c6698d48040bbfa4f035
             }
 
         } catch (SQLException e) {
