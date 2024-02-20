@@ -2,14 +2,13 @@ package test;
 
 import static org.junit.Assert.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import modeloa.dao.AretoaDao;
@@ -19,39 +18,58 @@ import modeloa.objetuak.Aretoa;
 
 public class TestakDAO {
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
- 
-	    public ArrayList<Aretoa> lortuAreatoak() {
-	    	ArrayList<Aretoa> areatoak = new ArrayList<>();
+	// DAO ALDAGAIAK
+	private AretoaDao aretoaDao;
+	private List<Aretoa> aretoakTest;
 
-	        try {
-	            Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
 
-	            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.aretoa);
-	            ResultSet resultSet = preparedStatement.executeQuery();
+	public List<Aretoa> lortuAreatoakTEST() {
+	    aretoakTest = new ArrayList<>();
 
-	            while (resultSet.next()) {
-	                String idAretoa = resultSet.getString("idAretoa");
-	                String izena = resultSet.getString("izena");
+	    try {
+	        Konexioa.konexioa(); 
+	        PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.aretoa);
+	        ResultSet resultSet = preparedStatement.executeQuery();
 
-	                Aretoa aretoa = new Aretoa(idAretoa, izena);
-	                areatoak.add(aretoa);
-	            }
+	        while (resultSet.next()) {
+	            String idAretoa = resultSet.getString("idAretoa");
+	            String izena = resultSet.getString("izena");
 
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        } finally {
-	            Konexioa.konexioaExit(); // Asegúrate de cerrar la conexión después de usarla
+	            Aretoa aretoa = new Aretoa(idAretoa, izena);
+	            aretoakTest.add(aretoa);
+	            
 	        }
 
-	        return areatoak;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        Konexioa.konexioaExit();
 	    }
 
-	
+	    return aretoakTest; 
+	}
 
 
+	@Before
+	public void setUp() {
+	    // Prestatzen da proba bakoitzea exekutatzeko, klasearen instantzia sortzen da.
+	    aretoaDao = new AretoaDao();
+	}
+
+	@Test
+	public void testLortuAreatoak() {
+	    // AretoaDao klasearen bidez Areatoak lortzen dira eta listan gorde.
+	    List<Aretoa> aretoak = aretoaDao.lortuAreatoak();
+	    
+	    // lortuAreatoakTEST() metodoa deitu eta Areatoak lortzen dira eta listan gorde.
+	    List<Aretoa> aretoakTest = lortuAreatoakTEST();
+	    
+	    // Areatoak ez direla nuluek eta hutsik ez daudela egiaztatu.
+	    assertNotNull(aretoak);
+	    assertFalse(aretoak.isEmpty());
+
+	    // lortuAreatoakTEST() metodoaren emaitzak eta aretoaDao-rena berdina direla egiaztatu.
+	    assertEquals(aretoakTest, aretoak);
+	}
 
 }

@@ -43,14 +43,14 @@ public class Aretoa {
 		return "Aretoa [idAretoa=" + idAretoa + ", izena=" + izena + "]";
 	}
 	//--------------------toString--------------------//
-	
-	
-	//--------------------Equals--------------------//
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(idAretoa, izena);
 	}
-	
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -60,9 +60,10 @@ public class Aretoa {
 		if (getClass() != obj.getClass())
 			return false;
 		Aretoa other = (Aretoa) obj;
-		return idAretoa == other.idAretoa && Objects.equals(izena, other.izena);
+		return Objects.equals(idAretoa, other.idAretoa) && Objects.equals(izena, other.izena);
 	}
-	//--------------------Equals--------------------//
+	
+	
 	
 	
 }

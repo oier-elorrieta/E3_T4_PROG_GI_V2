@@ -2,6 +2,7 @@ package modeloa.dao;
 
 import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
+import modeloa.objetuak.Bezeroa;
 import modeloa.objetuak.Erosketak;
 
 import java.sql.PreparedStatement;
@@ -24,17 +25,21 @@ public class ErosketakDao {
 
             while (resultSet.next()) {
                 int idErosketak = resultSet.getInt("idErosketak");
-                LocalDate data = resultSet.getDate("data").toLocalDate();
-                int sarreraKant = resultSet.getInt("sarreraKant");
+                LocalDate data = resultSet.getDate("Eguna").toLocalDate();
                 double deskontua = resultSet.getDouble("deskontua");
-                double dirutotala = resultSet.getDouble("dirutotala");
-                String mota = resultSet.getString("mota");
-
+                double dirutotala = resultSet.getDouble("diru_totala");
+                String mota = resultSet.getString("idMota");
+                String idBezero = resultSet.getString("idBezero");
+;
                 Erosketak erosketa = new Erosketak(idErosketak, data);
-                erosketa.setSarreraKant(sarreraKant);
+                erosketa.setSarreraKant(2);
                 erosketa.setDeskontua(deskontua);
                 erosketa.setDirutotala(dirutotala);
                 erosketa.setMota(mota);
+                
+                Bezeroa bezeroa = new 
+                
+                erosketa.setBezeroa();
 
                 erosketak.add(erosketa);
             }
@@ -47,4 +52,6 @@ public class ErosketakDao {
 
         return erosketak;
     }
+    
+    
 }
