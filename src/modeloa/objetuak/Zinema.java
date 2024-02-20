@@ -1,6 +1,6 @@
 package modeloa.objetuak;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Zinema {
@@ -8,8 +8,8 @@ public class Zinema {
 	private String idZinema;
 	private String izena;
 	private String helbidea;
-	private ArrayList<Aretoa> aretoList;
-	private ArrayList<Saioa> saioList;
+	private List<Aretoa> aretoList;
+	private List<Saioa> saioList;
 
 	// --------------------Konstruktorea--------------------//
 	public Zinema(String idZinema, String izena, String helbidea) {
@@ -17,7 +17,7 @@ public class Zinema {
 		this.izena = izena;
 		this.helbidea = helbidea;
 	}
-	public Zinema(String idZinema, String izena, String helbidea, ArrayList<Aretoa> aretoList, ArrayList<Saioa> saioList) {
+	public Zinema(String idZinema, String izena, String helbidea, List<Aretoa> aretoList, List<Saioa> saioList) {
 		this.idZinema = idZinema;
 		this.izena = izena;
 		this.helbidea = helbidea;
@@ -39,11 +39,11 @@ public class Zinema {
 		this.helbidea = helbidea;
 	}
 
-	public void setAretoList(ArrayList<Aretoa> aretoList) {
+	public void setAretoList(List<Aretoa> aretoList) {
 		this.aretoList = aretoList;
 	}
 
-	public void setSaioList(ArrayList<Saioa> saioList) {
+	public void setSaioList(List<Saioa> saioList) {
 		this.saioList = saioList;
 	}
 	// --------------------Set--------------------//
@@ -61,11 +61,11 @@ public class Zinema {
 		return helbidea;
 	}
 
-	public ArrayList<Aretoa> getAretoList() {
+	public List<Aretoa> getAretoList() {
 		return aretoList;
 	}
 
-	public ArrayList<Saioa> getSaioList() {
+	public List<Saioa> getSaioList() {
 		return saioList;
 	}
 	// --------------------Get--------------------//

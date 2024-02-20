@@ -2,11 +2,10 @@ package modeloa.dao;
 
 import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
-import modeloa.objetuak.Karteldegia;
 import modeloa.objetuak.Pelikula;
 import modeloa.objetuak.Saioa;
 
-import java.sql.PreparedStatement;
+import java.sql.PreparedStatement; 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -18,14 +17,15 @@ import kontrolatzaile.funtzioak.Funtzioak;
 
 public class SaioaDao {
 
-	public List<Saioa> lortuSaioak() {
+	public List<Saioa> lortuSaioak(String ID) {
         List<Saioa> saioak = new ArrayList<>();
-        PelikulaDao pelikulaDao = new PelikulaDao();
         Pelikula peli = null;
         try {
             Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
 
-            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.saioa);
+            String kontzulta = "SELECT idSaioa, Ordua, Eguna, idFilma FROM SAIOA WHERE idZinema = '" + ID + "'";
+            
+            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(kontzulta);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {

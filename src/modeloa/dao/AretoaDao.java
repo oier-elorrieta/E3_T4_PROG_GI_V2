@@ -11,15 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AretoaDao {
-	
-	public static List<Aretoa> aretoak;
-	
-    public List<Aretoa> lortuAreatoak() {
-        aretoak = new ArrayList<>();
+    
+    
+    public List<Aretoa> lortuAreatoak(String ID) {
+    	
+        List<Aretoa> aretoak = new ArrayList<>();
 
+        String kontzulta = "SELECT idAretoa, izena FROM ARETOA where idZinema = '" + ID + "'";
+        
         try {
             Konexioa.konexioa(); 
-            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.aretoa);
+            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(kontzulta);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -43,4 +45,3 @@ public class AretoaDao {
     
 
 }
-

@@ -81,11 +81,9 @@ public class Funtzioak {
 		sarrerakList = new ArrayList<>();
 		zinemakList = new ArrayList<>();
 
-		areatoakList = Aretoa.lortuAreatoak();
 		bezeroakList = Bezeroa.lortuBezeroak();
 		erosketakList = Erosketak.lortuErosketak();
 		pelikulakList = Pelikula.lortuPelikulak();
-		saioakList = Saioa.lortuSaioak();
 		sarrerakList = Sarrera.lortuSarrerak();
 		zinemakList = Zinema.lortuZinemak();
 

@@ -2,6 +2,8 @@ package modeloa.dao;
 
 import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
+import modeloa.objetuak.Aretoa;
+import modeloa.objetuak.Saioa;
 import modeloa.objetuak.Zinema;
 
 import java.sql.PreparedStatement;
@@ -13,7 +15,11 @@ import java.util.List;
 public class ZinemaDao {
 
     public List<Zinema> lortuZinemak() {
-        List<Zinema> zinemak = new ArrayList<>();
+        
+    	AretoaDao aretoaDao = new AretoaDao();
+    	SaioaDao saioaDao = new SaioaDao();
+    	
+    	List<Zinema> zinemak = new ArrayList<>();
 
         try {
             Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
@@ -25,8 +31,11 @@ public class ZinemaDao {
                 String idZinema = resultSet.getString("idZinema");
                 String izena = resultSet.getString("izena");
                 String helbidea = resultSet.getString("helbidea");
-
-                Zinema zinema = new Zinema(idZinema, izena, helbidea);
+                
+                List<Aretoa> aretoList = aretoaDao.lortuAreatoak(idZinema);
+                List<Saioa> saioaList = saioaDao.lortuSaioak(idZinema);
+                
+                Zinema zinema = new Zinema(idZinema, izena, helbidea, aretoList, saioaList);
                 zinemak.add(zinema);
             }
 
