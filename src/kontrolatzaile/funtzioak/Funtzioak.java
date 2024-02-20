@@ -43,11 +43,10 @@ import modeloa.objetuak.Zinema;
 public class Funtzioak {
 
 	public static void inicio() {
-
 		objektuakHasieratu();
 	}
 
-	static List<Aretoa> areatoakList;
+	public static List<Aretoa> areatoakList;
 	static List<Bezeroa> bezeroakList;
 	static List<Erosketak> erosketakList;
 	public static List<Pelikula> pelikulakList;
@@ -87,34 +86,26 @@ public class Funtzioak {
 		sarrerakList = Sarrera.lortuSarrerak();
 		zinemakList = Zinema.lortuZinemak();
 
-		System.out.println("\n\nAretoak:");
-		for (int i = 0; i < areatoakList.size(); i++) {
-			System.out.println(areatoakList.get(i));
-		}
 		System.out.println("\n\nBezeroak:");
 		for (int i = 0; i < bezeroakList.size(); i++) {
 			System.out.println(bezeroakList.get(i));
 		}
 		
-		System.out.println("\n\nErosketa:");
-		for (int i = 0; i < erosketakList.size(); i++) {
-			System.out.println(erosketakList.get(i));
-		}
+//		System.out.println("\n\nErosketa:");
+//		for (int i = 0; i < erosketakList.size(); i++) {
+//			System.out.println(erosketakList.get(i));
+//		}
 		
 		System.out.println("\n\nPelikula:");
 		for (int i = 0; i < pelikulakList.size(); i++) {
 			System.out.println(pelikulakList.get(i));
 		}
 		
-		System.out.println("\n\nSaioa:");
-		for(int i = 0 ; i < saioakList.size() ; i++) {
-			System.out.println(saioakList.get(i));
-		}
 		
-		System.out.println("\n\nSarrera:");
-		for (int i = 0; i < sarrerakList.size(); i++) {
-			System.out.println(sarrerakList.get(i));
-		}
+//		System.out.println("\n\nSarrera:");
+//		for (int i = 0; i < sarrerakList.size(); i++) {
+//			System.out.println(sarrerakList.get(i));
+//		}
 		
 		System.out.println("\n\nZinema:");
 		for (int i = 0; i < zinemakList.size(); i++) {

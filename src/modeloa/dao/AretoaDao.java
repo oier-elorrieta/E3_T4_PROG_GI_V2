@@ -17,7 +17,7 @@ public class AretoaDao {
     	
         List<Aretoa> aretoak = new ArrayList<>();
 
-        String kontzulta = "SELECT idAretoa, izena FROM ARETOA where idZinema = '" + ID + "'";
+        String kontzulta = "SELECT idAretoa, idZinema, izena FROM ARETOA where idZinema = '" + ID + "'";
         
         try {
             Konexioa.konexioa(); 
@@ -26,9 +26,10 @@ public class AretoaDao {
 
             while (resultSet.next()) {
                 String idAretoa = resultSet.getString("idAretoa");
+                String idZinema = resultSet.getString("idZinema");
                 String izena = resultSet.getString("izena");
 
-                Aretoa aretoa = new Aretoa(idAretoa, izena);
+                Aretoa aretoa = new Aretoa(idAretoa, idZinema, izena);
                 aretoak.add(aretoa);
                 
             }
