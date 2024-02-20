@@ -37,9 +37,9 @@ public class ErosketakDao {
                 erosketa.setDirutotala(dirutotala);
                 erosketa.setMota(mota);
                 
-                Bezeroa bezeroa = new 
-                
-                erosketa.setBezeroa();
+//                Bezeroa bezeroa = new 
+//                
+//                erosketa.setBezeroa();
 
                 erosketak.add(erosketa);
             }
