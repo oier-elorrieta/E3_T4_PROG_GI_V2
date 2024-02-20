@@ -91,8 +91,8 @@ public class Erosketak {
 	}
 	// --------------------toString--------------------//
 
-	
 	// --------------------Equals--------------------//
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(bezeroa, data, deskontua, dirutotala, idErosketak, mota, sarreraKant);
@@ -113,5 +113,8 @@ public class Erosketak {
 				&& idErosketak == other.idErosketak && Objects.equals(mota, other.mota)
 				&& sarreraKant == other.sarreraKant;
 	}
+
+	
+	
 	// --------------------Equals--------------------//
 }

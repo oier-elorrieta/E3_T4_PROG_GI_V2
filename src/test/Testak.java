@@ -749,9 +749,6 @@ public void testLortuAreatoak() {
     // lortuAreatoakTEST() metodoa deitu eta Areatoak lortzen dira eta listan gorde.
     List<Aretoa> aretoakTest = lortuAreatoakTEST();
     
-    System.out.println("Lista esperada: " + aretoakTest);
-    System.out.println("Lista obtenida: " + aretoak);
-    
     // Areatoak ez direla nuluek eta hutsik ez daudela egiaztatu.
     assertNotNull(aretoak);
     assertFalse(aretoak.isEmpty());
@@ -759,5 +756,7 @@ public void testLortuAreatoak() {
     // lortuAreatoakTEST() metodoaren emaitzak eta aretoaDao-rena berdina direla egiaztatu.
     assertEquals(aretoakTest, aretoak);
 }
+
+
 
 }
