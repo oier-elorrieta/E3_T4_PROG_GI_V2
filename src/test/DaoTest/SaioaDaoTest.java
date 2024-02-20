@@ -1,10 +1,10 @@
-package test;
+package test.DaoTest;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class SaioaDAOTEST {
+public class SaioaDaoTest {
 
 	@Test
 	public void test() {

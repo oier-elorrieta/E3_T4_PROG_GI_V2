@@ -1,4 +1,4 @@
-package test;
+package test.DaoTest;
 
 import static org.junit.Assert.*;
 
@@ -14,7 +14,7 @@ import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
 import modeloa.objetuak.Bezeroa;
 
-public class BezeroDAOTEST {
+public class BezeroDaoTest {
 	
 	private static ArrayList<Bezeroa> bezeroak = new ArrayList();
 

@@ -1,10 +1,10 @@
-package test;
+package test.DaoTest;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class ZinemaDAOTEST {
+public class ZinemaDaoTest {
 
 	@Test
 	public void test() {

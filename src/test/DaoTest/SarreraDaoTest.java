@@ -1,4 +1,4 @@
-package test;
+package test.DaoTest;
 
 import static org.junit.Assert.*;
 
@@ -17,7 +17,7 @@ import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
 import modeloa.objetuak.Sarrera;
 
-public class SarreraDAOTEST {
+public class SarreraDaoTest {
 
 	private SarreraDao sarreraDao;
 	private  List<Sarrera> sarrerakTest;

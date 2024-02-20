@@ -1,4 +1,4 @@
-package test;
+package test.DaoTest;
 
 import static org.junit.Assert.*;
 
@@ -16,7 +16,7 @@ import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
 import modeloa.objetuak.Pelikula;
 
-public class ZinemaAretoFilmaDAOTEST {
+public class ZinemaAretoFilmaDaoTest {
 
 	private ZinemaAretoFilmaDAO zinemaAretoFilma;
 	private List<Pelikula> saioPelikulakTest;
