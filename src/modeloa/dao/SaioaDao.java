@@ -5,9 +5,8 @@ import modeloa.db.Kontzultak;
 import modeloa.objetuak.Aretoa;
 import modeloa.objetuak.Pelikula;
 import modeloa.objetuak.Saioa;
-import modeloa.objetuak.Zinema;
 
-import java.sql.PreparedStatement; 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -19,41 +18,39 @@ import kontrolatzaile.funtzioak.Funtzioak;
 
 public class SaioaDao {
 
-	public List<Saioa> lortuSaioak(String ID) {
+    public List<Saioa> lortuSaioak(String ID, List<Aretoa> aretoList) {
         List<Saioa> saioak = new ArrayList<>();
         Pelikula peli = null;
         Aretoa areto = null;
-      //  AretoaDao aretoaDao = new AretoaDao();
+
         try {
             Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
 
-            String kontzulta = "SELECT idSaioa, Ordua, Eguna, idFilma, idZinema, idAretoa FROM SAIOA WHERE idZinema = '" + ID + "'";
-            
+            String kontzulta = "SELECT idSaioa, Ordua, Eguna, idFilma, idZinema, idAretoa FROM SAIOA WHERE idZinema = ?";
             PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(kontzulta);
+            preparedStatement.setString(1, ID); // Establece el ID del cine en la consulta
+
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 int idSaioa = resultSet.getInt("idSaioa");
-                LocalTime ordua = resultSet.getTime("ordua").toLocalTime();
-                LocalDate eguna = resultSet.getDate("eguna").toLocalDate();
+                LocalTime ordua = resultSet.getTime("Ordua").toLocalTime(); // Corregido el nombre de la columna
+                LocalDate eguna = resultSet.getDate("Eguna").toLocalDate(); // Corregido el nombre de la columna
                 int idPelikula = resultSet.getInt("idFilma");
-                String idZinema = resultSet.getString("idZinema");
                 String idAretoa = resultSet.getString("idAretoa");
+
+                // Busca la película en la lista de películas
                 for (Pelikula pelikula : Funtzioak.pelikulakList) {
-                    // Compara el atributo idFilma con el valor buscado
                     if (pelikula.getIdPelikula() == idPelikula) {
-                        // Si coincide, guarda la película y sal del bucle
                         peli = pelikula;
                         break;
                     }
                 }
-                System.out.println("Tamaño de la lista: " + Funtzioak.areatoakList.size());
-                for (Aretoa aretoa : Funtzioak.areatoakList) {
-                    // Compara el atributo idFilma con el valor buscado
-                	if (aretoa.getIdZinema().equals(idZinema) && aretoa.getIdAretoa().equals(idAretoa)) {
-                        // Si coincide, guarda la película y sal del bucle
-                		areto = aretoa;
-                		System.out.println(areto);
+
+                // Busca el aretoa en la lista de aretoak que se pasa como argumento
+                for (Aretoa aretoa : aretoList) {
+                    if (aretoa.getIdAretoa().equals(idAretoa)) {
+                        areto = aretoa;
                         break;
                     }
                 }
@@ -70,5 +67,4 @@ public class SaioaDao {
 
         return saioak;
     }
-    
 }

@@ -1,5 +1,6 @@
 package kontrolatzaile.funtzioak;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -65,6 +67,11 @@ public class Funtzioak {
 	static SaioaDao Saioa;
 	static SarreraDao Sarrera;
 	static ZinemaDao Zinema;
+	public static SaioaDao saioaDao;
+	
+	public static void aretoaHasieratu() {
+		
+	}
 
 	public static void objektuakHasieratu() {
 		Aretoa = new AretoaDao();
@@ -74,7 +81,8 @@ public class Funtzioak {
 		Saioa = new SaioaDao();
 		Sarrera = new SarreraDao();
 		Zinema = new ZinemaDao();
-
+		saioaDao = new SaioaDao();
+		
 		areatoakList = new ArrayList<>();
 		bezeroakList = new ArrayList<>();
 		erosketakList = new ArrayList<>();
@@ -82,7 +90,8 @@ public class Funtzioak {
 		saioakList = new ArrayList<>();
 		sarrerakList = new ArrayList<>();
 		zinemakList = new ArrayList<>();
-
+		
+		
 		bezeroakList = Bezeroa.lortuBezeroak();
 		erosketakList = Erosketak.lortuErosketak();
 		pelikulakList = Pelikula.lortuPelikulak();
@@ -117,11 +126,12 @@ public class Funtzioak {
 //			System.out.println(zinemakList.get(i).getSaioList());
 //		}
 
-//		System.out.println("\n\nZinema:");
-//
-//		System.out.println(zinemakList.get(1).getIzena());
-//		System.out.println(zinemakList.get(1).getAretoList());
-//		System.out.println(zinemakList.get(1).getSaioList());
+		System.out.println("\n\nZinema:");
+
+		System.out.println(zinemakList.get(1).getIzena());
+		System.out.println(zinemakList.get(1).getAretoList());
+		System.out.println(zinemakList.get(1).getSaioList());
+		System.out.println(zinemakList.get(1).getSaioList().get(1).getPelikula());
 
 //	System.out.println("\n\nElorrietaFilmak:");for(
 //
@@ -285,30 +295,55 @@ public class Funtzioak {
 //			
 //
 //	}
-	public static void filmaDatuak(JScrollPane scrollPane) {
-		JPanel panelContenedor = new JPanel(); // Panel que contendrá todos los paneles individuales
-		panelContenedor.setLayout((LayoutManager) new BoxLayout(panelContenedor, BoxLayout.Y_AXIS)); // Layout para
-															// verticalmente
-																										// los paneles
+	
 
-		for (int i = 0; i < pelikulakList.size(); i++) {
-			JPanel panel = new JPanel();
-			// Configurar el panel según tus necesidades
-			// Por ejemplo:
-			JLabel lblTitulo = new JLabel(pelikulakList.get(i).getIzena());
-			panel.add(lblTitulo);
+	    public static void filmaDatuak(JScrollPane scrollPane) {
+	        JPanel panelContenedor = new JPanel(); // Panel que contendrá todos los paneles individuales
+	        panelContenedor.setLayout(new BoxLayout(panelContenedor, BoxLayout.Y_AXIS)); // Layout para verticalmente los paneles
 
-			JLabel lblGenero = new JLabel(pelikulakList.get(i).getGeneroa());
-			panel.add(lblGenero);
+	        for (int i = 0; i < pelikulakList.size(); i++) {
+	            JPanel panel = new JPanel();
+	            panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS)); // Layout para organizar horizontalmente los componentes
 
-			JLabel lblIraupena = new JLabel(Integer.toString(pelikulakList.get(i).getIraupena()));
-			panel.add(lblIraupena);
+	            // Configurar el panel según tus necesidades
+	            // Por ejemplo:
+	            JLabel lblTitulo = new JLabel(pelikulakList.get(i).getIzena());
+	            panel.add(lblTitulo);
+/*
+ * 
+ * 
+ * 				JLabel lblTitulo = new JLabel(saioakList.get(i).getPelikula().getIzena());
+	            panel.add(lblTitulo);
 
-			panelContenedor.add(panel); // Agregar el panel individual al panel contenedor
-		}
+	            JLabel lblGenero = new JLabel(saioakList.get(i).getPelikula().getGeneroa());
+	            panel.add(lblGenero);
 
-		scrollPane.setViewportView(panelContenedor); // Establecer el panel contenedor como el contenido del JScrollPane
-	}
+	            JLabel lblIraupena = new JLabel(Integer.toString(saioakList.get(i).getPelikula().getIraupena()));
+ * 
+ * 
+ * 
+ */
+	            JLabel lblGenero = new JLabel(pelikulakList.get(i).getGeneroa());
+	            panel.add(lblGenero);
+
+	            JLabel lblIraupena = new JLabel(Integer.toString(pelikulakList.get(i).getIraupena()));
+	            panel.add(lblIraupena);
+
+	            JButton btn = new JButton(pelikulakList.get(i).getIzena() + "Aukeratu filma"); // Agrega un botón
+	            panel.add(btn);
+
+	            // Añade un espacio en blanco entre cada panel
+	            panel.add(Box.createHorizontalGlue());
+
+	            // Añade un espacio en blanco entre cada panel
+	            panel.add(Box.createRigidArea(new Dimension(0, 10)));
+
+	            panelContenedor.add(panel); // Agregar el panel individual al panel contenedor
+	        }
+
+	        scrollPane.setViewportView(panelContenedor); // Establecer el panel contenedor como el contenido del JScrollPane
+	    }
+
 
 	public static void saioaZinema(String idZinema) {
 

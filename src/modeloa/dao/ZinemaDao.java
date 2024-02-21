@@ -20,6 +20,8 @@ public class ZinemaDao {
     	SaioaDao saioaDao = new SaioaDao();
     	
     	List<Zinema> zinemak = new ArrayList<>();
+    	List<Aretoa> aretoList = new ArrayList<>();
+
 
         try {
             Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
@@ -32,13 +34,15 @@ public class ZinemaDao {
                 String izena = resultSet.getString("izena");
                 String helbidea = resultSet.getString("helbidea");
                 
-                List<Aretoa> aretoList = aretoaDao.lortuAreatoak(idZinema);
-                List<Saioa> saioaList = saioaDao.lortuSaioak(idZinema);
+                aretoList = aretoaDao.lortuAreatoak(idZinema);
+                List<Saioa> saioaList = saioaDao.lortuSaioak(idZinema,aretoList);
                 
                 Zinema zinema = new Zinema(idZinema, izena, helbidea, aretoList, saioaList);
-                zinemak.add(zinema);
+                zinemak.add(zinema); 
+                System.out.println(aretoList.size());
+           
             }
-
+           
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

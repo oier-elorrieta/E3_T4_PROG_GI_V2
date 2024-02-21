@@ -24,6 +24,9 @@ public class Zinema {
 		this.aretoList = aretoList;
 		this.saioList = saioList;
 	}
+	public Zinema() {
+		
+	}
 	// --------------------Konstruktorea--------------------//
 
 	// --------------------Set--------------------//
