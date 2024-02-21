@@ -17,7 +17,6 @@ import javax.swing.border.EmptyBorder;
 
 import kontrolatzaile.funtzioak.Funtzioak;
 import modeloa.Aldagaiak;
-import modeloa.objetuak.Pelikula;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

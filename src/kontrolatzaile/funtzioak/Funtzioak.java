@@ -10,7 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -46,6 +48,17 @@ import modeloa.objetuak.Sarrera;
 import modeloa.objetuak.Zinema;
 
 public class Funtzioak {
+	
+	private static int idZinema;
+	
+
+	public static int getIdZinema() {
+		return idZinema;
+	}
+
+	public static void setIdZinema(int idZinema) {
+		Funtzioak.idZinema = idZinema;
+	}
 
 	public static void inicio() {
 		objektuakHasieratu();
@@ -68,10 +81,7 @@ public class Funtzioak {
 	static SarreraDao Sarrera;
 	static ZinemaDao Zinema;
 	public static SaioaDao saioaDao;
-	
-	public static void aretoaHasieratu() {
 		
-	}
 
 	public static void objektuakHasieratu() {
 		Aretoa = new AretoaDao();
@@ -125,7 +135,7 @@ public class Funtzioak {
 //
 //			System.out.println(zinemakList.get(i).getSaioList());
 //		}
-
+//
 		System.out.println("\n\nZinema:");
 
 		System.out.println(zinemakList.get(1).getIzena());
@@ -301,47 +311,43 @@ public class Funtzioak {
 	        JPanel panelContenedor = new JPanel(); // Panel que contendrá todos los paneles individuales
 	        panelContenedor.setLayout(new BoxLayout(panelContenedor, BoxLayout.Y_AXIS)); // Layout para verticalmente los paneles
 
-	        for (int i = 0; i < pelikulakList.size(); i++) {
+	        Set<String> nombresPeliculas = new HashSet<>(); // Conjunto para mantener los nombres de las películas
+	        
+	        for (int i = 0; i < zinemakList.get(Funtzioak.getIdZinema()).getSaioList().size(); i++) {
+	        	String nombrePelicula = zinemakList.get(Funtzioak.getIdZinema()).getSaioList().get(i).getPelikula().getIzena().toString();
+	        	
+	        	 if (!nombresPeliculas.contains(nombrePelicula)) {
+	        	
 	            JPanel panel = new JPanel();
 	            panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS)); // Layout para organizar horizontalmente los componentes
 
 	            // Configurar el panel según tus necesidades
 	            // Por ejemplo:
-	            JLabel lblTitulo = new JLabel(pelikulakList.get(i).getIzena());
-	            panel.add(lblTitulo);
-/*
- * 
- * 
- * 				JLabel lblTitulo = new JLabel(saioakList.get(i).getPelikula().getIzena());
+	            
+	            //System.out.println(Funtzioak.getIdZinema());
+	            
+	            JLabel lblTitulo = new JLabel(zinemakList.get(Funtzioak.getIdZinema()).getSaioList().get(i).getPelikula().getIzena().toString());
 	            panel.add(lblTitulo);
 
-	            JLabel lblGenero = new JLabel(saioakList.get(i).getPelikula().getGeneroa());
+	            JLabel lblGenero = new JLabel(zinemakList.get(Funtzioak.getIdZinema()).getSaioList().get(i).getPelikula().getGeneroa().toString());
 	            panel.add(lblGenero);
 
-	            JLabel lblIraupena = new JLabel(Integer.toString(saioakList.get(i).getPelikula().getIraupena()));
- * 
- * 
- * 
- */
-	            JLabel lblGenero = new JLabel(pelikulakList.get(i).getGeneroa());
-	            panel.add(lblGenero);
-
-	            JLabel lblIraupena = new JLabel(Integer.toString(pelikulakList.get(i).getIraupena()));
+	            JLabel lblIraupena = new JLabel(Integer.toString(zinemakList.get(Funtzioak.getIdZinema()).getSaioList().get(i).getPelikula().getIraupena()));
 	            panel.add(lblIraupena);
 
-	            JButton btn = new JButton(pelikulakList.get(i).getIzena() + "Aukeratu filma"); // Agrega un botón
+	            JButton btn = new JButton(zinemakList.get(Funtzioak.getIdZinema()).getSaioList().get(i).getPelikula().getIzena().toString() + "Aukeratu filma"); // Agrega un botón
 	            panel.add(btn);
 
-	            // Añade un espacio en blanco entre cada panel
 	            panel.add(Box.createHorizontalGlue());
 
-	            // Añade un espacio en blanco entre cada panel
 	            panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-	            panelContenedor.add(panel); // Agregar el panel individual al panel contenedor
+	            panelContenedor.add(panel); 
+	            nombresPeliculas.add(nombrePelicula);
+	        	 }
 	        }
 
-	        scrollPane.setViewportView(panelContenedor); // Establecer el panel contenedor como el contenido del JScrollPane
+	        scrollPane.setViewportView(panelContenedor); 
 	    }
 
 
@@ -389,4 +395,5 @@ public class Funtzioak {
 			SaioaBista.textSarreraKop.setText(String.valueOf(balorea));
 		}
 	}
+
 }
