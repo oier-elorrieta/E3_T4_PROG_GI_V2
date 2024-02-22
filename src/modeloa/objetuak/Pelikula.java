@@ -10,6 +10,13 @@ public class Pelikula {
 	private int iraupena;
 	
 	//--------------------Konstruktorea--------------------//
+	
+	public Pelikula() {
+		
+	}
+	
+	
+	
 	public Pelikula(int idPelikula , String izena, String generoa, int iraupena) {
 		this.idPelikula = idPelikula;
 		this.izena = izena;

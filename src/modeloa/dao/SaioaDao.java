@@ -26,10 +26,12 @@ public class SaioaDao {
         try {
             Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
 
-            String kontzulta = "SELECT idSaioa, Ordua, Eguna, idFilma, idZinema, idAretoa FROM SAIOA WHERE idZinema = ?";
+            String kontzulta = "SELECT idSaioa, Ordua, Eguna, idFilma, idZinema, idAretoa FROM SAIOA WHERE idZinema = ? order by 2, 3 ";
+            
             PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(kontzulta);
             preparedStatement.setString(1, ID); // Establece el ID del cine en la consulta
 
+            
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -38,7 +40,7 @@ public class SaioaDao {
                 LocalDate eguna = resultSet.getDate("Eguna").toLocalDate(); // Corregido el nombre de la columna
                 int idPelikula = resultSet.getInt("idFilma");
                 String idAretoa = resultSet.getString("idAretoa");
-
+ 
                 // Busca la película en la lista de películas
                 for (Pelikula pelikula : Funtzioak.pelikulakList) {
                     if (pelikula.getIdPelikula() == idPelikula) {
