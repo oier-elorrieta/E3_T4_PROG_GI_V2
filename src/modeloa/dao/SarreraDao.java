@@ -1,5 +1,3 @@
-package modeloa.dao;
-
 import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
 import modeloa.objetuak.Sarrera;
@@ -7,6 +5,7 @@ import modeloa.objetuak.Sarrera;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date; // Añade la importación para java.sql.Date
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +24,15 @@ public class SarreraDao {
             while (resultSet.next()) {
                 int idSarrera = resultSet.getInt("idSarrera");
                 int sarreraKant = resultSet.getInt("sarrera_kant");
+                
+                // Corrección para obtener la fecha como LocalDate
+                Date date = resultSet.getDate("Eguna");
+                LocalDate data = date.toLocalDate();
+                
                 double prezioa = resultSet.getDouble("prezioa");
                 String mota = resultSet.getString("mota");
 
-                Sarrera sarrera = new Sarrera(idSarrera, LocalDate.now(), prezioa, mota);
+                Sarrera sarrera = new Sarrera(idSarrera, data, prezioa, mota); // Utiliza 'data' en lugar de LocalDate.now()
                 sarrera.setSarreraKant(sarreraKant);
                 sarrerak.add(sarrera);
             }

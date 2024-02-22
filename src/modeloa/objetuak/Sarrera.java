@@ -7,19 +7,16 @@ public class Sarrera {
 
 	private int idSarrera;
 	private Saioa saioa;
+	private LocalDate data;
 	private int sarreraKant;
 	private double prezioa;
 	private String mota;
 
 	// --------------------Konstruktorea--------------------//
-	public Sarrera(int idSarrera, LocalDate data, double prezioa, String mota) {
-		this.idSarrera = idSarrera;
-		this.prezioa = prezioa;
-		this.mota = mota;
-	}
 	public Sarrera(int idSarrera, Saioa saioa, LocalDate data, double prezioa, String mota) {
 		this.idSarrera = idSarrera;
 		this.saioa = saioa;
+		this.data = data;
 		this.prezioa = prezioa;
 		this.mota = mota;
 	}
@@ -45,7 +42,12 @@ public class Sarrera {
 	public void setMota(String mota) {
 		this.mota = mota;
 	}
+	
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
 	// --------------------Set--------------------//
+
 
 	// --------------------Get--------------------//
 	public int getIdSarrera() {
@@ -67,21 +69,27 @@ public class Sarrera {
 	public String getMota() {
 		return mota;
 	}
+	
+	public LocalDate getData() {
+		return data;
+	}
 	// --------------------Get--------------------//
+	
 
 	// --------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Sarrera [idSarrera=" + idSarrera + ", saioa=" + saioa + ", sarreraKant=" + sarreraKant + ", prezioa="
-				+ prezioa + ", mota=" + mota + "]";
+		return "Sarrera [idSarrera=" + idSarrera + ", saioa=" + saioa + ", sarreraKant="
+				+ sarreraKant + ", prezioa=" + prezioa + ", mota=" + mota + ", data=" + data + "]";
 	}
+
 	// --------------------toString--------------------//
 
-	
+
 	// --------------------Equals--------------------//
 	@Override
 	public int hashCode() {
-		return Objects.hash(idSarrera, mota, prezioa, saioa, sarreraKant);
+		return Objects.hash(data, idSarrera, mota, prezioa, saioa, sarreraKant);
 	}
 
 	@Override
@@ -93,9 +101,9 @@ public class Sarrera {
 		if (getClass() != obj.getClass())
 			return false;
 		Sarrera other = (Sarrera) obj;
-		return idSarrera == other.idSarrera && Objects.equals(mota, other.mota)
+		return Objects.equals(data, other.data) && idSarrera == other.idSarrera && Objects.equals(mota, other.mota)
 				&& Double.doubleToLongBits(prezioa) == Double.doubleToLongBits(other.prezioa)
 				&& Objects.equals(saioa, other.saioa) && sarreraKant == other.sarreraKant;
-	}
+	}	
 	// --------------------Equals--------------------//
 }

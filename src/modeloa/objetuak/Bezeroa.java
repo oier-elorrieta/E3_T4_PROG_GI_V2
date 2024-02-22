@@ -104,7 +104,7 @@ public class Bezeroa {
 				+ ", pasahitza=" + pasahitza + ", txartela=" + txartela + ", sexua=" + sexua + "]";
 	}
 	//--------------------toString--------------------//
-	
+
 	
 	//--------------------Equals--------------------//
 	@Override
@@ -123,9 +123,10 @@ public class Bezeroa {
 			return false;
 		Bezeroa other = (Bezeroa) obj;
 		return Objects.equals(NAN, other.NAN) && Objects.equals(abizena, other.abizena)
-				&& Objects.equals(erabiltzailea, other.erabiltzailea) && idBezeroa == other.idBezeroa
+				&& Objects.equals(erabiltzailea, other.erabiltzailea) && Objects.equals(idBezeroa, other.idBezeroa)
 				&& Objects.equals(izena, other.izena) && Objects.equals(pasahitza, other.pasahitza)
 				&& Objects.equals(sexua, other.sexua) && txartela == other.txartela;
 	}
+
 	//--------------------Equals--------------------//
 }

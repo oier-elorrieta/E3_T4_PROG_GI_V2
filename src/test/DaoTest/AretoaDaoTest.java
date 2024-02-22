@@ -13,29 +13,28 @@ import org.junit.Test;
 
 import modeloa.dao.AretoaDao;
 import modeloa.db.Konexioa;
-import modeloa.db.Kontzultak;
 import modeloa.objetuak.Aretoa;
 
-public class AretoDaoTest {
+public class AretoaDaoTest {
 
 	// DAO ALDAGAIAK
 	private AretoaDao aretoaDao;
 	private List<Aretoa> aretoakTest;
 
-
-	public List<Aretoa> lortuAreatoakTEST() {
+	public List<Aretoa> lortuAretoakTEST() {
 	    aretoakTest = new ArrayList<>();
 
 	    try {
 	        Konexioa.konexioa(); 
-	        PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.aretoa);
+	        PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement("SELECT idAretoa, idZinema, izena FROM ARETOA where idZinema = 'Z01'");
 	        ResultSet resultSet = preparedStatement.executeQuery();
 
 	        while (resultSet.next()) {
 	            String idAretoa = resultSet.getString("idAretoa");
+	            String idZinema = resultSet.getString("idZinema");
 	            String izena = resultSet.getString("izena");
 
-	            Aretoa aretoa = new Aretoa(idAretoa, izena);
+	            Aretoa aretoa = new Aretoa(idAretoa, idZinema, izena);
 	            aretoakTest.add(aretoa);
 	            
 	        }
@@ -59,10 +58,10 @@ public class AretoDaoTest {
 	@Test
 	public void testLortuAreatoak() {
 	    // AretoaDao klasearen bidez Areatoak lortzen dira eta listan gorde.
-	    List<Aretoa> aretoak = aretoaDao.lortuAreatoak();
+	    List<Aretoa> aretoak = aretoaDao.lortuAretoak("Z01");
 	    
 	    // lortuAreatoakTEST() metodoa deitu eta Areatoak lortzen dira eta listan gorde.
-	    List<Aretoa> aretoakTest = lortuAreatoakTEST();
+	    List<Aretoa> aretoakTest = lortuAretoakTEST();
 	    
 	    // Areatoak ez direla nuluek eta hutsik ez daudela egiaztatu.
 	    assertNotNull(aretoak);

@@ -11,10 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BezeroaDao {
-	
-	public BezeroaDao() {
-	
-	}
 
     public List<Bezeroa> lortuBezeroak() {
         List<Bezeroa> bezeroak = new ArrayList<>();
@@ -25,7 +21,7 @@ public class BezeroaDao {
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
-            	String id = resultSet.getString("idBezero");
+            	String idBezeroa = resultSet.getString("idBezeroa");
                 String NAN = resultSet.getString("NAN");
                 String izena = resultSet.getString("izena");
                 String abizena = resultSet.getString("abizena");
@@ -34,7 +30,7 @@ public class BezeroaDao {
                 int txartela = resultSet.getInt("txartela");
                 String sexua = resultSet.getString("sexua");
 
-                Bezeroa bezeroa = new Bezeroa(id, NAN, izena, abizena, erabiltzailea, pasahitza, txartela, sexua);
+                Bezeroa bezeroa = new Bezeroa(idBezeroa, NAN, izena, abizena, erabiltzailea, pasahitza, txartela, sexua);
                 bezeroak.add(bezeroa);
             }
 

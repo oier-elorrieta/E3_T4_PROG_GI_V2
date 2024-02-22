@@ -34,17 +34,8 @@ public class ErosketaDaoTest {
 	            while (resultSet.next()) {
 	                int idErosketak = resultSet.getInt("idErosketak");
 	                LocalDate data = resultSet.getDate("data").toLocalDate();
-	                int sarreraKant = resultSet.getInt("sarreraKant");
-	                double deskontua = resultSet.getDouble("deskontua");
-	                double dirutotala = resultSet.getDouble("dirutotala");
-	                String mota = resultSet.getString("mota");
 
 	                Erosketak erosketa = new Erosketak(idErosketak, data);
-	                erosketa.setSarreraKant(sarreraKant);
-	                erosketa.setDeskontua(deskontua);
-	                erosketa.setDirutotala(dirutotala);
-	                erosketa.setMota(mota);
-
 	                erosketakTest.add(erosketa);
 	            }
 
@@ -64,14 +55,14 @@ public class ErosketaDaoTest {
 
 		@Test
 		public void testLortuErosketak() {
-		    List<Erosketak> erosketak = erosketaDao.lortuErosketak();
+		    List<Erosketak> erosketa = erosketaDao.lortuErosketak();
 		    
 		    List<Erosketak> erosketakTest = lortuErosketakTEST();
 		    
-		    assertNotNull(erosketak);
-		    assertFalse(erosketak.isEmpty());
+		    assertNotNull(erosketa);
+		    assertFalse(erosketa.isEmpty());
 
-		    assertEquals(erosketakTest, erosketak);
+		    assertEquals(erosketakTest, erosketa);
 		}
 
 }

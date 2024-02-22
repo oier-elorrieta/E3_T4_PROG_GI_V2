@@ -12,20 +12,12 @@ public class Zinema {
 	private List<Saioa> saioList;
 
 	// --------------------Konstruktorea--------------------//
-	public Zinema(String idZinema, String izena, String helbidea) {
-		this.idZinema = idZinema;
-		this.izena = izena;
-		this.helbidea = helbidea;
-	}
 	public Zinema(String idZinema, String izena, String helbidea, List<Aretoa> aretoList, List<Saioa> saioList) {
 		this.idZinema = idZinema;
 		this.izena = izena;
 		this.helbidea = helbidea;
 		this.aretoList = aretoList;
 		this.saioList = saioList;
-	}
-	public Zinema() {
-		
 	}
 	// --------------------Konstruktorea--------------------//
 

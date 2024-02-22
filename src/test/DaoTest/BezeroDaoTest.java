@@ -8,17 +8,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import modeloa.dao.BezeroaDao;
 import modeloa.db.Konexioa;
 import modeloa.db.Kontzultak;
 import modeloa.objetuak.Bezeroa;
 
 public class BezeroDaoTest {
 	
-	private static ArrayList<Bezeroa> bezeroak = new ArrayList();
-
-	 public static void lortuBezeroak() {
+	private BezeroaDao bezeroaDao;
+	private List<Bezeroa> bezeroaTest;
+	
+	 public List<Bezeroa> lortuBezeroakTEST() {
+		   bezeroaTest = new ArrayList<>();
 
 	        Konexioa.konexioa(); // Asegúrate de tener esta llamada para establecer la conexión
 
@@ -26,7 +30,7 @@ public class BezeroDaoTest {
 	             ResultSet resultSet = preparedStatement.executeQuery()) {
 
 	            while (resultSet.next()) {
-	            	String id = resultSet.getString("idBezero");
+	            	String idBezeroa = resultSet.getString("idBezeroa");
 	                String NAN = resultSet.getString("NAN");
 	                String izena = resultSet.getString("izena");
 	                String abizena = resultSet.getString("abizena");
@@ -35,8 +39,8 @@ public class BezeroDaoTest {
 	                int txartela = resultSet.getInt("txartela");
 	                String sexua = resultSet.getString("sexua");
 
-	                Bezeroa bezeroa = new Bezeroa(id, NAN, izena, abizena, erabiltzailea, pasahitza, txartela, sexua);
-	                bezeroak.add(bezeroa);
+	                Bezeroa bezeroa = new Bezeroa(idBezeroa, NAN, izena, abizena, erabiltzailea, pasahitza, txartela, sexua);
+	                bezeroaTest.add(bezeroa);
 	            }
 
 	        } catch (SQLException e) {
@@ -45,12 +49,26 @@ public class BezeroDaoTest {
 	        } finally {
 	            Konexioa.konexioaExit(); // Asegúrate de cerrar la conexión
 	        }
-
+			return bezeroaTest;
+	        
 	    }
-	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+	 
+	 @Before
+		public void setUp() {
+		    // Prestatzen da proba bakoitzea exekutatzeko, klasearen instantzia sortzen da.
+		    bezeroaDao = new BezeroaDao();
+		}
+
+		@Test
+		public void testLortuAreatoak() {
+		    List<Bezeroa> bezeroa = bezeroaDao.lortuBezeroak();
+		    
+		    List<Bezeroa> bezeroaTest = lortuBezeroakTEST();
+		    
+		    assertNotNull(bezeroa);
+		    assertFalse(bezeroa.isEmpty());
+
+		    assertEquals(bezeroaTest, bezeroa);
+		}
 
 }

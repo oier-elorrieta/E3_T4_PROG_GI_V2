@@ -74,16 +74,16 @@ public class Saioa {
 	public String toString() {
 		return "Saioa [idSaioa=" + idSaioa + ", aretoa=" + aretoa + ", ordua=" + ordua + ", eguna=" + eguna
 				+ ", pelikula=" + pelikula + "]";
-	}	
+	}
+	
 	//--------------------toString--------------------//
 
 
 	//--------------------Equals--------------------//
 	@Override
 	public int hashCode() {
-		return Objects.hash(aretoa, eguna, idSaioa, ordua, pelikula);
+		return Objects.hash(idSaioa, aretoa, eguna, ordua, pelikula);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {

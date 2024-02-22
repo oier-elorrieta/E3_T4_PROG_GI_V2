@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import modeloa.objetuak.Bezeroa;
 
-public class BezeroTest {
+public class BezeroaTest {
 
 	private static Bezeroa bezeroa;
 	private static ArrayList<Bezeroa> bezeroaList;

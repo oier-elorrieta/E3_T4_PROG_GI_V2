@@ -23,7 +23,7 @@ public class AretoaTest {
 		aretoaList = new ArrayList<>();
 		aretoaList.add(aretoa);
 		
-		aretoa = new Aretoa("A01", "Areto 1");
+		aretoa = new Aretoa("A01", "Z01", "Areto 1");
 		
 	}
 	
@@ -31,52 +31,55 @@ public class AretoaTest {
 	public void testAretoaKonstruktore() {	
 		
 		aretoa.setIdAretoa("A01");
+		aretoa.setIdZinema("Z01");
 		aretoa.setIzena("Areto 1");
 		
 		assertEquals("A01", aretoa.getIdAretoa());
+		assertEquals("Z01", aretoa.getIdZinema());
 		assertEquals("Areto 1", aretoa.getIzena());
 	}
 	
 	@Test
 	public void testAretoaToString() {
 		aretoa.setIdAretoa("A01");
+		aretoa.setIdZinema("Z01");
         aretoa.setIzena("Talde4");
 
 		
-        assertEquals("Aretoa [idAretoa=A01, izena=Talde4]", aretoa.toString());
+        assertEquals("Aretoa [idAretoa=A01, idZinema=Z01, izena=Talde4]", aretoa.toString());
 	}
 	
 	@Test
     public void testHashCodeAretoa() {
-        Aretoa aretoa1 = new Aretoa("A01", "Sala A");
-        Aretoa aretoa2 = new Aretoa("A01", "Sala A");
+        Aretoa aretoa1 = new Aretoa("A01", "Z01", "Sala A");
+        Aretoa aretoa2 = new Aretoa("A01", "Z01", "Sala A");
 
         assertEquals(aretoa1.hashCode(), aretoa2.hashCode());
     }
 
     @Test
     public void test_AretoEquals() {	
-        Aretoa aretoa = new Aretoa("A01", "izena");
+        Aretoa aretoa = new Aretoa("A01", "Z01", "izena");
         assertTrue(aretoa.equals(aretoa));
     }
 
     @Test
     public void test_AretoBatzuk() {
-        Aretoa aretoa1 = new Aretoa("A01", "izena");
-        Aretoa aretoa2 = new Aretoa("A01", "izena");
+        Aretoa aretoa1 = new Aretoa("A01", "Z01", "izena");
+        Aretoa aretoa2 = new Aretoa("A01", "Z01", "izena");
 
         assertTrue(aretoa1.equals(aretoa2) && aretoa2.equals(aretoa1));
     } 
 
     @Test
     public void test_AretoNuloa() {
-        Aretoa aretoa = new Aretoa("A01", "izena");
+        Aretoa aretoa = new Aretoa("A01", "Z01", "izena");
         assertFalse(aretoa.equals(null));
     }
 
     @Test
     public void test_AretoObjetua() {
-        Aretoa aretoa = new Aretoa("A01", "izena");
+        Aretoa aretoa = new Aretoa("A01", "Z01", "izena");
         assertFalse(aretoa.equals("Not an Aretoa object"));
     }
 
@@ -84,8 +87,8 @@ public class AretoaTest {
     public void test_AretoEzberdina() {
     	
     	
-        Aretoa aretoa1 = new Aretoa("A01", "izena1");
-        Aretoa aretoa2 = new Aretoa("A02", "izena2");
+        Aretoa aretoa1 = new Aretoa("A01", "Z01", "izena1");
+        Aretoa aretoa2 = new Aretoa("A02", "Z01", "izena2");
         assertFalse(aretoa1.equals(aretoa2));
     }
 

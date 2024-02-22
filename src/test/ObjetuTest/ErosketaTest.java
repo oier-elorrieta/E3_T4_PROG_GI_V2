@@ -28,13 +28,15 @@ public class ErosketaTest {
 	
 	@Test
 	public void testErosketakKonstruktore() {
-        erosketak.setBezeroa(bezeroa);
+		erosketak.setIdErosketak(1);
 		erosketak.setData(data);
+        erosketak.setBezeroa(bezeroa);
 		erosketak.setDeskontua(1);
 		erosketak.setDirutotala(1);
 
-		assertEquals(bezeroa, erosketak.getBezeroa());
+		assertEquals(1, erosketak.getIdErosketak());
 		assertEquals(data, erosketak.getData());
+		assertEquals(bezeroa, erosketak.getBezeroa());
 		assertEquals(1.0, erosketak.getDeskontua(), 0.001);
 		assertEquals(1.0, erosketak.getDirutotala(), 0.001);
 	}

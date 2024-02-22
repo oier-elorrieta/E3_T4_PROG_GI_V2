@@ -51,16 +51,15 @@ public class Aretoa {
 	//--------------------toString--------------------//
 	@Override
 	public String toString() {
-		return "Aretoa [idAretoa=" + idAretoa + ", izena=" + izena + "]";
+		return "Aretoa [idAretoa=" + idAretoa + ", idZinema=" + idZinema + ", izena=" + izena + "]";
 	}
 	//--------------------toString--------------------//
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idAretoa, izena);
+		return Objects.hash(idAretoa, idZinema, izena);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -71,10 +70,8 @@ public class Aretoa {
 		if (getClass() != obj.getClass())
 			return false;
 		Aretoa other = (Aretoa) obj;
-		return Objects.equals(idAretoa, other.idAretoa) && Objects.equals(izena, other.izena);
+		return Objects.equals(idAretoa, other.idAretoa) && Objects.equals(idZinema, other.idZinema)
+				&& Objects.equals(izena, other.izena);
 	}
-	
-	
-	
 	
 }

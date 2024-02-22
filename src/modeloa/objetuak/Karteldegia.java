@@ -12,8 +12,6 @@ public class Karteldegia {
 	private List<Pelikula> filmList;
 	
 	//--------------------Konstruktorea--------------------//
-	public Karteldegia() {
-	}
 	public Karteldegia(ArrayList<Pelikula> filmList) {
 		this.filmList = filmList;
 	}

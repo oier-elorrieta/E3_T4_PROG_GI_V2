@@ -30,6 +30,9 @@ public class SaioaTest {
 		saioaList.add(saioa);
 		
 		saioa = new Saioa(1, aretoa, time, data, pelikula);
+		aretoa = new Aretoa("A01", "Z01", "Areto 1");
+		pelikula = new Pelikula(1, "Cars", "Aventura", 169);
+
 	}
 	
 	@Test
@@ -54,9 +57,9 @@ public class SaioaTest {
 
 		saioa.setIdSaioa(1);
 		saioa.setAretoa(aretoa);
-		saioa.setPelikula(pelikula);
 		saioa.setOrdua(orduFroga);
 		saioa.setEguna(dataFroga);
+		saioa.setPelikula(pelikula);
 		
 		assertEquals("Saioa [idSaioa=1, aretoa=" + aretoa.toString() + ", ordua=" + orduFroga + ", eguna=" + dataFroga + ", pelikula=" + pelikula.toString() +  "]", saioa.toString());		
 	}

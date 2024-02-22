@@ -72,7 +72,7 @@ public class Testak {
 		erosketa = new Erosketak(1, data);
 		karteldegi = new Karteldegia(pelikulaList);
 //		saio = new Saioa(1, time, data);
-		areto = new Aretoa("A01", "Areto 1");
+		areto = new Aretoa("A01", "Z01", "Areto 1");
 		sarrera = new Sarrera(1, saio, data, 20, "Normala");
 		zinema = new Zinema("Z01", "Elorrieta", "Agirre Lehendakari", aretoList, saioList);
 	}
