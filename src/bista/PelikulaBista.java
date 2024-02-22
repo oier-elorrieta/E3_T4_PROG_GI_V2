@@ -78,13 +78,23 @@ public class PelikulaBista extends JFrame {
         btnJarraituPelikula = new JButton("JARRAITU");
         btnJarraituPelikula.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		
+        		// Ez baduzu data aukeratzen, gaurko data jarriko da.
+        		if (Funtzioak.getEguna() == null) {
+        			Date gaur = new Date();
+        			String pattern = "yyyy-MM-dd";
+                    DateFormat df = new SimpleDateFormat(pattern);
+
+                    String gaurString = df.format(gaur);
+        			Funtzioak.setEguna(gaurString);
+        		}
         		Funtzioak.saioaBistaVisible();
                 dispose();
         	}
         });
         btnJarraituPelikula.setFont(new Font("Tahoma", Font.PLAIN, 28));
         Titulua.add(btnJarraituPelikula, BorderLayout.SOUTH);
-    	btnJarraituPelikula.setEnabled(true); 
+    	btnJarraituPelikula.setEnabled(false); 
         Titulua.add(btnAtzeraPelikula, BorderLayout.EAST);
   
 
@@ -102,10 +112,11 @@ public class PelikulaBista extends JFrame {
         properties.put("text.month", "Mes");
         properties.put("text.year", "Año");
         
+        Calendar defaultDate = Calendar.getInstance();
         model.setDate(2024, Calendar.FEBRUARY, 1); 
+        model.setDate(defaultDate.get(Calendar.YEAR), defaultDate.get(Calendar.MONTH), defaultDate.get(Calendar.DAY_OF_MONTH));
         model.setSelected(true);
         
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         
         JDatePanelImpl datePanel = new JDatePanelImpl(model, properties);
         JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
@@ -119,13 +130,13 @@ public class PelikulaBista extends JFrame {
 
                 if (selectedDate != null) {
                     LocalTime saioaOrdua = Funtzioak.Saio_filma();
-                    String pattern = "MM/dd/yyyy";
+                    String pattern = "yyyy-MM-dd";
                     DateFormat df = new SimpleDateFormat(pattern);
 
 
-                 String todayAsString = df.format(selectedDate);
+                    String todayAsString = df.format(selectedDate);
                  
-
+                    Funtzioak.setEguna(todayAsString);
 
                 }
             }
@@ -137,7 +148,6 @@ public class PelikulaBista extends JFrame {
         datePicker.setBounds(569, 118, 202, 23);
         
         Date aukeratuta = model.getValue();
-        Funtzioak.setEguna(aukeratuta);
         Date gaurkoData = new Date();
                 
         if (aukeratuta != null && aukeratuta.before(gaurkoData)) {
@@ -152,8 +162,8 @@ public class PelikulaBista extends JFrame {
     }
     
     public static void BotoiaEnabled() {
-    	if (Funtzioak.getIdFilma() == 0) {
-        	btnJarraituPelikula.setEnabled(false); 
+    	if (Funtzioak.getIdFilma() != 0) {
+        	btnJarraituPelikula.setEnabled(true); 
         }
     }
 

@@ -81,7 +81,6 @@ public class OngiEtorriBista extends JFrame {
 	                            EventQueue.invokeLater(new Runnable() {
 	                                public void run() {
 	                                    progressBar1.setValue(value);
-	                                    System.out.println(value + " " + progressBar1.getValue());
 	                                }
 	                            });
 	                            try {

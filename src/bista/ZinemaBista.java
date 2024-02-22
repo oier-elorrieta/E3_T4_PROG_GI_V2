@@ -64,9 +64,7 @@ public class ZinemaBista extends JFrame {
 		btnElorrieta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("ELORRIETA ZINEMA");
 				Funtzioak.setIdZinema(0);
-				
 				Funtzioak.pelikulaBistaVisible();
 				dispose();
 			}
@@ -80,7 +78,6 @@ public class ZinemaBista extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				// Deitu pelikula vista noiz zinema basauri da
-				System.out.println("ERANDIO ZINEMA");
 				Funtzioak.setIdZinema(1);
 				
 				Funtzioak.pelikulaBistaVisible();
@@ -93,7 +90,6 @@ public class ZinemaBista extends JFrame {
 		btnBarakaldo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("BARAKALDO ZINEMA");
 				Funtzioak.setIdZinema(2);
 
 				Funtzioak.pelikulaBistaVisible();
@@ -107,7 +103,6 @@ public class ZinemaBista extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// Deitu pelikula vista noiz zinema basauri da
-				System.out.println("SANTUTXU ZINEMA");
 				Funtzioak.setIdZinema(3);
 				 
 				Funtzioak.pelikulaBistaVisible();
@@ -121,7 +116,6 @@ public class ZinemaBista extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// Deitu pelikula vista noiz zinema basauri da
-				System.out.println("BASAURI ZINEMA");
 				Funtzioak.setIdZinema(4);
 				
 				Funtzioak.pelikulaBistaVisible();

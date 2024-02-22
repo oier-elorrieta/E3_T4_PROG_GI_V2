@@ -16,7 +16,6 @@ public class AretoaDao {
         List<Aretoa> aretoak = new ArrayList<>();
 
         String kontzulta = "SELECT idAretoa, idZinema, izena FROM ARETOA where idZinema = '" + ID + "'";
-        
         try {
             Konexioa.konexioa(); 
             PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(kontzulta);
@@ -26,10 +25,9 @@ public class AretoaDao {
                 String idAretoa = resultSet.getString("idAretoa");
                 String idZinema = resultSet.getString("idZinema");
                 String izena = resultSet.getString("izena");
-
                 Aretoa aretoa = new Aretoa(idAretoa, idZinema, izena);
                 aretoak.add(aretoa);
-                
+
             }
 
         } catch (SQLException e) {

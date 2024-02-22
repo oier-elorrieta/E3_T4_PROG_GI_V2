@@ -59,7 +59,7 @@ public class Funtzioak {
 	private static int idZinema;
 	private static int idFilma;
 	private static LocalTime ordua;
-	private static Date eguna;
+	private static String eguna;
 	
 
 	public static int getIdZinema() {
@@ -86,12 +86,12 @@ public class Funtzioak {
 		Funtzioak.ordua = ordua;
 	}
 
-	public static Date getEguna() {
+	public static String getEguna() {
 		return eguna;
 	}
 
-	public static void setEguna(Date eguna) {
-		Funtzioak.eguna = eguna;
+	public static void setEguna(String todayAsString) {
+		Funtzioak.eguna = todayAsString;
 	}
 
 	public static void inicio() {
@@ -115,8 +115,12 @@ public class Funtzioak {
 	static SarreraDao Sarrera;
 	static ZinemaDao Zinema;
 	public static SaioaDao saioaDao;
-			
-
+	
+/**
+ * 
+ * Dao guztiak hasieratu :D
+ * 
+ */
 	public static void objektuakHasieratu() {
 		Aretoa = new AretoaDao();
 		Bezeroa = new BezeroaDao();
@@ -170,13 +174,13 @@ public class Funtzioak {
 //			System.out.println(zinemakList.get(i).getSaioList());
 //		}
 //
-		System.out.println("\n\nZinema:");
-
-		System.out.println(zinemakList.get(1).getIzena());
-		System.out.println(zinemakList.get(1).getAretoList());
-		System.out.println(zinemakList.get(1).getSaioList());
-		System.out.println(zinemakList.get(1).getSaioList().get(1).getPelikula());
-
+//		System.out.println("\n\nZinema:");
+//
+//		System.out.println(zinemakList.get(1).getIzena());
+//		System.out.println(zinemakList.get(1).getAretoList());
+//		System.out.println(zinemakList.get(1).getSaioList());
+//		System.out.println(zinemakList.get(1).getSaioList().get(1).getPelikula());
+//
 //	System.out.println("\n\nElorrietaFilmak:");for(
 //
 //	int i = 0;i<elorrietaPelikulak.size();i++)
@@ -210,12 +214,7 @@ public class Funtzioak {
 
 	}
 
-//	public static void objektuakExarri() {
-//		saioa
-//		zinema
-//		sarrera
-//		erosketa
-//	}
+
 
 	public static boolean login(String erabiltzailea, String pasahitza) {
 		if (loginOK(erabiltzailea, pasahitza)) {
@@ -281,71 +280,47 @@ public class Funtzioak {
 
 
 
-	    public static void filmaDatuak(JScrollPane scrollPane) {
-	        JPanel panelContenedor = new JPanel(); // Panel que contendrá todos los paneles individuales
-	        panelContenedor.setLayout(new BoxLayout(panelContenedor, BoxLayout.Y_AXIS)); // Layout para verticalmente los paneles
+	public static void filmaDatuak(JScrollPane scrollPane) {
+	    JPanel panelContenedor = new JPanel(); // Panelen panela sortu
+	    panelContenedor.setLayout(new BoxLayout(panelContenedor, BoxLayout.Y_AXIS)); // Layouta bertikal moduan panelak kokatzeko
 
-	        Set<String> nombresPeliculas = new HashSet<>(); // No permite valores duplicados o solo permite valores unicos.
-	        
-	        for (int i = 0; i < zinemakList.get(Funtzioak.getIdZinema()).getSaioList().size(); i++) {
-	        	String nombrePelicula = zinemakList.get(Funtzioak.getIdZinema()).getSaioList().get(i).getPelikula().getIzena().toString();
-	        	
-	        	 if (!nombresPeliculas.contains(nombrePelicula)) {
-	        	
+	    Set<String> pelikulaIzenak = new HashSet<>(); // Bikoiztu ez duen hutsunea edo balio bakarrak baimentzen dituena. LISTA QUE SOLO AGARRA VALORES UNICOS
+
+	    for (int i = 0; i < zinemakList.get(Funtzioak.getIdZinema()).getSaioList().size(); i++) {
+	        String pelikulaIzena = zinemakList.get(Funtzioak.getIdZinema()).getSaioList().get(i).getPelikula().getIzena().toString();
+
+	        if (!pelikulaIzenak.contains(pelikulaIzena)) {
+
 	            JPanel panel = new JPanel();
-	            panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS)); // Layout para organizar horizontalmente los componentes
+	            panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS)); // Layouta horizontalki osatzeko komponenteak
 
-	    
-	            // Botoia sortu eta filmen Id-ak asignatu.
-	            int idfilma = zinemakList.get(Funtzioak.getIdZinema()).getSaioList().get(i).getPelikula().getIdPelikula();
-	            JButton btn = new JButton(zinemakList.get(Funtzioak.getIdZinema()).getSaioList().get(i).getPelikula().getIzena().toString()); // Agrega un botón
+	            // Botoia sortu eta filmetako Id-ak asignatu.
+	            int filmaId = zinemakList.get(Funtzioak.getIdZinema()).getSaioList().get(i).getPelikula().getIdPelikula();
+	            JButton btn = new JButton(zinemakList.get(Funtzioak.getIdZinema()).getSaioList().get(i).getPelikula().getIzena().toString()); // Botoia gehitu
 	            btn.addMouseListener(new MouseAdapter() {
-	    			@Override
-	    			public void mouseClicked(MouseEvent e) {
-	    				Funtzioak.setIdFilma(idfilma);
-	    				
-	    				
-	    			}
-	    		});
+	                @Override
+	                public void mouseClicked(MouseEvent e) {
+	                    Funtzioak.setIdFilma(filmaId);
+	                    PelikulaBista.BotoiaEnabled();
+	                }
+	            });
 	            panel.add(btn);
-	            
 
 	            panel.add(Box.createHorizontalGlue());
 
 	            panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
 	            panelContenedor.add(panel); 
-	            nombresPeliculas.add(nombrePelicula);
-	        	 }
+	            pelikulaIzenak.add(pelikulaIzena);
 	        }
-
-	        scrollPane.setViewportView(panelContenedor); 
 	    }
 
-
-
-
-	public static void filmPanelak() {
-
-		Konexioa.konexioa();
-
-		ZinemaAretoFilmaDAO ZinemaAretoFilma = new ZinemaAretoFilmaDAO();
-
-		saioPelikulak = new ArrayList<>();
-
-		saioPelikulak = ZinemaAretoFilma.lortuFilmak();
-		System.out.println("------------------------------------------------------------------------");
-		System.out.println("------------------------------------------------------------------------");
-		System.out.println("------------------------------------------------------------------------");
-
-		// System.out.println(saioPelikulak);
-		System.out.println("------------------------------------------------------------------------");
-		System.out.println("------------------------------------------------------------------------");
-		System.out.println("------------------------------------------------------------------------");
-
-		Konexioa.konexioaExit();
-
+	    scrollPane.setViewportView(panelContenedor); 
 	}
+
+
+
+
 	
 	public static Pelikula Info_filma() {
 		Pelikula p1 = new Pelikula();
@@ -369,15 +344,13 @@ public class Funtzioak {
 	public static LocalTime Saio_filma() {
 				
 		LocalTime saioaOrdua = null;  
-		
-		System.out.println(Funtzioak.getEguna());
-				
-		LocalDate eguna = Funtzioak.getEguna().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		
+		String eguna = Funtzioak.getEguna();
 		 
 		  for (Saioa saioa : zinemakList.get(Funtzioak.getIdZinema()).getSaioList()) {
-			  if(saioa.getPelikula().getIdPelikula() == Funtzioak.getIdFilma()) {
+			  String getEgunaString = "" + saioa.getEguna();
+			  if(saioa.getPelikula().getIdPelikula() == Funtzioak.getIdFilma() && getEgunaString.equals(eguna)) {
 				  saioaOrdua = saioa.getOrdua();
+				  
 			  }
 		  }
 		  

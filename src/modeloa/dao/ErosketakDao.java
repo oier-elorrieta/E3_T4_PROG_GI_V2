@@ -24,7 +24,7 @@ public class ErosketakDao {
                 ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
-                int idErosketak = resultSet.getInt("idErosketak");
+                int idErosketak = resultSet.getInt("idErosketa");
                 LocalDate data = resultSet.getDate("Eguna").toLocalDate();
                
 				Erosketak erosketa = new Erosketak(idErosketak, data);
