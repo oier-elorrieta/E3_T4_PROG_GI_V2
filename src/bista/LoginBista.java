@@ -44,7 +44,7 @@ public class LoginBista extends JFrame {
 		contentPane.add(Titulua, BorderLayout.NORTH);
 		Titulua.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblTitulua = new JLabel("Login");
+		JLabel lblTitulua = new JLabel("Login"); 
 		lblTitulua.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulua.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		Titulua.add(lblTitulua, BorderLayout.NORTH);

@@ -109,7 +109,7 @@ public class ZinemaBista extends JFrame {
 				// Deitu pelikula vista noiz zinema basauri da
 				System.out.println("SANTUTXU ZINEMA");
 				Funtzioak.setIdZinema(3);
-				
+				 
 				Funtzioak.pelikulaBistaVisible();
 				dispose();
 			}
