@@ -23,6 +23,11 @@ public class Saioa {
 	//--------------------Konstruktorea--------------------//
 	
 	
+	public Saioa() {
+		
+	}
+
+
 	//--------------------Set--------------------//
 	public void setIdSaioa(int idSaioa) {
 		this.idSaioa = idSaioa;

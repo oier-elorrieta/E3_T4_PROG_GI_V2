@@ -266,7 +266,7 @@ public class Funtzioak {
 
 		// Verificar si se encontró el bezeroa
 		if (!login) {
-            JOptionPane.showMessageDialog(null, "Bezeroa no encontrado.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erabiltzailea edo pasahitza ez dira zuzenak", "Errorea", JOptionPane.ERROR_MESSAGE);
 		} 
 		return login;
 	}
@@ -340,6 +340,22 @@ public class Funtzioak {
 		  
 	}
 	
+	public static Saioa Info_saioa() {
+		Saioa s1 = new Saioa();
+		
+		  for (Saioa saioa : zinemakList.get(Funtzioak.getIdZinema()).getSaioList()) {
+              if (saioa.getPelikula().getIdPelikula() == Funtzioak.Info_filma().getIdPelikula()) {
+            	  
+            	  s1.setIdSaioa(saioa.getIdSaioa());
+            	  s1.setAretoa(saioa.getAretoa());
+            	  
+                  break;
+              }
+          }
+		  return s1;
+		  
+	}
+	
 	// SAIOAREN ORDUA LORTU
 	public static LocalTime Saio_filma() {
 				
@@ -367,7 +383,7 @@ public class Funtzioak {
 
 	public static void KenduSarreraBalioa() {
 		int balorea = Integer.parseInt(SaioaBista.textSarreraKop.getText());
-		if (balorea > 0) {
+		if (balorea > 1) {
 			balorea--;
 			SaioaBista.textSarreraKop.setText(String.valueOf(balorea));
 		}

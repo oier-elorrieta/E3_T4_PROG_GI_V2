@@ -17,6 +17,8 @@ import modeloa.Aldagaiak;
 import modeloa.objetuak.Pelikula;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -70,18 +72,10 @@ public class SaioaBista extends JFrame {
 		Titulua.add(lblFilmArgazki);
 			
 		JLabel lblFilmSaioa = new JLabel("SAIOA:");
-		lblFilmSaioa.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblFilmSaioa.setBounds(464, 286, 419, 46);
+		lblFilmSaioa.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblFilmSaioa.setBounds(461, 340, 419, 46);
 		Titulua.add(lblFilmSaioa);
-		
-		
-		
-		
-		
-		
 	
-
-      
 		 
 		JLabel lblFilmIzena = new JLabel(Funtzioak.Info_filma().getIzena());
 		lblFilmIzena.setHorizontalAlignment(SwingConstants.LEFT);
@@ -103,10 +97,21 @@ public class SaioaBista extends JFrame {
 		Titulua.add(lblIraupena);
 		
 		
-       
-        
+		JLabel lblIAretoa = new JLabel("Aretoa: " + Funtzioak.Info_saioa().getAretoa().getIzena() + " aretoa");
+		lblIAretoa.setHorizontalAlignment(SwingConstants.LEFT);
+		lblIAretoa.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblIAretoa.setBounds(461, 219, 554, 46);
+		Titulua.add(lblIAretoa);
+		
+		JLabel lbllPrezioa = new JLabel("Sarreraren prezioa: 6,90 €" );
+		lbllPrezioa.setHorizontalAlignment(SwingConstants.LEFT);
+		lbllPrezioa.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lbllPrezioa.setBounds(461, 276, 554, 46);
+		Titulua.add(lbllPrezioa);
+		
+		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(464, 344, 459, 61);
+		comboBox.setBounds(464, 397, 459, 61);
 
 		LocalTime saioaOrdua = Funtzioak.Saio_filma();
 
@@ -123,10 +128,26 @@ public class SaioaBista extends JFrame {
         
         
 		JButton btnEzSaioa = new JButton("EZ");
+		btnEzSaioa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+            	JOptionPane.showMessageDialog(null, "DENA EZABATU EGIN DA", "!!" ,JOptionPane.ERROR_MESSAGE);
+				 Funtzioak.zinemaBistaVisible();
+	                dispose();
+			}
+		});
 		btnEzSaioa.setBounds(986, 550, 258, 79);
 		Titulua.add(btnEzSaioa);
 		
 		JButton btnBaiSaioa = new JButton("BAI");
+		btnBaiSaioa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {				 
+				JOptionPane.showMessageDialog(null, "DENA ONDO GORDE EGIN DA");
+				 Funtzioak.zinemaBistaVisible();
+	                dispose();
+	                
+				
+			}
+		});
 		btnBaiSaioa.setBounds(718, 550, 258, 79);
 		Titulua.add(btnBaiSaioa);
 		
@@ -151,7 +172,7 @@ public class SaioaBista extends JFrame {
 		textSarreraKop.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textSarreraKop.setBounds(1025, 147, 208, 61);
 		textSarreraKop.setColumns(10);
-		textSarreraKop.setText("0");	
+		textSarreraKop.setText("1");	
 		textSarreraKop.setEnabled(false); 
 		
 		Color textuKolorea = Color.BLACK; 
@@ -166,6 +187,7 @@ public class SaioaBista extends JFrame {
 		JButton btnSarreraKendu = new JButton("-");
 		btnSarreraKendu.setBounds(1025, 219, 89, 23);
 		Titulua.add(btnSarreraKendu);
+		
 		
 	
 		
