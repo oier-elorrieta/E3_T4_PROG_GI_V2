@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import kontrolatzaile.funtzioak.Funtzioak;
+import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
 import modeloa.Aldagaiak;
 
 import java.awt.BorderLayout;
@@ -64,8 +64,8 @@ public class ZinemaBista extends JFrame {
 		btnElorrieta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Funtzioak.setIdZinema(0);
-				Funtzioak.pelikulaBistaVisible();
+				FuntzioErabilgarriak.setIdZinema(0);
+				FuntzioErabilgarriak.pelikulaBistaVisible();
 				dispose();
 			}
 		});
@@ -78,9 +78,9 @@ public class ZinemaBista extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				// Deitu pelikula vista noiz zinema basauri da
-				Funtzioak.setIdZinema(1);
+				FuntzioErabilgarriak.setIdZinema(1);
 				
-				Funtzioak.pelikulaBistaVisible();
+				FuntzioErabilgarriak.pelikulaBistaVisible();
 				dispose();
 			}
 		});
@@ -90,9 +90,9 @@ public class ZinemaBista extends JFrame {
 		btnBarakaldo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Funtzioak.setIdZinema(2);
+				FuntzioErabilgarriak.setIdZinema(2);
 
-				Funtzioak.pelikulaBistaVisible();
+				FuntzioErabilgarriak.pelikulaBistaVisible();
 				dispose();
 			}
 		});
@@ -103,9 +103,9 @@ public class ZinemaBista extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// Deitu pelikula vista noiz zinema basauri da
-				Funtzioak.setIdZinema(3);
+				FuntzioErabilgarriak.setIdZinema(3);
 				 
-				Funtzioak.pelikulaBistaVisible();
+				FuntzioErabilgarriak.pelikulaBistaVisible();
 				dispose();
 			}
 		});
@@ -116,9 +116,9 @@ public class ZinemaBista extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// Deitu pelikula vista noiz zinema basauri da
-				Funtzioak.setIdZinema(4);
+				FuntzioErabilgarriak.setIdZinema(4);
 				
-				Funtzioak.pelikulaBistaVisible();
+				FuntzioErabilgarriak.pelikulaBistaVisible();
 				dispose();
 			}
 		});

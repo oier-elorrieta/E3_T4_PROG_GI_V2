@@ -3,13 +3,13 @@ package kontrolatzaile;
 import java.awt.EventQueue;
 
 import bista.OngiEtorriBista;
-import kontrolatzaile.funtzioak.Funtzioak;
+import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
 
 
 public class main {
 
 	public static void main(String[] args) {
-		Funtzioak.inicio();
+		FuntzioErabilgarriak.inicio();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

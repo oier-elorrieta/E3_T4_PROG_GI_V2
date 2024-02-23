@@ -21,7 +21,7 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
-import kontrolatzaile.funtzioak.Funtzioak;
+import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
 import modeloa.Aldagaiak;
 
 import java.awt.event.ActionListener;
@@ -70,7 +70,7 @@ public class PelikulaBista extends JFrame {
         JButton btnAtzeraPelikula = new JButton("ATZERA");
         btnAtzeraPelikula.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Funtzioak.zinemaBistaVisible();
+                FuntzioErabilgarriak.zinemaBistaVisible();
                 dispose();
             }
         }); 
@@ -80,15 +80,15 @@ public class PelikulaBista extends JFrame {
         	public void actionPerformed(ActionEvent e) {
         		
         		// Ez baduzu data aukeratzen, gaurko data jarriko da.
-        		if (Funtzioak.getEguna() == null) {
+        		if (FuntzioErabilgarriak.getEguna() == null) {
         			Date gaur = new Date();
         			String pattern = "yyyy-MM-dd";
                     DateFormat df = new SimpleDateFormat(pattern);
 
                     String gaurString = df.format(gaur);
-        			Funtzioak.setEguna(gaurString);
+        			FuntzioErabilgarriak.setEguna(gaurString);
         		}
-        		Funtzioak.saioaBistaVisible();
+        		FuntzioErabilgarriak.saioaBistaVisible();
                 dispose();
         	}
         });
@@ -129,14 +129,14 @@ public class PelikulaBista extends JFrame {
                 Date selectedDate = (Date) datePicker.getModel().getValue();
 
                 if (selectedDate != null) {
-                    LocalTime saioaOrdua = Funtzioak.Saio_filma();
+                    LocalTime saioaOrdua = FuntzioErabilgarriak.Saio_filma();
                     String pattern = "yyyy-MM-dd";
                     DateFormat df = new SimpleDateFormat(pattern);
 
 
                     String todayAsString = df.format(selectedDate);
                  
-                    Funtzioak.setEguna(todayAsString);
+                    FuntzioErabilgarriak.setEguna(todayAsString);
 
                 }
             }
@@ -158,11 +158,11 @@ public class PelikulaBista extends JFrame {
         JScrollPane scrollPane = new JScrollPane();
         Titulua_2.add(scrollPane, BorderLayout.CENTER);
 
-        Funtzioak.filmaDatuak(scrollPane);
+        FuntzioErabilgarriak.filmaDatuak(scrollPane);
     }
     
     public static void BotoiaEnabled() {
-    	if (Funtzioak.getIdFilma() != 0) {
+    	if (FuntzioErabilgarriak.getIdFilma() != 0) {
         	btnJarraituPelikula.setEnabled(true); 
         }
     }

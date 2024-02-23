@@ -13,7 +13,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import kontrolatzaile.funtzioak.Funtzioak;
+import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
 import modeloa.dao.PelikulaDao;
 import modeloa.dao.SaioaDao;
 import modeloa.db.Konexioa;
@@ -48,7 +48,7 @@ public class SaioaDaoTest {
                 String idAretoa = resultSet.getString("idAretoa");
 
                 // Busca la película en la lista de películas
-                for (Pelikula pelikula : Funtzioak.pelikulakList) {
+                for (Pelikula pelikula : FuntzioErabilgarriak.pelikulakList) {
                     if (pelikula.getIdPelikula() == idPelikula) {
                         peli = pelikula;
                         break;

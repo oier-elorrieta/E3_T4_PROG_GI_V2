@@ -1,14 +1,15 @@
 package modeloa.objetuak;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 public class Erosketak {
 
 	private int idErosketak;
+	private List<Sarrera> sarreraList;
 	private Bezeroa bezeroa;
 	private LocalDate data;
-	private int sarreraKant;
 	private double deskontua;	
 	private double dirutotala;
 	private String mota;
@@ -34,9 +35,9 @@ public class Erosketak {
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
-	
-	public void setSarreraKant(int sarreraKant) {
-		this.sarreraKant = sarreraKant;
+
+	public void setSarreraList(List<Sarrera> sarreraList) {
+		this.sarreraList = sarreraList;
 	}
 
 	public void setDeskontua(double deskontua) {
@@ -65,8 +66,8 @@ public class Erosketak {
 		return data;
 	}
 	
-	public int getSarreraKant() {
-		return sarreraKant;
+	public List<Sarrera> getSarreraList() {
+		return sarreraList;
 	}
 
 	public double getDeskontua() {
@@ -83,18 +84,20 @@ public class Erosketak {
 
 	
 	// --------------------toString--------------------//
+	
 	@Override
 	public String toString() {
-		return "Erosketak [idErosketak=" + idErosketak + ", bezeroa=" + bezeroa + ", data=" + data + ", sarreraKant="
-				+ sarreraKant + ", deskontua=" + deskontua + ", dirutotala=" + dirutotala + ", mota=" + mota + "]";
+		return "Erosketak [idErosketak=" + idErosketak + ", sarreraList=" + sarreraList + ", bezeroa=" + bezeroa
+				+ ", data=" + data + ", deskontua=" + deskontua + ", dirutotala=" + dirutotala + ", mota=" + mota + "]";
 	}
+	
 	// --------------------toString--------------------//
 
-	
 	// --------------------Equals--------------------//
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(bezeroa, data, deskontua, dirutotala, idErosketak, mota, sarreraKant);
+		return Objects.hash(bezeroa, data, deskontua, dirutotala, idErosketak, mota, sarreraList);
 	}
 
 	@Override
@@ -110,7 +113,9 @@ public class Erosketak {
 				&& Double.doubleToLongBits(deskontua) == Double.doubleToLongBits(other.deskontua)
 				&& Double.doubleToLongBits(dirutotala) == Double.doubleToLongBits(other.dirutotala)
 				&& idErosketak == other.idErosketak && Objects.equals(mota, other.mota)
-				&& sarreraKant == other.sarreraKant;
+				&& Objects.equals(sarreraList, other.sarreraList);
 	}
+	
+	
 	// --------------------Equals--------------------//
 }

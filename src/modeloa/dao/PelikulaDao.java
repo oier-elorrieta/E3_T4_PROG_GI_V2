@@ -1,7 +1,7 @@
 package modeloa.dao;
 
 import modeloa.db.Konexioa;
-import modeloa.db.Kontzultak;
+import modeloa.db.Kontsultak;
 import modeloa.objetuak.Pelikula;
 
 import java.sql.PreparedStatement;
@@ -18,7 +18,7 @@ public class PelikulaDao {
         try {
             Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
 
-            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.filma);
+            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.filma);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {

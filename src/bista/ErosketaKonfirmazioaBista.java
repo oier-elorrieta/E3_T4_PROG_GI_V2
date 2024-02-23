@@ -70,41 +70,29 @@ public class ErosketaKonfirmazioaBista extends JFrame {
         Bezeroa bezeroa = new Bezeroa("B01", "12345678A", "Jon", "Doe", "jondoe", "password", 123456789, "Gizona");
         Erosketak erosketak = new Erosketak(1, LocalDate.now());
 
-        // Crea etiquetas para mostrar los datos
-        JLabel erosketaid = new JLabel("idErosketa: " + erosketak.getIdErosketak());
-        erosketaid.setHorizontalAlignment(SwingConstants.CENTER);
-        erosketaid.setBounds(428, 58, 379, 37);
-        Content.add(erosketaid);
+        JLabel lblBezeroNAN = new JLabel("NAN: ");
+        lblBezeroNAN.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblBezeroNAN.setHorizontalAlignment(SwingConstants.LEFT);
+        lblBezeroNAN.setBounds(33, 99, 379, 38);
+        Content.add(lblBezeroNAN);
 
-        JLabel bezeroid = new JLabel("idBezeroa: " + bezeroa.getIdBezeroa());
-        bezeroid.setHorizontalAlignment(SwingConstants.CENTER);
-        bezeroid.setBounds(428, 99, 379, 37);
-        Content.add(bezeroid);
+        JLabel lblBezeroIzenaAbizena = new JLabel("Izena/Abizena:");
+        lblBezeroIzenaAbizena.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblBezeroIzenaAbizena.setHorizontalAlignment(SwingConstants.LEFT);
+        lblBezeroIzenaAbizena.setBounds(33, 148, 379, 37);
+        Content.add(lblBezeroIzenaAbizena);
 
-        JLabel bezeroNAN = new JLabel("NAN: " + erosketak.getData());
-        bezeroNAN.setHorizontalAlignment(SwingConstants.CENTER);
-        bezeroNAN.setBounds(428, 147, 379, 38);
-        Content.add(bezeroNAN);
+        JLabel lblBezeroErabiltzailea = new JLabel("Erabiltzailea: ");
+        lblBezeroErabiltzailea.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblBezeroErabiltzailea.setHorizontalAlignment(SwingConstants.LEFT);
+        lblBezeroErabiltzailea.setBounds(33, 50, 379, 39);
+        Content.add(lblBezeroErabiltzailea);
 
-        JLabel bezeroIzena = new JLabel("Izena: " + bezeroa.getIzena());
-        bezeroIzena.setHorizontalAlignment(SwingConstants.CENTER);
-        bezeroIzena.setBounds(428, 196, 379, 37);
-        Content.add(bezeroIzena);
-
-        JLabel bezeroAbizena = new JLabel("Abizena: " + bezeroa.getAbizena());
-        bezeroAbizena.setHorizontalAlignment(SwingConstants.CENTER);
-        bezeroAbizena.setBounds(428, 244, 379, 37);
-        Content.add(bezeroAbizena);
-
-        JLabel bezeroErabiltzailea = new JLabel("Erabiltzailea: " + bezeroa.getErabiltzailea());
-        bezeroErabiltzailea.setHorizontalAlignment(SwingConstants.CENTER);
-        bezeroErabiltzailea.setBounds(428, 292, 379, 39);
-        Content.add(bezeroErabiltzailea);
-
-        JLabel bezeroSexua = new JLabel("Sexua: " + bezeroa.getSexua());
-        bezeroSexua.setHorizontalAlignment(SwingConstants.CENTER);
-        bezeroSexua.setBounds(428, 438, 379, 26);
-        Content.add(bezeroSexua);
+        JLabel lblBezeroGeneroa = new JLabel("Generoa:");
+        lblBezeroGeneroa.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblBezeroGeneroa.setHorizontalAlignment(SwingConstants.LEFT);
+        lblBezeroGeneroa.setBounds(33, 196, 379, 26);
+        Content.add(lblBezeroGeneroa);
 
         JButton ErosketaBai = new JButton("Bai");
         ErosketaBai.setBounds(380, 533, 242, 59);
@@ -118,6 +106,35 @@ public class ErosketaKonfirmazioaBista extends JFrame {
         });
         ErosketaEz.setBounds(619, 533, 242, 59);
         Content.add(ErosketaEz);
+        
+        JLabel lblFilma = new JLabel("Filma/k:");
+        lblFilma.setHorizontalAlignment(SwingConstants.LEFT);
+        lblFilma.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblFilma.setBounds(380, 51, 379, 37);
+        Content.add(lblFilma);
+        
+        JLabel lblZinema = new JLabel("Zinema/k:");
+        lblZinema.setHorizontalAlignment(SwingConstants.LEFT);
+        lblZinema.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblZinema.setBounds(380, 100, 379, 37);
+        Content.add(lblZinema);
+        
+        JLabel lblAretoa = new JLabel("Aretoa/k:");
+        lblAretoa.setHorizontalAlignment(SwingConstants.LEFT);
+        lblAretoa.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblAretoa.setBounds(380, 148, 379, 37);
+        Content.add(lblAretoa);
+        
+        JLabel lbl = new JLabel("Eguna/k:");
+        lbl.setHorizontalAlignment(SwingConstants.LEFT);
+        lbl.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lbl.setBounds(380, 191, 379, 37);
+        Content.add(lbl);
+        
+        JLabel lblFilma_1_1 = new JLabel("Ordua/k:");
+        lblFilma_1_1.setHorizontalAlignment(SwingConstants.LEFT);
+        lblFilma_1_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblFilma_1_1.setBounds(380, 233, 379, 37);
+        Content.add(lblFilma_1_1);
     }
-
 }

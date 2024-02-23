@@ -1,7 +1,7 @@
 package modeloa.dao;
 
 import modeloa.db.Konexioa;
-import modeloa.db.Kontzultak;
+import modeloa.db.Kontsultak;
 import modeloa.objetuak.Aretoa;
 import modeloa.objetuak.Pelikula;
 import modeloa.objetuak.Saioa;
@@ -14,7 +14,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import kontrolatzaile.funtzioak.Funtzioak;
+import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
 
 public class SaioaDao {
 
@@ -25,10 +25,8 @@ public class SaioaDao {
 
         try {
             Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
-
-            String kontzulta = "SELECT idSaioa, Ordua, Eguna, idFilma, idZinema, idAretoa FROM SAIOA WHERE idZinema = ? order by 2, 3 ";
             
-            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(kontzulta);
+            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.saioa);
             preparedStatement.setString(1, ID); // Establece el ID del cine en la consulta
 
             
@@ -42,7 +40,7 @@ public class SaioaDao {
                 String idAretoa = resultSet.getString("idAretoa");
  
                 // Busca la película en la lista de películas
-                for (Pelikula pelikula : Funtzioak.pelikulakList) {
+                for (Pelikula pelikula : FuntzioErabilgarriak.pelikulakList) {
                     if (pelikula.getIdPelikula() == idPelikula) {
                         peli = pelikula;
                         break;

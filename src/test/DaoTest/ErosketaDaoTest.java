@@ -14,7 +14,7 @@ import org.junit.Test;
 
 import modeloa.dao.ErosketakDao;
 import modeloa.db.Konexioa;
-import modeloa.db.Kontzultak;
+import modeloa.db.Kontsultak;
 import modeloa.objetuak.Erosketak;
 
 public class ErosketaDaoTest {
@@ -28,7 +28,7 @@ public class ErosketaDaoTest {
 	        try {
 	            Konexioa.konexioa(); 
 
-	            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.erosketak);
+	            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.erosketak);
 	            ResultSet resultSet = preparedStatement.executeQuery();
 
 	            while (resultSet.next()) {

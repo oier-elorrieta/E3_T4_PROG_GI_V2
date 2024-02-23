@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import modeloa.dao.ZinemaAretoFilmaDAO;
 import modeloa.db.Konexioa;
-import modeloa.db.Kontzultak;
+import modeloa.db.Kontsultak;
 import modeloa.objetuak.Pelikula;
 
 public class ZinemaAretoFilmaDaoTest {
@@ -28,7 +28,7 @@ public class ZinemaAretoFilmaDaoTest {
         try {
             Konexioa.konexioa();
 
-            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.saioakArgitaratu);
+            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.saioakArgitaratu);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
