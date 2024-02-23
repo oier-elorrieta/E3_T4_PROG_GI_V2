@@ -34,7 +34,7 @@ public class SaioaDaoTest {
         try {
             Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
 
-            String kontzulta = "SELECT idSaioa, Ordua, Eguna, idFilma, idZinema, idAretoa FROM SAIOA WHERE idZinema = ?";
+            String kontzulta = "SELECT idSaioa, Ordua, Eguna, idFilma, idZinema, idAretoa FROM SAIOA WHERE idZinema = 'Z01'";
             PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(kontzulta);
             preparedStatement.setString(1, ID); // Establece el ID del cine en la consulta
 
@@ -83,9 +83,9 @@ public class SaioaDaoTest {
 
 	@Test
 	public void testLortuSaioak() {
-	    List<Saioa> saioak = saioaDao.lortuSaioak(); 
+	    List<Saioa> saioak = saioaDao.lortuSaioak("Z01", Funtzioak.areatoakList); 
 	    
-	    List<Saioa> SaioaTest = lortuSaioakTEST();
+	    List<Saioa> SaioaTest = lortuSaioakTEST("Z01", Funtzioak.areatoakList);
 	    
 	    assertNotNull(saioak);
 	    assertFalse(saioak.isEmpty());
