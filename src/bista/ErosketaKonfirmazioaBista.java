@@ -68,7 +68,7 @@ public class ErosketaKonfirmazioaBista extends JFrame {
 
         // Crea una instancia de Bezeroa y Erosketak con datos concretos
         Bezeroa bezeroa = new Bezeroa("B01", "12345678A", "Jon", "Doe", "jondoe", "password", 123456789, "Gizona");
-        Erosketak erosketak = new Erosketak(1, LocalDate.now());
+        //Erosketak erosketak = new Erosketak(1, LocalDate.now());
 
         JLabel lblBezeroNAN = new JLabel("NAN: ");
         lblBezeroNAN.setFont(new Font("Tahoma", Font.PLAIN, 20));
