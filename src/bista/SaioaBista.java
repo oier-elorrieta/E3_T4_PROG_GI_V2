@@ -145,7 +145,7 @@ public class SaioaBista extends JFrame {
 		btnBesteErosketa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				 
 				JOptionPane.showMessageDialog(null, "DENA ONDO GORDE EGIN DA");
-				FuntzioErabilgarriak.ErosketaSortu();
+				//FuntzioErabilgarriak.ErosketaSortu();
 				 FuntzioErabilgarriak.zinemaBistaVisible();
 	                dispose();
 	                

@@ -52,7 +52,7 @@ public class ErosketaTest {
 		erosketak.setDirutotala(1);
 		erosketak.setMota("Fisikoa");
 		
-		assertEquals("Erosketak [idErosketak=1, bezeroa=" + bezeroa.toString() + ", data=" + dataFroga +", sarreraKant=1, deskontua=1.0, dirutotala=1.0, mota=Fisikoa]", erosketak.toString());
+		assertEquals("Erosketak [idErosketak=1, bezeroa=" + bezeroa.toString() + ", data=" + dataFroga +", deskontua=1.0, dirutotala=1.0, mota=Fisikoa]", erosketak.toString());
 	}
 	
 	 @Test

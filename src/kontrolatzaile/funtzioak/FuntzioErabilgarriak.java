@@ -330,19 +330,11 @@ public class FuntzioErabilgarriak {
 		}
 	}
 	
-//	public static Erosketak ErosketaSortu() {
-//		Erosketak e1 = new Erosketak();
-//		
-//		  for (Erosketak erosketa : erosketakList) {
-//              if (saioa.getPelikula().getIdPelikula() == FuntzioErabilgarriak.Info_filma().getIdPelikula()) {
-//            	  
-//            	  
-//            	  
-//                  break;
-//              }
-//          }
-//		  
-//		  return e1;
-//	}
+	public static void ErosketaSortu() {
+		
+		
+		  
+		 
+	}
 
 }
