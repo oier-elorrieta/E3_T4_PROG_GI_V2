@@ -16,9 +16,11 @@ public class Erosketak {
 
 	// --------------------Konstruktorea--------------------//
 	
-	public Erosketak(int idErosketak, LocalDate data) {
+	public Erosketak(int idErosketak) {
 		this.idErosketak = idErosketak;
-		this.data = data;
+	}
+	
+	public Erosketak() {
 	}
 	
 	// --------------------Konstruktorea--------------------//

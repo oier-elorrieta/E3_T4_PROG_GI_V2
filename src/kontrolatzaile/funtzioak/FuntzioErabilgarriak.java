@@ -148,7 +148,6 @@ public class FuntzioErabilgarriak {
 		sarrerakList = new ArrayList<>();
 		zinemakList = new ArrayList<>();
 		
-		
 		bezeroakList = Bezeroa.lortuBezeroak();
 		erosketakList = Erosketak.lortuErosketak();
 		pelikulakList = Pelikula.lortuPelikulak();
@@ -330,5 +329,20 @@ public class FuntzioErabilgarriak {
 			SaioaBista.textSarreraKop.setText(String.valueOf(balorea));
 		}
 	}
+	
+//	public static Erosketak ErosketaSortu() {
+//		Erosketak e1 = new Erosketak();
+//		
+//		  for (Erosketak erosketa : erosketakList) {
+//              if (saioa.getPelikula().getIdPelikula() == FuntzioErabilgarriak.Info_filma().getIdPelikula()) {
+//            	  
+//            	  
+//            	  
+//                  break;
+//              }
+//          }
+//		  
+//		  return e1;
+//	}
 
 }

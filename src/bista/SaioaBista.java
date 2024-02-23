@@ -145,6 +145,7 @@ public class SaioaBista extends JFrame {
 		btnBesteErosketa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				 
 				JOptionPane.showMessageDialog(null, "DENA ONDO GORDE EGIN DA");
+				FuntzioErabilgarriak.ErosketaSortu();
 				 FuntzioErabilgarriak.zinemaBistaVisible();
 	                dispose();
 	                
@@ -190,10 +191,6 @@ public class SaioaBista extends JFrame {
 		JButton btnSarreraKendu = new JButton("-");
 		btnSarreraKendu.setBounds(1025, 219, 89, 23);
 		Titulua.add(btnSarreraKendu);
-		
-		
-	
-		
 		
 		btnSarreraGehi.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
