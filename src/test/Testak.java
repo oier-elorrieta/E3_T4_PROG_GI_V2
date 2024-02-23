@@ -16,7 +16,7 @@ import org.junit.Test;
 
 import modeloa.dao.AretoaDao;
 import modeloa.db.Konexioa;
-import modeloa.db.Kontzultak;
+import modeloa.db.Kontsultak;
 import modeloa.objetuak.Aretoa;
 import modeloa.objetuak.Bezeroa;
 import modeloa.objetuak.Erosketak;

@@ -14,7 +14,7 @@ import org.junit.Test;
 
 import modeloa.dao.SarreraDao;
 import modeloa.db.Konexioa;
-import modeloa.db.Kontzultak;
+import modeloa.db.Kontsultak;
 import modeloa.objetuak.Sarrera;
 
 public class SarreraDaoTest {
@@ -29,7 +29,7 @@ public class SarreraDaoTest {
         try {
             Konexioa.konexioa(); 
 
-            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.sarrera);
+            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.sarrera);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {

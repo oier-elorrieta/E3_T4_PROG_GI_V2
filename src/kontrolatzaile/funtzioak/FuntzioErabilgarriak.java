@@ -42,10 +42,9 @@ import modeloa.dao.ErosketakDao;
 import modeloa.dao.PelikulaDao;
 import modeloa.dao.SaioaDao;
 import modeloa.dao.SarreraDao;
-import modeloa.dao.ZinemaAretoFilmaDAO;
 import modeloa.dao.ZinemaDao;
 import modeloa.db.Konexioa;
-import modeloa.db.Kontzultak;
+import modeloa.db.Kontsultak;
 import modeloa.objetuak.Aretoa;
 import modeloa.objetuak.Bezeroa;
 import modeloa.objetuak.Erosketak;
@@ -54,7 +53,7 @@ import modeloa.objetuak.Saioa;
 import modeloa.objetuak.Sarrera;
 import modeloa.objetuak.Zinema;
 
-public class Funtzioak {
+public class FuntzioErabilgarriak {
 	
 	private static int idZinema;
 	private static int idFilma;
@@ -67,7 +66,7 @@ public class Funtzioak {
 	}
 
 	public static void setIdZinema(int idZinema) {
-		Funtzioak.idZinema = idZinema;
+		FuntzioErabilgarriak.idZinema = idZinema;
 	}	
 
 	public static int getIdFilma() {
@@ -75,7 +74,7 @@ public class Funtzioak {
 	}
 
 	public static void setIdFilma(int idFilma) {
-		Funtzioak.idFilma = idFilma;
+		FuntzioErabilgarriak.idFilma = idFilma;
 	}
 	
 	public static LocalTime getOrdua() {
@@ -83,7 +82,7 @@ public class Funtzioak {
 	}
 
 	public static void setOrdua(LocalTime ordua) {
-		Funtzioak.ordua = ordua;
+		FuntzioErabilgarriak.ordua = ordua;
 	}
 
 	public static String getEguna() {
@@ -91,7 +90,7 @@ public class Funtzioak {
 	}
 
 	public static void setEguna(String todayAsString) {
-		Funtzioak.eguna = todayAsString;
+		FuntzioErabilgarriak.eguna = todayAsString;
 	}
 
 	public static void inicio() {
@@ -286,8 +285,8 @@ public class Funtzioak {
 
 	    Set<String> pelikulaIzenak = new HashSet<>(); // Bikoiztu ez duen hutsunea edo balio bakarrak baimentzen dituena. LISTA QUE SOLO AGARRA VALORES UNICOS
 
-	    for (int i = 0; i < zinemakList.get(Funtzioak.getIdZinema()).getSaioList().size(); i++) {
-	        String pelikulaIzena = zinemakList.get(Funtzioak.getIdZinema()).getSaioList().get(i).getPelikula().getIzena().toString();
+	    for (int i = 0; i < zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList().size(); i++) {
+	        String pelikulaIzena = zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList().get(i).getPelikula().getIzena().toString();
 
 	        if (!pelikulaIzenak.contains(pelikulaIzena)) {
 
@@ -295,12 +294,12 @@ public class Funtzioak {
 	            panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS)); // Layouta horizontalki osatzeko komponenteak
 
 	            // Botoia sortu eta filmetako Id-ak asignatu.
-	            int filmaId = zinemakList.get(Funtzioak.getIdZinema()).getSaioList().get(i).getPelikula().getIdPelikula();
-	            JButton btn = new JButton(zinemakList.get(Funtzioak.getIdZinema()).getSaioList().get(i).getPelikula().getIzena().toString()); // Botoia gehitu
+	            int filmaId = zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList().get(i).getPelikula().getIdPelikula();
+	            JButton btn = new JButton(zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList().get(i).getPelikula().getIzena().toString()); // Botoia gehitu
 	            btn.addMouseListener(new MouseAdapter() {
 	                @Override
 	                public void mouseClicked(MouseEvent e) {
-	                    Funtzioak.setIdFilma(filmaId);
+	                    FuntzioErabilgarriak.setIdFilma(filmaId);
 	                    PelikulaBista.BotoiaEnabled();
 	                }
 	            });
@@ -322,8 +321,8 @@ public class Funtzioak {
 	public static Pelikula Info_filma() {
 		Pelikula p1 = new Pelikula();
 		
-		  for (Pelikula pelikula : Funtzioak.pelikulakList) {
-              if (pelikula.getIdPelikula() == Funtzioak.getIdFilma()) {
+		  for (Pelikula pelikula : FuntzioErabilgarriak.pelikulakList) {
+              if (pelikula.getIdPelikula() == FuntzioErabilgarriak.getIdFilma()) {
             	  
             	  p1.setIzena(pelikula.getIzena());
             	  p1.setGeneroa(pelikula.getGeneroa());
@@ -340,8 +339,8 @@ public class Funtzioak {
 	public static Saioa Info_saioa() {
 		Saioa s1 = new Saioa();
 		
-		  for (Saioa saioa : zinemakList.get(Funtzioak.getIdZinema()).getSaioList()) {
-              if (saioa.getPelikula().getIdPelikula() == Funtzioak.Info_filma().getIdPelikula()) {
+		  for (Saioa saioa : zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList()) {
+              if (saioa.getPelikula().getIdPelikula() == FuntzioErabilgarriak.Info_filma().getIdPelikula()) {
             	  
             	  s1.setIdSaioa(saioa.getIdSaioa());
             	  s1.setAretoa(saioa.getAretoa());
@@ -357,11 +356,11 @@ public class Funtzioak {
 	public static LocalTime Saio_filma() {
 				
 		LocalTime saioaOrdua = null;  
-		String eguna = Funtzioak.getEguna();
+		String eguna = FuntzioErabilgarriak.getEguna();
 		 
-		  for (Saioa saioa : zinemakList.get(Funtzioak.getIdZinema()).getSaioList()) {
+		  for (Saioa saioa : zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList()) {
 			  String getEgunaString = "" + saioa.getEguna();
-			  if(saioa.getPelikula().getIdPelikula() == Funtzioak.getIdFilma() && getEgunaString.equals(eguna)) {
+			  if(saioa.getPelikula().getIdPelikula() == FuntzioErabilgarriak.getIdFilma() && getEgunaString.equals(eguna)) {
 				  saioaOrdua = saioa.getOrdua();
 				  
 			  }

@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import kontrolatzaile.funtzioak.Funtzioak;
+import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
 import modeloa.Aldagaiak;
 
 import java.awt.BorderLayout;
@@ -63,7 +63,7 @@ public class LoginBista extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String erabiltzailea = textFieldErabiltzailea.getText();
 				String pasahitza = new String(passwordFieldPasahitza.getPassword());
-				if (Funtzioak.login(erabiltzailea, pasahitza)) {
+				if (FuntzioErabilgarriak.login(erabiltzailea, pasahitza)) {
 					dispose();
 				}
 			}

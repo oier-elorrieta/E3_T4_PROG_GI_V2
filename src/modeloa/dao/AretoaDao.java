@@ -1,6 +1,7 @@
 package modeloa.dao;
 
 import modeloa.db.Konexioa;
+import modeloa.db.Kontsultak;
 import modeloa.objetuak.Aretoa;
 
 import java.sql.PreparedStatement;
@@ -15,10 +16,9 @@ public class AretoaDao {
     public List<Aretoa> lortuAretoak(String ID) {
         List<Aretoa> aretoak = new ArrayList<>();
 
-        String kontzulta = "SELECT idAretoa, idZinema, izena FROM ARETOA where idZinema = '" + ID + "'";
         try {
             Konexioa.konexioa(); 
-            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(kontzulta);
+            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.aretoa+ ID + "'");
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {

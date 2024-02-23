@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import modeloa.dao.BezeroaDao;
 import modeloa.db.Konexioa;
-import modeloa.db.Kontzultak;
+import modeloa.db.Kontsultak;
 import modeloa.objetuak.Bezeroa;
 
 public class BezeroDaoTest {
@@ -26,7 +26,7 @@ public class BezeroDaoTest {
 
 	        Konexioa.konexioa(); // Asegúrate de tener esta llamada para establecer la conexión
 
-	        try (PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.bezeroa);
+	        try (PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.bezeroa);
 	             ResultSet resultSet = preparedStatement.executeQuery()) {
 
 	            while (resultSet.next()) {

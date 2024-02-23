@@ -14,7 +14,7 @@ import modeloa.dao.AretoaDao;
 import modeloa.dao.SaioaDao;
 import modeloa.dao.ZinemaDao;
 import modeloa.db.Konexioa;
-import modeloa.db.Kontzultak;
+import modeloa.db.Kontsultak;
 import modeloa.objetuak.Aretoa;
 import modeloa.objetuak.Saioa;
 import modeloa.objetuak.Zinema;
@@ -37,7 +37,7 @@ public List<Zinema> lortuZinemakTEST() {
         try {
             Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
 
-            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.zinema);
+            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.zinema);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {

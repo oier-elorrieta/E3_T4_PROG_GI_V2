@@ -12,7 +12,7 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
-import kontrolatzaile.funtzioak.Funtzioak;
+import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
 import modeloa.Aldagaiak;
 import modeloa.objetuak.Pelikula;
 
@@ -77,27 +77,27 @@ public class SaioaBista extends JFrame {
 		Titulua.add(lblFilmSaioa);
 	
 		 
-		JLabel lblFilmIzena = new JLabel(Funtzioak.Info_filma().getIzena());
+		JLabel lblFilmIzena = new JLabel(FuntzioErabilgarriak.Info_filma().getIzena());
 		lblFilmIzena.setHorizontalAlignment(SwingConstants.LEFT);
 		lblFilmIzena.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblFilmIzena.setBounds(461, 48, 554, 46);
 		Titulua.add(lblFilmIzena);    
 		
-		JLabel lblGenero = new JLabel("Generoa: " + Funtzioak.Info_filma().getGeneroa());
+		JLabel lblGenero = new JLabel("Generoa: " + FuntzioErabilgarriak.Info_filma().getGeneroa());
 		lblGenero.setHorizontalAlignment(SwingConstants.LEFT);
 		lblGenero.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblGenero.setBounds(461, 105, 554, 46);
 		Titulua.add(lblGenero);
 		
 		
-         JLabel lblIraupena = new JLabel("Iraupena: " + Funtzioak.Info_filma().getIraupena() + " minutuak");		
+         JLabel lblIraupena = new JLabel("Iraupena: " + FuntzioErabilgarriak.Info_filma().getIraupena() + " minutuak");		
 		lblIraupena.setHorizontalAlignment(SwingConstants.LEFT);
 		lblIraupena.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblIraupena.setBounds(461, 162, 554, 46);
 		Titulua.add(lblIraupena);
 		
 		
-		JLabel lblIAretoa = new JLabel("Aretoa: " + Funtzioak.Info_saioa().getAretoa().getIzena() + " aretoa");
+		JLabel lblIAretoa = new JLabel("Aretoa: " + FuntzioErabilgarriak.Info_saioa().getAretoa().getIzena() + " aretoa");
 		lblIAretoa.setHorizontalAlignment(SwingConstants.LEFT);
 		lblIAretoa.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblIAretoa.setBounds(461, 219, 554, 46);
@@ -113,7 +113,7 @@ public class SaioaBista extends JFrame {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(464, 397, 459, 61);
 
-		LocalTime saioaOrdua = Funtzioak.Saio_filma();
+		LocalTime saioaOrdua = FuntzioErabilgarriak.Saio_filma();
 
 		if (saioaOrdua != null) {
 		    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -132,7 +132,7 @@ public class SaioaBista extends JFrame {
 		btnBukatuErosketa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
             	JOptionPane.showMessageDialog(null, "DENA EZABATU EGIN DA", "!!" ,JOptionPane.ERROR_MESSAGE);
-				 Funtzioak.zinemaBistaVisible();
+				 FuntzioErabilgarriak.zinemaBistaVisible();
 	                dispose();
 			}
 		});
@@ -145,7 +145,7 @@ public class SaioaBista extends JFrame {
 		btnBesteErosketa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				 
 				JOptionPane.showMessageDialog(null, "DENA ONDO GORDE EGIN DA");
-				 Funtzioak.zinemaBistaVisible();
+				 FuntzioErabilgarriak.zinemaBistaVisible();
 	                dispose();
 	                
 				
@@ -158,7 +158,7 @@ public class SaioaBista extends JFrame {
 		btnAtzeraSaioa.setBounds(1144, 15, 89, 23);
 		btnAtzeraSaioa.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Funtzioak.pelikulaBistaVisible();
+                FuntzioErabilgarriak.pelikulaBistaVisible();
                 dispose();
             }
         });
@@ -197,13 +197,13 @@ public class SaioaBista extends JFrame {
 		
 		btnSarreraGehi.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	Funtzioak.GehiSarreraBalioa();
+		    	FuntzioErabilgarriak.GehiSarreraBalioa();
 		    }
 		});
 
 		btnSarreraKendu.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	Funtzioak.KenduSarreraBalioa();
+		    	FuntzioErabilgarriak.KenduSarreraBalioa();
 		    }
 		});
 	}

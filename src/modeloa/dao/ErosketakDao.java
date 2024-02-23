@@ -1,7 +1,7 @@
 package modeloa.dao;
 
 import modeloa.db.Konexioa;
-import modeloa.db.Kontzultak;
+import modeloa.db.Kontsultak;
 import modeloa.objetuak.Bezeroa;
 import modeloa.objetuak.Erosketak;
 
@@ -20,7 +20,7 @@ public class ErosketakDao {
         Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
 
         
-        try (PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontzultak.erosketak);
+        try (PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.erosketak);
                 ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
