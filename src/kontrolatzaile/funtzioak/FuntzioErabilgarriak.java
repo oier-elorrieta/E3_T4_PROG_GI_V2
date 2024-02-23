@@ -53,6 +53,16 @@ import modeloa.objetuak.Saioa;
 import modeloa.objetuak.Sarrera;
 import modeloa.objetuak.Zinema;
 
+/**
+ * Klase honetan, programan erabiltzen diren funtzioak daude. Beste klasetik datuak(aldagaiak) berrezkuratzeko, 
+ * hemen atributu batzuk(GETTER AND SETTER) sortu ditugu.
+ * 
+ * idZinema = Zinema aukeratzean, bere id berrezkuratuko eta funtzio batzuetan sartzeko.
+ * idFilma = Filmen botoiak sortzean, botoia bakoitza pelikula jakiteko, id bakarra esleitzen dizkiegu.
+ * ordua = saioen orduak berrezkuratzeko eta gordetzeko-
+ * Eguna = Date Picker data berrezkuratzeko eta gero konparatzeko. 
+ * 
+ */
 public class FuntzioErabilgarriak {
 	
 	private static int idZinema;
@@ -145,76 +155,10 @@ public class FuntzioErabilgarriak {
 		sarrerakList = Sarrera.lortuSarrerak();
 		zinemakList = Zinema.lortuZinemak();
 
-//		System.out.println("\n\nBezeroak:");
-//		for (int i = 0; i < bezeroakList.size(); i++) {
-//			System.out.println(bezeroakList.get(i));
-//		}
-//		
-////		System.out.println("\n\nErosketa:");
-////		for (int i = 0; i < erosketakList.size(); i++) {
-////			System.out.println(erosketakList.get(i));
-////		}
-//		
-//		System.out.println("\n\nPelikula:");
-//		for (int i = 0; i < pelikulakList.size(); i++) {
-//			System.out.println(pelikulakList.get(i));
-//		}
-
-//		System.out.println("\n\nSarrera:");
-//		for (int i = 0; i < sarrerakList.size(); i++) {
-//			System.out.println(sarrerakList.get(i));
-//		}
-
-//		System.out.println("\n\nZinema:");
-//		for (int i = 0; i < zinemakList.size(); i++) {
-//			//System.out.println(zinemakList.get(i).getIzena());
-//			System.out.println(zinemakList.get(i).getAretoList());
-//
-//			System.out.println(zinemakList.get(i).getSaioList());
-//		}
-//
-//		System.out.println("\n\nZinema:");
-//
-//		System.out.println(zinemakList.get(1).getIzena());
-//		System.out.println(zinemakList.get(1).getAretoList());
-//		System.out.println(zinemakList.get(1).getSaioList());
-//		System.out.println(zinemakList.get(1).getSaioList().get(1).getPelikula());
-//
-//	System.out.println("\n\nElorrietaFilmak:");for(
-//
-//	int i = 0;i<elorrietaPelikulak.size();i++)
-//	{
-//		System.out.println(elorrietaPelikulak.get(i));
-//	}
-//
-//	System.out.println("\n\nErandioFilmak:");for(
-//	int i = 0;i<erandioPelikulak.size();i++)
-//	{
-//		System.out.println(erandioPelikulak.get(i));
-//	}
-//
-//	System.out.println("\n\nBasauriFilmak:");for(
-//	int i = 0;i<basauriPelikulak.size();i++)
-//	{
-//		System.out.println(basauriPelikulak.get(i));
-//	}
-//
-//	System.out.println("\n\nSantutxuFilmak:");for(
-//	int i = 0;i<santutxuPelikulak.size();i++)
-//	{
-//		System.out.println(santutxuPelikulak.get(i));
-//	}
-//
-//	System.out.println("\n\nBarakaldoFilmak:");for(
-//	int i = 0;i<barakaldoPelikulak.size();i++)
-//	{
-//		System.out.println(barakaldoPelikulak.get(i));
-//	}
-
 	}
 
 
-
+	// Login pantaila, egiaztapen funtzioa egiten du eta true edo false itzultzen du.
 	public static boolean login(String erabiltzailea, String pasahitza) {
 		if (loginOK(erabiltzailea, pasahitza)) {
 			zinemaBistaVisible();
@@ -222,7 +166,34 @@ public class FuntzioErabilgarriak {
 		}
 		return false;
 	}
+	
+	// 
+	public static boolean loginOK(String erabiltzailea, String pasahitza) {
+	    boolean login = false;
 
+	    // Erabiltzailen listen tamaina errekoritzen du 
+	    for (int i = 0; i < bezeroakList.size(); i++) {
+	    	
+	        // Egiaztatu erabiltzailea eta pasahitza.
+	        if (bezeroakList.get(i).getErabiltzailea().equals(erabiltzailea)
+	                && bezeroakList.get(i).getPasahitza().equals(pasahitza)) {
+	        	
+	        	// Kredentzialak ondo badaude, "login" TRUE itzultzen du.
+	            login = true;
+	            break; // Erabiltzaile bat topatzen badu, for amaituko da.
+	        }
+	    }
+
+	    // Kredentzialak ondo badaude egiaztatzen du.
+	    if (!login) {
+	        // Erabiltzailea edo pasahitza txarto jarrita badaude, error mezua aterako da.
+	        JOptionPane.showMessageDialog(null, "Erabiltzailea edo pasahitza ez dira zuzenak", "Errorea", JOptionPane.ERROR_MESSAGE);
+	    } 
+	    
+	    return login;
+	}
+
+	// Pantailak argitaratu.
 	public static void zinemaBistaVisible() {
 		try {
 			ZinemaBista frame = new ZinemaBista();
@@ -249,36 +220,10 @@ public class FuntzioErabilgarriak {
 			e.printStackTrace();
 		}
 	}
+	
+	// Pantailak argitaratu.
 
-	public static boolean loginOK(String erabiltzailea, String pasahitza) {
-		boolean login = false;
-
-		for (int i = 0; i < bezeroakList.size(); i++) {
-
-			if (bezeroakList.get(i).getErabiltzailea().equals(erabiltzailea)
-					&& bezeroakList.get(i).getPasahitza().equals(pasahitza)) {
-				// Bezeroa encontrado
-				login = true;
-				break; // Puedes salir del bucle una vez que encuentras el bezeroa
-			}
-		}
-
-		// Verificar si se encontró el bezeroa
-		if (!login) {
-            JOptionPane.showMessageDialog(null, "Erabiltzailea edo pasahitza ez dira zuzenak", "Errorea", JOptionPane.ERROR_MESSAGE);
-		} 
-		return login;
-	}
-	public static void getAretoZinema() {
-		for(int i = 0; i < zinemakList.size(); i++) {
-					zinemakList.get(i).getSaioList();
-		}
-		
-		
-	}
-
-
-
+	// Filmen botoia sortu.
 	public static void filmaDatuak(JScrollPane scrollPane) {
 	    JPanel panelContenedor = new JPanel(); // Panelen panela sortu
 	    panelContenedor.setLayout(new BoxLayout(panelContenedor, BoxLayout.Y_AXIS)); // Layouta bertikal moduan panelak kokatzeko
@@ -317,7 +262,7 @@ public class FuntzioErabilgarriak {
 	    scrollPane.setViewportView(panelContenedor); 
 	}
 
-
+	// Aukeratutako filmen datuak berrezkuratu.
 	public static Pelikula Info_filma() {
 		Pelikula p1 = new Pelikula();
 		
@@ -336,6 +281,7 @@ public class FuntzioErabilgarriak {
 		  
 	}
 	
+	// Aukeratutako saioen id eta aretoa berrezkuratu.
 	public static Saioa Info_saioa() {
 		Saioa s1 = new Saioa();
 		
@@ -352,7 +298,7 @@ public class FuntzioErabilgarriak {
 		  
 	}
 	
-	// SAIOAREN ORDUA LORTU
+	// AUKERATUTAKO SAIOAREN ORDUA LORTU.
 	public static LocalTime Saio_filma() {
 				
 		LocalTime saioaOrdua = null;  
@@ -370,7 +316,7 @@ public class FuntzioErabilgarriak {
 		
 	}
 	 
-
+	// Sarreren gehiketa edo kenketa egin.
 	public static void GehiSarreraBalioa() {
 		int balorea = Integer.parseInt(SaioaBista.textSarreraKop.getText());
 		balorea++;
