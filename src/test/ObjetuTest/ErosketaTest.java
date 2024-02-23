@@ -48,7 +48,6 @@ public class ErosketaTest {
 		erosketak.setIdErosketak(1);
 		erosketak.setBezeroa(bezeroa);
 		erosketak.setData(dataFroga);
-		erosketak.setSarreraKant(1);
 		erosketak.setDeskontua(1);
 		erosketak.setDirutotala(1);
 		erosketak.setMota("Fisikoa");

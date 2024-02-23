@@ -14,7 +14,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import bista.PelikulaBista;
-import kontrolatzaile.funtzioak.Funtzioak;
+import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
 import modeloa.dao.BezeroaDao;
 import modeloa.objetuak.Aretoa;
 import modeloa.objetuak.Bezeroa;
@@ -25,31 +25,31 @@ public class FuntzioakTest {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		Funtzioak.inicio();
+		FuntzioErabilgarriak.inicio();
 	}
 	
 	@Test
 	public void loginOKTestT() {	
 		
-		assertTrue(Funtzioak.loginOK("admin", "admin")); 
+		assertTrue(FuntzioErabilgarriak.loginOK("admin", "admin")); 
 	}
 	
 	@Test
 	public void loginOKTestF() {	
 		
-		assertFalse(Funtzioak.loginOK("admin", "si")); 
+		assertFalse(FuntzioErabilgarriak.loginOK("admin", "si")); 
 	}
 	
 	@Test
 	public void loginTestT() {	
 		
-		assertTrue(Funtzioak.login("admin", "admin")); 
+		assertTrue(FuntzioErabilgarriak.login("admin", "admin")); 
 	}
 	
 	@Test
 	public void loginTestF() {	
 		
-		assertFalse(Funtzioak.login("admin", "si")); 
+		assertFalse(FuntzioErabilgarriak.login("admin", "si")); 
 	}
 	
 	@Test
@@ -59,7 +59,7 @@ public class FuntzioakTest {
         JScrollPane scrollPane = new JScrollPane(panelContenedor);
 
         // Act
-        Funtzioak.filmaDatuak(scrollPane);
+        FuntzioErabilgarriak.filmaDatuak(scrollPane);
 
         // Assert
         Component[] components = panelContenedor.getComponents();
