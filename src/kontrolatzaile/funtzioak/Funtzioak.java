@@ -319,9 +319,6 @@ public class Funtzioak {
 	}
 
 
-
-
-	
 	public static Pelikula Info_filma() {
 		Pelikula p1 = new Pelikula();
 		

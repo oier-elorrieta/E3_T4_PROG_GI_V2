@@ -127,19 +127,22 @@ public class SaioaBista extends JFrame {
 		Titulua.add(comboBox);
         
         
-		JButton btnEzSaioa = new JButton("EZ");
-		btnEzSaioa.addActionListener(new ActionListener() {
+		JButton btnBukatuErosketa = new JButton("Bukatu Erosketa");
+		btnBukatuErosketa.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnBukatuErosketa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
             	JOptionPane.showMessageDialog(null, "DENA EZABATU EGIN DA", "!!" ,JOptionPane.ERROR_MESSAGE);
 				 Funtzioak.zinemaBistaVisible();
 	                dispose();
 			}
 		});
-		btnEzSaioa.setBounds(986, 550, 258, 79);
-		Titulua.add(btnEzSaioa);
+		btnBukatuErosketa.setBounds(986, 550, 258, 79);
+		Titulua.add(btnBukatuErosketa);
 		
-		JButton btnBaiSaioa = new JButton("BAI");
-		btnBaiSaioa.addActionListener(new ActionListener() {
+		JButton btnBesteErosketa = new JButton("Jarraitu Erosketa");
+		btnBesteErosketa.setIcon(new ImageIcon(SaioaBista.class.getResource("/modeloa/img/logoa/ErosketaKarritoa3.png")));
+		btnBesteErosketa.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnBesteErosketa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				 
 				JOptionPane.showMessageDialog(null, "DENA ONDO GORDE EGIN DA");
 				 Funtzioak.zinemaBistaVisible();
@@ -148,8 +151,8 @@ public class SaioaBista extends JFrame {
 				
 			}
 		});
-		btnBaiSaioa.setBounds(718, 550, 258, 79);
-		Titulua.add(btnBaiSaioa);
+		btnBesteErosketa.setBounds(718, 550, 258, 79);
+		Titulua.add(btnBesteErosketa);
 		
 		JButton btnAtzeraSaioa = new JButton("ATZERA");
 		btnAtzeraSaioa.setBounds(1144, 15, 89, 23);
