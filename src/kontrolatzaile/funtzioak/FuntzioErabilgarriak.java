@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -30,6 +31,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 
+import bista.ErosketaKonfirmazioaBista;
 import bista.PelikulaBista;
 import javax.swing.JTextField;
 
@@ -41,7 +43,6 @@ import modeloa.dao.BezeroaDao;
 import modeloa.dao.ErosketakDao;
 import modeloa.dao.PelikulaDao;
 import modeloa.dao.SaioaDao;
-import modeloa.dao.SarreraDao;
 import modeloa.dao.ZinemaDao;
 import modeloa.db.Konexioa;
 import modeloa.db.Kontsultak;
@@ -112,7 +113,7 @@ public class FuntzioErabilgarriak {
 	static List<Erosketak> erosketakList;
 	public static List<Pelikula> pelikulakList;
 	public static List<Saioa> saioakList;
-	static List<Sarrera> sarrerakList;
+	static List<Sarrera> sarrerakList = new ArrayList<Sarrera>();
 	static List<Zinema> zinemakList;
 	static List<Pelikula> saioPelikulak;
 
@@ -121,9 +122,10 @@ public class FuntzioErabilgarriak {
 	static ErosketakDao Erosketak;
 	static PelikulaDao Pelikula;
 	static SaioaDao Saioa;
-	static SarreraDao Sarrera;
+	//static SarreraDao Sarrera;
 	static ZinemaDao Zinema;
 	public static SaioaDao saioaDao;
+	public static Bezeroa bezeroLogeatuta;
 	
 /**
  * 
@@ -136,7 +138,7 @@ public class FuntzioErabilgarriak {
 		Erosketak = new ErosketakDao();
 		Pelikula = new PelikulaDao();
 		Saioa = new SaioaDao();
-		Sarrera = new SarreraDao();
+		//Sarrera = new SarreraDao();
 		Zinema = new ZinemaDao();
 		saioaDao = new SaioaDao();
 		
@@ -151,7 +153,7 @@ public class FuntzioErabilgarriak {
 		bezeroakList = Bezeroa.lortuBezeroak();
 		erosketakList = Erosketak.lortuErosketak();
 		pelikulakList = Pelikula.lortuPelikulak();
-		sarrerakList = Sarrera.lortuSarrerak();
+		//sarrerakList = Sarrera.lortuSarrerak();
 		zinemakList = Zinema.lortuZinemak();
 
 	}
@@ -176,6 +178,8 @@ public class FuntzioErabilgarriak {
 	        // Egiaztatu erabiltzailea eta pasahitza.
 	        if (bezeroakList.get(i).getErabiltzailea().equals(erabiltzailea)
 	                && bezeroakList.get(i).getPasahitza().equals(pasahitza)) {
+	        	
+	        	bezeroLogeatuta = bezeroakList.get(i);
 	        	
 	        	// Kredentzialak ondo badaude, "login" TRUE itzultzen du.
 	            login = true;
@@ -214,6 +218,15 @@ public class FuntzioErabilgarriak {
 	public static void saioaBistaVisible() {
 		try {
 			SaioaBista frame = new SaioaBista();
+			frame.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void erosketaKonfirmazioaBistaVisible() {
+		try {
+			ErosketaKonfirmazioaBista frame = new ErosketaKonfirmazioaBista();
 			frame.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -283,36 +296,23 @@ public class FuntzioErabilgarriak {
 	// Aukeratutako saioen id eta aretoa berrezkuratu.
 	public static Saioa Info_saioa() {
 		Saioa s1 = new Saioa();
+		String eguna = FuntzioErabilgarriak.getEguna();
 		
 		  for (Saioa saioa : zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList()) {
-              if (saioa.getPelikula().getIdPelikula() == FuntzioErabilgarriak.Info_filma().getIdPelikula()) {
+			  String getEgunaString = "" + saioa.getEguna();
+              if (saioa.getPelikula().getIdPelikula() == FuntzioErabilgarriak.Info_filma().getIdPelikula() && getEgunaString.equals(eguna)) {
             	  
             	  s1.setIdSaioa(saioa.getIdSaioa());
             	  s1.setAretoa(saioa.getAretoa());
+            	  s1.setOrdua(saioa.getOrdua());
+            	  s1.setPelikula(saioa.getPelikula());
+            	  s1.setEguna(LocalDate.parse(FuntzioErabilgarriak.getEguna()));
             	  
                   break;
               }
           }
 		  return s1;
 		  
-	}
-	
-	// AUKERATUTAKO SAIOAREN ORDUA LORTU.
-	public static LocalTime Saio_filma() {
-				
-		LocalTime saioaOrdua = null;  
-		String eguna = FuntzioErabilgarriak.getEguna();
-		 
-		  for (Saioa saioa : zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList()) {
-			  String getEgunaString = "" + saioa.getEguna();
-			  if(saioa.getPelikula().getIdPelikula() == FuntzioErabilgarriak.getIdFilma() && getEgunaString.equals(eguna)) {
-				  saioaOrdua = saioa.getOrdua();
-				  
-			  }
-		  }
-		  
-		  return saioaOrdua;
-		
 	}
 	 
 	// Sarreren gehiketa edo kenketa egin.
@@ -330,11 +330,143 @@ public class FuntzioErabilgarriak {
 		}
 	}
 	
-	public static void ErosketaSortu() {
-		
-		
-		  
-		 
+	public static double[] subtotalaDeskontua() {
+	    double[] baloreak = new double[2];
+
+	    double prezioa = 8.90;
+	    double deskontuaBI = 0.2;
+	    double deskontuGEHIA = 0.3;
+
+	    int kopurua = Integer.parseInt(SaioaBista.textSarreraKop.getText());
+
+	    double subtotala = kopurua * prezioa;
+	    double deskontua = 0;
+
+	    if (kopurua == 2) {
+	        deskontua = subtotala * deskontuaBI;
+	    } else if (kopurua > 2) {
+	        deskontua = subtotala * deskontuGEHIA;
+	    }
+
+	    baloreak[0] = subtotala;
+	    baloreak[1] = deskontua;
+
+	    return baloreak;
 	}
+
+	public static double totala() {
+	    double[] subtotalaDeskontua = subtotalaDeskontua();
+	    double subtotala = subtotalaDeskontua[0];
+	    double deskontua = subtotalaDeskontua[1];
+
+	    double totalaPrezioa = subtotala - deskontua;
+
+	    return totalaPrezioa;
+	}
+	
+	// Filma bakoitzean Sarrera objetu bat sortu egingo da, eta erosketa batean sarrera bat baino gehiago egon ahal da. 
+	public static Sarrera SarreraSortu() {	
+		 Sarrera srr1 = new Sarrera();
+		 
+		 for (Saioa saioa :  zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList()) {
+			 if (saioa.getIdSaioa() == Info_saioa().getIdSaioa()) {
+				 
+				 srr1.setSaioa(Info_saioa());
+				 srr1.setData(Info_saioa().getEguna());
+				 srr1.setPrezioa(subtotalaDeskontua()[0]);
+				 srr1.setSarreraKant(Integer.parseInt(SaioaBista.textSarreraKop.getText()));
+				 srr1.setMota(1);
+				 
+			 }
+		 } 
+		 sarrerakList.add(srr1);
+		 return srr1;
+	}
+	
+	public static Erosketak ErosketaSortu() {
+		Erosketak e1 = new Erosketak();
+		
+		e1.setSarreraList(sarrerakList);
+		e1.setBezeroa(bezeroLogeatuta);
+		e1.setData(Info_saioa().getEguna());
+		e1.setDeskontua(subtotalaDeskontua()[1]);
+		e1.setDirutotala(totala());
+		e1.setMota(SarreraSortu().getMota());
+		
+		return e1;
+	}
+	
+	public static int idErosketaLortu() {
+		
+		int idErosketa = 0;
+		
+		Erosketak azkenIdErosketa = erosketakList.get(erosketakList.size() - 1);
+		
+		idErosketa = azkenIdErosketa.getIdErosketak() + 1;
+				
+		return idErosketa;
+		
+	}
+	
+	public static void ErosketarenDatuak(JScrollPane scrollPane) {
+	    JPanel panelContenedor = new JPanel(); 
+	    panelContenedor.setLayout(new BoxLayout(panelContenedor, BoxLayout.Y_AXIS)); 
+	    
+	    
+	    for (int i = 0; i < sarrerakList.size(); i++) {
+	    	
+		    for (Zinema zinema : zinemakList) {
+			    if (zinema.getIdZinema().equals(sarrerakList.get(i).getSaioa().getAretoa().getIdZinema())) {
+		    	
+			    int espazioa = 80;
+			    	
+		        String zinemaString =  zinema.getIzena();
+		        String filma = sarrerakList.get(i).getSaioa().getPelikula().getIzena();
+		        String areto = sarrerakList.get(i).getSaioa().getAretoa().getIzena();
+		        String ordua = sarrerakList.get(i).getSaioa().getOrdua() + "";
+		        String data = sarrerakList.get(i).getData() + "";
+		        String prezioa = sarrerakList.get(i).getPrezioa() + "";
+		        String kantitate = sarrerakList.get(i).getSarreraKant() + "";
+	
+		            JPanel panel = new JPanel();
+		            panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS)); 
+		            
+		            JLabel infoZinema = new JLabel(zinemaString); 
+		            
+		            JLabel infoFilma = new JLabel(filma);
+		            
+		            JLabel infoAreto = new JLabel(areto); 
+		            
+		            JLabel infoOrdua = new JLabel(ordua); 
+		            
+		            JLabel infoData = new JLabel(data); 
+		            
+		            JLabel infoPrezioa = new JLabel(prezioa); 
+		            
+		            JLabel infoKantitate = new JLabel(kantitate); 
+		            	            
+		            panel.add(infoZinema);
+	                panel.add(Box.createHorizontalStrut(espazioa)); 
+	                panel.add(infoFilma);
+	                panel.add(Box.createHorizontalStrut(espazioa));
+	                panel.add(infoAreto);
+	                panel.add(Box.createHorizontalStrut(espazioa));
+	                panel.add(infoOrdua);
+	                panel.add(Box.createHorizontalStrut(espazioa));
+	                panel.add(infoData);
+	                panel.add(Box.createHorizontalStrut(espazioa));
+	                panel.add(infoPrezioa);
+	                panel.add(Box.createHorizontalStrut(espazioa));
+	                panel.add(infoKantitate);
+	                
+	                panelContenedor.add(panel); 
+	                panel.setBorder(null);
+	                panelContenedor.setBorder(null);
+	                panelContenedor.add(Box.createVerticalStrut(10)); 
+			    }
+		    }	
+	    }
+	    	scrollPane.setViewportView(panelContenedor); 
+		}
 
 }

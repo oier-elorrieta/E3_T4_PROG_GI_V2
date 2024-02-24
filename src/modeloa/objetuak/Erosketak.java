@@ -12,7 +12,7 @@ public class Erosketak {
 	private LocalDate data;
 	private double deskontua;	
 	private double dirutotala;
-	private String mota;
+	private int mota;
 
 	// --------------------Konstruktorea--------------------//
 	
@@ -71,11 +71,11 @@ public class Erosketak {
 		this.dirutotala = dirutotala;
 	}
 
-	public String getMota() {
+	public int getMota() {
 		return mota;
 	}
 
-	public void setMota(String mota) {
+	public void setMota(int mota) {
 		this.mota = mota;
 	}
 
@@ -84,11 +84,27 @@ public class Erosketak {
 		return "Erosketak [idErosketak=" + idErosketak + ", sarreraList=" + sarreraList + ", bezeroa=" + bezeroa
 				+ ", data=" + data + ", deskontua=" + deskontua + ", dirutotala=" + dirutotala + ", mota=" + mota + "]";
 	}
-	
-	// --------------------Konstruktorea--------------------//
 
-	
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(bezeroa, data, deskontua, dirutotala, idErosketak, mota, sarreraList);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Erosketak other = (Erosketak) obj;
+		return Objects.equals(bezeroa, other.bezeroa) && Objects.equals(data, other.data)
+				&& Double.doubleToLongBits(deskontua) == Double.doubleToLongBits(other.deskontua)
+				&& Double.doubleToLongBits(dirutotala) == Double.doubleToLongBits(other.dirutotala)
+				&& idErosketak == other.idErosketak && mota == other.mota
+				&& Objects.equals(sarreraList, other.sarreraList);
+	}
 
 	
 }

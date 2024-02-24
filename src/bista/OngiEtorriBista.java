@@ -86,7 +86,6 @@ public class OngiEtorriBista extends JFrame {
 	                            try {
 	                                Thread.sleep(100);
 	                            } catch (Exception p) {
-	                                System.out.println("Algo va mal");
 	                            }
 	                        }
 	                        LoginBista frame = new LoginBista();

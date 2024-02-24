@@ -103,7 +103,7 @@ public class SaioaBista extends JFrame {
 		lblIAretoa.setBounds(461, 219, 554, 46);
 		Titulua.add(lblIAretoa);
 		
-		JLabel lbllPrezioa = new JLabel("Sarreraren prezioa: 6,90 €" );
+		JLabel lbllPrezioa = new JLabel("Sarreraren prezioa: 8,90 €" );
 		lbllPrezioa.setHorizontalAlignment(SwingConstants.LEFT);
 		lbllPrezioa.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lbllPrezioa.setBounds(461, 276, 554, 46);
@@ -113,7 +113,7 @@ public class SaioaBista extends JFrame {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(464, 397, 459, 61);
 
-		LocalTime saioaOrdua = FuntzioErabilgarriak.Saio_filma();
+		LocalTime saioaOrdua = FuntzioErabilgarriak.Info_saioa().getOrdua();
 
 		if (saioaOrdua != null) {
 		    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -121,7 +121,7 @@ public class SaioaBista extends JFrame {
 		    comboBox.addItem(formattedTime);
 		} else {
 		    // Manejo del caso en que saioaOrdua es null
-		    comboBox.addItem("No hay hora disponible");
+		    comboBox.addItem("Gaur honetan ez daude saiorik");
 		}
 
 		Titulua.add(comboBox);
@@ -131,9 +131,11 @@ public class SaioaBista extends JFrame {
 		btnBukatuErosketa.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnBukatuErosketa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-            	JOptionPane.showMessageDialog(null, "DENA EZABATU EGIN DA", "!!" ,JOptionPane.ERROR_MESSAGE);
-				 FuntzioErabilgarriak.zinemaBistaVisible();
-	                dispose();
+            	JOptionPane.showMessageDialog(null, "Erosketa-pantailara aldatuko da" );
+				FuntzioErabilgarriak.ErosketaSortu();
+            	FuntzioErabilgarriak.idErosketaLortu();
+				FuntzioErabilgarriak.erosketaKonfirmazioaBistaVisible();
+	            	dispose();
 			}
 		});
 		btnBukatuErosketa.setBounds(986, 550, 258, 79);
@@ -144,10 +146,10 @@ public class SaioaBista extends JFrame {
 		btnBesteErosketa.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnBesteErosketa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				 
-				JOptionPane.showMessageDialog(null, "DENA ONDO GORDE EGIN DA");
-				//FuntzioErabilgarriak.ErosketaSortu();
-				 FuntzioErabilgarriak.zinemaBistaVisible();
-	                dispose();
+				JOptionPane.showMessageDialog(null, "Eskerrik asko erosten jarraitzeagatik");
+            	FuntzioErabilgarriak.ErosketaSortu();
+				FuntzioErabilgarriak.zinemaBistaVisible();
+	            	dispose();
 	                
 				
 			}

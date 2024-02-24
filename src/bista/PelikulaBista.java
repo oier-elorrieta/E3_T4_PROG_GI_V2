@@ -129,7 +129,6 @@ public class PelikulaBista extends JFrame {
                 Date selectedDate = (Date) datePicker.getModel().getValue();
 
                 if (selectedDate != null) {
-                    LocalTime saioaOrdua = FuntzioErabilgarriak.Saio_filma();
                     String pattern = "yyyy-MM-dd";
                     DateFormat df = new SimpleDateFormat(pattern);
 
