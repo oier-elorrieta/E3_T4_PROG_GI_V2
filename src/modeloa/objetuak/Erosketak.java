@@ -2,6 +2,7 @@ package modeloa.objetuak;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 public class Erosketak {
 
@@ -86,11 +87,6 @@ public class Erosketak {
 		return "Erosketak [idErosketak=" + idErosketak + ", sarreraList=" + sarreraList + ", bezeroa=" + bezeroa
 				+ ", data=" + data + ", deskontua=" + deskontua + ", dirutotala=" + dirutotala + ", mota=" + mota + "]";
 	}
-<<<<<<< HEAD
-=======
-	
-	
->>>>>>> 4d8043b43b594689878760fde724409d0a62fd26
 
 	@Override
 	public int hashCode() {
@@ -112,6 +108,5 @@ public class Erosketak {
 				&& idErosketak == other.idErosketak && mota == other.mota
 				&& Objects.equals(sarreraList, other.sarreraList);
 	}
-
 	
 }

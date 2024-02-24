@@ -2,6 +2,10 @@ package kontrolatzaile.funtzioak;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +15,7 @@ import java.lang.invoke.StringConcatFactory;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -113,13 +118,9 @@ public class FuntzioErabilgarriak {
 	static List<Erosketak> erosketakList;
 	public static List<Pelikula> pelikulakList;
 	public static List<Saioa> saioakList;
-<<<<<<< HEAD
 	static List<Sarrera> sarrerakList = new ArrayList<Sarrera>();
 	static List<Zinema> zinemakList;
-=======
-	static List<Sarrera> sarrerakList;
-	public static List<Zinema> zinemakList;
->>>>>>> 4d8043b43b594689878760fde724409d0a62fd26
+
 	static List<Pelikula> saioPelikulak;
 
 	static AretoaDao Aretoa;
@@ -365,8 +366,14 @@ public class FuntzioErabilgarriak {
 	    double deskontua = subtotalaDeskontua[1];
 
 	    double totalaPrezioa = subtotala - deskontua;
-
-	    return totalaPrezioa;
+	    
+	    DecimalFormat df = new DecimalFormat("#.##");
+	    
+	    String totalaFormateado = df.format(totalaPrezioa);
+	    String totalaPrezioaString2 = totalaFormateado.replace(",", ".");
+	    
+	    	    
+	    return Double.parseDouble(totalaPrezioaString2);
 	}
 	
 	// Filma bakoitzean Sarrera objetu bat sortu egingo da, eta erosketa batean sarrera bat baino gehiago egon ahal da. 
@@ -378,7 +385,7 @@ public class FuntzioErabilgarriak {
 				 
 				 srr1.setSaioa(Info_saioa());
 				 srr1.setData(Info_saioa().getEguna());
-				 srr1.setPrezioa(subtotalaDeskontua()[0]);
+				 srr1.setPrezioa(totala());
 				 srr1.setSarreraKant(Integer.parseInt(SaioaBista.textSarreraKop.getText()));
 				 srr1.setMota(1);
 				 
@@ -413,65 +420,64 @@ public class FuntzioErabilgarriak {
 		
 	}
 	
-	public static void ErosketarenDatuak(JScrollPane scrollPane) {
-	    JPanel panelContenedor = new JPanel(); 
-	    panelContenedor.setLayout(new BoxLayout(panelContenedor, BoxLayout.Y_AXIS)); 
-	    
-	    
-	    for (int i = 0; i < sarrerakList.size(); i++) {
-	    	
-		    for (Zinema zinema : zinemakList) {
-			    if (zinema.getIdZinema().equals(sarrerakList.get(i).getSaioa().getAretoa().getIdZinema())) {
-		    	
-			    int espazioa = 80;
-			    	
-		        String zinemaString =  zinema.getIzena();
-		        String filma = sarrerakList.get(i).getSaioa().getPelikula().getIzena();
-		        String areto = sarrerakList.get(i).getSaioa().getAretoa().getIzena();
-		        String ordua = sarrerakList.get(i).getSaioa().getOrdua() + "";
-		        String data = sarrerakList.get(i).getData() + "";
-		        String prezioa = sarrerakList.get(i).getPrezioa() + "";
-		        String kantitate = sarrerakList.get(i).getSarreraKant() + "";
-	
-		            JPanel panel = new JPanel();
-		            panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS)); 
-		            
-		            JLabel infoZinema = new JLabel(zinemaString); 
-		            
-		            JLabel infoFilma = new JLabel(filma);
-		            
-		            JLabel infoAreto = new JLabel(areto); 
-		            
-		            JLabel infoOrdua = new JLabel(ordua); 
-		            
-		            JLabel infoData = new JLabel(data); 
-		            
-		            JLabel infoPrezioa = new JLabel(prezioa); 
-		            
-		            JLabel infoKantitate = new JLabel(kantitate); 
-		            	            
-		            panel.add(infoZinema);
-	                panel.add(Box.createHorizontalStrut(espazioa)); 
-	                panel.add(infoFilma);
-	                panel.add(Box.createHorizontalStrut(espazioa));
-	                panel.add(infoAreto);
-	                panel.add(Box.createHorizontalStrut(espazioa));
-	                panel.add(infoOrdua);
-	                panel.add(Box.createHorizontalStrut(espazioa));
-	                panel.add(infoData);
-	                panel.add(Box.createHorizontalStrut(espazioa));
-	                panel.add(infoPrezioa);
-	                panel.add(Box.createHorizontalStrut(espazioa));
-	                panel.add(infoKantitate);
-	                
-	                panelContenedor.add(panel); 
-	                panel.setBorder(null);
-	                panelContenedor.setBorder(null);
-	                panelContenedor.add(Box.createVerticalStrut(10)); 
-			    }
-		    }	
-	    }
-	    	scrollPane.setViewportView(panelContenedor); 
-		}
+    public static void ErosketarenDatuak(JScrollPane scrollPane) {
+        JPanel infopanela2 = new JPanel(); 
+        infopanela2.setLayout(new GridBagLayout()); 
 
+        
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 15, 5, 15); 
+
+        int lerroa = 0; 
+
+        for (int i = 0; i < sarrerakList.size(); i++) {
+            for (Zinema zinema : zinemakList) {
+                if (zinema.getIdZinema().equals(sarrerakList.get(i).getSaioa().getAretoa().getIdZinema())) {
+                    String zinemaString = zinema.getIzena();
+                    String filma = sarrerakList.get(i).getSaioa().getPelikula().getIzena();
+                    String areto = sarrerakList.get(i).getSaioa().getAretoa().getIzena() + " aretoan";
+                    String ordua = sarrerakList.get(i).getSaioa().getOrdua() + "";
+                    String data = sarrerakList.get(i).getData() + "";
+                    String prezioa = sarrerakList.get(i).getPrezioa() + "€";
+                    String kantitate = sarrerakList.get(i).getSarreraKant() + "";
+
+                    JLabel infoZinema = new JLabel(zinemaString); 
+                    JLabel infoFilma = new JLabel(filma);
+                    JLabel infoAreto = new JLabel(areto); 
+                    JLabel infoOrdua = new JLabel(ordua); 
+                    JLabel infoData = new JLabel(data); 
+                    JLabel infoPrezioa = new JLabel(prezioa); 
+                    JLabel infoKantitate = new JLabel(kantitate); 
+
+                    gbc.gridx = 0; 
+                    gbc.gridy = lerroa; 
+                    gbc.anchor = GridBagConstraints.WEST; 
+
+                    infopanela2.add(infoZinema, gbc); 
+
+                    gbc.gridx = 1; // Zutabe 1
+                    infopanela2.add(infoFilma, gbc); 
+
+                    gbc.gridx = 2; // Zutabe 2
+                    infopanela2.add(infoAreto, gbc); 
+
+                    gbc.gridx = 3; // Zutabe 3
+                    infopanela2.add(infoOrdua, gbc); 
+                    
+                    gbc.gridx = 4; // Zutabe 4
+                    infopanela2.add(infoData, gbc); 
+
+                    gbc.gridx = 5; // Zutabe 5
+                    infopanela2.add(infoPrezioa, gbc);
+
+                    gbc.gridx = 6; // Zutabe 6
+                    infopanela2.add(infoKantitate, gbc); 
+
+                    lerroa++; 
+                }
+            }   
+        }
+
+        scrollPane.setViewportView(infopanela2); 
+    }
 }

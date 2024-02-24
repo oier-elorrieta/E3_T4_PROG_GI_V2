@@ -66,7 +66,7 @@ public class ErosketaKonfirmazioaBista extends JFrame {
         Content.add(ErosketaEz);
         
         JPanel panelInformazioa = new JPanel();
-        panelInformazioa.setBounds(10, 61, 1046, 461);
+        panelInformazioa.setBounds(10, 61, 1214, 461);
         Content.add(panelInformazioa);
         
         JScrollPane scrollPane = new JScrollPane();
