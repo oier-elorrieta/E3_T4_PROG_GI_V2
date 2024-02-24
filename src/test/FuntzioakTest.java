@@ -3,7 +3,7 @@ package test;
 import static org.junit.Assert.*;
 
 import java.awt.Component;
-import java.util.ArrayList;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -13,11 +13,10 @@ import javax.swing.JScrollPane;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import bista.PelikulaBista;
 import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
-import modeloa.dao.BezeroaDao;
-import modeloa.objetuak.Aretoa;
-import modeloa.objetuak.Bezeroa;
+import modeloa.objetuak.Pelikula;
+import modeloa.objetuak.Saioa;
+import modeloa.objetuak.Zinema;
 
 public class FuntzioakTest {
 	
@@ -83,5 +82,37 @@ public class FuntzioakTest {
         assertFalse(botonEncontrado);
     }
 
+	@Test
+    public void Info_filmaTest() {      
+        // Establecer el ID de la película que queremos encontrar
+        FuntzioErabilgarriak.setIdFilma(2);
 
+        // Llamar al método Info_filma() para obtener la información de la película
+        Pelikula peliculaEncontrada = FuntzioErabilgarriak.Info_filma();
+        
+        // Verificar que la información devuelta sea la esperada
+        assertEquals(2, peliculaEncontrada.getIdPelikula());
+        assertEquals("Get Out", peliculaEncontrada.getIzena());
+        assertEquals("Beldurra", peliculaEncontrada.getGeneroa());
+        assertEquals(104, peliculaEncontrada.getIraupena());
+    }
+	
+	@Test
+    public void testInfoSaioa() {
+        // Saioa informazioa lortzen dugu
+        Saioa saioLortua = FuntzioErabilgarriak.Info_saioa();
+        
+        // Saioaren informazioa egokia den egiaztatzen dugu
+        assertEquals(2, saioLortua.getIdSaioa());
+    }
+	
+	@Test
+    public void testSaioFilma() {
+        // Saioa filmaren ordutegia lortzen dugu
+        LocalTime saioOrdua = FuntzioErabilgarriak.Saio_filma();
+
+        // Saioaren ordutegia egokia den egiaztatzen dugu
+        assertEquals(null, saioOrdua);
+    }
+	
 }

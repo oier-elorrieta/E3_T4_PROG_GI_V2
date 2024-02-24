@@ -45,7 +45,7 @@ public List<Zinema> lortuZinemakTEST() {
                 String izena = resultSet.getString("izena");
                 String helbidea = resultSet.getString("helbidea");
                 
-                aretoList = aretoaDao.lortuAreatoak(idZinema);
+                aretoList = aretoaDao.lortuAretoak(idZinema);
                 List<Saioa> saioaList = saioaDao.lortuSaioak(idZinema,aretoList);
                 
                 Zinema zinema = new Zinema(idZinema, izena, helbidea, aretoList, saioaList);

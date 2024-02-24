@@ -113,8 +113,13 @@ public class FuntzioErabilgarriak {
 	static List<Erosketak> erosketakList;
 	public static List<Pelikula> pelikulakList;
 	public static List<Saioa> saioakList;
+<<<<<<< HEAD
 	static List<Sarrera> sarrerakList = new ArrayList<Sarrera>();
 	static List<Zinema> zinemakList;
+=======
+	static List<Sarrera> sarrerakList;
+	public static List<Zinema> zinemakList;
+>>>>>>> 4d8043b43b594689878760fde724409d0a62fd26
 	static List<Pelikula> saioPelikulak;
 
 	static AretoaDao Aretoa;
