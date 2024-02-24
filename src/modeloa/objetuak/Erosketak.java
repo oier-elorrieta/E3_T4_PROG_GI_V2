@@ -2,7 +2,6 @@ package modeloa.objetuak;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 
 public class Erosketak {
 
@@ -22,7 +21,10 @@ public class Erosketak {
 	
 	public Erosketak() {
 	}
-
+	// --------------------Konstruktorea--------------------//
+	
+	
+	
 	public int getIdErosketak() {
 		return idErosketak;
 	}
@@ -85,7 +87,7 @@ public class Erosketak {
 				+ ", data=" + data + ", deskontua=" + deskontua + ", dirutotala=" + dirutotala + ", mota=" + mota + "]";
 	}
 	
-	// --------------------Konstruktorea--------------------//
+	
 
 	
 	

@@ -113,7 +113,7 @@ public class FuntzioErabilgarriak {
 	public static List<Pelikula> pelikulakList;
 	public static List<Saioa> saioakList;
 	static List<Sarrera> sarrerakList;
-	static List<Zinema> zinemakList;
+	public static List<Zinema> zinemakList;
 	static List<Pelikula> saioPelikulak;
 
 	static AretoaDao Aretoa;

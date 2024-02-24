@@ -38,7 +38,7 @@ public class SarreraDaoTest {
                 double prezioa = resultSet.getDouble("prezioa");
                 String mota = resultSet.getString("mota");
 
-                Sarrera sarrera = new Sarrera(idSarrera, LocalDate.now(), prezioa, mota);
+                Sarrera sarrera = new Sarrera(idSarrera, null, LocalDate.now(), prezioa, mota);
                 sarrera.setSarreraKant(sarreraKant);
                 sarrerakTest.add(sarrera);
             }

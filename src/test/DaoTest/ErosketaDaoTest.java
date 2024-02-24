@@ -35,7 +35,7 @@ public class ErosketaDaoTest {
 	                int idErosketak = resultSet.getInt("idErosketak");
 	                LocalDate data = resultSet.getDate("data").toLocalDate();
 
-	                Erosketak erosketa = new Erosketak(idErosketak, data);
+	                Erosketak erosketa = new Erosketak(idErosketak);
 	                erosketakTest.add(erosketa);
 	            }
 
