@@ -79,7 +79,7 @@ public class FuntzioErabilgarriak {
 	private static int idFilma;
 	private static LocalTime ordua;
 	private static String eguna;
-	private static int txtkont = 0;
+	public static int txtkont = 0;
 	public static String ikonoLogo = "/modeloa/img/logoa/logoa_karratu.png";
 	
 
