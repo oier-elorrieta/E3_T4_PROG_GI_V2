@@ -41,12 +41,12 @@ import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 
 import bista.ErosketaKonfirmazioaBista;
+import bista.OngiEtorriBista;
 import bista.PelikulaBista;
 import javax.swing.JTextField;
 
 import bista.SaioaBista;
 import bista.ZinemaBista;
-import modeloa.Aldagaiak;
 import modeloa.dao.AretoaDao;
 import modeloa.dao.BezeroaDao;
 import modeloa.dao.ErosketakDao;
@@ -79,6 +79,8 @@ public class FuntzioErabilgarriak {
 	private static int idFilma;
 	private static LocalTime ordua;
 	private static String eguna;
+	private static int txtkont = 0;
+	public static String ikonoLogo = "/modeloa/img/logoa/logoa_karratu.png";
 	
 
 	public static int getIdZinema() {
@@ -207,6 +209,20 @@ public class FuntzioErabilgarriak {
 	}
 
 	// Pantailak argitaratu.
+	public static void ongiEtorriBistaVisible() {
+
+			try {
+				OngiEtorriBista frame = new OngiEtorriBista();
+				frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		
+	}
+	
+	
+	
 	public static void zinemaBistaVisible() {
 		try {
 			ZinemaBista frame = new ZinemaBista();
@@ -401,6 +417,7 @@ public class FuntzioErabilgarriak {
 		sarrerakList.clear();
 	}
 	
+	
 	public static Erosketak ErosketaSarreraSortu() {
 	    Erosketak e1 = new Erosketak();
 
@@ -444,17 +461,7 @@ public class FuntzioErabilgarriak {
 	}
 
 	
-	public static int idErosketaLortu() {
-		
-		int idErosketa = 0;
-		
-		Erosketak azkenIdErosketa = erosketakList.get(erosketakList.size() - 1);
-		
-		idErosketa = azkenIdErosketa.getIdErosketak() + 1;
-				
-		return idErosketa;
-		
-	}
+	
 	
     public static void ErosketarenDatuak(JScrollPane scrollPane) {
         JPanel infopanela2 = new JPanel(); 
@@ -518,7 +525,8 @@ public class FuntzioErabilgarriak {
     
 
     public static void fitxeroBarruanDatuakIdatzi() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\Downloads\\Faktura.txt"))) {
+    	 
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\Downloads\\Faktura" + txtkont + ".txt"))) {
             boolean datosImpresos = false; 
             Set<String> peliculasImpresas = new HashSet<>(); 
 
@@ -573,5 +581,6 @@ public class FuntzioErabilgarriak {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        txtkont ++;
     }
 }

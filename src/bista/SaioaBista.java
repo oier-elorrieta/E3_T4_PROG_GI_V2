@@ -13,7 +13,6 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
-import modeloa.Aldagaiak;
 import modeloa.objetuak.Pelikula;
 
 import javax.swing.JLabel;
@@ -45,7 +44,7 @@ public class SaioaBista extends JFrame {
 
 
 	public SaioaBista() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(SaioaBista.class.getResource(Aldagaiak.ikonoLogo)));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(SaioaBista.class.getResource(FuntzioErabilgarriak.ikonoLogo)));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();
@@ -133,7 +132,6 @@ public class SaioaBista extends JFrame {
 			public void actionPerformed(ActionEvent e) {
             	JOptionPane.showMessageDialog(null, "Erosketa-pantailara aldatuko da" );
 				FuntzioErabilgarriak.ErosketaSarreraSortu();
-            	FuntzioErabilgarriak.idErosketaLortu();
 				FuntzioErabilgarriak.erosketaKonfirmazioaBistaVisible();
 	            	dispose();
 			}

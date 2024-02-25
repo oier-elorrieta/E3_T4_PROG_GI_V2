@@ -5,11 +5,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
-import modeloa.Aldagaiak;
-import modeloa.objetuak.Erosketak;
-
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.Color;
@@ -27,7 +26,7 @@ public class ErosketaKonfirmazioaBista extends JFrame {
     //private Erosketak erosketa = FuntzioErabilgarriak.ErosketaSortu();
     	
     public ErosketaKonfirmazioaBista() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(SaioaBista.class.getResource(Aldagaiak.ikonoLogo)));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(SaioaBista.class.getResource(FuntzioErabilgarriak.ikonoLogo)));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1280, 720);
         contentPane = new JPanel();
@@ -65,7 +64,8 @@ public class ErosketaKonfirmazioaBista extends JFrame {
         JButton btnErosketaJarraitu = new JButton("Jarraitu");
         btnErosketaJarraitu.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		
+        		FuntzioErabilgarriak.zinemaBistaVisible();
+        		dispose();
         	}
         });
         btnErosketaJarraitu.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -73,14 +73,28 @@ public class ErosketaKonfirmazioaBista extends JFrame {
         Content.add(btnErosketaJarraitu);
 
         JButton btnErosketaFaktura = new JButton("Faktura Sortu");
-        btnErosketaFaktura.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnErosketaFaktura.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // Generar la factura
                 FuntzioErabilgarriak.fitxeroBarruanDatuakIdatzi();
-        		FuntzioErabilgarriak.zinemaBistaVisible();
-            	dispose();
+
+                // Mostrar el mensaje emergente de confirmación
+                int aukera = JOptionPane.showConfirmDialog(null, "¿Erosketa gehiago egin nahi dituzu?", "Hautatu", JOptionPane.YES_NO_OPTION);
+                
+                // Verificar la opción seleccionada por el usuario
+                if (aukera == JOptionPane.YES_OPTION) {
+                	JOptionPane.showMessageDialog(null, "Dena ondo gorde egin da");
+                	FuntzioErabilgarriak.SarrerenArrayHustu();
+                	FuntzioErabilgarriak.ongiEtorriBistaVisible();
+                	dispose();
+                } else {
+                	JOptionPane.showMessageDialog(null, "Mila esker gure programa erabiltzeagatik. Agur!");
+                    System.exit(0);
+               
+                }
             }
         });
+
         btnErosketaFaktura.setBounds(619, 533, 242, 59);
         Content.add(btnErosketaFaktura);
         
@@ -103,8 +117,8 @@ public class ErosketaKonfirmazioaBista extends JFrame {
         Content.add(panel);
         panel.setLayout(new BorderLayout(0, 0));
         
-//        JLabel lblErosketaPrezioa = new JLabel("Erosketaren prezioa: " + erosketa.getDirutotala() + "€");
-//        lblErosketaPrezioa.setFont(new Font("Tahoma", Font.PLAIN, 20));
-//        panel.add(lblErosketaPrezioa);
+        JLabel lblErosketaPrezioa = new JLabel("Erosketaren prezioa: " +  FuntzioErabilgarriak.totalaErosketa() + "€");
+        lblErosketaPrezioa.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        panel.add(lblErosketaPrezioa);
     }
 }

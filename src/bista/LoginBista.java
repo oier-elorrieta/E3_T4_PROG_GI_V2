@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
-import modeloa.Aldagaiak;
 
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
@@ -30,7 +29,7 @@ public class LoginBista extends JFrame {
 	private JPasswordField passwordFieldPasahitza;
 
 	public LoginBista() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(LoginBista.class.getResource(Aldagaiak.ikonoLogo)));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(LoginBista.class.getResource(FuntzioErabilgarriak.ikonoLogo)));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();

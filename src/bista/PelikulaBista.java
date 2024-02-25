@@ -22,7 +22,6 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
-import modeloa.Aldagaiak;
 
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -48,7 +47,7 @@ public class PelikulaBista extends JFrame {
      * Create the frame.
      */
     public PelikulaBista() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(PelikulaBista.class.getResource(Aldagaiak.ikonoLogo)));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(PelikulaBista.class.getResource(FuntzioErabilgarriak.ikonoLogo)));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1280, 720);
         contentPane = new JPanel();

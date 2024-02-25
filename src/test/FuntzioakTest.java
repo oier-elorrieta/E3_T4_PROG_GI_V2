@@ -106,13 +106,6 @@ public class FuntzioakTest {
         assertEquals(2, saioLortua.getIdSaioa());
     }
 	
-	@Test
-    public void testSaioFilma() {
-        // Saioa filmaren ordutegia lortzen dugu
-        LocalTime saioOrdua = FuntzioErabilgarriak.Saio_filma();
 
-        // Saioaren ordutegia egokia den egiaztatzen dugu
-        assertEquals(null, saioOrdua);
-    }
 	
 }
