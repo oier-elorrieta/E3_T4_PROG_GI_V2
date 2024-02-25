@@ -45,13 +45,14 @@ public class ErosketaTest {
 		LocalDate dataFroga = LocalDate.of(2024, 1, 1); 
 		
 		erosketak.setIdErosketak(1);
+		erosketak.setSarreraList(null);
 		erosketak.setBezeroa(bezeroa);
 		erosketak.setData(dataFroga);
 		erosketak.setDeskontua(1);
 		erosketak.setDirutotala(1);
-		erosketak.setMota("Fisikoa");
+		erosketak.setMota(1);
 		
-		assertEquals("Erosketak [idErosketak=1, bezeroa=" + bezeroa.toString() + ", data=" + dataFroga +", deskontua=1.0, dirutotala=1.0, mota=Fisikoa]", erosketak.toString());
+		assertEquals("Erosketak [idErosketak=1, sarreraList=null, bezeroa=" + bezeroa.toString() + ", data=" + dataFroga +", deskontua=1.0, dirutotala=1.0, mota=1]", erosketak.toString());
 	}
 	
 	 @Test

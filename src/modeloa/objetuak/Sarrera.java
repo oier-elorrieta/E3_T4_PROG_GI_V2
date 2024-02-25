@@ -88,8 +88,8 @@ public class Sarrera {
 
 	@Override
 	public String toString() {
-		return "Sarrera [idSarrera=" + idSarrera + ", saioa=" + saioa + ", data=" + data + ", sarreraKant="
-				+ sarreraKant + ", prezioa=" + prezioa + ", mota=" + mota + "]";
+		return "Sarrera [idSarrera=" + idSarrera + ", saioa=" + saioa + ", sarreraKant="
+				+ sarreraKant + ", prezioa=" + prezioa + ", mota=" + mota + ", data=" + data + "]";
 	}
 
 	// --------------------Equals--------------------//
