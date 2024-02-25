@@ -85,11 +85,12 @@ public class SaioaDaoTest {
 	public void testLortuSaioak() {
 	    List<Saioa> saioak = saioaDao.lortuSaioak("Z01", FuntzioErabilgarriak.areatoakList); 
 	    
-	    List<Saioa> SaioaTest = lortuSaioakTEST("Z01", FuntzioErabilgarriak.areatoakList);
+	    List<Saioa> SaioaTest =  lortuSaioakTEST("Z01", FuntzioErabilgarriak.areatoakList);
 	    
 	    assertNotNull(saioak);
 	    assertFalse(saioak.isEmpty());
-
+	    assertNotNull(SaioaTest);
+	    assertFalse(SaioaTest.isEmpty());
 	    assertEquals(saioaTest, saioak);
 	}
 	

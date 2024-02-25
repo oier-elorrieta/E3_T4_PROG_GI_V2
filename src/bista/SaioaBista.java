@@ -96,6 +96,7 @@ public class SaioaBista extends JFrame {
 		Titulua.add(lblIraupena);
 		
 		
+		
 		JLabel lblIAretoa = new JLabel("Aretoa: " + FuntzioErabilgarriak.Info_saioa().getAretoa().getIzena() + " aretoa");
 		lblIAretoa.setHorizontalAlignment(SwingConstants.LEFT);
 		lblIAretoa.setFont(new Font("Tahoma", Font.PLAIN, 25));

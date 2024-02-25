@@ -555,10 +555,10 @@ public class FuntzioErabilgarriak {
                         Aretoa aretoa = saioa.getAretoa();
                         Pelikula pelikula = saioa.getPelikula();
                         String filmKey = saioa.getIdSaioa() + pelikula.getIzena(); 
-
+                        
                         
                         if (!peliculasImpresas.contains(filmKey)) {
-                            String lerro = saioa.getIdSaioa() + ". " + aretoa.getIzena() + ", " + pelikula.getIzena() + ", " +
+                            String lerro = aretoa.getIzena() + " aretoan , " + pelikula.getIzena() + ", " +
                                     saioa.getOrdua() + ", " + saioa.getEguna() + ", " +
                                     sarrera.getPrezioa() + "€, " + sarrera.getSarreraKant();
 

@@ -30,7 +30,7 @@ public class BezeroDaoTest {
 	             ResultSet resultSet = preparedStatement.executeQuery()) {
 
 	            while (resultSet.next()) {
-	            	String idBezeroa = resultSet.getString("idBezeroa");
+	            	String idBezeroa = resultSet.getString("idBezero");
 	                String NAN = resultSet.getString("NAN");
 	                String izena = resultSet.getString("izena");
 	                String abizena = resultSet.getString("abizena");

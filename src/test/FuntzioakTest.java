@@ -21,93 +21,91 @@ import modeloa.objetuak.Saioa;
 import modeloa.objetuak.Zinema;
 
 public class FuntzioakTest {
-	
 
-	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		FuntzioErabilgarriak.inicio();
 	}
-	
-	@Test
-	public void loginOKTestT() {	
-		
-		assertTrue(FuntzioErabilgarriak.loginOK("admin", "admin")); 
-	}
-	
-	@Test
-	public void loginOKTestF() {	
-		
-		assertFalse(FuntzioErabilgarriak.loginOK("admin", "si")); 
-	}
-	
-	@Test
-	public void loginTestT() {	
-		
-		assertTrue(FuntzioErabilgarriak.login("admin", "admin")); 
-	}
-	
-	@Test
-	public void loginTestF() {	
-		
-		assertFalse(FuntzioErabilgarriak.login("admin", "si")); 
-	}
-	
-	@Test
-    public void testFilmaDatuak() {
-        // Arrange
-        JPanel panelContenedor = new JPanel();
-        JScrollPane scrollPane = new JScrollPane(panelContenedor);
-
-        // Act
-        FuntzioErabilgarriak.filmaDatuak(scrollPane);
-
-        // Assert
-        Component[] components = panelContenedor.getComponents();
-        boolean botonEncontrado = false;
-        for (Component component : components) {
-            if (component instanceof JPanel) {
-                JPanel panel = (JPanel) component;
-                Component[] innerComponents = panel.getComponents();
-                for (Component innerComponent : innerComponents) {
-                    if (innerComponent instanceof JButton) {
-                        JButton btn = (JButton) innerComponent;
-                        if (btn.getText().equals("Cars")) { // Reemplazar con el nombre de la película
-                            botonEncontrado = true;
-                            // Puedes agregar más aserciones aquí si es necesario
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-        assertFalse(botonEncontrado);
-    }
 
 	@Test
-    public void Info_filmaTest() {      
-        // Establecer el ID de la película que queremos encontrar
-        FuntzioErabilgarriak.setIdFilma(2);
+	public void loginOKTestT() {
 
-        // Llamar al método Info_filma() para obtener la información de la película
-        Pelikula peliculaEncontrada = FuntzioErabilgarriak.Info_filma();
-        
-        // Verificar que la información devuelta sea la esperada
-        assertEquals(2, peliculaEncontrada.getIdPelikula());
-        assertEquals("Get Out", peliculaEncontrada.getIzena());
-        assertEquals("Beldurra", peliculaEncontrada.getGeneroa());
-        assertEquals(104, peliculaEncontrada.getIraupena());
-    }
-	
+		assertTrue(FuntzioErabilgarriak.loginOK("admin", "admin"));
+	}
+
 	@Test
-    public void testInfoSaioa() {
-        // Saioa informazioa lortzen dugu
-        Saioa saioLortua = FuntzioErabilgarriak.Info_saioa();
-        
-        // Saioaren informazioa egokia den egiaztatzen dugu
-        assertEquals(0, saioLortua.getIdSaioa());
-    }
-	
+	public void loginOKTestF() {
+
+		assertFalse(FuntzioErabilgarriak.loginOK("admin", "si"));
+	}
+
+	@Test
+	public void loginTestT() {
+
+		assertTrue(FuntzioErabilgarriak.login("admin", "admin"));
+	}
+
+	@Test
+	public void loginTestF() {
+
+		assertFalse(FuntzioErabilgarriak.login("admin", "si"));
+	}
+
+	@Test
+	public void testFilmaDatuak() {
+		// Arrange
+		JPanel panelContenedor = new JPanel();
+		JScrollPane scrollPane = new JScrollPane(panelContenedor);
+
+		// Act
+		FuntzioErabilgarriak.filmaDatuak(scrollPane);
+
+		// Assert
+		Component[] components = panelContenedor.getComponents();
+		boolean botonEncontrado = false;
+		for (Component component : components) {
+			if (component instanceof JPanel) {
+				JPanel panel = (JPanel) component;
+				Component[] innerComponents = panel.getComponents();
+				for (Component innerComponent : innerComponents) {
+					if (innerComponent instanceof JButton) {
+						JButton btn = (JButton) innerComponent;
+						if (btn.getText().equals("Cars")) { // Reemplazar con el nombre de la película
+							botonEncontrado = true;
+							// Puedes agregar más aserciones aquí si es necesario
+							break;
+						}
+					}
+				}
+			}
+		}
+		assertFalse(botonEncontrado);
+	}
+
+	@Test
+	public void Info_filmaTest() {
+		// Establecer el ID de la película que queremos encontrar
+		FuntzioErabilgarriak.setIdFilma(2);
+
+		// Llamar al método Info_filma() para obtener la información de la película
+		Pelikula peliculaEncontrada = FuntzioErabilgarriak.Info_filma();
+
+		// Verificar que la información devuelta sea la esperada
+		assertEquals(2, peliculaEncontrada.getIdPelikula());
+		assertEquals("Get Out", peliculaEncontrada.getIzena());
+		assertEquals("Beldurra", peliculaEncontrada.getGeneroa());
+		assertEquals(104, peliculaEncontrada.getIraupena());
+	}
+
+	@Test
+	public void testInfoSaioa() {
+		// Saioa informazioa lortzen dugu
+		Saioa saioLortua = FuntzioErabilgarriak.Info_saioa();
+
+		// Saioaren informazioa egokia den egiaztatzen dugu
+		assertEquals(0, saioLortua.getIdSaioa());
+	}
+
 //	@Test
 //    public void testFitxeroBarruanDatuakIdatzi() {
 //        // Lógica para preparar datos de prueba si es necesario
@@ -125,21 +123,23 @@ public class FuntzioakTest {
 //        
 //        // Aquí podrías agregar más aserciones para verificar el contenido del archivo generado si es necesario
 //    }
-	
+
 	@Test
-    public void testErosketarenDatuak() {
-        // Crea un JScrollPane simulado para pasar como argumento a la función
-        JScrollPane scrollPane = new JScrollPane();
+	public void testErosketarenDatuak() {
+		// Crea un JScrollPane simulado para pasar como argumento a la función
+		JScrollPane scrollPane = new JScrollPane();
 
-        // Ejecuta la función que deseas probar
-        FuntzioErabilgarriak.ErosketarenDatuak(scrollPane);
+		// Ejecuta la función que deseas probar
+		FuntzioErabilgarriak.ErosketarenDatuak(scrollPane);
 
-        // Asegúrate de que la vista del JScrollPane ahora contenga algún componente JPanel
-        assertTrue(scrollPane.getViewport().getView() instanceof JPanel);
+		// Asegúrate de que la vista del JScrollPane ahora contenga algún componente
+		// JPanel
+		assertTrue(scrollPane.getViewport().getView() instanceof JPanel);
 
-        // Aquí podrías agregar más aserciones para verificar la disposición y contenido del JPanel si es necesario
-    }
-	
+		// Aquí podrías agregar más aserciones para verificar la disposición y contenido
+		// del JPanel si es necesario
+	}
+
 //	@Test
 //    public void testErosketaSarreraSortu() {
 //        // Aquí necesitas configurar tus datos de prueba
@@ -155,7 +155,7 @@ public class FuntzioakTest {
 //        // Aquí puedes agregar más aserciones para verificar el estado del objeto Erosketak devuelto
 //        // Por ejemplo, puedes verificar que los valores de sus atributos sean los esperados
 //    }
-	
+
 //	@Test
 //    public void testTotalaSarrera() {
 //        // Definimos un ejemplo de subtotal y descuento esperado
@@ -170,5 +170,69 @@ public class FuntzioakTest {
 //        // Verificamos si el total obtenido es igual al total esperado
 //        assertEquals(totalEsperado, totalObtenido);
 //    }
-	
+
+	// BISTA TESTAK .....??
+
+	@Test
+	public void testPelikulaBistaVisible() {
+		try {
+			FuntzioErabilgarriak.pelikulaBistaVisible();
+			// Si la ventana se muestra correctamente, la prueba pasará.
+		} catch (Exception e) {
+			e.printStackTrace();
+			// Si ocurre algún error, la prueba fallará.
+		}
+	}
+
+	@Test
+	public void testSaioaBistaVisible() {
+		try {
+			FuntzioErabilgarriak.saioaBistaVisible();
+			// Si la ventana se muestra correctamente, la prueba pasará.
+		} catch (Exception e) {
+			e.printStackTrace();
+			// Si ocurre algún error, la prueba fallará.
+		}
+	}
+
+	@Test
+	public void testErosketaKonfirmazioaBistaVisible() {
+		try {
+			FuntzioErabilgarriak.erosketaKonfirmazioaBistaVisible();
+			// Si la ventana se muestra correctamente, la prueba pasará.
+		} catch (Exception e) {
+			e.printStackTrace();
+			// Si ocurre algún error, la prueba fallará.
+		}
+	}
+
+	@Test
+	public void testOngiEtorriBistaVisible() {
+		try {
+			FuntzioErabilgarriak.ongiEtorriBistaVisible();
+			// Si la ventana se muestra correctamente, la prueba pasará.
+		} catch (Exception e) {
+			e.printStackTrace();
+			// Si ocurre algún error, la prueba fallará.
+		}
+	}
+
+//BUFFERED TEST
+
+	public void testFitxeroBarruanDatuakIdatzi() {
+		try {
+			// Llamar a la función que escribe en el archivo
+			FuntzioErabilgarriak.fitxeroBarruanDatuakIdatzi();
+
+			// Verificar si el archivo se creó correctamente
+			File file = new File(
+					"C:\\Users\\Usuario\\Downloads\\Faktura" + FuntzioErabilgarriak.txtkont + ".txt");
+			assert file.exists() : "El archivo de factura no se ha creado correctamente.";
+
+			// Si llega hasta aquí sin lanzar excepciones, la prueba pasó con éxito.
+		} catch (Exception e) {
+			e.printStackTrace();
+			// Si ocurre algún error, la prueba fallará.
+		}
+	}
 }
