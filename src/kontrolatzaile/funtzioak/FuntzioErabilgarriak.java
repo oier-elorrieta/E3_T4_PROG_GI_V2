@@ -402,10 +402,8 @@ public class FuntzioErabilgarriak {
 	}
 	
 	public static Erosketak ErosketaSarreraSortu() {
-	    // Crear una nueva instancia de Erosketak
 	    Erosketak e1 = new Erosketak();
 
-	    // Verificar si ya existe una instancia similar en sarrerakList
 	    Sarrera existingSarrera = null;
 	    for (Sarrera sarrera : sarrerakList) {
 	        if (sarrera.getSaioa().equals(Info_saioa())) {
@@ -414,13 +412,11 @@ public class FuntzioErabilgarriak {
 	        }
 	    }
 
-	    // Si ya existe una instancia, la usamos, de lo contrario, creamos una nueva
 	    Sarrera srr1;
 	    if (existingSarrera != null) {
 	        srr1 = existingSarrera;
 	    } else {
 	        srr1 = new Sarrera();
-	        // Asignar los datos a la nueva instancia de Sarrera
 	        for (Saioa saioa : zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList()) {
 	            if (saioa.getIdSaioa() == Info_saioa().getIdSaioa()) {
 	                srr1.setSaioa(Info_saioa());
@@ -431,11 +427,9 @@ public class FuntzioErabilgarriak {
 	                break;
 	            }
 	        }
-	        // Agregar la nueva instancia de Sarrera a sarrerakList
 	        sarrerakList.add(srr1);
 	    }
 
-	    // Asignar los valores correspondientes a la instancia de Erosketak
 	    e1.setSarreraList(sarrerakList);
 	    e1.setBezeroa(bezeroLogeatuta);
 	    e1.setData(Info_saioa().getEguna());
@@ -443,9 +437,7 @@ public class FuntzioErabilgarriak {
 	    e1.setDirutotala(totalaErosketa());
 	    e1.setMota(srr1.getMota());
 
-	    // Agregar la instancia de Erosketak a la lista erosketakList
-	    System.out.println(srr1);
-	    System.out.println(e1);
+
 	    erosketakList.add(e1);
 
 	    return e1;
@@ -527,50 +519,57 @@ public class FuntzioErabilgarriak {
 
     public static void fitxeroBarruanDatuakIdatzi() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\Downloads\\Faktura.txt"))) {
+            boolean datosImpresos = false; 
+            Set<String> peliculasImpresas = new HashSet<>(); 
 
-        	for (int i=0; i < erosketakList.size(); i++ ) {
-        		
-        		for (Erosketak erosketa : erosketakList) {   
-        		    if (erosketa.getSarreraList() != null && erosketa.getBezeroa() != null && erosketa.getData() != null) {
-        		        if (erosketa.equals(erosketakList.get(i))) {
-        		        	
-        		        	String bezeroIzena = erosketa.getBezeroa().getIzena();
-        		        	String bezeroAbizena = erosketa.getBezeroa().getAbizena();
-        		        	String bezeroNAN = erosketa.getBezeroa().getNAN();
-        		        	
-        		        	writer.write("Bezeroa: " + bezeroIzena + " " + bezeroAbizena + "NAN: " + bezeroNAN);
-        		        	writer.newLine();
+            for (Erosketak erosketa : erosketakList) {
+                if (erosketa.getSarreraList() != null && erosketa.getBezeroa() != null && erosketa.getData() != null) {
+                    if (!datosImpresos) { 
+                        String bezeroIzena = erosketa.getBezeroa().getIzena();
+                        String bezeroAbizena = erosketa.getBezeroa().getAbizena();
+                        String bezeroNAN = erosketa.getBezeroa().getNAN();
 
-                            for (Sarrera sarrera : erosketa.getSarreraList()) {
-                                Saioa saioa = sarrera.getSaioa();
-                                Aretoa aretoa = saioa.getAretoa();
-                                Pelikula pelikula = saioa.getPelikula();
-                                
-                                String lerro = saioa.getIdSaioa() + ". " + aretoa.getIzena() + ", " + pelikula.getIzena() + ", " +
-                                        saioa.getOrdua() + ", " + saioa.getEguna() + ", " +
-                                        sarrera.getPrezioa() + "€, " + sarrera.getSarreraKant();
-                                
-                                writer.write(lerro);
-                                writer.newLine();
-                            }
+                        writer.write("Bezeroa: " + bezeroIzena + " " + bezeroAbizena + " NAN: " + bezeroNAN);
+                        writer.newLine();
 
-                            // Escribir la fecha actual
-                            Date data = new Date();
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                            String dataString = sdf.format(data);
-                            writer.write("Gaurko data: " + dataString);
+                        // Escribir la fecha actual
+                        Date data = new Date();
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        String dataString = sdf.format(data);
+                        writer.write("Gaurko data: " + dataString);
+                        writer.newLine();
+
+                        datosImpresos = true; 
+                    }
+
+                    for (Sarrera sarrera : erosketa.getSarreraList()) {
+                        Saioa saioa = sarrera.getSaioa();
+                        Aretoa aretoa = saioa.getAretoa();
+                        Pelikula pelikula = saioa.getPelikula();
+                        String filmKey = saioa.getIdSaioa() + pelikula.getIzena(); 
+
+                        
+                        if (!peliculasImpresas.contains(filmKey)) {
+                            String lerro = saioa.getIdSaioa() + ". " + aretoa.getIzena() + ", " + pelikula.getIzena() + ", " +
+                                    saioa.getOrdua() + ", " + saioa.getEguna() + ", " +
+                                    sarrera.getPrezioa() + "€, " + sarrera.getSarreraKant();
+
+                            writer.write(lerro);
                             writer.newLine();
+
                             
-                            // Escribir el total de la compra
-                            String totalaPrezioa = "Erosketaren totala: " + erosketa.getDirutotala() + "€";
-                            writer.write(totalaPrezioa);
+                            peliculasImpresas.add(filmKey);
 
-                            break; // Salir del bucle una vez que se ha encontrado una coincidencia
+                            
+                            
                         }
-                    }	       		        	
-        		}
-        	}
+                    }
+                }
+            }
 
+            
+            writer.write("Erosketaren totala: " + totalaErosketa() + "€");
+            writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
