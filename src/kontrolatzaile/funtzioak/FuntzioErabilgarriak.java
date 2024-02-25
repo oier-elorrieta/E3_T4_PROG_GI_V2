@@ -11,11 +11,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.invoke.StringConcatFactory;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -360,7 +364,7 @@ public class FuntzioErabilgarriak {
 	    return baloreak;
 	}
 
-	public static double totala() {
+	public static double totalaSarrera() {
 	    double[] subtotalaDeskontua = subtotalaDeskontua();
 	    double subtotala = subtotalaDeskontua[0];
 	    double deskontua = subtotalaDeskontua[1];
@@ -369,30 +373,56 @@ public class FuntzioErabilgarriak {
 	    
 	    DecimalFormat df = new DecimalFormat("#.##");
 	    
-	    String totalaFormateado = df.format(totalaPrezioa);
-	    String totalaPrezioaString2 = totalaFormateado.replace(",", ".");
+	    String totalaAldatuta = df.format(totalaPrezioa);
+	    String totalaPrezioaString = totalaAldatuta.replace(",", ".");
 	    
 	    	    
-	    return Double.parseDouble(totalaPrezioaString2);
+	    return Double.parseDouble(totalaPrezioaString);
 	}
 	
-	// Filma bakoitzean Sarrera objetu bat sortu egingo da, eta erosketa batean sarrera bat baino gehiago egon ahal da. 
+	public static double totalaErosketa() {
+		
+		double prezioErosketaTotala = 0;
+		
+		for (Sarrera sarrera : sarrerakList) {
+			prezioErosketaTotala += sarrera.getPrezioa();
+		}
+		
+		DecimalFormat df = new DecimalFormat("#.##");
+	    
+	    String totalaErosketaAldatuta = df.format(prezioErosketaTotala);
+	    String totalaErosketaPrezioaString = totalaErosketaAldatuta.replace(",", ".");
+		
+		return Double.parseDouble(totalaErosketaPrezioaString);
+		
+	}
+	
 	public static Sarrera SarreraSortu() {	
-		 Sarrera srr1 = new Sarrera();
-		 
-		 for (Saioa saioa :  zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList()) {
-			 if (saioa.getIdSaioa() == Info_saioa().getIdSaioa()) {
-				 
-				 srr1.setSaioa(Info_saioa());
-				 srr1.setData(Info_saioa().getEguna());
-				 srr1.setPrezioa(totala());
-				 srr1.setSarreraKant(Integer.parseInt(SaioaBista.textSarreraKop.getText()));
-				 srr1.setMota(1);
-				 
-			 }
-		 } 
-		 sarrerakList.add(srr1);
-		 return srr1;
+	    for (Sarrera sarrera : sarrerakList) {
+	        if (sarrera.getSaioa().equals(Info_saioa())) {
+	            return sarrera; 
+	        }
+	    }
+
+	    
+	    Sarrera srr1 = new Sarrera();
+	    for (Saioa saioa : zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList()) {
+	        if (saioa.getIdSaioa() == Info_saioa().getIdSaioa()) {
+	            srr1.setSaioa(Info_saioa());
+	            srr1.setData(Info_saioa().getEguna());
+	            srr1.setPrezioa(totalaSarrera());
+	            srr1.setSarreraKant(Integer.parseInt(SaioaBista.textSarreraKop.getText()));
+	            srr1.setMota(1);
+	            break; 
+	        }
+	    } 
+	    sarrerakList.add(srr1);
+	    return srr1;
+	}
+
+	
+	public static void SarrerenArrayHustu() {
+		sarrerakList.clear();
 	}
 	
 	public static Erosketak ErosketaSortu() {
@@ -402,9 +432,10 @@ public class FuntzioErabilgarriak {
 		e1.setBezeroa(bezeroLogeatuta);
 		e1.setData(Info_saioa().getEguna());
 		e1.setDeskontua(subtotalaDeskontua()[1]);
-		e1.setDirutotala(totala());
+		e1.setDirutotala(totalaErosketa());
 		e1.setMota(SarreraSortu().getMota());
 		
+		erosketakList.add(e1);
 		return e1;
 	}
 	
@@ -426,9 +457,9 @@ public class FuntzioErabilgarriak {
 
         
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 15, 5, 15); 
+        gbc.insets = new Insets(5, 15, 5, 15); // Datu banaketaren neurriak ezarri (top, left, bottom, right) Literalmente el "margin" del CSS.
 
-        int lerroa = 0; 
+        int lerroa = 0; // Lehenenego aldiz, datuak 0 lerroan egongo dira.
 
         for (int i = 0; i < sarrerakList.size(); i++) {
             for (Zinema zinema : zinemakList) {
@@ -449,9 +480,9 @@ public class FuntzioErabilgarriak {
                     JLabel infoPrezioa = new JLabel(prezioa); 
                     JLabel infoKantitate = new JLabel(kantitate); 
 
-                    gbc.gridx = 0; 
-                    gbc.gridy = lerroa; 
-                    gbc.anchor = GridBagConstraints.WEST; 
+                    gbc.gridx = 0; //Zutabe 0
+                    gbc.gridy = lerroa; // Lerroa sortu eta aukeratu
+                    gbc.anchor = GridBagConstraints.WEST; // Horizontalean gordetzeko
 
                     infopanela2.add(infoZinema, gbc); 
 
@@ -477,7 +508,62 @@ public class FuntzioErabilgarriak {
                 }
             }   
         }
-
+        System.out.println(sarrerakList);
         scrollPane.setViewportView(infopanela2); 
     }
+    
+
+    public static void fitxeroBarruanDatuakIdatzi() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\Downloads\\Faktura.txt"))) {
+
+        	for (int i=0; i < erosketakList.size(); i++ ) {
+        		
+        		
+                for (Erosketak erosketa : erosketakList) {
+                	
+                	System.out.println(erosketakList);
+                	System.out.println(erosketa);
+                	
+                    if (erosketa.getSarreraList().equals(erosketakList.get(i).getSarreraList())) {
+                        // Obtener los datos del usuario de esta compra en la lista de Erosketak
+                        Bezeroa usuario = erosketa.getBezeroa();
+                        writer.write("Erabiltzailea: " + usuario.getIzena() + " " + usuario.getAbizena() + ", NAN: " + usuario.getNAN());
+                        writer.newLine();
+
+                        // Escribir los detalles de cada sarrera en la factura
+                        for (Sarrera sarrera : erosketa.getSarreraList()) {
+                            Saioa saioa = sarrera.getSaioa();
+                            Aretoa aretoa = saioa.getAretoa();
+                            Pelikula pelikula = saioa.getPelikula();
+                            
+                            String lerro = saioa.getIdSaioa() + ". " + aretoa.getIzena() + ", " + pelikula.getIzena() + ", " +
+                                    saioa.getOrdua() + ", " + saioa.getEguna() + ", " +
+                                    sarrera.getPrezioa() + "€, " + sarrera.getSarreraKant();
+                            
+                            writer.write(lerro);
+                            writer.newLine();
+                        }
+
+                        // Escribir la fecha actual
+                        Date data = new Date();
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        String dataString = sdf.format(data);
+                        writer.write("Gaurko data: " + dataString);
+                        writer.newLine();
+                        
+                        // Escribir el total de la compra
+                        String totalaPrezioa = "Erosketaren totala: " + erosketa.getDirutotala() + "€";
+                        writer.write(totalaPrezioa);
+
+                        break; // Salir del bucle una vez que se ha encontrado una coincidencia
+                    }
+                }
+        	}
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

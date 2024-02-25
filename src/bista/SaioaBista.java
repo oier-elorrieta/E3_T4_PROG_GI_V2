@@ -150,8 +150,6 @@ public class SaioaBista extends JFrame {
             	FuntzioErabilgarriak.ErosketaSortu();
 				FuntzioErabilgarriak.zinemaBistaVisible();
 	            	dispose();
-	                
-				
 			}
 		});
 		btnBesteErosketa.setBounds(718, 550, 258, 79);
