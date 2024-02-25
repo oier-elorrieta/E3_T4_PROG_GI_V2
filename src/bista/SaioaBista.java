@@ -132,7 +132,7 @@ public class SaioaBista extends JFrame {
 		btnBukatuErosketa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
             	JOptionPane.showMessageDialog(null, "Erosketa-pantailara aldatuko da" );
-				FuntzioErabilgarriak.ErosketaSortu();
+				FuntzioErabilgarriak.ErosketaSarreraSortu();
             	FuntzioErabilgarriak.idErosketaLortu();
 				FuntzioErabilgarriak.erosketaKonfirmazioaBistaVisible();
 	            	dispose();
@@ -147,7 +147,7 @@ public class SaioaBista extends JFrame {
 		btnBesteErosketa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				 
 				JOptionPane.showMessageDialog(null, "Eskerrik asko erosten jarraitzeagatik");
-            	FuntzioErabilgarriak.ErosketaSortu();
+            	FuntzioErabilgarriak.ErosketaSarreraSortu();
 				FuntzioErabilgarriak.zinemaBistaVisible();
 	            	dispose();
 			}

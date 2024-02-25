@@ -397,47 +397,60 @@ public class FuntzioErabilgarriak {
 		
 	}
 	
-	public static Sarrera SarreraSortu() {	
-	    for (Sarrera sarrera : sarrerakList) {
-	        if (sarrera.getSaioa().equals(Info_saioa())) {
-	            return sarrera; 
-	        }
-	    }
-
-	    
-	    Sarrera srr1 = new Sarrera();
-	    for (Saioa saioa : zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList()) {
-	        if (saioa.getIdSaioa() == Info_saioa().getIdSaioa()) {
-	            srr1.setSaioa(Info_saioa());
-	            srr1.setData(Info_saioa().getEguna());
-	            srr1.setPrezioa(totalaSarrera());
-	            srr1.setSarreraKant(Integer.parseInt(SaioaBista.textSarreraKop.getText()));
-	            srr1.setMota(1);
-	            break; 
-	        }
-	    } 
-	    sarrerakList.add(srr1);
-	    return srr1;
-	}
-
-	
 	public static void SarrerenArrayHustu() {
 		sarrerakList.clear();
 	}
 	
-	public static Erosketak ErosketaSortu() {
-		Erosketak e1 = new Erosketak();
-		
-		e1.setSarreraList(sarrerakList);
-		e1.setBezeroa(bezeroLogeatuta);
-		e1.setData(Info_saioa().getEguna());
-		e1.setDeskontua(subtotalaDeskontua()[1]);
-		e1.setDirutotala(totalaErosketa());
-		e1.setMota(SarreraSortu().getMota());
-		
-		erosketakList.add(e1);
-		return e1;
+	public static Erosketak ErosketaSarreraSortu() {
+	    // Crear una nueva instancia de Erosketak
+	    Erosketak e1 = new Erosketak();
+
+	    // Verificar si ya existe una instancia similar en sarrerakList
+	    Sarrera existingSarrera = null;
+	    for (Sarrera sarrera : sarrerakList) {
+	        if (sarrera.getSaioa().equals(Info_saioa())) {
+	            existingSarrera = sarrera;
+	            break;
+	        }
+	    }
+
+	    // Si ya existe una instancia, la usamos, de lo contrario, creamos una nueva
+	    Sarrera srr1;
+	    if (existingSarrera != null) {
+	        srr1 = existingSarrera;
+	    } else {
+	        srr1 = new Sarrera();
+	        // Asignar los datos a la nueva instancia de Sarrera
+	        for (Saioa saioa : zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList()) {
+	            if (saioa.getIdSaioa() == Info_saioa().getIdSaioa()) {
+	                srr1.setSaioa(Info_saioa());
+	                srr1.setData(Info_saioa().getEguna());
+	                srr1.setPrezioa(totalaSarrera());
+	                srr1.setSarreraKant(Integer.parseInt(SaioaBista.textSarreraKop.getText()));
+	                srr1.setMota(1);
+	                break;
+	            }
+	        }
+	        // Agregar la nueva instancia de Sarrera a sarrerakList
+	        sarrerakList.add(srr1);
+	    }
+
+	    // Asignar los valores correspondientes a la instancia de Erosketak
+	    e1.setSarreraList(sarrerakList);
+	    e1.setBezeroa(bezeroLogeatuta);
+	    e1.setData(Info_saioa().getEguna());
+	    e1.setDeskontua(subtotalaDeskontua()[1]);
+	    e1.setDirutotala(totalaErosketa());
+	    e1.setMota(srr1.getMota());
+
+	    // Agregar la instancia de Erosketak a la lista erosketakList
+	    System.out.println(srr1);
+	    System.out.println(e1);
+	    erosketakList.add(e1);
+
+	    return e1;
 	}
+
 	
 	public static int idErosketaLortu() {
 		
@@ -508,7 +521,6 @@ public class FuntzioErabilgarriak {
                 }
             }   
         }
-        System.out.println(sarrerakList);
         scrollPane.setViewportView(infopanela2); 
     }
     
@@ -518,52 +530,49 @@ public class FuntzioErabilgarriak {
 
         	for (int i=0; i < erosketakList.size(); i++ ) {
         		
-        		
-                for (Erosketak erosketa : erosketakList) {
-                	
-                	System.out.println(erosketakList);
-                	System.out.println(erosketa);
-                	
-                    if (erosketa.getSarreraList().equals(erosketakList.get(i).getSarreraList())) {
-                        // Obtener los datos del usuario de esta compra en la lista de Erosketak
-                        Bezeroa usuario = erosketa.getBezeroa();
-                        writer.write("Erabiltzailea: " + usuario.getIzena() + " " + usuario.getAbizena() + ", NAN: " + usuario.getNAN());
-                        writer.newLine();
+        		for (Erosketak erosketa : erosketakList) {   
+        		    if (erosketa.getSarreraList() != null && erosketa.getBezeroa() != null && erosketa.getData() != null) {
+        		        if (erosketa.equals(erosketakList.get(i))) {
+        		        	
+        		        	String bezeroIzena = erosketa.getBezeroa().getIzena();
+        		        	String bezeroAbizena = erosketa.getBezeroa().getAbizena();
+        		        	String bezeroNAN = erosketa.getBezeroa().getNAN();
+        		        	
+        		        	writer.write("Bezeroa: " + bezeroIzena + " " + bezeroAbizena + "NAN: " + bezeroNAN);
+        		        	writer.newLine();
 
-                        // Escribir los detalles de cada sarrera en la factura
-                        for (Sarrera sarrera : erosketa.getSarreraList()) {
-                            Saioa saioa = sarrera.getSaioa();
-                            Aretoa aretoa = saioa.getAretoa();
-                            Pelikula pelikula = saioa.getPelikula();
-                            
-                            String lerro = saioa.getIdSaioa() + ". " + aretoa.getIzena() + ", " + pelikula.getIzena() + ", " +
-                                    saioa.getOrdua() + ", " + saioa.getEguna() + ", " +
-                                    sarrera.getPrezioa() + "€, " + sarrera.getSarreraKant();
-                            
-                            writer.write(lerro);
+                            for (Sarrera sarrera : erosketa.getSarreraList()) {
+                                Saioa saioa = sarrera.getSaioa();
+                                Aretoa aretoa = saioa.getAretoa();
+                                Pelikula pelikula = saioa.getPelikula();
+                                
+                                String lerro = saioa.getIdSaioa() + ". " + aretoa.getIzena() + ", " + pelikula.getIzena() + ", " +
+                                        saioa.getOrdua() + ", " + saioa.getEguna() + ", " +
+                                        sarrera.getPrezioa() + "€, " + sarrera.getSarreraKant();
+                                
+                                writer.write(lerro);
+                                writer.newLine();
+                            }
+
+                            // Escribir la fecha actual
+                            Date data = new Date();
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            String dataString = sdf.format(data);
+                            writer.write("Gaurko data: " + dataString);
                             writer.newLine();
+                            
+                            // Escribir el total de la compra
+                            String totalaPrezioa = "Erosketaren totala: " + erosketa.getDirutotala() + "€";
+                            writer.write(totalaPrezioa);
+
+                            break; // Salir del bucle una vez que se ha encontrado una coincidencia
                         }
-
-                        // Escribir la fecha actual
-                        Date data = new Date();
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                        String dataString = sdf.format(data);
-                        writer.write("Gaurko data: " + dataString);
-                        writer.newLine();
-                        
-                        // Escribir el total de la compra
-                        String totalaPrezioa = "Erosketaren totala: " + erosketa.getDirutotala() + "€";
-                        writer.write(totalaPrezioa);
-
-                        break; // Salir del bucle una vez que se ha encontrado una coincidencia
-                    }
-                }
+                    }	       		        	
+        		}
         	}
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }
