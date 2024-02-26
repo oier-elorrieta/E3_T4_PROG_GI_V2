@@ -65,7 +65,7 @@ public class FuntzioErabilgarriak {
 	private static int idFilma;
 	private static LocalTime ordua;
 	private static String eguna;
-	public static int txtkont = 0;
+	public static int txtkont = 1;
 	public static String ikonoLogo = "/modeloa/img/logoa/logoa_karratu.png";
 	
 
@@ -107,10 +107,10 @@ public class FuntzioErabilgarriak {
 
 	public static List<Aretoa> areatoakList;
 	static List<Bezeroa> bezeroakList;
-	static List<Erosketak> erosketakList;
+	public static List<Erosketak> erosketakList;
 	public static List<Pelikula> pelikulakList;
 	public static List<Saioa> saioakList;
-	static List<Sarrera> sarrerakList = new ArrayList<Sarrera>();
+	public static List<Sarrera> sarrerakList = new ArrayList<Sarrera>();
 	static List<Zinema> zinemakList;
 
 	static List<Pelikula> saioPelikulak;
@@ -446,7 +446,15 @@ public class FuntzioErabilgarriak {
 	    return e1;
 	}
 
-	
+	public static int erosketaIdLortu() {
+
+		Erosketak azkenErosketa = erosketakList.get(erosketakList.size() - 2);
+		int azkenena = azkenErosketa.getIdErosketak() + txtkont;
+		
+		
+		return azkenena;
+
+	}
 	
 	
     public static void ErosketarenDatuak(JScrollPane scrollPane) {
@@ -508,7 +516,7 @@ public class FuntzioErabilgarriak {
         }
         scrollPane.setViewportView(infopanela2); 
     }
-    
+     
 
     public static void fitxeroBarruanDatuakIdatzi() {
     	 

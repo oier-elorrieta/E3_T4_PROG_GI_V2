@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
+import modeloa.dao.InsertDao;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,6 +26,7 @@ public class ErosketaKonfirmazioaBista extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     //private Erosketak erosketa = FuntzioErabilgarriak.ErosketaSortu();
+    InsertDao insert = new InsertDao();
     	
     public ErosketaKonfirmazioaBista() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(SaioaBista.class.getResource(FuntzioErabilgarriak.ikonoLogo)));
@@ -65,6 +68,9 @@ public class ErosketaKonfirmazioaBista extends JFrame {
         btnErosketaJarraitu.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		FuntzioErabilgarriak.zinemaBistaVisible();
+        		
+                System.out.println(insert.insertakEgin());
+        		
         		dispose();
         	}
         });
@@ -74,8 +80,9 @@ public class ErosketaKonfirmazioaBista extends JFrame {
 
         JButton btnErosketaFaktura = new JButton("Faktura Sortu");
         btnErosketaFaktura.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) { 
                 FuntzioErabilgarriak.fitxeroBarruanDatuakIdatzi();
+                System.out.println(insert.insertakEgin());
 
                 int aukera = JOptionPane.showConfirmDialog(null, "¿Erosketa gehiago egin nahi dituzu?", "Hautatu", JOptionPane.YES_NO_OPTION);
                 
@@ -89,6 +96,8 @@ public class ErosketaKonfirmazioaBista extends JFrame {
                     System.exit(0);
                
                 }
+                
+
             }
         });
 

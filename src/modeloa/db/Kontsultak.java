@@ -11,5 +11,10 @@ public class Kontsultak {
 	public final static String saioa = "SELECT idSaioa, Ordua, Eguna, idFilma, idZinema, idAretoa FROM SAIOA WHERE idZinema = ? order by 2, 3 ";
 	public final static String sarrera = "SELECT * FROM SARRERA left join erosketa using (idErosketa) left join sarreramota using (idMota);";
 	public final static String zinema = "SELECT idZinema, izena, helbidea FROM ZINEMA";
+	
+	
+	public final static String erosketaInsert = "INSERT INTO EROSKETA (eguna, deskontua, diru_totala, idMota, idBezero, jatorria) VALUES (?, ?, ?, ?, ?, 'Fisikoa')";
+	public final static String sarreraInsert = "INSERT INTO SARRERA (idErosketa, idSaioa, sarreraKant) VALUES (?, ?, ?)";
+	
 
 }
