@@ -24,7 +24,6 @@ import modeloa.objetuak.Zinema;
 public class FuntzioakTest {
 	
     private static List<Zinema> zinemakList;
-    private static FuntzioErabilgarriak funtzioErabilgarriak;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -35,7 +34,6 @@ public class FuntzioakTest {
     public void setUp() {
         zinemakList = new ArrayList<>();
 
-        funtzioErabilgarriak = new FuntzioErabilgarriak();
     }
 
 	@Test
@@ -181,7 +179,7 @@ public class FuntzioakTest {
                 
                 break;
             }
-        }
+        }  
         return s1;
     }
 	

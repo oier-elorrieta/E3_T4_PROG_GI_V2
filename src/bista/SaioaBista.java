@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
+import modeloa.objetuak.Aretoa;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -86,7 +87,9 @@ public class SaioaBista extends JFrame {
 		Titulua.add(lblIraupena);
 				
 		
-		JLabel lblIAretoa = new JLabel("Aretoa: " + FuntzioErabilgarriak.Info_saioa().getAretoa().getIzena() + " aretoa");
+		Aretoa aretoa = FuntzioErabilgarriak.Info_saioa().getAretoa();
+        String aretoaIzena = aretoa != null ? aretoa.getIzena() : "Aretoa ez dago ezarrita";
+        JLabel lblIAretoa = new JLabel("Aretoa: " + aretoaIzena);
 		lblIAretoa.setHorizontalAlignment(SwingConstants.LEFT);
 		lblIAretoa.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblIAretoa.setBounds(461, 219, 554, 46);

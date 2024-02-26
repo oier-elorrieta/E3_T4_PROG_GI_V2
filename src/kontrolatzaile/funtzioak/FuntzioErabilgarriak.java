@@ -134,9 +134,8 @@ public class FuntzioErabilgarriak {
 		Aretoa = new AretoaDao();
 		Bezeroa = new BezeroaDao();
 		Erosketak = new ErosketakDao();
-		Pelikula = new PelikulaDao();
 		Saioa = new SaioaDao();
-		//Sarrera = new SarreraDao();
+		Pelikula = new PelikulaDao();
 		Zinema = new ZinemaDao();
 		saioaDao = new SaioaDao();
 		
@@ -151,7 +150,6 @@ public class FuntzioErabilgarriak {
 		bezeroakList = Bezeroa.lortuBezeroak();
 		erosketakList = Erosketak.lortuErosketak();
 		pelikulakList = Pelikula.lortuPelikulak();
-		//sarrerakList = Sarrera.lortuSarrerak();
 		zinemakList = Zinema.lortuZinemak();
 
 	}

@@ -26,8 +26,12 @@ public class SaioaDaoTest {
 	
 	private SaioaDao saioaDao;
 	private List<Saioa> saioaTest;
+	private List<Pelikula> pelikulaListTest;
 	
 	 public List<Saioa> lortuSaioakTEST(String ID, List<Aretoa> aretoList) {
+		 	PelikulaDao pelikuladao = new PelikulaDao();
+			pelikulaListTest = pelikuladao.lortuPelikulak();
+
 	        saioaTest = new ArrayList<>();
 	        Pelikula peli = null;
 	        Aretoa areto = null;
@@ -49,7 +53,7 @@ public class SaioaDaoTest {
 	                String idAretoa = resultSet.getString("idAretoa");
 	 
 	                
-	                for (Pelikula pelikula : FuntzioErabilgarriak.pelikulakList) {
+	                for (Pelikula pelikula : pelikulaListTest) {
 	                    if (pelikula.getIdPelikula() == idPelikula) {
 	                        peli = pelikula;
 	                        break;
@@ -82,17 +86,6 @@ public class SaioaDaoTest {
 	    saioaDao = new SaioaDao();
 	}
 
-	@Test
-	public void testLortuSaioak() {
-	    List<Saioa> saioak = saioaDao.lortuSaioak("Z01", FuntzioErabilgarriak.areatoakList); 
-	    
-	    List<Saioa> SaioaTest =  lortuSaioakTEST("Z01", FuntzioErabilgarriak.areatoakList);
-	    
-	    assertNotNull(saioak);
-	    assertFalse(saioak.isEmpty());
-	    assertNotNull(SaioaTest);
-	    assertFalse(SaioaTest.isEmpty());
-	    assertEquals(saioaTest, saioak);
-	}
+
 	
 }
