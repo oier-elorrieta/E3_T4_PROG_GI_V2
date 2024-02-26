@@ -75,13 +75,10 @@ public class ErosketaKonfirmazioaBista extends JFrame {
         JButton btnErosketaFaktura = new JButton("Faktura Sortu");
         btnErosketaFaktura.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Generar la factura
                 FuntzioErabilgarriak.fitxeroBarruanDatuakIdatzi();
 
-                // Mostrar el mensaje emergente de confirmación
                 int aukera = JOptionPane.showConfirmDialog(null, "¿Erosketa gehiago egin nahi dituzu?", "Hautatu", JOptionPane.YES_NO_OPTION);
                 
-                // Verificar la opción seleccionada por el usuario
                 if (aukera == JOptionPane.YES_OPTION) {
                 	JOptionPane.showMessageDialog(null, "Dena ondo gorde egin da");
                 	FuntzioErabilgarriak.SarrerenArrayHustu();

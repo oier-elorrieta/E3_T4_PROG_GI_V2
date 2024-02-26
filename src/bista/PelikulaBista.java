@@ -1,19 +1,15 @@
 package bista;
 import java.text.DateFormat;
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import org.jdatepicker.impl.DateComponentFormatter;
@@ -25,16 +21,10 @@ import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
 
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 import java.awt.event.ActionEvent;
-import javax.swing.JList;
 
 public class PelikulaBista extends JFrame {
 	

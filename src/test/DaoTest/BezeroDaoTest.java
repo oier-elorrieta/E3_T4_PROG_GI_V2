@@ -45,9 +45,8 @@ public class BezeroDaoTest {
 
 	        } catch (SQLException e) {
 	            e.printStackTrace();
-	            // Maneja la excepción según tus necesidades
 	        } finally {
-	            Konexioa.konexioaExit(); // Asegúrate de cerrar la conexión
+	            Konexioa.konexioaExit(); 
 	        }
 			return bezeroaTest;
 	        

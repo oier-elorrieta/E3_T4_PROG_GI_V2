@@ -1,19 +1,12 @@
 package bista;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import org.jdatepicker.impl.DateComponentFormatter;
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
-
 import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
-import modeloa.objetuak.Pelikula;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,9 +17,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Properties;
 
 import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
@@ -94,8 +84,7 @@ public class SaioaBista extends JFrame {
 		lblIraupena.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblIraupena.setBounds(461, 162, 554, 46);
 		Titulua.add(lblIraupena);
-		
-		
+				
 		
 		JLabel lblIAretoa = new JLabel("Aretoa: " + FuntzioErabilgarriak.Info_saioa().getAretoa().getIzena() + " aretoa");
 		lblIAretoa.setHorizontalAlignment(SwingConstants.LEFT);
@@ -120,7 +109,6 @@ public class SaioaBista extends JFrame {
 		    String formattedTime = saioaOrdua.format(formatter);
 		    comboBox.addItem(formattedTime);
 		} else {
-		    // Manejo del caso en que saioaOrdua es null
 		    comboBox.addItem("Gaur honetan ez daude saiorik");
 		}
 

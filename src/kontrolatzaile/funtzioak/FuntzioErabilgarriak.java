@@ -1,49 +1,36 @@
 package kontrolatzaile.funtzioak;
 
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
-import java.awt.LayoutManager;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.invoke.StringConcatFactory;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.UIManager;
 
 import bista.ErosketaKonfirmazioaBista;
 import bista.OngiEtorriBista;
 import bista.PelikulaBista;
-import javax.swing.JTextField;
 
 import bista.SaioaBista;
 import bista.ZinemaBista;
@@ -53,8 +40,7 @@ import modeloa.dao.ErosketakDao;
 import modeloa.dao.PelikulaDao;
 import modeloa.dao.SaioaDao;
 import modeloa.dao.ZinemaDao;
-import modeloa.db.Konexioa;
-import modeloa.db.Kontsultak;
+
 import modeloa.objetuak.Aretoa;
 import modeloa.objetuak.Bezeroa;
 import modeloa.objetuak.Erosketak;
@@ -526,7 +512,7 @@ public class FuntzioErabilgarriak {
 
     public static void fitxeroBarruanDatuakIdatzi() {
     	 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\Downloads\\Faktura" + txtkont + ".txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\in1dm3-d\\Faktura" + txtkont + ".txt"))) {
             boolean datosImpresos = false; 
             Set<String> peliculasImpresas = new HashSet<>(); 
 
@@ -540,7 +526,6 @@ public class FuntzioErabilgarriak {
                         writer.write("Bezeroa: " + bezeroIzena + " " + bezeroAbizena + " NAN: " + bezeroNAN);
                         writer.newLine();
 
-                        // Escribir la fecha actual
                         Date data = new Date();
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         String dataString = sdf.format(data);

@@ -1,7 +1,5 @@
 package bista;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -79,10 +77,8 @@ public class LoginBista extends JFrame {
 
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 
-				// Simular el clic en el botón cuando se presiona Enter
 
 				btnLog.doClick();
-				// Deitu login botoia click funtzioa
 			}
 
 		}

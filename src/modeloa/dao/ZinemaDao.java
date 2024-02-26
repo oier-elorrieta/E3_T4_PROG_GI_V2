@@ -24,7 +24,7 @@ public class ZinemaDao {
 
 
         try {
-            Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
+            Konexioa.konexioa(); 
 
             PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.zinema);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -45,7 +45,7 @@ public class ZinemaDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Konexioa.konexioaExit(); // Asegúrate de cerrar la conexión después de usarla
+            Konexioa.konexioaExit(); 
         }
 
         return zinemak;
