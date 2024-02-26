@@ -69,7 +69,9 @@ public class ErosketaKonfirmazioaBista extends JFrame {
         	public void actionPerformed(ActionEvent e) {
         		FuntzioErabilgarriak.zinemaBistaVisible();
         		
-                System.out.println(insert.insertakEgin());
+            	JOptionPane.showMessageDialog(null, insert.insertakEgin());
+        		
+            	FuntzioErabilgarriak.SarrerenArrayHustu();
         		
         		dispose();
         	}
@@ -82,7 +84,7 @@ public class ErosketaKonfirmazioaBista extends JFrame {
         btnErosketaFaktura.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { 
                 FuntzioErabilgarriak.fitxeroBarruanDatuakIdatzi();
-                System.out.println(insert.insertakEgin());
+            	JOptionPane.showMessageDialog(null, insert.insertakEgin());
 
                 int aukera = JOptionPane.showConfirmDialog(null, "¿Erosketa gehiago egin nahi dituzu?", "Hautatu", JOptionPane.YES_NO_OPTION);
                 

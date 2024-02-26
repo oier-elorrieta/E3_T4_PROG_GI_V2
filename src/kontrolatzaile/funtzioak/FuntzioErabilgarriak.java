@@ -405,8 +405,10 @@ public class FuntzioErabilgarriak {
 	
 	
 	public static Erosketak ErosketaSarreraSortu() {
+	    // Crear una nueva instancia de Erosketak
 	    Erosketak e1 = new Erosketak();
 
+	    // Buscar si ya existe una Sarrera similar en sarrerakList
 	    Sarrera existingSarrera = null;
 	    for (Sarrera sarrera : sarrerakList) {
 	        if (sarrera.getSaioa().equals(Info_saioa())) {
@@ -440,20 +442,25 @@ public class FuntzioErabilgarriak {
 	    e1.setDirutotala(totalaErosketa());
 	    e1.setMota(srr1.getMota());
 
+	    boolean erosketaExist = false;
+	    for (Erosketak existingErosketa : erosketakList) {
+	    	if (existingErosketa.getSarreraList() != null && existingErosketa.getSarreraList().equals(sarrerakList)) {
+	    	    existingErosketa.setBezeroa(bezeroLogeatuta);
+	    	    existingErosketa.setData(Info_saioa().getEguna());
+	    	    existingErosketa.setDeskontua(subtotalaDeskontua()[1]);
+	    	    existingErosketa.setDirutotala(totalaErosketa());
+	    	    existingErosketa.setMota(srr1.getMota());
+	    	    erosketaExist = true;
+	    	    break;
+	    	
+	    	}
+	    }
 
-	    erosketakList.add(e1);
+	    if (!erosketaExist) {
+	        erosketakList.add(e1);
+	    }
 
 	    return e1;
-	}
-
-	public static int erosketaIdLortu() {
-
-		Erosketak azkenErosketa = erosketakList.get(erosketakList.size() - 2);
-		int azkenena = azkenErosketa.getIdErosketak() + txtkont;
-		
-		
-		return azkenena;
-
 	}
 	
 	

@@ -121,7 +121,6 @@ public class SaioaBista extends JFrame {
 			public void actionPerformed(ActionEvent e) {
             	JOptionPane.showMessageDialog(null, "Erosketa-pantailara aldatuko da" );
 				FuntzioErabilgarriak.ErosketaSarreraSortu();
-				FuntzioErabilgarriak.erosketaIdLortu();
 				FuntzioErabilgarriak.erosketaKonfirmazioaBistaVisible();
 	            	dispose();
 			}

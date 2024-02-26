@@ -7,6 +7,7 @@ import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
@@ -18,6 +19,7 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
+import modeloa.objetuak.Saioa;
 
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -66,20 +68,25 @@ public class PelikulaBista extends JFrame {
         
         btnJarraituPelikula = new JButton("JARRAITU");
         btnJarraituPelikula.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		
-        		// Ez baduzu data aukeratzen, gaurko data jarriko da.
-        		if (FuntzioErabilgarriak.getEguna() == null) {
-        			Date gaur = new Date();
-        			String pattern = "yyyy-MM-dd";
+            public void actionPerformed(ActionEvent e) {
+                // Ez baduzu data aukeratzen, gaurko data jarriko da.
+                if (FuntzioErabilgarriak.getEguna() == null) {
+                    Date gaur = new Date();
+                    String pattern = "yyyy-MM-dd";
                     DateFormat df = new SimpleDateFormat(pattern);
-
                     String gaurString = df.format(gaur);
-        			FuntzioErabilgarriak.setEguna(gaurString);
-        		}
-        		FuntzioErabilgarriak.saioaBistaVisible();
-                dispose();
-        	}
+                    FuntzioErabilgarriak.setEguna(gaurString);
+                }
+
+                Saioa selectedSaioa = FuntzioErabilgarriak.Info_saioa();
+
+                if (selectedSaioa != null && selectedSaioa.getAretoa() != null) {
+                    FuntzioErabilgarriak.saioaBistaVisible();
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(PelikulaBista.this, "Egun horretan ez daude saioak, barkatu", "Errorea", JOptionPane.WARNING_MESSAGE);
+                }
+            }
         });
         btnJarraituPelikula.setFont(new Font("Tahoma", Font.PLAIN, 28));
         Titulua.add(btnJarraituPelikula, BorderLayout.SOUTH);
