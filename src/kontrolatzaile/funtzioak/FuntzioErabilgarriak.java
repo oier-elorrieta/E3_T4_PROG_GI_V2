@@ -1,19 +1,19 @@
 package kontrolatzaile.funtzioak;
 
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.LayoutManager;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.lang.invoke.StringConcatFactory;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -22,29 +22,25 @@ import java.util.Set;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.UIManager;
 
+import bista.ErosketaKonfirmazioaBista;
+import bista.OngiEtorriBista;
 import bista.PelikulaBista;
-import javax.swing.JTextField;
 
 import bista.SaioaBista;
 import bista.ZinemaBista;
-import modeloa.Aldagaiak;
 import modeloa.dao.AretoaDao;
 import modeloa.dao.BezeroaDao;
 import modeloa.dao.ErosketakDao;
 import modeloa.dao.PelikulaDao;
 import modeloa.dao.SaioaDao;
-import modeloa.dao.SarreraDao;
 import modeloa.dao.ZinemaDao;
-import modeloa.db.Konexioa;
-import modeloa.db.Kontsultak;
+
 import modeloa.objetuak.Aretoa;
 import modeloa.objetuak.Bezeroa;
 import modeloa.objetuak.Erosketak;
@@ -69,6 +65,8 @@ public class FuntzioErabilgarriak {
 	private static int idFilma;
 	private static LocalTime ordua;
 	private static String eguna;
+	public static int txtkont = 1;
+	public static String ikonoLogo = "/modeloa/img/logoa/logoa_karratu.png";
 	
 
 	public static int getIdZinema() {
@@ -109,11 +107,12 @@ public class FuntzioErabilgarriak {
 
 	public static List<Aretoa> areatoakList;
 	static List<Bezeroa> bezeroakList;
-	static List<Erosketak> erosketakList;
+	public static List<Erosketak> erosketakList;
 	public static List<Pelikula> pelikulakList;
 	public static List<Saioa> saioakList;
-	static List<Sarrera> sarrerakList;
+	public static List<Sarrera> sarrerakList = new ArrayList<Sarrera>();
 	static List<Zinema> zinemakList;
+
 	static List<Pelikula> saioPelikulak;
 
 	static AretoaDao Aretoa;
@@ -121,9 +120,10 @@ public class FuntzioErabilgarriak {
 	static ErosketakDao Erosketak;
 	static PelikulaDao Pelikula;
 	static SaioaDao Saioa;
-	static SarreraDao Sarrera;
+	//static SarreraDao Sarrera;
 	static ZinemaDao Zinema;
 	public static SaioaDao saioaDao;
+	public static Bezeroa bezeroLogeatuta;
 	
 /**
  * 
@@ -134,9 +134,8 @@ public class FuntzioErabilgarriak {
 		Aretoa = new AretoaDao();
 		Bezeroa = new BezeroaDao();
 		Erosketak = new ErosketakDao();
-		Pelikula = new PelikulaDao();
 		Saioa = new SaioaDao();
-		Sarrera = new SarreraDao();
+		Pelikula = new PelikulaDao();
 		Zinema = new ZinemaDao();
 		saioaDao = new SaioaDao();
 		
@@ -151,7 +150,6 @@ public class FuntzioErabilgarriak {
 		bezeroakList = Bezeroa.lortuBezeroak();
 		erosketakList = Erosketak.lortuErosketak();
 		pelikulakList = Pelikula.lortuPelikulak();
-		sarrerakList = Sarrera.lortuSarrerak();
 		zinemakList = Zinema.lortuZinemak();
 
 	}
@@ -177,6 +175,8 @@ public class FuntzioErabilgarriak {
 	        if (bezeroakList.get(i).getErabiltzailea().equals(erabiltzailea)
 	                && bezeroakList.get(i).getPasahitza().equals(pasahitza)) {
 	        	
+	        	bezeroLogeatuta = bezeroakList.get(i);
+	        	
 	        	// Kredentzialak ondo badaude, "login" TRUE itzultzen du.
 	            login = true;
 	            break; // Erabiltzaile bat topatzen badu, for amaituko da.
@@ -193,6 +193,20 @@ public class FuntzioErabilgarriak {
 	}
 
 	// Pantailak argitaratu.
+	public static void ongiEtorriBistaVisible() {
+
+			try {
+				OngiEtorriBista frame = new OngiEtorriBista();
+				frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		
+	}
+	
+	
+	
 	public static void zinemaBistaVisible() {
 		try {
 			ZinemaBista frame = new ZinemaBista();
@@ -214,6 +228,15 @@ public class FuntzioErabilgarriak {
 	public static void saioaBistaVisible() {
 		try {
 			SaioaBista frame = new SaioaBista();
+			frame.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void erosketaKonfirmazioaBistaVisible() {
+		try {
+			ErosketaKonfirmazioaBista frame = new ErosketaKonfirmazioaBista();
 			frame.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -283,36 +306,23 @@ public class FuntzioErabilgarriak {
 	// Aukeratutako saioen id eta aretoa berrezkuratu.
 	public static Saioa Info_saioa() {
 		Saioa s1 = new Saioa();
+		String eguna = FuntzioErabilgarriak.getEguna();
 		
 		  for (Saioa saioa : zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList()) {
-              if (saioa.getPelikula().getIdPelikula() == FuntzioErabilgarriak.Info_filma().getIdPelikula()) {
+			  String getEgunaString = "" + saioa.getEguna();
+              if (saioa.getPelikula().getIdPelikula() == FuntzioErabilgarriak.Info_filma().getIdPelikula() && getEgunaString.equals(eguna)) {
             	  
             	  s1.setIdSaioa(saioa.getIdSaioa());
             	  s1.setAretoa(saioa.getAretoa());
+            	  s1.setOrdua(saioa.getOrdua());
+            	  s1.setPelikula(saioa.getPelikula());
+            	  s1.setEguna(LocalDate.parse(FuntzioErabilgarriak.getEguna()));
             	  
                   break;
               }
           }
 		  return s1;
 		  
-	}
-	
-	// AUKERATUTAKO SAIOAREN ORDUA LORTU.
-	public static LocalTime Saio_filma() {
-				
-		LocalTime saioaOrdua = null;  
-		String eguna = FuntzioErabilgarriak.getEguna();
-		 
-		  for (Saioa saioa : zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList()) {
-			  String getEgunaString = "" + saioa.getEguna();
-			  if(saioa.getPelikula().getIdPelikula() == FuntzioErabilgarriak.getIdFilma() && getEgunaString.equals(eguna)) {
-				  saioaOrdua = saioa.getOrdua();
-				  
-			  }
-		  }
-		  
-		  return saioaOrdua;
-		
 	}
 	 
 	// Sarreren gehiketa edo kenketa egin.
@@ -330,19 +340,245 @@ public class FuntzioErabilgarriak {
 		}
 	}
 	
-//	public static Erosketak ErosketaSortu() {
-//		Erosketak e1 = new Erosketak();
-//		
-//		  for (Erosketak erosketa : erosketakList) {
-//              if (saioa.getPelikula().getIdPelikula() == FuntzioErabilgarriak.Info_filma().getIdPelikula()) {
-//            	  
-//            	  
-//            	  
-//                  break;
-//              }
-//          }
-//		  
-//		  return e1;
-//	}
+	public static double[] subtotalaDeskontua() {
+	    double[] baloreak = new double[2];
 
+	    double prezioa = 8.90;
+	    double deskontuaBI = 0.2;
+	    double deskontuGEHIA = 0.3;
+
+	    int kopurua = Integer.parseInt(SaioaBista.textSarreraKop.getText());
+
+	    double subtotala = kopurua * prezioa;
+	    double deskontua = 0;
+
+	    if (kopurua == 2) {
+	        deskontua = subtotala * deskontuaBI;
+	    } else if (kopurua > 2) {
+	        deskontua = subtotala * deskontuGEHIA;
+	    }
+
+	    baloreak[0] = subtotala;
+	    baloreak[1] = deskontua;
+
+	    return baloreak;
+	}
+
+	public static double totalaSarrera() {
+	    double[] subtotalaDeskontua = subtotalaDeskontua();
+	    double subtotala = subtotalaDeskontua[0];
+	    double deskontua = subtotalaDeskontua[1];
+
+	    double totalaPrezioa = subtotala - deskontua;
+	    
+	    DecimalFormat df = new DecimalFormat("#.##");
+	    
+	    String totalaAldatuta = df.format(totalaPrezioa);
+	    String totalaPrezioaString = totalaAldatuta.replace(",", ".");
+	    
+	    	    
+	    return Double.parseDouble(totalaPrezioaString);
+	}
+	
+	public static double totalaErosketa() {
+		
+		double prezioErosketaTotala = 0;
+		
+		for (Sarrera sarrera : sarrerakList) {
+			prezioErosketaTotala += sarrera.getPrezioa();
+		}
+		
+		DecimalFormat df = new DecimalFormat("#.##");
+	    
+	    String totalaErosketaAldatuta = df.format(prezioErosketaTotala);
+	    String totalaErosketaPrezioaString = totalaErosketaAldatuta.replace(",", ".");
+		
+		return Double.parseDouble(totalaErosketaPrezioaString);
+		
+	}
+	
+	public static void SarrerenArrayHustu() {
+		sarrerakList.clear();
+	}
+	
+	
+	public static Erosketak ErosketaSarreraSortu() {
+	    // Crear una nueva instancia de Erosketak
+	    Erosketak e1 = new Erosketak();
+
+	    // Buscar si ya existe una Sarrera similar en sarrerakList
+	    Sarrera existingSarrera = null;
+	    for (Sarrera sarrera : sarrerakList) {
+	        if (sarrera.getSaioa().equals(Info_saioa())) {
+	            existingSarrera = sarrera;
+	            break;
+	        }
+	    }
+
+	    Sarrera srr1;
+	    if (existingSarrera != null) {
+	        srr1 = existingSarrera;
+	    } else {
+	        srr1 = new Sarrera();
+	        for (Saioa saioa : zinemakList.get(FuntzioErabilgarriak.getIdZinema()).getSaioList()) {
+	            if (saioa.getIdSaioa() == Info_saioa().getIdSaioa()) {
+	                srr1.setSaioa(Info_saioa());
+	                srr1.setData(Info_saioa().getEguna());
+	                srr1.setPrezioa(totalaSarrera());
+	                srr1.setSarreraKant(Integer.parseInt(SaioaBista.textSarreraKop.getText()));
+	                srr1.setMota(1);
+	                break;
+	            }
+	        }
+	        sarrerakList.add(srr1);
+	    }
+
+	    e1.setSarreraList(sarrerakList);
+	    e1.setBezeroa(bezeroLogeatuta);
+	    e1.setData(Info_saioa().getEguna());
+	    e1.setDeskontua(subtotalaDeskontua()[1]);
+	    e1.setDirutotala(totalaErosketa());
+	    e1.setMota(srr1.getMota());
+
+	    boolean erosketaExist = false;
+	    for (Erosketak existingErosketa : erosketakList) {
+	    	if (existingErosketa.getSarreraList() != null && existingErosketa.getSarreraList().equals(sarrerakList)) {
+	    	    existingErosketa.setBezeroa(bezeroLogeatuta);
+	    	    existingErosketa.setData(Info_saioa().getEguna());
+	    	    existingErosketa.setDeskontua(subtotalaDeskontua()[1]);
+	    	    existingErosketa.setDirutotala(totalaErosketa());
+	    	    existingErosketa.setMota(srr1.getMota());
+	    	    erosketaExist = true;
+	    	    break;
+	    	
+	    	}
+	    }
+
+	    if (!erosketaExist) {
+	        erosketakList.add(e1);
+	    }
+
+	    return e1;
+	}
+	
+	
+    public static void ErosketarenDatuak(JScrollPane scrollPane) {
+        JPanel infopanela2 = new JPanel(); 
+        infopanela2.setLayout(new GridBagLayout()); 
+
+        
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 15, 5, 15); // Datu banaketaren neurriak ezarri (top, left, bottom, right) Literalmente el "margin" del CSS.
+
+        int lerroa = 0; // Lehenenego aldiz, datuak 0 lerroan egongo dira.
+
+        for (int i = 0; i < sarrerakList.size(); i++) {
+            for (Zinema zinema : zinemakList) {
+                if (zinema.getIdZinema().equals(sarrerakList.get(i).getSaioa().getAretoa().getIdZinema())) {
+                    String zinemaString = zinema.getIzena();
+                    String filma = sarrerakList.get(i).getSaioa().getPelikula().getIzena();
+                    String areto = sarrerakList.get(i).getSaioa().getAretoa().getIzena() + " aretoan";
+                    String ordua = sarrerakList.get(i).getSaioa().getOrdua() + "";
+                    String data = sarrerakList.get(i).getData() + "";
+                    String prezioa = sarrerakList.get(i).getPrezioa() + "€";
+                    String kantitate = sarrerakList.get(i).getSarreraKant() + "";
+
+                    JLabel infoZinema = new JLabel(zinemaString); 
+                    JLabel infoFilma = new JLabel(filma);
+                    JLabel infoAreto = new JLabel(areto); 
+                    JLabel infoOrdua = new JLabel(ordua); 
+                    JLabel infoData = new JLabel(data); 
+                    JLabel infoPrezioa = new JLabel(prezioa); 
+                    JLabel infoKantitate = new JLabel(kantitate); 
+
+                    gbc.gridx = 0; //Zutabe 0
+                    gbc.gridy = lerroa; // Lerroa sortu eta aukeratu
+                    gbc.anchor = GridBagConstraints.WEST; // Horizontalean gordetzeko
+
+                    infopanela2.add(infoZinema, gbc); 
+
+                    gbc.gridx = 1; // Zutabe 1
+                    infopanela2.add(infoFilma, gbc); 
+
+                    gbc.gridx = 2; // Zutabe 2
+                    infopanela2.add(infoAreto, gbc); 
+
+                    gbc.gridx = 3; // Zutabe 3
+                    infopanela2.add(infoOrdua, gbc); 
+                    
+                    gbc.gridx = 4; // Zutabe 4
+                    infopanela2.add(infoData, gbc); 
+
+                    gbc.gridx = 5; // Zutabe 5
+                    infopanela2.add(infoPrezioa, gbc);
+
+                    gbc.gridx = 6; // Zutabe 6
+                    infopanela2.add(infoKantitate, gbc); 
+
+                    lerroa++; 
+                }
+            }   
+        }
+        scrollPane.setViewportView(infopanela2); 
+    }
+     
+
+    public static void fitxeroBarruanDatuakIdatzi() {
+    	 
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\in1dm3-d\\Faktura" + txtkont + ".txt"))) {
+            boolean datosImpresos = false; 
+            Set<String> peliculasImpresas = new HashSet<>(); 
+
+            for (Erosketak erosketa : erosketakList) {
+                if (erosketa.getSarreraList() != null && erosketa.getBezeroa() != null && erosketa.getData() != null) {
+                    if (!datosImpresos) { 
+                        String bezeroIzena = erosketa.getBezeroa().getIzena();
+                        String bezeroAbizena = erosketa.getBezeroa().getAbizena();
+                        String bezeroNAN = erosketa.getBezeroa().getNAN();
+
+                        writer.write("Bezeroa: " + bezeroIzena + " " + bezeroAbizena + " NAN: " + bezeroNAN);
+                        writer.newLine();
+
+                        Date data = new Date();
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        String dataString = sdf.format(data);
+                        writer.write("Gaurko data: " + dataString);
+                        writer.newLine();
+
+                        datosImpresos = true; 
+                    }
+
+                    for (Sarrera sarrera : erosketa.getSarreraList()) {
+                        Saioa saioa = sarrera.getSaioa();
+                        Aretoa aretoa = saioa.getAretoa();
+                        Pelikula pelikula = saioa.getPelikula();
+                        String filmKey = saioa.getIdSaioa() + pelikula.getIzena(); 
+                        
+                        
+                        if (!peliculasImpresas.contains(filmKey)) {
+                            String lerro = aretoa.getIzena() + " aretoan , " + pelikula.getIzena() + ", " +
+                                    saioa.getOrdua() + ", " + saioa.getEguna() + ", " +
+                                    sarrera.getPrezioa() + "€, " + sarrera.getSarreraKant();
+
+                            writer.write(lerro);
+                            writer.newLine();
+
+                            
+                            peliculasImpresas.add(filmKey);
+
+                            
+                            
+                        }
+                    }
+                }
+            }
+
+            
+            writer.write("Erosketaren totala: " + totalaErosketa() + "€");
+            writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        txtkont ++;
+    }
 }

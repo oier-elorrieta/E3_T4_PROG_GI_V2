@@ -1,25 +1,18 @@
 package modeloa.objetuak;
 
 import java.time.LocalDate;
-<<<<<<< HEAD
 import java.util.List;
-=======
->>>>>>> master
 import java.util.Objects;
 
 public class Erosketak {
 
-<<<<<<< HEAD
 	private int idErosketak;
 	private List<Sarrera> sarreraList;
-=======
->>>>>>> master
 	private Bezeroa bezeroa;
 	private LocalDate data;
 	private double deskontua;	
 	private double dirutotala;
-<<<<<<< HEAD
-	private String mota;
+	private int mota;
 
 	// --------------------Konstruktorea--------------------//
 	
@@ -29,142 +22,75 @@ public class Erosketak {
 	
 	public Erosketak() {
 	}
-	
 	// --------------------Konstruktorea--------------------//
+	
+	
+	
+	public int getIdErosketak() {
+		return idErosketak;
+	}
 
-	// --------------------Set--------------------//
 	public void setIdErosketak(int idErosketak) {
 		this.idErosketak = idErosketak;
 	}
-	
+
+	public List<Sarrera> getSarreraList() {
+		return sarreraList;
+	}
+
+	public void setSarreraList(List<Sarrera> sarreraList) {
+		this.sarreraList = sarreraList;
+	}
+
+	public Bezeroa getBezeroa() {
+		return bezeroa;
+	}
+
 	public void setBezeroa(Bezeroa bezeroa) {
 		this.bezeroa = bezeroa;
 	}
-=======
-	private int sarreraKant;
 
-	// --------------------Konstruktorea--------------------//
-	public Erosketak(Bezeroa bezeroa, LocalDate data) {
-		this.bezeroa = bezeroa;
-		this.data = data;
+	public LocalDate getData() {
+		return data;
 	}
-	// --------------------Konstruktorea--------------------//
-
-	// --------------------Set--------------------//
-	public void setBezeroa(Bezeroa bezeroa) {
-		this.bezeroa = bezeroa;
-	}
->>>>>>> master
 
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
-<<<<<<< HEAD
-	public void setSarreraList(List<Sarrera> sarreraList) {
-		this.sarreraList = sarreraList;
-	}
-
-=======
->>>>>>> master
-	public void setDeskontua(double deskontua) {
-		this.deskontua = deskontua;
-	}
-
-	public void setDirutotala(double dirutotala) {
-		this.dirutotala = dirutotala;
-	}
-<<<<<<< HEAD
-	
-	public void setMota(String mota) {
-		this.mota = mota;
-	}
-	// --------------------Set--------------------//
-
-	// --------------------Get--------------------//
-	public int getIdErosketak() {
-		return idErosketak;
-	}
-	
-	public Bezeroa getBezeroa() {
-		return bezeroa;
-	}
-=======
-
-	public void setSarreraKant(int sarreraKant) {
-		this.sarreraKant = sarreraKant;
-	}
-
-	// --------------------Set--------------------//
-
-	// --------------------Get--------------------//
-	public Bezeroa getBezeroa() {
-		return bezeroa;
-	}
->>>>>>> master
-
-	public LocalDate getData() {
-		return data;
-	}
-<<<<<<< HEAD
-	
-	public List<Sarrera> getSarreraList() {
-		return sarreraList;
-	}
-=======
->>>>>>> master
-
 	public double getDeskontua() {
 		return deskontua;
+	}
+
+	public void setDeskontua(double deskontua) {
+		this.deskontua = deskontua;
 	}
 
 	public double getDirutotala() {
 		return dirutotala;
 	}
-<<<<<<< HEAD
-	public String getMota() {
+
+	public void setDirutotala(double dirutotala) {
+		this.dirutotala = dirutotala;
+	}
+
+	public int getMota() {
 		return mota;
 	}
-	// --------------------Get--------------------//
 
-	
-	// --------------------toString--------------------//
-	
+	public void setMota(int mota) {
+		this.mota = mota;
+	}
+
 	@Override
 	public String toString() {
 		return "Erosketak [idErosketak=" + idErosketak + ", sarreraList=" + sarreraList + ", bezeroa=" + bezeroa
 				+ ", data=" + data + ", deskontua=" + deskontua + ", dirutotala=" + dirutotala + ", mota=" + mota + "]";
 	}
-	
-	// --------------------toString--------------------//
-
-=======
-
-	public int getSarreraKant() {
-		return sarreraKant;
-	}
-	// --------------------Get--------------------//
-
-	// --------------------toString--------------------//
-
-	@Override
-	public String toString() {
-		return "Erosketak [bezeroa=" + bezeroa + ", data=" + data + ", deskontua=" + deskontua + ", dirutotala="
-				+ dirutotala + ", sarreraKant=" + sarreraKant + "]";
-	}
-
-	// --------------------toString--------------------//
-
->>>>>>> master
-	// --------------------Equals--------------------//
 
 	@Override
 	public int hashCode() {
-<<<<<<< HEAD
 		return Objects.hash(bezeroa, data, deskontua, dirutotala, idErosketak, mota, sarreraList);
-=======
-		return Objects.hash(bezeroa, data, deskontua, dirutotala, sarreraKant);
->>>>>>> master
 	}
 
 	@Override
@@ -179,18 +105,8 @@ public class Erosketak {
 		return Objects.equals(bezeroa, other.bezeroa) && Objects.equals(data, other.data)
 				&& Double.doubleToLongBits(deskontua) == Double.doubleToLongBits(other.deskontua)
 				&& Double.doubleToLongBits(dirutotala) == Double.doubleToLongBits(other.dirutotala)
-<<<<<<< HEAD
-				&& idErosketak == other.idErosketak && Objects.equals(mota, other.mota)
+				&& idErosketak == other.idErosketak && mota == other.mota
 				&& Objects.equals(sarreraList, other.sarreraList);
 	}
 	
-	
-	// --------------------Equals--------------------//
-=======
-				&& sarreraKant == other.sarreraKant;
-	}
-
-	// --------------------Equals--------------------//
-
->>>>>>> master
 }

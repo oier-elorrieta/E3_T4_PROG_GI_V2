@@ -32,10 +32,10 @@ public class ErosketaDaoTest {
 	            ResultSet resultSet = preparedStatement.executeQuery();
 
 	            while (resultSet.next()) {
-	                int idErosketak = resultSet.getInt("idErosketak");
-	                LocalDate data = resultSet.getDate("data").toLocalDate();
+	                int idErosketak = resultSet.getInt("idErosketa");
+	                LocalDate data = resultSet.getDate("eguna").toLocalDate();
 
-	                Erosketak erosketa = new Erosketak(idErosketak, data);
+	                Erosketak erosketa = new Erosketak(idErosketak);
 	                erosketakTest.add(erosketa);
 	            }
 

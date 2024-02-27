@@ -8,14 +8,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import modeloa.dao.AretoaDao;
+import modeloa.dao.BezeroaDao;
 import modeloa.dao.SaioaDao;
 import modeloa.dao.ZinemaDao;
 import modeloa.db.Konexioa;
 import modeloa.db.Kontsultak;
 import modeloa.objetuak.Aretoa;
+import modeloa.objetuak.Bezeroa;
 import modeloa.objetuak.Saioa;
 import modeloa.objetuak.Zinema;
 
@@ -35,7 +38,7 @@ public List<Zinema> lortuZinemakTEST() {
 
 
         try {
-            Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
+            Konexioa.konexioa(); 
 
             PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.zinema);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -45,21 +48,37 @@ public List<Zinema> lortuZinemakTEST() {
                 String izena = resultSet.getString("izena");
                 String helbidea = resultSet.getString("helbidea");
                 
-                aretoList = aretoaDao.lortuAreatoak(idZinema);
+                aretoList = aretoaDao.lortuAretoak(idZinema);
                 List<Saioa> saioaList = saioaDao.lortuSaioak(idZinema,aretoList);
                 
                 Zinema zinema = new Zinema(idZinema, izena, helbidea, aretoList, saioaList);
                 zinemak.add(zinema); 
-                System.out.println(aretoList.size());
            
             }
            
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Konexioa.konexioaExit(); // Asegúrate de cerrar la conexión después de usarla
+            Konexioa.konexioaExit(); 
         }
 
         return zinemak;
     }
+
+	@Before
+	public void setUp() {
+		zinemaDao = new ZinemaDao();
+	}
+
+	@Test
+	public void testLortuAreatoak() {
+	    List<Zinema> zinema = zinemaDao.lortuZinemak();
+	    
+	    List<Zinema> zinemaTest = lortuZinemakTEST();
+	    
+	    assertNotNull(zinema);
+	    assertFalse(zinemaTest.isEmpty());
+
+	    assertEquals(zinemaTest, zinema);
+	}
 }

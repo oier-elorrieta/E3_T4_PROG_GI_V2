@@ -32,7 +32,7 @@ public class SarreraTest {
 		saioaList = new ArrayList<>();
 		saioaList.add(saioa);
 		
-		sarrera = new Sarrera(1, saioa, data, 20, "Normala");
+		sarrera = new Sarrera(1, saioa, data, 20, 1);
 		saioa = new Saioa(1, aretoa, time, data, pelikula);
 		aretoa = new Aretoa("A01", "Z01", "Areto 1");
 		pelikula = new Pelikula(1, "Cars", "Aventura", 169);
@@ -44,12 +44,12 @@ public class SarreraTest {
 		sarrera.setSaioa(saioa);
 		sarrera.setSarreraKant(1);
 		sarrera.setPrezioa(6.95);
-		sarrera.setMota("Gaztea");	
+		sarrera.setMota(1);	
 
 		assertEquals(saioa, sarrera.getSaioa());
 		assertEquals(1, sarrera.getSarreraKant());
 		assertEquals(6.95, sarrera.getPrezioa(), 0.001);
-		assertEquals("Gaztea", sarrera.getMota());
+		assertEquals(1, sarrera.getMota());
 	}
 	
 	@Test
@@ -60,17 +60,17 @@ public class SarreraTest {
 		sarrera.setData(data);
 		sarrera.setSarreraKant(1);
 		sarrera.setPrezioa(1);
-		sarrera.setMota("Normala");
+		sarrera.setMota(1);
 		
-		assertEquals("Sarrera [idSarrera=1, saioa=" + saioa.toString() + ", sarreraKant=1, prezioa=1.0, mota=Normala, data=" + data + "]", sarrera.toString());		
+		assertEquals("Sarrera [idSarrera=1, saioa=" + saioa.toString() + ", sarreraKant=1, prezioa=1.0, mota=1, data=" + data + "]", sarrera.toString());		
 	}
 	
 	 @Test
 	    public void testHashCodeSarrera() {
 	    	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 	    	
-	        Sarrera sarrera1 = new Sarrera(1, saioa, dataFroga, 15.0, "Normal");
-	        Sarrera sarrera2 = new Sarrera(1, saioa, dataFroga, 15.0, "Normal");
+	        Sarrera sarrera1 = new Sarrera(1, saioa, dataFroga, 15.0, 1);
+	        Sarrera sarrera2 = new Sarrera(1, saioa, dataFroga, 15.0, 1);
 
 	        assertEquals(sarrera1.hashCode(), sarrera2.hashCode());
 	    }
@@ -83,7 +83,7 @@ public class SarreraTest {
 	    public void test_SarreraEquals() {
 	    	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 	    	
-	        Sarrera sarrera = new Sarrera(1, saioa, dataFroga, 10.0, "mota");
+	        Sarrera sarrera = new Sarrera(1, saioa, dataFroga, 10.0, 1);
 	        assertTrue(sarrera.equals(sarrera));
 	    }
 
@@ -91,9 +91,9 @@ public class SarreraTest {
 	    public void test_SarreraBatzuk() {
 	    	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 
-	        Sarrera sarrera1 = new Sarrera(1, saioa, dataFroga, 10.0, "mota");
-	        Sarrera sarrera2 = new Sarrera(1, saioa, dataFroga, 10.0, "mota");
-	        Sarrera sarrera3 = new Sarrera(1, saioa, dataFroga, 10.0, "mota");
+	        Sarrera sarrera1 = new Sarrera(1, saioa, dataFroga, 10.0, 1);
+	        Sarrera sarrera2 = new Sarrera(1, saioa, dataFroga, 10.0, 1);
+	        Sarrera sarrera3 = new Sarrera(1, saioa, dataFroga, 10.0, 1);
 
 	        assertTrue(sarrera1.equals(sarrera2) && sarrera2.equals(sarrera3) && sarrera1.equals(sarrera3));
 	    }
@@ -102,7 +102,7 @@ public class SarreraTest {
 	    public void test_SarreraNuloa() {
 	    	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 
-	        Sarrera sarrera = new Sarrera(1, saioa, dataFroga, 10.0, "mota");
+	        Sarrera sarrera = new Sarrera(1, saioa, dataFroga, 10.0, 1);
 	        assertFalse(sarrera.equals(null));
 	    }
 
@@ -110,7 +110,7 @@ public class SarreraTest {
 	    public void test_SarreraObjetua() {
 	    	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 
-	        Sarrera sarrera = new Sarrera(1, saioa, dataFroga, 10.0, "mota");
+	        Sarrera sarrera = new Sarrera(1, saioa, dataFroga, 10.0, 1);
 	        assertFalse(sarrera.equals("Not a Sarrera object"));
 	    }
 
@@ -118,8 +118,8 @@ public class SarreraTest {
 	    public void test_SarreraEzberdina() {
 	    	LocalDate dataFroga = LocalDate.of(2024, 1, 1);
 
-	        Sarrera sarrera1 = new Sarrera(1, saioa, dataFroga, 10.0, "mota");
-	        Sarrera sarrera2 = new Sarrera(2, saioa, dataFroga, 11.0, "mota");
+	        Sarrera sarrera1 = new Sarrera(1, saioa, dataFroga, 10.0, 1);
+	        Sarrera sarrera2 = new Sarrera(2, saioa, dataFroga, 11.0, 1);
 	        assertFalse(sarrera1.equals(sarrera2));
 	    }
 	

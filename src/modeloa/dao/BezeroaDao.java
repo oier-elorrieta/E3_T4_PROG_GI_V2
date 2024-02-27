@@ -15,7 +15,7 @@ public class BezeroaDao {
     public List<Bezeroa> lortuBezeroak() {
         List<Bezeroa> bezeroak = new ArrayList<>();
 
-        Konexioa.konexioa(); // Asegúrate de tener esta llamada para establecer la conexión
+        Konexioa.konexioa(); 
 
         try (PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.bezeroa);
              ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -36,9 +36,8 @@ public class BezeroaDao {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // Maneja la excepción según tus necesidades
         } finally {
-            Konexioa.konexioaExit(); // Asegúrate de cerrar la conexión
+            Konexioa.konexioaExit(); 
         }
 
         return bezeroak;

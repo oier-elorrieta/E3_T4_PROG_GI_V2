@@ -30,7 +30,7 @@ public class BezeroDaoTest {
 	             ResultSet resultSet = preparedStatement.executeQuery()) {
 
 	            while (resultSet.next()) {
-	            	String idBezeroa = resultSet.getString("idBezeroa");
+	            	String idBezeroa = resultSet.getString("idBezero");
 	                String NAN = resultSet.getString("NAN");
 	                String izena = resultSet.getString("izena");
 	                String abizena = resultSet.getString("abizena");
@@ -45,9 +45,8 @@ public class BezeroDaoTest {
 
 	        } catch (SQLException e) {
 	            e.printStackTrace();
-	            // Maneja la excepción según tus necesidades
 	        } finally {
-	            Konexioa.konexioaExit(); // Asegúrate de cerrar la conexión
+	            Konexioa.konexioaExit(); 
 	        }
 			return bezeroaTest;
 	        

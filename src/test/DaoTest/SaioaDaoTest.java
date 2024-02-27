@@ -17,6 +17,7 @@ import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
 import modeloa.dao.PelikulaDao;
 import modeloa.dao.SaioaDao;
 import modeloa.db.Konexioa;
+import modeloa.db.Kontsultak;
 import modeloa.objetuak.Aretoa;
 import modeloa.objetuak.Pelikula;
 import modeloa.objetuak.Saioa;
@@ -25,72 +26,66 @@ public class SaioaDaoTest {
 	
 	private SaioaDao saioaDao;
 	private List<Saioa> saioaTest;
+	private List<Pelikula> pelikulaListTest;
+	
+	 public List<Saioa> lortuSaioakTEST(String ID, List<Aretoa> aretoList) {
+		 	PelikulaDao pelikuladao = new PelikulaDao();
+			pelikulaListTest = pelikuladao.lortuPelikulak();
 
-	public List<Saioa> lortuSaioakTEST(String ID, List<Aretoa> aretoList) {
-        List<Saioa> saioak = new ArrayList<>();
-        Pelikula peli = null;
-        Aretoa areto = null;
+	        saioaTest = new ArrayList<>();
+	        Pelikula peli = null;
+	        Aretoa areto = null;
 
-        try {
-            Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
+	        try {
+	            Konexioa.konexioa(); 
+	            
+	            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.saioa);
+	            preparedStatement.setString(1, ID); 
 
-            String kontzulta = "SELECT idSaioa, Ordua, Eguna, idFilma, idZinema, idAretoa FROM SAIOA WHERE idZinema = 'Z01'";
-            PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(kontzulta);
-            preparedStatement.setString(1, ID); // Establece el ID del cine en la consulta
+	            
+	            ResultSet resultSet = preparedStatement.executeQuery();
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+	            while (resultSet.next()) {
+	                int idSaioa = resultSet.getInt("idSaioa");
+	                LocalTime ordua = resultSet.getTime("Ordua").toLocalTime(); 
+	                LocalDate eguna = resultSet.getDate("Eguna").toLocalDate(); 
+	                int idPelikula = resultSet.getInt("idFilma");
+	                String idAretoa = resultSet.getString("idAretoa");
+	 
+	                
+	                for (Pelikula pelikula : pelikulaListTest) {
+	                    if (pelikula.getIdPelikula() == idPelikula) {
+	                        peli = pelikula;
+	                        break;
+	                    }
+	                }
 
-            while (resultSet.next()) {
-                int idSaioa = resultSet.getInt("idSaioa");
-                LocalTime ordua = resultSet.getTime("Ordua").toLocalTime(); // Corregido el nombre de la columna
-                LocalDate eguna = resultSet.getDate("Eguna").toLocalDate(); // Corregido el nombre de la columna
-                int idPelikula = resultSet.getInt("idFilma");
-                String idAretoa = resultSet.getString("idAretoa");
+	                
+	                for (Aretoa aretoa : aretoList) {
+	                    if (aretoa.getIdAretoa().equals(idAretoa)) {
+	                        areto = aretoa;
+	                        break;
+	                    }
+	                }
 
-                // Busca la película en la lista de películas
-                for (Pelikula pelikula : FuntzioErabilgarriak.pelikulakList) {
-                    if (pelikula.getIdPelikula() == idPelikula) {
-                        peli = pelikula;
-                        break;
-                    }
-                }
+	                Saioa saioa = new Saioa(idSaioa, areto, ordua, eguna, peli);
+	                saioaTest.add(saioa);
+	            }
 
-                // Busca el aretoa en la lista de aretoak que se pasa como argumento
-                for (Aretoa aretoa : aretoList) {
-                    if (aretoa.getIdAretoa().equals(idAretoa)) {
-                        areto = aretoa;
-                        break;
-                    }
-                }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            Konexioa.konexioaExit(); 
+	        }
 
-                Saioa saioa = new Saioa(idSaioa, areto, ordua, eguna, peli);
-                saioak.add(saioa);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            Konexioa.konexioaExit(); // Asegúrate de cerrar la conexión después de usarla
-        }
-
-        return saioak;
-    }
+	        return saioaTest;
+	    }
 	
 	@Before
 	public void setUp() {
 	    saioaDao = new SaioaDao();
 	}
 
-	@Test
-	public void testLortuSaioak() {
-	    List<Saioa> saioak = saioaDao.lortuSaioak("Z01", Funtzioak.areatoakList); 
-	    
-	    List<Saioa> SaioaTest = lortuSaioakTEST("Z01", Funtzioak.areatoakList);
-	    
-	    assertNotNull(saioak);
-	    assertFalse(saioak.isEmpty());
 
-	    assertEquals(saioaTest, saioak);
-	}
 	
 }

@@ -24,22 +24,21 @@ public class SaioaDao {
         Aretoa areto = null;
 
         try {
-            Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
+            Konexioa.konexioa(); 
             
             PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.saioa);
-            preparedStatement.setString(1, ID); // Establece el ID del cine en la consulta
+            preparedStatement.setString(1, ID); 
 
             
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 int idSaioa = resultSet.getInt("idSaioa");
-                LocalTime ordua = resultSet.getTime("Ordua").toLocalTime(); // Corregido el nombre de la columna
-                LocalDate eguna = resultSet.getDate("Eguna").toLocalDate(); // Corregido el nombre de la columna
+                LocalTime ordua = resultSet.getTime("Ordua").toLocalTime(); 
+                LocalDate eguna = resultSet.getDate("Eguna").toLocalDate(); 
                 int idPelikula = resultSet.getInt("idFilma");
                 String idAretoa = resultSet.getString("idAretoa");
  
-                // Busca la película en la lista de películas
                 for (Pelikula pelikula : FuntzioErabilgarriak.pelikulakList) {
                     if (pelikula.getIdPelikula() == idPelikula) {
                         peli = pelikula;
@@ -47,7 +46,7 @@ public class SaioaDao {
                     }
                 }
 
-                // Busca el aretoa en la lista de aretoak que se pasa como argumento
+               
                 for (Aretoa aretoa : aretoList) {
                     if (aretoa.getIdAretoa().equals(idAretoa)) {
                         areto = aretoa;
@@ -62,7 +61,7 @@ public class SaioaDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Konexioa.konexioaExit(); // Asegúrate de cerrar la conexión después de usarla
+            Konexioa.konexioaExit();
         }
 
         return saioak;

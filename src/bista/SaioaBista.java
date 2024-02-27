@@ -1,20 +1,13 @@
 package bista;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import org.jdatepicker.impl.DateComponentFormatter;
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
-
 import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
-import modeloa.Aldagaiak;
-import modeloa.objetuak.Pelikula;
+import modeloa.objetuak.Aretoa;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -25,9 +18,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Properties;
 
 import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
@@ -45,7 +35,7 @@ public class SaioaBista extends JFrame {
 
 
 	public SaioaBista() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(SaioaBista.class.getResource(Aldagaiak.ikonoLogo)));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(SaioaBista.class.getResource(FuntzioErabilgarriak.ikonoLogo)));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();
@@ -95,15 +85,17 @@ public class SaioaBista extends JFrame {
 		lblIraupena.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblIraupena.setBounds(461, 162, 554, 46);
 		Titulua.add(lblIraupena);
+				
 		
-		
-		JLabel lblIAretoa = new JLabel("Aretoa: " + FuntzioErabilgarriak.Info_saioa().getAretoa().getIzena() + " aretoa");
+		Aretoa aretoa = FuntzioErabilgarriak.Info_saioa().getAretoa();
+        String aretoaIzena = aretoa != null ? aretoa.getIzena() : "Aretoa ez dago ezarrita";
+        JLabel lblIAretoa = new JLabel("Aretoa: " + aretoaIzena);
 		lblIAretoa.setHorizontalAlignment(SwingConstants.LEFT);
 		lblIAretoa.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblIAretoa.setBounds(461, 219, 554, 46);
 		Titulua.add(lblIAretoa);
 		
-		JLabel lbllPrezioa = new JLabel("Sarreraren prezioa: 6,90 €" );
+		JLabel lbllPrezioa = new JLabel("Sarreraren prezioa: 8,90 €" );
 		lbllPrezioa.setHorizontalAlignment(SwingConstants.LEFT);
 		lbllPrezioa.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lbllPrezioa.setBounds(461, 276, 554, 46);
@@ -113,15 +105,14 @@ public class SaioaBista extends JFrame {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(464, 397, 459, 61);
 
-		LocalTime saioaOrdua = FuntzioErabilgarriak.Saio_filma();
+		LocalTime saioaOrdua = FuntzioErabilgarriak.Info_saioa().getOrdua();
 
 		if (saioaOrdua != null) {
 		    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 		    String formattedTime = saioaOrdua.format(formatter);
 		    comboBox.addItem(formattedTime);
 		} else {
-		    // Manejo del caso en que saioaOrdua es null
-		    comboBox.addItem("No hay hora disponible");
+		    comboBox.addItem("Gaur honetan ez daude saiorik");
 		}
 
 		Titulua.add(comboBox);
@@ -131,9 +122,10 @@ public class SaioaBista extends JFrame {
 		btnBukatuErosketa.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnBukatuErosketa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-            	JOptionPane.showMessageDialog(null, "DENA EZABATU EGIN DA", "!!" ,JOptionPane.ERROR_MESSAGE);
-				 FuntzioErabilgarriak.zinemaBistaVisible();
-	                dispose();
+            	JOptionPane.showMessageDialog(null, "Erosketa-pantailara aldatuko da" );
+				FuntzioErabilgarriak.ErosketaSarreraSortu();
+				FuntzioErabilgarriak.erosketaKonfirmazioaBistaVisible();
+	            	dispose();
 			}
 		});
 		btnBukatuErosketa.setBounds(986, 550, 258, 79);
@@ -144,12 +136,10 @@ public class SaioaBista extends JFrame {
 		btnBesteErosketa.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnBesteErosketa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				 
-				JOptionPane.showMessageDialog(null, "DENA ONDO GORDE EGIN DA");
-				FuntzioErabilgarriak.ErosketaSortu();
-				 FuntzioErabilgarriak.zinemaBistaVisible();
-	                dispose();
-	                
-				
+				JOptionPane.showMessageDialog(null, "Eskerrik asko erosten jarraitzeagatik");
+            	FuntzioErabilgarriak.ErosketaSarreraSortu();
+				FuntzioErabilgarriak.zinemaBistaVisible();
+	            	dispose();
 			}
 		});
 		btnBesteErosketa.setBounds(718, 550, 258, 79);

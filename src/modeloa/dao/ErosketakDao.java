@@ -17,7 +17,7 @@ public class ErosketakDao {
     public List<Erosketak> lortuErosketak() {
         List<Erosketak> erosketak = new ArrayList<>();
 
-        Konexioa.konexioa(); // Asegúrate de que la conexión está abierta
+        Konexioa.konexioa(); 
 
         
         try (PreparedStatement preparedStatement = Konexioa.konektatua.prepareStatement(Kontsultak.erosketak);
@@ -33,7 +33,7 @@ public class ErosketakDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Konexioa.konexioaExit(); // Asegúrate de cerrar la conexión después de usarla
+            Konexioa.konexioaExit(); 
         }
 
         return erosketak;

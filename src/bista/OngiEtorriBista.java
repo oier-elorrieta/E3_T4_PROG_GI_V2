@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import modeloa.Aldagaiak;
+import kontrolatzaile.funtzioak.FuntzioErabilgarriak;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -29,7 +29,7 @@ public class OngiEtorriBista extends JFrame {
     private int barraBat = 0;
 
     public OngiEtorriBista() {
-    	setIconImage(Toolkit.getDefaultToolkit().getImage(OngiEtorriBista.class.getResource(Aldagaiak.ikonoLogo)));
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(OngiEtorriBista.class.getResource(FuntzioErabilgarriak.ikonoLogo)));
     	setTitle("Elorrieta Film");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 600, 380);
@@ -45,7 +45,7 @@ public class OngiEtorriBista extends JFrame {
 	
 		        JLabel lblNewLabel = new JLabel("");
 		        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		        lblNewLabel.setIcon(new ImageIcon(OngiEtorriBista.class.getResource(Aldagaiak.ikonoLogo)));
+		        lblNewLabel.setIcon(new ImageIcon(OngiEtorriBista.class.getResource(FuntzioErabilgarriak.ikonoLogo)));
 		        Irudia.add(lblNewLabel, BorderLayout.CENTER);
 
 	        pProgreso = new JPanel();
@@ -86,7 +86,6 @@ public class OngiEtorriBista extends JFrame {
 	                            try {
 	                                Thread.sleep(100);
 	                            } catch (Exception p) {
-	                                System.out.println("Algo va mal");
 	                            }
 	                        }
 	                        LoginBista frame = new LoginBista();
